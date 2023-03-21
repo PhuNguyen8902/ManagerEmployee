@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj": {}
+    "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\hoc\\Nam 3\\HK2\\lap trinh co so du lieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj": {}
   },
   "projects": {
-    "D:\\repos\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj": {
+    "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\hoc\\Nam 3\\HK2\\lap trinh co so du lieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\hoc\\Nam 3\\HK2\\lap trinh co so du lieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
         "projectName": "EmployeesManagement",
-        "projectPath": "D:\\repos\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
-        "packagesPath": "C:\\Users\\vegar\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\EmployeesManagement\\EmployeesManagement\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\hoc\\Nam 3\\HK2\\lap trinh co so du lieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\hoc\\Nam 3\\HK2\\lap trinh co so du lieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vegar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +46,14 @@
             "FontAwesome.Sharp": {
               "target": "Package",
               "version": "[6.3.0, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.32.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
             }
           },
           "imports": [
@@ -64,7 +75,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

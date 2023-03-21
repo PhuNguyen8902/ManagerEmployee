@@ -21,3 +21,43 @@ D:\repos\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\Employ
 D:\repos\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.Properties.Resources.resources
 D:\repos\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.employeesPage.resources
 D:\repos\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.projectsPage.resources
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\EmployeesManagement.exe
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\EmployeesManagement.deps.json
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\EmployeesManagement.runtimeconfig.json
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\EmployeesManagement.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\EmployeesManagement.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.login.resources
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.primary.resources
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.Properties.Resources.resources
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.employeesPage.resources
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.projectsPage.resources
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.csproj.GenerateResource.cache
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.AssemblyInfoInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.AssemblyInfo.cs
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.csproj.CopyComplete
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\refint\EmployeesManagement.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.genruntimeconfig.cache
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\ref\EmployeesManagement.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\Google.Protobuf.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\K4os.Hash.xxHash.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\MySql.Data.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\win-x64\native\comerr64.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\win-x64\native\gssapi64.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\win-x64\native\krb5_64.dll
+C:\Users\ADMIN\OneDrive\Máy tính\hoc\Nam 3\HK2\lap trinh co so du lieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\bin\Debug\net6.0-windows\runtimes\win-x64\native\krbcc64.dll

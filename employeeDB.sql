@@ -34,7 +34,7 @@ CREATE TABLE employee (
 	id int primary key identity(1,1),
 	name nvarchar (50),
 	phone char (20),
-	birth_day varchar (20),
+	birth_day date,
 	gender tinyint not null check (gender in (0, 1)),
 	home_town nvarchar (50),
 	department_id int,
@@ -43,7 +43,6 @@ CREATE TABLE employee (
 	constraint fk_e_salary foreign key (salary_id) references salary(id),
 	constraint fk_e_department foreign key (department_id) references department(id),
 	constraint fk_e_position foreign key (position_id) references position(id)
-	--CONSTRAINT pk_NHANVIEN PRIMARY KEY (MANV)
 )
 GO
 
@@ -78,3 +77,17 @@ CREATE TABLE timekeeping (
 	constraint fk_t_employee foreign key (employee_id) references employee(id)
 )
 GO
+
+CREATE TABLE account (
+	id int primary key identity(1,1),
+	user_name nvarchar (50),
+	password nvarchar (50),
+	full_name nvarchar (50),
+	email nvarchar (50),
+	type nvarchar (50),
+	employee_id int,
+	constraint fk_a_employee foreign key (employee_id) references employee(id)
+)
+GO
+
+insert into account(user_name,password,full_name,email,type,employee_id) values ('admin','123','Admin','admin@gmail.com','Admin',null);
