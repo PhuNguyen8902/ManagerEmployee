@@ -97,10 +97,6 @@ namespace EmployeesManagement.Models
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.BirthDay)
-                    .HasColumnType("date")
-                    .HasColumnName("birth_day");
-
                 entity.Property(e => e.DepartmentId).HasColumnName("department_id");
 
                 entity.Property(e => e.Gender).HasColumnName("gender");

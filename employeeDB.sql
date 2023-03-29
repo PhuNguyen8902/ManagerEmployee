@@ -14,6 +14,7 @@ CREATE TABLE department (
 	address nvarchar (50),
 )
 GO
+drop table employee
 
 CREATE TABLE salary (
 	id int primary key identity(1,1),
@@ -34,7 +35,6 @@ CREATE TABLE employee (
 	id int primary key identity(1,1),
 	name nvarchar (50),
 	phone char (20),
-	birth_day date,
 	gender tinyint not null check (gender in (0, 1)),
 	home_town nvarchar (50),
 	department_id int,
