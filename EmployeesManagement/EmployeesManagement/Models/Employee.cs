@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace EmployeesManagement.Models
 {
     public partial class Employee
     {
+
         public Employee()
         {
             Accounts = new HashSet<Account>();
@@ -14,7 +17,6 @@ namespace EmployeesManagement.Models
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? Phone { get; set; }
-        public DateTime? BirthDay { get; set; }
         public byte Gender { get; set; }
         public string? HomeTown { get; set; }
         public int? DepartmentId { get; set; }
@@ -26,5 +28,6 @@ namespace EmployeesManagement.Models
         public virtual Salary? Salary { get; set; }
         public virtual ICollection<Account> Accounts { get; set; }
         public virtual ICollection<Timekeeping> Timekeepings { get; set; }
+       
     }
 }
