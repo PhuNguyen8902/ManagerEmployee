@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeesManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,6 +13,26 @@ namespace EmployeesManagement.Service
     {
         SqlConnection connection = Connection.Connection.GetConnection();
 
+        public bool addEmployee(Employee employee)
+        {
+            try
+            {
+                connection.Open();
+                string SQL = string.Format("insert into employeeDB.dbo.employee(name, phone,gender,home_town) VALUES('{0}', '{1}', '{2}', '{3}')", employee.Name, employee.Phone, employee.Gender, employee.HomeTown);
+                SqlCommand cmd = new SqlCommand(SQL, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
         public DataTable GetEmployeeData()
         {
             DataTable table = new DataTable();
@@ -21,16 +42,47 @@ namespace EmployeesManagement.Service
             adapter.Fill(table);
             return table;
         }
-        public void DeleteEmployee(int employeeId)
+        public bool deleteEmployee(int employeeId)
         {
-            string sql = "DELETE FROM employeeDB.dbo.employee WHERE id = @employeeId";
-            using (SqlCommand cmd = new SqlCommand(sql, connection))
+            try
             {
-                cmd.Parameters.AddWithValue("@employeeId", employeeId);
-                cmd.ExecuteNonQuery();
-            }
-        }
+                connection.Open();
+                string sql = string.Format("DELETE FROM employeeDB.dbo.employee WHERE id = {0};", employeeId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
 
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+        public bool updateEmployee(Employee employee)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("update employee set name = '{0}', phone = '{1}', gender = '{2}', home_town = '{3}' where id = {4}", employee.Name, employee.Phone, employee.Gender, employee.HomeTown, employee.Id);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
 
         public void CloseConnection()
         {

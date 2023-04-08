@@ -34,9 +34,9 @@ namespace EmployeesManagement
                 if (mdr.Read())
                 {
                     MessageBox.Show("Login Successful!");
+                    this.Hide();
                     primary primaryPage = new primary();
                     primaryPage.Show();
-                    this.Hide();
 
                 }
                 else

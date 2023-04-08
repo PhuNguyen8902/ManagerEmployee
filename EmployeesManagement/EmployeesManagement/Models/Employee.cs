@@ -13,7 +13,21 @@ namespace EmployeesManagement.Models
             Accounts = new HashSet<Account>();
             Timekeepings = new HashSet<Timekeeping>();
         }
-
+        public Employee(string Name, string Phone, byte Gender, string Hometown)
+        {
+            this.Name = Name;
+            this.Phone = Phone; 
+            this.Gender = Gender;  
+            this.HomeTown= Hometown;
+        }
+        public Employee(int id, string Name, string Phone, byte Gender, string Hometown)
+        {
+            this.Id = id;
+            this.Name = Name;
+            this.Phone = Phone;
+            this.Gender = Gender;
+            this.HomeTown = Hometown;
+        }
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? Phone { get; set; }

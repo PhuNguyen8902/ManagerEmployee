@@ -1,5 +1,8 @@
-﻿using EmployeesManagement.Models;
+﻿using EmployeesManagement.Control;
+using EmployeesManagement.Detail;
+using EmployeesManagement.Models;
 using EmployeesManagement.Service;
+using EmployeesManagement.userControl.Detail.employeeDetail;
 using Google.Protobuf;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -13,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace EmployeesManagement.userControl
 {
@@ -22,184 +26,117 @@ namespace EmployeesManagement.userControl
 
         private Employee employeeModel;
         private EmployeeService employeeService;
-
+        private employeeController employeeController;
         public employeesPage()
         {
             InitializeComponent();
             employeeModel = new Employee();
             employeeService = new EmployeeService();
+            employeeController = new employeeController();
+            employeesPage_Load();
         }
 
-        private void employeesPage_Load(object sender, EventArgs e)
+        private void employeesPage_Load()
         {
             employeeService.OpenConnection();
 
-            DataTable dataTable = employeeService.GetEmployeeData();
+            DataTable dataTable = employeeController.getEmployee();
 
             dgvEmployee.DataSource = dataTable;
-            // Tạo một cột mới chứa nút Xóa
-            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            deleteButtonColumn.HeaderText = "Delete";
-            deleteButtonColumn.Name = "deleteButtonColumn";
-            deleteButtonColumn.Text = "Delete";
-            deleteButtonColumn.UseColumnTextForButtonValue = true;
 
-            // Thêm cột mới vào DataGridView
-            dgvEmployee.Columns.Add(deleteButtonColumn);
+            int countRow = dgvEmployee.RowCount;
+            for(int i = 0; i < countRow - 1; i++)
+            {
+                
+
+            }
+            //// Tạo một cột mới chứa nút Xóa
+            //DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
+            //deleteButtonColumn.HeaderText = "Delete";
+            //deleteButtonColumn.Name = "deleteButtonColumn";
+            //deleteButtonColumn.Text = "Delete";
+            //deleteButtonColumn.UseColumnTextForButtonValue = true;
+
+            //// Thêm cột mới vào DataGridView
+            //dgvEmployee.Columns.Add(deleteButtonColumn);
 
 
             employeeService.CloseConnection();
         }
 
-        private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            employeeService.OpenConnection();
+        //private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    employeeService.OpenConnection();
 
-            // Kiểm tra xem nút Xóa đã được nhấp vào chưa
-            if (e.ColumnIndex == dgvEmployee.Columns["deleteButtonColumn"].Index && e.RowIndex >= 0)
-            {
-                // Lấy ID của nhân viên được chọn để xóa
-                int employeeId = Convert.ToInt32(dgvEmployee.Rows[e.RowIndex].Cells["id"].Value);
+        //    // Kiểm tra xem nút Xóa đã được nhấp vào chưa
+        //    if (e.ColumnIndex == dgvEmployee.Columns["deleteButtonColumn"].Index && e.RowIndex >= 0)
+        //    {
+        //        // Lấy ID của nhân viên được chọn để xóa
+        //        int employeeId = Convert.ToInt32(dgvEmployee.Rows[e.RowIndex].Cells["id"].Value);
 
-                // Thực hiện hành động xóa trong cơ sở dữ liệu
-                employeeService.DeleteEmployee(employeeId);
+        //        // Thực hiện hành động xóa trong cơ sở dữ liệu
+        //        employeeService.deleteEmployee(employeeId);
 
-                // Cập nhật lại DataGridView để hiển thị dữ liệu mới nhất
-                MessageBox.Show("Xóa thành công");
-                dgvEmployee.DataSource = employeeService.GetEmployeeData();
-            }
-            employeeService.CloseConnection();
+        //        // Cập nhật lại DataGridView để hiển thị dữ liệu mới nhất
+        //        MessageBox.Show("Xóa thành công");
+        //        dgvEmployee.DataSource = employeeService.GetEmployeeData();
+        //    }
+        //    employeeService.CloseConnection();
 
-        }
-        /*
-        private void addEmployee(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            employeeService.OpenConnection();
-
-            try
-            {
-                //employeeService.OpenConnection();
-
-                // Kết nối cơ sở dữ liệu
-                // Lấy giá trị từ DataGridView
-                DataGridViewRow row = dgvEmployee.Rows[e.RowIndex];
-                string? value1 = row.Cells[1].Value?.ToString();
-                string? value2 = row.Cells[2].Value?.ToString();
-                string? value3 = row.Cells[3].Value?.ToString();
-                string? value4 = row.Cells[4].Value?.ToString();
-                string? value5 = row.Cells[5].Value?.ToString();
-
-                // Thực hiện truy vấn SQL để chèn dữ liệu vào cơ sở dữ liệu
-                string sql = "INSERT INTO employeeDB.dbo.employee (name, phone, birth_day,gender,home_town) VALUES (@Value1, @Value2, @Value3,@Value4,@Value5)";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@Value1", value1);
-                    command.Parameters.AddWithValue("@Value2", value2);
-                    command.Parameters.AddWithValue("@Value3", value3);
-                    command.Parameters.AddWithValue("@Value4", value4);
-                    command.Parameters.AddWithValue("@Value5", value5);
-                    command.ExecuteNonQuery();
-                }
-                //employeeService.CloseConnection();
-
-            }
-            catch (Exception ex)
-            {
-                // Xử lý ngoại lệ
-                MessageBox.Show("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu: " + ex.Message);
-            }
-            employeeService.CloseConnection();
-        }
-        */
+        //}
+        
+      
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            //employeeService.OpenConnection();
-            SqlConnection connection = Connection.Connection.GetConnection();
-            connection.Open();
-            try
+            addEmployeeDetail formAddEmployee = new addEmployeeDetail();
+            formAddEmployee.ShowDialog();
+       
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            if(dgvEmployee.SelectedRows.Count > 0)
             {
-                //employeeService.OpenConnection();
+                DataGridViewRow row = dgvEmployee.SelectedRows[0];
 
-                // Kết nối cơ sở dữ liệu
-                // Lấy giá trị từ DataGridView
-                DataGridViewRow row = dgvEmployee.CurrentRow;
-                string? value1 = row.Cells[2].Value?.ToString();
-                //int? value2 = int.Parse((string)row.Cells[2].Value);
-                string? value2 = row.Cells[3].Value?.ToString();
-                //int? value4 = int.Parse((string)row.Cells[4].Value);
-                string? value3 = row.Cells[4].Value?.ToString();
-                string? value4 = row.Cells[5].Value?.ToString();
+                int id = Int32.Parse(row.Cells[0].Value.ToString());
 
-                // Thực hiện truy vấn SQL để chèn dữ liệu vào cơ sở dữ liệu
-                string sql = "INSERT INTO employeeDB.dbo.employee (name, phone,gender,home_town) VALUES (@Value1, @Value2, @Value3,@Value4)";
-                using (SqlCommand command = new SqlCommand(sql, connection))
+                if (employeeController.deleteEmployee(id))
                 {
-                    command.Parameters.AddWithValue("@Value1", value1);
-                    command.Parameters.AddWithValue("@Value2", value2);
-                    command.Parameters.AddWithValue("@Value3", value3);
-                    command.Parameters.AddWithValue("@Value4", value4);
-                    command.ExecuteNonQuery();
+                    MessageBox.Show("Xóa thành công");
+                    dgvEmployee.DataSource = employeeController.getEmployee();
                 }
-                //employeeService.CloseConnection();
-                // Cập nhật lại DataGridView để hiển thị dữ liệu mới nhất
-                MessageBox.Show("Chỉnh sửa thành công");
-                dgvEmployee.DataSource = employeeService.GetEmployeeData();
+                else
+                {
+                    MessageBox.Show("Xóa ko thành công");
+                }
 
             }
-            catch (Exception ex)
+            else
             {
-                // Xử lý ngoại lệ
-                MessageBox.Show("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu: " + ex.Message);
+                MessageBox.Show("Hãy chọn thành viên muốn xóa");
             }
-            //employeeService.CloseConnection();
-            connection.Close();
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = Connection.Connection.GetConnection();
-            connection.Open();
-            try
+            if (dgvEmployee.SelectedRows.Count > 0)
             {
-                //employeeService.OpenConnection();
+                DataGridViewRow row = dgvEmployee.SelectedRows[0];
+                int id = Int32.Parse(row.Cells[0].Value.ToString());
+                string name = row.Cells[1].Value.ToString();
+                string phone = row.Cells[2].Value.ToString();
+                byte gender = Byte.Parse(row.Cells[3].Value.ToString());
+                string hometown = row.Cells[4].Value.ToString();
 
-                // Kết nối cơ sở dữ liệu
-                // Lấy giá trị từ DataGridView
-                DataGridViewRow row = dgvEmployee.CurrentRow;
-                string? value0 = row.Cells[1].Value?.ToString();
-                string? value1 = row.Cells[2].Value?.ToString();
-                //int? value2 = int.Parse((string)row.Cells[2].Value);
-                string? value2 = row.Cells[3].Value?.ToString();
-                //int? value4 = int.Parse((string)row.Cells[4].Value);
-                string? value3 = row.Cells[4].Value?.ToString();
-                string? value4 = row.Cells[5].Value?.ToString();
-
-                // Thực hiện truy vấn SQL để chèn dữ liệu vào cơ sở dữ liệu
-                //string sql = "INSERT INTO employeeDB.dbo.employee (name, phone,gender,home_town) VALUES (@Value1, @Value2, @Value3,@Value4)";
-                string sql = "UPDATE employeeDB.dbo.employee SET name = @Value1, phone = @Value2 , gender = @Value3 , home_town = @Value4 WHERE id = @Value0";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@Value0", value0);
-                    command.Parameters.AddWithValue("@Value1", value1);
-                    command.Parameters.AddWithValue("@Value2", value2);
-                    command.Parameters.AddWithValue("@Value3", value3);
-                    command.Parameters.AddWithValue("@Value4", value4);
-                    command.ExecuteNonQuery();
-                }
-                //employeeService.CloseConnection();
-                // Cập nhật lại DataGridView để hiển thị dữ liệu mới nhất
-                MessageBox.Show("Chỉnh sửa thành công");
-                dgvEmployee.DataSource = employeeService.GetEmployeeData();
-
+                updateEmployeeDetail formUpdateEmployee = new updateEmployeeDetail(id, name, phone, gender, hometown);
+                formUpdateEmployee.ShowDialog();
             }
-            catch (Exception ex)
+            else
             {
-                // Xử lý ngoại lệ
-                MessageBox.Show("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu: " + ex.Message);
+                MessageBox.Show("Choose employee to update");
             }
-            //employeeService.CloseConnection();
-            connection.Close();
         }
     }
 }
