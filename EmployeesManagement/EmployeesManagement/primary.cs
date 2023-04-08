@@ -16,19 +16,23 @@ namespace EmployeesManagement
     public partial class primary : Form
     {
         navigationController navigationControl;
-
         public primary()
         {
             InitializeComponent();
-            initializeNavigationController();
+            initializeNavigationController(0);
         }
-        private void initializeNavigationController()
+        public primary(int display)
+        {
+            InitializeComponent();
+            initializeNavigationController(display);
+        }
+        private void initializeNavigationController(int display)
         {
             List<UserControl> userControls = new List<UserControl>()
-            { new employeesPage(), new projectsPage()};
+            { new employeesPage(), new projectsPage(), new DepartmentPage()};
 
             navigationControl = new navigationController(userControls, mainPanel); // create an instance of navigationControl
-            navigationControl.display(0);
+            navigationControl.display(display);
         }
 
         private void employeesBtn_Click(object sender, EventArgs e)
@@ -44,7 +48,7 @@ namespace EmployeesManagement
         {
             login loginPage = new login();
             loginPage.Show();
-            this.Hide();
+            this.Close();
         }
 
       

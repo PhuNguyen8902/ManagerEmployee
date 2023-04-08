@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeesManagement.Detail;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace EmployeesManagement.userControl
         public projectsPage()
         {
             InitializeComponent();
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            addProjectDetail formAddDetail = new addProjectDetail();
+            formAddDetail.ShowDialog();
         }
     }
 }
