@@ -36,7 +36,7 @@ CREATE TABLE salary (
 	coefficient int,
 	level int,
 	allowance int,
-	net_salary float,
+	net_salary int,
 	constraint fk_e_levelsalary foreign key (level) references levelSalary_Detail(id),
 	constraint fk_e_allowancedepartment foreign key (allowance) references allowanceSalary_Detail(id),
 )
@@ -115,10 +115,10 @@ insert into account(user_name,password,full_name,email,type,employee_id) values 
 
 insert into department(name,phone,address) values ('toa 1',012312312,'hoc mon');
 
-insert into levelSalary_Detail (coefficient,level) values(5000000,'nhân viên');
-insert into levelSalary_Detail (coefficient,level) values(10000000,'quản lý');
-insert into levelSalary_Detail (coefficient,level) values(15000000,'phó giám đốc');
-insert into levelSalary_Detail (coefficient,level) values(20000000,'giám đốc');
+insert into levelSalary_Detail (coefficient,level) values(5000000,'nhan vien');
+insert into levelSalary_Detail (coefficient,level) values(10000000,'quan ly');
+insert into levelSalary_Detail (coefficient,level) values(15000000,'pho giam đoc');
+insert into levelSalary_Detail (coefficient,level) values(20000000,'giam đoc');
 
 insert into allowanceSalary_Detail (allowance) values (1000000);
 insert into allowanceSalary_Detail (allowance) values (2000000);
@@ -132,9 +132,9 @@ insert into project( name,description,start_date,end_date) values ('du an 1','mo
 
 insert into employee(name,phone,gender,home_town,department_id,salary_id,position_id) values ('phu',01321232,0,'hoc mon',1,1,1);
 
-insert into timekeeping (date,working_hour,employee_id) values ('2002-10-02','11:00:00',2);
+insert into timekeeping (date,working_hour,employee_id) values ('2002-10-02','11:00:00',1);
 
-insert into employee_project (description,start_date,end_date,role,employee_id,project_id) values('mo ta 1','2005-10-10','2008-04-04','nhan vien','2','1');
+insert into employee_project (description,start_date,end_date,role,employee_id,project_id) values('mo ta 1','2005-10-10','2008-04-04','nhan vien','1','1');
 
 
 
