@@ -1,4 +1,4 @@
-use master
+﻿use master
 go
 
 CREATE DATABASE employeeDB
@@ -14,13 +14,31 @@ CREATE TABLE department (
 	address nvarchar (50),
 )
 GO
-drop table employee
+
+CREATE TABLE levelSalary_Detail (
+	id int primary key identity(1,1),
+	coefficient int,
+	level char (20) NOT NULL,
+
+)
+GO
+
+
+
+CREATE TABLE allowanceSalary_Detail (
+	id int primary key identity(1,1),
+	allowance int,
+)
+GO
 
 CREATE TABLE salary (
 	id int primary key identity(1,1),
-	coefficient nvarchar (50),
-	level char (20) NOT NULL,
-	allowance char (20),
+	coefficient int,
+	level int,
+	allowance int,
+	net_salary float,
+	constraint fk_e_levelsalary foreign key (level) references levelSalary_Detail(id),
+	constraint fk_e_allowancedepartment foreign key (allowance) references allowanceSalary_Detail(id),
 )
 GO
 
@@ -30,6 +48,7 @@ CREATE TABLE position (
 	description nvarchar (50),
 )
 GO
+
 
 CREATE TABLE employee (
 	id int primary key identity(1,1),
@@ -56,6 +75,8 @@ CREATE TABLE project (
 	end_date date,
 )
 GO
+
+
 
 CREATE TABLE employee_project (
 	employee_id int,
@@ -91,3 +112,29 @@ CREATE TABLE account (
 GO
 
 insert into account(user_name,password,full_name,email,type,employee_id) values ('admin','123','Admin','admin@gmail.com','Admin',null);
+
+insert into department(name,phone,address) values ('toa 1',012312312,'hoc mon');
+
+insert into levelSalary_Detail (coefficient,level) values(5000000,'nhân viên');
+insert into levelSalary_Detail (coefficient,level) values(10000000,'quản lý');
+insert into levelSalary_Detail (coefficient,level) values(15000000,'phó giám đốc');
+insert into levelSalary_Detail (coefficient,level) values(20000000,'giám đốc');
+
+insert into allowanceSalary_Detail (allowance) values (1000000);
+insert into allowanceSalary_Detail (allowance) values (2000000);
+insert into allowanceSalary_Detail (allowance) values (3000000);
+
+insert into salary(coefficient,level,allowance,net_salary) values (5000000,1,1,6000000);
+
+insert into position(name,description) values('nhanvien','khong');
+
+insert into project( name,description,start_date,end_date) values ('du an 1','mo ta 1','2003-10-10','2010-01-01');
+
+insert into employee(name,phone,gender,home_town,department_id,salary_id,position_id) values ('phu',01321232,0,'hoc mon',1,1,1);
+
+insert into timekeeping (date,working_hour,employee_id) values ('2002-10-02','11:00:00',2);
+
+insert into employee_project (description,start_date,end_date,role,employee_id,project_id) values('mo ta 1','2005-10-10','2008-04-04','nhan vien','2','1');
+
+
+

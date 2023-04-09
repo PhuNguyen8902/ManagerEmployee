@@ -28,250 +28,251 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.departmentBtn = new FontAwesome.Sharp.IconButton();
-            this.employeesBtn = new FontAwesome.Sharp.IconButton();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.returnBtn = new FontAwesome.Sharp.IconButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.projectsBtn = new FontAwesome.Sharp.IconButton();
-            this.salaryBtn = new FontAwesome.Sharp.IconButton();
-            this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
-            this.SuspendLayout();
+            panel1 = new Panel();
+            panel4 = new Panel();
+            salaryBtn = new FontAwesome.Sharp.IconButton();
+            departmentBtn = new FontAwesome.Sharp.IconButton();
+            projectsBtn = new FontAwesome.Sharp.IconButton();
+            employeesBtn = new FontAwesome.Sharp.IconButton();
+            panel5 = new Panel();
+            returnBtn = new FontAwesome.Sharp.IconButton();
+            panel3 = new Panel();
+            label3 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            mainPanel = new Panel();
+            panel1.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Teal;
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(258, 710);
-            this.panel1.TabIndex = 0;
+            panel1.BackColor = Color.Teal;
+            panel1.Controls.Add(panel4);
+            panel1.Controls.Add(panel5);
+            panel1.Controls.Add(panel3);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(258, 710);
+            panel1.TabIndex = 0;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.salaryBtn);
-            this.panel4.Controls.Add(this.departmentBtn);
-            this.panel4.Controls.Add(this.projectsBtn);
-            this.panel4.Controls.Add(this.employeesBtn);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(0, 143);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(258, 492);
-            this.panel4.TabIndex = 2;
-            // 
-            // departmentBtn
-            // 
-            this.departmentBtn.BackColor = System.Drawing.Color.Teal;
-            this.departmentBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.departmentBtn.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
-            this.departmentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.departmentBtn.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.departmentBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.departmentBtn.IconChar = FontAwesome.Sharp.IconChar.Building;
-            this.departmentBtn.IconColor = System.Drawing.Color.White;
-            this.departmentBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.departmentBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.departmentBtn.Location = new System.Drawing.Point(0, 118);
-            this.departmentBtn.Name = "departmentBtn";
-            this.departmentBtn.Size = new System.Drawing.Size(258, 59);
-            this.departmentBtn.TabIndex = 4;
-            this.departmentBtn.Text = "Department";
-            this.departmentBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.departmentBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.departmentBtn.UseVisualStyleBackColor = false;
-            // 
-            // employeesBtn
-            // 
-            this.employeesBtn.BackColor = System.Drawing.Color.Teal;
-            this.employeesBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.employeesBtn.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
-            this.employeesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.employeesBtn.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.employeesBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.employeesBtn.IconChar = FontAwesome.Sharp.IconChar.Users;
-            this.employeesBtn.IconColor = System.Drawing.Color.White;
-            this.employeesBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.employeesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.employeesBtn.Location = new System.Drawing.Point(0, 0);
-            this.employeesBtn.Name = "employeesBtn";
-            this.employeesBtn.Size = new System.Drawing.Size(258, 59);
-            this.employeesBtn.TabIndex = 2;
-            this.employeesBtn.Text = "Employees";
-            this.employeesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.employeesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.employeesBtn.UseVisualStyleBackColor = false;
-            this.employeesBtn.Click += new System.EventHandler(this.employeesBtn_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.returnBtn);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 635);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(258, 75);
-            this.panel5.TabIndex = 3;
-            // 
-            // returnBtn
-            // 
-            this.returnBtn.BackColor = System.Drawing.Color.Teal;
-            this.returnBtn.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
-            this.returnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.returnBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.returnBtn.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft;
-            this.returnBtn.IconColor = System.Drawing.Color.White;
-            this.returnBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.returnBtn.IconSize = 22;
-            this.returnBtn.Location = new System.Drawing.Point(18, 14);
-            this.returnBtn.Name = "returnBtn";
-            this.returnBtn.Size = new System.Drawing.Size(117, 49);
-            this.returnBtn.TabIndex = 0;
-            this.returnBtn.Text = "Sign out";
-            this.returnBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.returnBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.returnBtn.UseVisualStyleBackColor = false;
-            this.returnBtn.Click += new System.EventHandler(this.returnBtn_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.iconPictureBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(258, 143);
-            this.panel3.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(118, 76);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 28);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Name";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Teal;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(29, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "________________________________";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(118, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 28);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Welcome";
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.Teal;
-            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 100;
-            this.iconPictureBox1.Location = new System.Drawing.Point(12, 21);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(100, 107);
-            this.iconPictureBox1.TabIndex = 0;
-            this.iconPictureBox1.TabStop = false;
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(258, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(903, 710);
-            this.mainPanel.TabIndex = 1;
-            // 
-            // projectsBtn
-            // 
-            this.projectsBtn.BackColor = System.Drawing.Color.Teal;
-            this.projectsBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.projectsBtn.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
-            this.projectsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.projectsBtn.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.projectsBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.projectsBtn.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
-            this.projectsBtn.IconColor = System.Drawing.Color.White;
-            this.projectsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.projectsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.projectsBtn.Location = new System.Drawing.Point(0, 59);
-            this.projectsBtn.Name = "projectsBtn";
-            this.projectsBtn.Size = new System.Drawing.Size(258, 59);
-            this.projectsBtn.TabIndex = 3;
-            this.projectsBtn.Text = "Projects";
-            this.projectsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.projectsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.projectsBtn.UseVisualStyleBackColor = false;
-            this.projectsBtn.Click += new System.EventHandler(this.projectsBtn_Click);
+            panel4.Controls.Add(salaryBtn);
+            panel4.Controls.Add(departmentBtn);
+            panel4.Controls.Add(projectsBtn);
+            panel4.Controls.Add(employeesBtn);
+            panel4.Dock = DockStyle.Right;
+            panel4.Location = new Point(0, 143);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(258, 492);
+            panel4.TabIndex = 2;
             // 
             // salaryBtn
             // 
-            this.salaryBtn.BackColor = System.Drawing.Color.Teal;
-            this.salaryBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.salaryBtn.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
-            this.salaryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.salaryBtn.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.salaryBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.salaryBtn.IconChar = FontAwesome.Sharp.IconChar.MoneyBillAlt;
-            this.salaryBtn.IconColor = System.Drawing.Color.White;
-            this.salaryBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.salaryBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.salaryBtn.Location = new System.Drawing.Point(0, 177);
-            this.salaryBtn.Name = "salaryBtn";
-            this.salaryBtn.Size = new System.Drawing.Size(258, 59);
-            this.salaryBtn.TabIndex = 5;
-            this.salaryBtn.Text = "Salary";
-            this.salaryBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.salaryBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.salaryBtn.UseVisualStyleBackColor = false;
+            salaryBtn.BackColor = Color.Teal;
+            salaryBtn.Dock = DockStyle.Top;
+            salaryBtn.FlatAppearance.BorderColor = Color.Teal;
+            salaryBtn.FlatStyle = FlatStyle.Flat;
+            salaryBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            salaryBtn.ForeColor = SystemColors.ControlLightLight;
+            salaryBtn.IconChar = FontAwesome.Sharp.IconChar.MoneyBillAlt;
+            salaryBtn.IconColor = Color.White;
+            salaryBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            salaryBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            salaryBtn.Location = new Point(0, 177);
+            salaryBtn.Name = "salaryBtn";
+            salaryBtn.Size = new Size(258, 59);
+            salaryBtn.TabIndex = 5;
+            salaryBtn.Text = "Salary";
+            salaryBtn.TextAlign = ContentAlignment.MiddleLeft;
+            salaryBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            salaryBtn.UseVisualStyleBackColor = false;
+            salaryBtn.Click += salaryBtn_Click;
+            // 
+            // departmentBtn
+            // 
+            departmentBtn.BackColor = Color.Teal;
+            departmentBtn.Dock = DockStyle.Top;
+            departmentBtn.FlatAppearance.BorderColor = Color.Teal;
+            departmentBtn.FlatStyle = FlatStyle.Flat;
+            departmentBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            departmentBtn.ForeColor = SystemColors.ControlLightLight;
+            departmentBtn.IconChar = FontAwesome.Sharp.IconChar.Building;
+            departmentBtn.IconColor = Color.White;
+            departmentBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            departmentBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            departmentBtn.Location = new Point(0, 118);
+            departmentBtn.Name = "departmentBtn";
+            departmentBtn.Size = new Size(258, 59);
+            departmentBtn.TabIndex = 4;
+            departmentBtn.Text = "Department";
+            departmentBtn.TextAlign = ContentAlignment.MiddleLeft;
+            departmentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            departmentBtn.UseVisualStyleBackColor = false;
+            departmentBtn.Click += departmentBtn_Click;
+            // 
+            // projectsBtn
+            // 
+            projectsBtn.BackColor = Color.Teal;
+            projectsBtn.Dock = DockStyle.Top;
+            projectsBtn.FlatAppearance.BorderColor = Color.Teal;
+            projectsBtn.FlatStyle = FlatStyle.Flat;
+            projectsBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            projectsBtn.ForeColor = SystemColors.ControlLightLight;
+            projectsBtn.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
+            projectsBtn.IconColor = Color.White;
+            projectsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            projectsBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            projectsBtn.Location = new Point(0, 59);
+            projectsBtn.Name = "projectsBtn";
+            projectsBtn.Size = new Size(258, 59);
+            projectsBtn.TabIndex = 3;
+            projectsBtn.Text = "Projects";
+            projectsBtn.TextAlign = ContentAlignment.MiddleLeft;
+            projectsBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            projectsBtn.UseVisualStyleBackColor = false;
+            projectsBtn.Click += projectsBtn_Click;
+            // 
+            // employeesBtn
+            // 
+            employeesBtn.BackColor = Color.Teal;
+            employeesBtn.Dock = DockStyle.Top;
+            employeesBtn.FlatAppearance.BorderColor = Color.Teal;
+            employeesBtn.FlatStyle = FlatStyle.Flat;
+            employeesBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            employeesBtn.ForeColor = SystemColors.ControlLightLight;
+            employeesBtn.IconChar = FontAwesome.Sharp.IconChar.Users;
+            employeesBtn.IconColor = Color.White;
+            employeesBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            employeesBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            employeesBtn.Location = new Point(0, 0);
+            employeesBtn.Name = "employeesBtn";
+            employeesBtn.Size = new Size(258, 59);
+            employeesBtn.TabIndex = 2;
+            employeesBtn.Text = "Employees";
+            employeesBtn.TextAlign = ContentAlignment.MiddleLeft;
+            employeesBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            employeesBtn.UseVisualStyleBackColor = false;
+            employeesBtn.Click += employeesBtn_Click;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(returnBtn);
+            panel5.Dock = DockStyle.Bottom;
+            panel5.Location = new Point(0, 635);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(258, 75);
+            panel5.TabIndex = 3;
+            // 
+            // returnBtn
+            // 
+            returnBtn.BackColor = Color.Teal;
+            returnBtn.FlatAppearance.BorderColor = Color.Teal;
+            returnBtn.FlatStyle = FlatStyle.Flat;
+            returnBtn.ForeColor = SystemColors.ControlLightLight;
+            returnBtn.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft;
+            returnBtn.IconColor = Color.White;
+            returnBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            returnBtn.IconSize = 22;
+            returnBtn.Location = new Point(18, 14);
+            returnBtn.Name = "returnBtn";
+            returnBtn.Size = new Size(117, 49);
+            returnBtn.TabIndex = 0;
+            returnBtn.Text = "Sign out";
+            returnBtn.TextAlign = ContentAlignment.MiddleLeft;
+            returnBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            returnBtn.UseVisualStyleBackColor = false;
+            returnBtn.Click += returnBtn_Click;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(label3);
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(iconPictureBox1);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(258, 143);
+            panel3.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlLightLight;
+            label3.Location = new Point(118, 76);
+            label3.Name = "label3";
+            label3.Size = new Size(64, 28);
+            label3.TabIndex = 2;
+            label3.Text = "Name";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Teal;
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(29, 120);
+            label1.Name = "label1";
+            label1.Size = new Size(201, 20);
+            label1.TabIndex = 1;
+            label1.Text = "________________________________";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlLightLight;
+            label2.Location = new Point(118, 33);
+            label2.Name = "label2";
+            label2.Size = new Size(93, 28);
+            label2.TabIndex = 1;
+            label2.Text = "Welcome";
+            // 
+            // iconPictureBox1
+            // 
+            iconPictureBox1.BackColor = Color.Teal;
+            iconPictureBox1.ForeColor = SystemColors.ControlLightLight;
+            iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.User;
+            iconPictureBox1.IconColor = SystemColors.ControlLightLight;
+            iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox1.IconSize = 100;
+            iconPictureBox1.Location = new Point(12, 21);
+            iconPictureBox1.Name = "iconPictureBox1";
+            iconPictureBox1.Size = new Size(100, 107);
+            iconPictureBox1.TabIndex = 0;
+            iconPictureBox1.TabStop = false;
+            // 
+            // mainPanel
+            // 
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Location = new Point(258, 0);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(903, 710);
+            mainPanel.TabIndex = 1;
             // 
             // primary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 710);
-            this.Controls.Add(this.mainPanel);
-            this.Controls.Add(this.panel1);
-            this.Name = "primary";
-            this.Text = "primary";
-            this.panel1.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1161, 710);
+            Controls.Add(mainPanel);
+            Controls.Add(panel1);
+            Name = "primary";
+            Text = "primary";
+            panel1.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

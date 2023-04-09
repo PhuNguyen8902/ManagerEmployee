@@ -90,6 +90,7 @@ namespace EmployeesManagement.Service
         }
         public void OpenConnection()
         {
+            SqlConnection connection = Connection.Connection.GetConnection();
             connection.Open();
         }
     }

@@ -29,7 +29,7 @@ namespace EmployeesManagement
         private void initializeNavigationController(int display)
         {
             List<UserControl> userControls = new List<UserControl>()
-            { new employeesPage(), new projectsPage(), new DepartmentPage()};
+            { new employeesPage(), new projectsPage(), new DepartmentPage(),new salaryPage()};
 
             navigationControl = new navigationController(userControls, mainPanel); // create an instance of navigationControl
             navigationControl.display(display);
@@ -51,6 +51,14 @@ namespace EmployeesManagement
             this.Close();
         }
 
-      
+        private void departmentBtn_Click(object sender, EventArgs e)
+        {
+            navigationControl.display(2);
+        }
+
+        private void salaryBtn_Click(object sender, EventArgs e)
+        {
+            navigationControl.display(3);
+        }
     }
 }
