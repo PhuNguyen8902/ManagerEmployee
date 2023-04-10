@@ -31,16 +31,45 @@ namespace EmployeesManagement.Control
         public DataTable findById(int id, string str) {
             return departmentService.findById(id, str);
         }
-        public DataTable findByName(string name, string str){
-            return departmentService.findByName(name, str);  
-        }
-        public DataTable findByPhone(int phone, string str)
-        {
-            return departmentService.findByPhone(phone, str);
-        }
-        public DataTable findByAddress(string address, string str)
-        {
-            return departmentService.findByAddress(address, str);
+        public void Search(ComboBox cbSearch, TextBox tbSearch,DataGridView dgvDepartment ) {
+            string str = "employeeDB.dbo.department";
+            string selectedValue = cbSearch.SelectedItem.ToString();
+            if (selectedValue == "id")
+            {
+                //int id = Convert.ToInt32(tbSearch.Text);
+                int id;
+                if (!int.TryParse(tbSearch.Text, out id))
+                {
+                    MessageBox.Show("Vui lòng nhập số nguyên cho ID!");
+                }
+                else
+                {
+                    DataTable dataTable = departmentService.findById(id, str);
+                    dgvDepartment.DataSource = dataTable;
+                }
+            }
+            else if (selectedValue == "phone")
+            {
+                int phone;
+                if (!int.TryParse(tbSearch.Text, out phone))
+                {
+                    MessageBox.Show("Vui lòng nhập số nguyên cho phone!");
+                    return;
+                }
+                else
+                {
+                    string strPhone = phone.ToString();
+                    DataTable dataTable = departmentService.findByCodition(strPhone, str,selectedValue);
+                    dgvDepartment.DataSource = dataTable;
+                }
+            }
+            else 
+            {
+                string strValue = tbSearch.Text;
+                DataTable dataTable = departmentService.findByCodition(strValue, str, selectedValue);
+                dgvDepartment.DataSource = dataTable;
+            }
+            
         }
     }
 }

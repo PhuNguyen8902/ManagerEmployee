@@ -110,44 +110,7 @@ namespace EmployeesManagement.userControl
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string str = "employeeDB.dbo.department";
-            string selectedValue = cbSearch.SelectedItem.ToString();
-            if (selectedValue == "id")
-            {
-                //int id = Convert.ToInt32(tbSearch.Text);
-                int id;
-                if (!int.TryParse(tbSearch.Text, out id))
-                {
-                    MessageBox.Show("Vui lòng nhập số nguyên cho ID!");
-                    return;
-                }
-
-                DataTable dataTable = departmentController.findById(id, str);
-                dgvDepartment.DataSource = dataTable;
-            }
-            else if (selectedValue == "name")
-            {
-                string name = tbSearch.Text;
-                DataTable dataTable = departmentController.findByName(name, str);
-                dgvDepartment.DataSource = dataTable;
-            }
-            else if (selectedValue == "phone")
-            {
-                int phone;
-                if (!int.TryParse(tbSearch.Text, out phone))
-                {
-                    MessageBox.Show("Vui lòng nhập số nguyên cho phone!");
-                    return;
-                }
-                DataTable dataTable = departmentController.findByPhone(phone, str);
-                dgvDepartment.DataSource = dataTable;
-            }
-            else if (selectedValue == "address")
-            {
-                string address = tbSearch.Text;
-                DataTable dataTable = departmentController.findByAddress(address, str);
-                dgvDepartment.DataSource = dataTable;
-            }
+            departmentController.Search(cbSearch,tbSearch,dgvDepartment);
         }
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)

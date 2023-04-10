@@ -118,6 +118,7 @@ namespace EmployeesManagement.userControl
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            
             string str = "employeeDB.dbo.salary";
             string selectedValue = cbSearch.SelectedItem.ToString();
             if (selectedValue == "id")

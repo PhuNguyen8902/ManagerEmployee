@@ -134,14 +134,14 @@ namespace EmployeesManagement.Service
             }
             return dataTable;
         }
-        //Tìm kiếm bằng name
-        public DataTable findByName(string name, string str)
+        //Tìm kiếm bằng codition
+        public DataTable findByCodition(string address, string str,string codition)
         {
             DataTable dataTable = new DataTable();
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT * FROM {1} WHERE name like '%{0}%';", name,str);
+                string sql = string.Format("SELECT * FROM {1} WHERE {2} like '%{0}%';", address, str,codition);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);
@@ -156,50 +156,5 @@ namespace EmployeesManagement.Service
             }
             return dataTable;
         }
-        //Tìm kiếm bằng phone
-        public DataTable findByPhone(int phone, string str)
-        {
-            DataTable dataTable = new DataTable();
-            try
-            {
-                connection.Open();
-                string sql = string.Format("SELECT * FROM {1} WHERE phone like '%{0}%';", phone, str);
-                SqlCommand cmd = new SqlCommand(sql, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dataTable);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return dataTable;
-        }
-        //Tìm kiếm bằng address
-        public DataTable findByAddress(string address, string str)
-        {
-            DataTable dataTable = new DataTable();
-            try
-            {
-                connection.Open();
-                string sql = string.Format("SELECT * FROM {1} WHERE address like '%{0}%';", address, str);
-                SqlCommand cmd = new SqlCommand(sql, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dataTable);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return dataTable;
-        }
-
     }
 }
