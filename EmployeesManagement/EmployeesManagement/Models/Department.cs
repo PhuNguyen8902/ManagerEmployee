@@ -9,6 +9,19 @@ namespace EmployeesManagement.Models
         {
             Employees = new HashSet<Employee>();
         }
+        public Department(string Name, string Phone,string Address)
+        {
+            this.Name = Name;
+            this.Phone = Phone;
+            this.Address = Address;
+        }
+        public Department(int Id, string Name, string Phone, string Address)
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Phone = Phone;
+            this.Address = Address;
+        }
 
         public int Id { get; set; }
         public string? Name { get; set; }

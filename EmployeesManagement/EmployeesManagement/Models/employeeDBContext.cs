@@ -22,6 +22,8 @@ namespace EmployeesManagement.Models
         public virtual DbSet<EmployeeProject> EmployeeProjects { get; set; } = null!;
         public virtual DbSet<Position> Positions { get; set; } = null!;
         public virtual DbSet<Project> Projects { get; set; } = null!;
+        public virtual DbSet<levelSalary> LevelSalaries { get; set; } = null!;
+        public virtual DbSet<allowanceSalary> AllowanceSalaries { get; set; } = null!;
         public virtual DbSet<Salary> Salaries { get; set; } = null!;
         public virtual DbSet<Timekeeping> Timekeepings { get; set; } = null!;
 
@@ -213,6 +215,32 @@ namespace EmployeesManagement.Models
                     .HasColumnType("date")
                     .HasColumnName("start_date");
             });
+            modelBuilder.Entity<levelSalary>(entity =>
+            {
+                entity.ToTable("levelSalary_Detail");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Coefficient)
+                    .HasColumnName("coefficient");
+
+                entity.Property(e => e.Level)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("level")
+                    .IsFixedLength();
+            });
+
+            modelBuilder.Entity<allowanceSalary>(entity =>
+            {
+                entity.ToTable("allowanceSalary_Detail");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Allowance)
+                    .HasColumnName("allowance");
+            });
 
             modelBuilder.Entity<Salary>(entity =>
             {
@@ -220,22 +248,32 @@ namespace EmployeesManagement.Models
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Allowance)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("allowance")
-                    .IsFixedLength();
-
                 entity.Property(e => e.Coefficient)
-                    .HasMaxLength(50)
                     .HasColumnName("coefficient");
 
                 entity.Property(e => e.Level)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("level")
-                    .IsFixedLength();
+                    .HasColumnName("level");
+
+                entity.Property(e => e.AllowanceSalary)
+                    .HasColumnName("allowance");
+
+                entity.Property(e => e.NetSalary)
+                    .HasColumnName("net_salary");
+
+                entity.HasOne<levelSalary>(s => s.LevelSalary)
+                     .WithMany(l => l.Salaries)
+                     .HasForeignKey(s => s.Level)
+                    .HasConstraintName("fk_e_levelsalary")
+                     .IsRequired();
+
+                entity.HasOne<allowanceSalary>(s => s.AllowanceSalary)
+                     .WithMany(a => a.Salaries)
+                     .HasForeignKey(s => s.AllowanceSalary)
+                    .HasConstraintName("fk_e_allowancedepartment")
+                     .IsRequired();
+
             });
+
 
             modelBuilder.Entity<Timekeeping>(entity =>
             {

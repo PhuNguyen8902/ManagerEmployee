@@ -236,6 +236,7 @@
             Name = "login";
             Text = "Login";
             Load += login_Load;
+            KeyDown += login_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
