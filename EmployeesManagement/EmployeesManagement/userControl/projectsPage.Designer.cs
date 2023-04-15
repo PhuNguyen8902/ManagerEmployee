@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             deleteBtn = new Button();
-            dgvDepartment = new DataGridView();
+            dgvProject = new DataGridView();
             addBtn = new Button();
             updateBtn = new Button();
             button1 = new Button();
             textBox1 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dgvDepartment).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProject).BeginInit();
             SuspendLayout();
             // 
             // deleteBtn
@@ -46,17 +46,18 @@
             deleteBtn.Text = "Delete";
             deleteBtn.UseVisualStyleBackColor = true;
             // 
-            // dgvDepartment
+            // dgvProject
             // 
-            dgvDepartment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvDepartment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDepartment.Dock = DockStyle.Bottom;
-            dgvDepartment.Location = new Point(0, 163);
-            dgvDepartment.Name = "dgvDepartment";
-            dgvDepartment.RowHeadersWidth = 51;
-            dgvDepartment.RowTemplate.Height = 29;
-            dgvDepartment.Size = new Size(903, 546);
-            dgvDepartment.TabIndex = 20;
+            dgvProject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProject.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProject.Dock = DockStyle.Bottom;
+            dgvProject.Location = new Point(0, 163);
+            dgvProject.Name = "dgvProject";
+            dgvProject.ReadOnly = true;
+            dgvProject.RowHeadersWidth = 51;
+            dgvProject.RowTemplate.Height = 29;
+            dgvProject.Size = new Size(903, 546);
+            dgvProject.TabIndex = 20;
             // 
             // addBtn
             // 
@@ -97,14 +98,15 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(deleteBtn);
-            Controls.Add(dgvDepartment);
+            Controls.Add(dgvProject);
             Controls.Add(addBtn);
             Controls.Add(updateBtn);
             Controls.Add(button1);
             Controls.Add(textBox1);
             Name = "projectsPage";
             Size = new Size(903, 709);
-            ((System.ComponentModel.ISupportInitialize)dgvDepartment).EndInit();
+            Load += projectsPage_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvProject).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -112,7 +114,7 @@
         #endregion
 
         private Button deleteBtn;
-        private DataGridView dgvDepartment;
+        private DataGridView dgvProject;
         private Button addBtn;
         private Button updateBtn;
         private Button button1;

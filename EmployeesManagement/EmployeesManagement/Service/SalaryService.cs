@@ -79,6 +79,31 @@ namespace EmployeesManagement.Service
             }
             connection.Close();
         }
+
+        //Tìm leverid theo lever
+        public int FindIdByLever(string level)
+        {
+            connection.Open();
+            int id = -1;
+
+            string query = string.Format("SELECT id FROM employeeDB.dbo.levelSalary_Detail WHERE level like '%{0}%'", level);
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                        connection.Close();
+                        return id;
+                    }
+                }
+            }
+            connection.Close();
+            return id;
+        }
+
         //Load Combo box allowance
         public void LoadAllowanceData(ComboBox cbAllowance)
         {

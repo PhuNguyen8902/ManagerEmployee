@@ -28,124 +28,124 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.updateBtn = new System.Windows.Forms.Button();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.employeeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvEmployee = new System.Windows.Forms.DataGridView();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            textBox1 = new TextBox();
+            button1 = new Button();
+            updateBtn = new Button();
+            addBtn = new Button();
+            employeeBindingSource1 = new BindingSource(components);
+            employeeBindingSource = new BindingSource(components);
+            employeeBindingSource2 = new BindingSource(components);
+            employeeBindingSource5 = new BindingSource(components);
+            employeeBindingSource3 = new BindingSource(components);
+            employeeBindingSource4 = new BindingSource(components);
+            dgvEmployee = new DataGridView();
+            deleteBtn = new Button();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
+            SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(22, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 27);
-            this.textBox1.TabIndex = 0;
+            textBox1.Location = new Point(22, 21);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(258, 27);
+            textBox1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(298, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            button1.Location = new Point(298, 21);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 3;
+            button1.Text = "Search";
+            button1.UseVisualStyleBackColor = true;
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(677, 21);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(94, 29);
-            this.updateBtn.TabIndex = 4;
-            this.updateBtn.Text = "Update";
-            this.updateBtn.UseVisualStyleBackColor = true;
-            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            updateBtn.Location = new Point(677, 21);
+            updateBtn.Name = "updateBtn";
+            updateBtn.Size = new Size(94, 29);
+            updateBtn.TabIndex = 4;
+            updateBtn.Text = "Update";
+            updateBtn.UseVisualStyleBackColor = true;
+            updateBtn.Click += updateBtn_Click;
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(567, 21);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(94, 29);
-            this.addBtn.TabIndex = 5;
-            this.addBtn.Text = "Add";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            addBtn.Location = new Point(567, 21);
+            addBtn.Name = "addBtn";
+            addBtn.Size = new Size(94, 29);
+            addBtn.TabIndex = 5;
+            addBtn.Text = "Add";
+            addBtn.UseVisualStyleBackColor = true;
+            addBtn.Click += addBtn_Click;
             // 
             // employeeBindingSource1
             // 
-            this.employeeBindingSource1.DataSource = typeof(EmployeesManagement.Models.Employee);
+            employeeBindingSource1.DataSource = typeof(Models.Employee);
             // 
             // employeeBindingSource5
             // 
-            this.employeeBindingSource5.DataSource = typeof(EmployeesManagement.Models.Employee);
+            employeeBindingSource5.DataSource = typeof(Models.Employee);
             // 
             // employeeBindingSource3
             // 
-            this.employeeBindingSource3.DataSource = typeof(EmployeesManagement.Models.Employee);
+            employeeBindingSource3.DataSource = typeof(Models.Employee);
             // 
             // employeeBindingSource4
             // 
-            this.employeeBindingSource4.DataSource = typeof(EmployeesManagement.Models.Employee);
+            employeeBindingSource4.DataSource = typeof(Models.Employee);
             // 
             // dgvEmployee
             // 
-            this.dgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployee.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvEmployee.Location = new System.Drawing.Point(0, 163);
-            this.dgvEmployee.Name = "dgvEmployee";
-            this.dgvEmployee.RowHeadersWidth = 51;
-            this.dgvEmployee.RowTemplate.Height = 29;
-            this.dgvEmployee.Size = new System.Drawing.Size(903, 546);
-            this.dgvEmployee.TabIndex = 8;
+            dgvEmployee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmployee.Dock = DockStyle.Bottom;
+            dgvEmployee.Location = new Point(0, 163);
+            dgvEmployee.Name = "dgvEmployee";
+            dgvEmployee.ReadOnly = true;
+            dgvEmployee.RowHeadersWidth = 51;
+            dgvEmployee.RowTemplate.Height = 29;
+            dgvEmployee.Size = new Size(903, 546);
+            dgvEmployee.TabIndex = 8;
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(787, 19);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(94, 29);
-            this.deleteBtn.TabIndex = 9;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            deleteBtn.Location = new Point(787, 19);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(94, 29);
+            deleteBtn.TabIndex = 9;
+            deleteBtn.Text = "Delete";
+            deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // employeesPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.dgvEmployee);
-            this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.updateBtn);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Name = "employeesPage";
-            this.Size = new System.Drawing.Size(903, 709);
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(deleteBtn);
+            Controls.Add(dgvEmployee);
+            Controls.Add(addBtn);
+            Controls.Add(updateBtn);
+            Controls.Add(button1);
+            Controls.Add(textBox1);
+            Name = "employeesPage";
+            Size = new Size(903, 709);
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

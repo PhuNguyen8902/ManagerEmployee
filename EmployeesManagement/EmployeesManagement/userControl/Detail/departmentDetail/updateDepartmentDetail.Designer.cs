@@ -132,6 +132,7 @@
             Controls.Add(txtName);
             Name = "updateDepartmentDetail";
             Text = "updateDepartmentDetail";
+            Load += updateDepartmentDetail_Load;
             ResumeLayout(false);
             PerformLayout();
         }

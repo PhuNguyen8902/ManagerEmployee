@@ -45,9 +45,9 @@ namespace EmployeesManagement.userControl
             dgvEmployee.DataSource = dataTable;
 
             int countRow = dgvEmployee.RowCount;
-            for(int i = 0; i < countRow - 1; i++)
+            for (int i = 0; i < countRow - 1; i++)
             {
-                
+
 
             }
             //// Tạo một cột mới chứa nút Xóa
@@ -84,19 +84,19 @@ namespace EmployeesManagement.userControl
         //    employeeService.CloseConnection();
 
         //}
-        
-      
+
+
 
         private void addBtn_Click(object sender, EventArgs e)
         {
             addEmployeeDetail formAddEmployee = new addEmployeeDetail();
             formAddEmployee.ShowDialog();
-       
+
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if(dgvEmployee.SelectedRows.Count > 0)
+            if (dgvEmployee.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvEmployee.SelectedRows[0];
 

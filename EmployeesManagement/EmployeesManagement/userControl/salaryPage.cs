@@ -66,7 +66,10 @@ namespace EmployeesManagement.userControl
             {
                 DataGridViewRow row = dgvSalary.SelectedRows[0];
                 int id = Int32.Parse(row.Cells[0].Value.ToString());
-                int level = Int32.Parse(row.Cells[2].Value.ToString());
+                string s = row.Cells[2].Value.ToString();
+                int level = salaryController.FindIdByLever(s);
+                //MessageBox.Show(s);
+                //int level = l;
                 int allow = Int32.Parse(row.Cells[3].Value.ToString());
                 updateSalaryDetail formUpdateSalary = new updateSalaryDetail(id, level, allow);
                 formUpdateSalary.ShowDialog();
@@ -118,7 +121,7 @@ namespace EmployeesManagement.userControl
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            
+
             string str = "employeeDB.dbo.salary";
             string selectedValue = cbSearch.SelectedItem.ToString();
             if (selectedValue == "id")

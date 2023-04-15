@@ -53,6 +53,11 @@ namespace EmployeesManagement.Control
         public DataTable findByNetSalary(int net_salary, string str) { 
             return salaryService.findByNetSalary(net_salary, str);
         }
-      
+
+        public int FindIdByLever(string level)
+        {
+            return salaryService.FindIdByLever(level);
+        }
+
     }
 }
