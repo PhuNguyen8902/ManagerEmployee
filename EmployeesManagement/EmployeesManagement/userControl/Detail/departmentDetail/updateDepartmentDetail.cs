@@ -81,5 +81,21 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
                 e.Handled = true;
             }
         }
+
+        private void fillTextBox(string name, string phone, string address)
+        {
+            txtName.Text = name;
+            txtPhone.Text = phone;
+            txtAddress.Text = address;
+        }
+
+        private void updateDepartmentDetail_Load(object sender, EventArgs e)
+        {
+            txtPhone.TextChanged -= txtPhone_TextChanged;
+
+            fillTextBox(name, phone, address);
+
+            txtPhone.TextChanged += txtPhone_TextChanged;
+        }
     }
 }

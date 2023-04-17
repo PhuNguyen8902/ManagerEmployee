@@ -41,12 +41,6 @@ namespace EmployeesManagement.userControl
 
             dgvDepartment.DataSource = dataTable;
 
-            int countRow = dgvDepartment.RowCount;
-            for (int i = 0; i < countRow - 1; i++)
-            {
-
-
-            }
             connection.Close();
             List<String> strList = new List<String>();
             strList.Add("id");
@@ -110,7 +104,7 @@ namespace EmployeesManagement.userControl
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            departmentController.Search(cbSearch,tbSearch,dgvDepartment);
+            departmentController.Search(cbSearch, tbSearch, dgvDepartment);
         }
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)

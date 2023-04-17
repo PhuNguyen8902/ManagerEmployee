@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static EmployeesManagement.Service.SalaryService;
 
 namespace EmployeesManagement.userControl.Detail.salaryDetail
 {
@@ -20,8 +21,8 @@ namespace EmployeesManagement.userControl.Detail.salaryDetail
 
 
         public int Id { get; set; }
-        public int? Level { get; set; }
-        public int? AllowanceSalaryId { get; set; }
+        public int Level { get; set; }
+        public int AllowanceSalaryId { get; set; }
         public updateSalaryDetail(int id,int Level, int AllowanceSalaryId)
         {
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace EmployeesManagement.userControl.Detail.salaryDetail
         {
             salaryController.LoadLevelData(cbLevel);
             salaryController.LoadAllowanceData(cbAllowance);
+            fillTextBox(Level, AllowanceSalaryId);
         }
 
         private void btnComfirm_Click(object sender, EventArgs e)
@@ -80,6 +82,26 @@ namespace EmployeesManagement.userControl.Detail.salaryDetail
             {
                 MessageBox.Show("Xin hãy nhập đầy đủ");
             }
+        }
+        private void fillTextBox(int l, int a)
+        {
+            foreach (MyComboBoxItem item in cbLevel.Items)
+            {
+                if (int.Parse(item.Tag.ToString()) == l)
+                {
+                    cbLevel.SelectedItem = item;
+                    break;
+                }
+            }
+            foreach (MyComboBoxItem item in cbAllowance.Items)
+            {
+                if (int.Parse(item.Content.ToString()) == a)
+                {
+                    cbAllowance.SelectedItem = item;
+                    break;
+                }
+            }
+
         }
     }
 }

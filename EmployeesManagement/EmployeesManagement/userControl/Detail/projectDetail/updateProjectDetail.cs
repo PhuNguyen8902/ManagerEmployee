@@ -1,0 +1,106 @@
+﻿using EmployeesManagement.Control;
+using EmployeesManagement.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace EmployeesManagement.userControl.Detail.projectDetail
+{
+    public partial class updateProjectDetail : Form
+    {
+        projectController projectController = new projectController();
+
+        public updateProjectDetail()
+        {
+            InitializeComponent();
+        }
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public bool IsActive { get; set; }
+        public string? StartDate { get; set; }
+        public string? EndDate { get; set; }
+
+        public updateProjectDetail(int Id, string Name, string Description, string StartDate, string EndDate, bool IsActive)
+        {
+            InitializeComponent();
+            this.Id = Id;
+            this.Name = Name;
+            this.Description = Description;
+            this.StartDate = StartDate;
+            this.EndDate = EndDate;
+            this.IsActive = IsActive;
+        }
+
+        private void btnComfirm_Click(object sender, EventArgs e)
+        {
+            if (txtName.Text != "" && txtDescription.Text != "")
+            {
+                DTPStart.CustomFormat = "yyyy-MM-dd";
+                DTPEnd.CustomFormat = "yyyy-MM-dd";
+                string startDate = DTPStart.Value.ToString("yyyy-MM-dd");
+                string endDate = DTPEnd.Value.ToString("yyyy-MM-dd");
+                string active = cbActive.SelectedItem.ToString();
+                if (active == "Đang hoạt động")
+                    IsActive = false;
+                else
+                    IsActive = true;
+                Project project = new Project(Id, txtName.Text, txtDescription.Text, startDate, endDate,IsActive);
+                if (projectController.updateProject(project))
+                {
+                    MessageBox.Show("Update successfully");
+                    FormCollection allOpenedForm = Application.OpenForms;
+                    foreach (Form form in allOpenedForm)
+                    {
+                        if (form.Name == "primary")
+                        {
+                            this.Close();
+                            form.Close();
+                            primary primaryPage = new primary();
+                            primaryPage.Show();
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Update project fail");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Xin hãy nhập đầy đủ");
+            }
+        }
+
+        private void updateProjectDetail_Load(object sender, EventArgs e)
+        {
+            cbActive.Items.Add("Đang hoạt động");
+            cbActive.Items.Add("Đã kết thúc");
+            fillTextBox(Name, Description, StartDate, EndDate, IsActive);
+        }
+        private void fillTextBox(string name, string description, string startDate,string endDate,bool isActive)
+        {
+            txtName.Text = name;
+            txtDescription.Text = description;
+            DateTime start = DateTime.Parse(startDate);
+            DTPStart.Value = start;
+            DateTime end = DateTime.Parse(endDate);
+            DTPEnd.Value = end;
+            if (!isActive)
+            {
+                cbActive.SelectedIndex = 1; 
+            }
+            else
+            {
+                cbActive.SelectedIndex = 0; 
+            }
+        }
+    }
+}

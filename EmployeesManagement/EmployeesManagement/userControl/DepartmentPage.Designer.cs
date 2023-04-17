@@ -55,6 +55,7 @@
             dgvDepartment.Dock = DockStyle.Bottom;
             dgvDepartment.Location = new Point(0, 163);
             dgvDepartment.Name = "dgvDepartment";
+            dgvDepartment.ReadOnly = true;
             dgvDepartment.RowHeadersWidth = 51;
             dgvDepartment.RowTemplate.Height = 29;
             dgvDepartment.Size = new Size(903, 546);

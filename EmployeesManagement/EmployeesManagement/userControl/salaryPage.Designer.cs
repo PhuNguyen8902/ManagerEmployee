@@ -55,6 +55,7 @@
             dgvSalary.Dock = DockStyle.Bottom;
             dgvSalary.Location = new Point(0, 163);
             dgvSalary.Name = "dgvSalary";
+            dgvSalary.ReadOnly = true;
             dgvSalary.RowHeadersWidth = 51;
             dgvSalary.RowTemplate.Height = 29;
             dgvSalary.Size = new Size(903, 546);
