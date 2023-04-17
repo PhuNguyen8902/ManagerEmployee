@@ -35,6 +35,7 @@
             btnSearch = new Button();
             tbSearch = new TextBox();
             cbSearch = new ComboBox();
+            btnFindAll = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvDepartment).BeginInit();
             SuspendLayout();
             // 
@@ -108,10 +109,21 @@
             cbSearch.Text = "Chọn mục muốn tìm kiếm";
             cbSearch.SelectedIndexChanged += cbSearch_SelectedIndexChanged;
             // 
+            // btnFindAll
+            // 
+            btnFindAll.Location = new Point(416, 11);
+            btnFindAll.Name = "btnFindAll";
+            btnFindAll.Size = new Size(94, 29);
+            btnFindAll.TabIndex = 26;
+            btnFindAll.Text = "Find All";
+            btnFindAll.UseVisualStyleBackColor = true;
+            btnFindAll.Click += btnFindAll_Click;
+            // 
             // DepartmentPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnFindAll);
             Controls.Add(cbSearch);
             Controls.Add(deleteBtn);
             Controls.Add(dgvDepartment);
@@ -136,5 +148,6 @@
         private Button btnSearch;
         private TextBox tbSearch;
         private ComboBox cbSearch;
+        private Button btnFindAll;
     }
 }

@@ -35,8 +35,9 @@
             cbSearch = new ComboBox();
             btnSearch = new Button();
             tbSearch = new TextBox();
+            btnFindAll = new Button();
+            cbSearchLevel = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvSalary).BeginInit();
-            SuspendLayout();
             // 
             // deleteBtn
             // 
@@ -108,10 +109,31 @@
             tbSearch.Size = new Size(258, 27);
             tbSearch.TabIndex = 22;
             // 
+            // btnFindAll
+            // 
+            btnFindAll.Location = new Point(426, 8);
+            btnFindAll.Name = "btnFindAll";
+            btnFindAll.Size = new Size(94, 29);
+            btnFindAll.TabIndex = 26;
+            btnFindAll.Text = "Find All";
+            btnFindAll.UseVisualStyleBackColor = true;
+            btnFindAll.Click += btnFindAll_Click;
+            // 
+            // cbSearchLevel
+            // 
+            cbSearchLevel.FormattingEnabled = true;
+            cbSearchLevel.Location = new Point(31, 8);
+            cbSearchLevel.Name = "cbSearchLevel";
+            cbSearchLevel.Size = new Size(253, 28);
+            cbSearchLevel.TabIndex = 27;
+            cbSearchLevel.Visible = false;
+            // 
             // salaryPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(cbSearchLevel);
+            Controls.Add(btnFindAll);
             Controls.Add(cbSearch);
             Controls.Add(btnSearch);
             Controls.Add(tbSearch);
@@ -136,5 +158,7 @@
         private ComboBox cbSearch;
         private Button btnSearch;
         private TextBox tbSearch;
+        private Button btnFindAll;
+        private ComboBox cbSearchLevel;
     }
 }

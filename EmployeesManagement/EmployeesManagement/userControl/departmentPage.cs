@@ -111,14 +111,19 @@ namespace EmployeesManagement.userControl
         {
             if (cbSearch.SelectedIndex == -1)
             {
-                // Không có mục nào được chọn
                 btnSearch.Enabled = false;
             }
             else
             {
-                // Có mục được chọn
                 btnSearch.Enabled = true;
             }
+        }
+
+        private void btnFindAll_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = departmentController.GetDepartmentData();
+
+            dgvDepartment.DataSource = dataTable;
         }
     }
 }
