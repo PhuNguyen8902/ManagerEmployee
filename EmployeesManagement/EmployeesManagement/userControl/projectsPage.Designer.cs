@@ -45,6 +45,7 @@
             deleteBtn.TabIndex = 21;
             deleteBtn.Text = "Delete";
             deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // dgvProject
             // 
@@ -67,6 +68,7 @@
             addBtn.TabIndex = 19;
             addBtn.Text = "Add";
             addBtn.UseVisualStyleBackColor = true;
+            addBtn.Click += addBtn_Click;
             // 
             // updateBtn
             // 
@@ -76,6 +78,7 @@
             updateBtn.TabIndex = 18;
             updateBtn.Text = "Update";
             updateBtn.UseVisualStyleBackColor = true;
+            updateBtn.Click += updateBtn_Click;
             // 
             // button1
             // 

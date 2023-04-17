@@ -200,7 +200,7 @@ namespace EmployeesManagement.Models
                     .HasColumnName("description");
 
                 entity.Property(e => e.EndDate)
-                    .HasColumnType("date")
+                    .HasMaxLength(50)
                     .HasColumnName("end_date");
 
                 entity.Property(e => e.IsActive)
@@ -212,7 +212,7 @@ namespace EmployeesManagement.Models
                     .HasColumnName("name");
 
                 entity.Property(e => e.StartDate)
-                    .HasColumnType("date")
+                    .HasMaxLength(50)
                     .HasColumnName("start_date");
             });
             modelBuilder.Entity<levelSalary>(entity =>

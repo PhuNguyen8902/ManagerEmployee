@@ -1,6 +1,6 @@
-﻿namespace EmployeesManagement.Detail
+﻿namespace EmployeesManagement.userControl.Detail.projectDetail
 {
-    partial class addProjectDetail
+    partial class updateProjectDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DTPEnd = new DateTimePicker();
+            label5 = new Label();
+            DTPStart = new DateTimePicker();
             label1 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -35,10 +38,34 @@
             btnComfirm = new Button();
             txtDescription = new TextBox();
             txtName = new TextBox();
-            DTPStart = new DateTimePicker();
-            DTPEnd = new DateTimePicker();
-            label5 = new Label();
+            label6 = new Label();
+            cbActive = new ComboBox();
             SuspendLayout();
+            // 
+            // DTPEnd
+            // 
+            DTPEnd.Format = DateTimePickerFormat.Custom;
+            DTPEnd.Location = new Point(138, 293);
+            DTPEnd.Name = "DTPEnd";
+            DTPEnd.Size = new Size(205, 27);
+            DTPEnd.TabIndex = 43;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(30, 300);
+            label5.Name = "label5";
+            label5.Size = new Size(73, 20);
+            label5.TabIndex = 42;
+            label5.Text = "End_date:";
+            // 
+            // DTPStart
+            // 
+            DTPStart.Format = DateTimePickerFormat.Custom;
+            DTPStart.Location = new Point(138, 221);
+            DTPStart.Name = "DTPStart";
+            DTPStart.Size = new Size(205, 27);
+            DTPStart.TabIndex = 41;
             // 
             // label1
             // 
@@ -49,43 +76,43 @@
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
             label1.Size = new Size(405, 55);
-            label1.TabIndex = 23;
-            label1.Text = "Add Project";
+            label1.TabIndex = 34;
+            label1.Text = "Update Project";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(30, 258);
+            label4.Location = new Point(30, 228);
             label4.Name = "label4";
             label4.Size = new Size(79, 20);
-            label4.TabIndex = 30;
+            label4.TabIndex = 40;
             label4.Text = "Start_date:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(30, 192);
+            label3.Location = new Point(30, 162);
             label3.Name = "label3";
             label3.Size = new Size(88, 20);
-            label3.TabIndex = 29;
+            label3.TabIndex = 39;
             label3.Text = "Description:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(30, 115);
+            label2.Location = new Point(30, 85);
             label2.Name = "label2";
             label2.Size = new Size(52, 20);
-            label2.TabIndex = 28;
+            label2.TabIndex = 38;
             label2.Text = "Name:";
             // 
             // btnComfirm
             // 
-            btnComfirm.Location = new Point(138, 399);
+            btnComfirm.Location = new Point(138, 428);
             btnComfirm.Name = "btnComfirm";
             btnComfirm.Size = new Size(94, 29);
-            btnComfirm.TabIndex = 27;
+            btnComfirm.TabIndex = 37;
             btnComfirm.Text = "Comfirm";
             btnComfirm.UseVisualStyleBackColor = true;
             btnComfirm.Click += btnComfirm_Click;
@@ -94,50 +121,44 @@
             // 
             txtDescription.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtDescription.ForeColor = SystemColors.InfoText;
-            txtDescription.Location = new Point(138, 178);
+            txtDescription.Location = new Point(138, 148);
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(205, 34);
-            txtDescription.TabIndex = 25;
+            txtDescription.TabIndex = 36;
             // 
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtName.ForeColor = SystemColors.InfoText;
-            txtName.Location = new Point(138, 101);
+            txtName.Location = new Point(138, 71);
             txtName.Name = "txtName";
             txtName.Size = new Size(205, 34);
-            txtName.TabIndex = 24;
+            txtName.TabIndex = 35;
             // 
-            // DTPStart
+            // label6
             // 
-            DTPStart.Format = DateTimePickerFormat.Custom;
-            DTPStart.Location = new Point(138, 251);
-            DTPStart.Name = "DTPStart";
-            DTPStart.Size = new Size(205, 27);
-            DTPStart.TabIndex = 31;
+            label6.AutoSize = true;
+            label6.Location = new Point(36, 358);
+            label6.Name = "label6";
+            label6.Size = new Size(53, 20);
+            label6.TabIndex = 44;
+            label6.Text = "Active:";
             // 
-            // DTPEnd
+            // cbActive
             // 
-            DTPEnd.Format = DateTimePickerFormat.Custom;
-            DTPEnd.Location = new Point(138, 323);
-            DTPEnd.Name = "DTPEnd";
-            DTPEnd.Size = new Size(205, 27);
-            DTPEnd.TabIndex = 33;
+            cbActive.FormattingEnabled = true;
+            cbActive.Location = new Point(138, 359);
+            cbActive.Name = "cbActive";
+            cbActive.Size = new Size(205, 28);
+            cbActive.TabIndex = 45;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(30, 330);
-            label5.Name = "label5";
-            label5.Size = new Size(73, 20);
-            label5.TabIndex = 32;
-            label5.Text = "End_date:";
-            // 
-            // addProjectDetail
+            // updateProjectDetail
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(405, 486);
+            Controls.Add(cbActive);
+            Controls.Add(label6);
             Controls.Add(DTPEnd);
             Controls.Add(label5);
             Controls.Add(DTPStart);
@@ -148,14 +169,18 @@
             Controls.Add(btnComfirm);
             Controls.Add(txtDescription);
             Controls.Add(txtName);
-            Name = "addProjectDetail";
-            Text = "addProjectDetail";
+            Name = "updateProjectDetail";
+            Text = "updateProjectDetail";
+            Load += updateProjectDetail_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+        private DateTimePicker DTPEnd;
+        private Label label5;
+        private DateTimePicker DTPStart;
         private Label label1;
         private Label label4;
         private Label label3;
@@ -163,8 +188,7 @@
         private Button btnComfirm;
         private TextBox txtDescription;
         private TextBox txtName;
-        private DateTimePicker DTPStart;
-        private DateTimePicker DTPEnd;
-        private Label label5;
+        private Label label6;
+        private ComboBox cbActive;
     }
 }

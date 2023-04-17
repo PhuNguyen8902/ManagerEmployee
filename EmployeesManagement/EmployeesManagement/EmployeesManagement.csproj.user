@@ -25,6 +25,9 @@
     <Compile Update="userControl\departmentPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="userControl\Detail\projectDetail\updateProjectDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="userControl\Detail\salaryDetail\addSalaryDetail.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,4 +1,5 @@
-﻿using EmployeesManagement.Service;
+﻿using EmployeesManagement.Models;
+using EmployeesManagement.Service;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,9 +13,20 @@ namespace EmployeesManagement.Control
     {
         ProjectService projectService = new ProjectService();
 
-        public DataTable GetDepartmentData()
+        public DataTable GetProjectData()
         {
-            return projectService.GetDepartmentData();
+            return projectService.GetProjectData();
+        }
+        public bool addProject(Project project) { 
+            return projectService.addProject(project);
+        }
+
+        public bool updateProject(Project project)
+        {
+            return projectService.updateProject(project);
+        }
+        public bool deleteProject(int id) { 
+            return projectService.deleteProject(id);
         }
     }
 }
