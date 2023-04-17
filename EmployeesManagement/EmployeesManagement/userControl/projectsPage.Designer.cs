@@ -32,8 +32,12 @@
             dgvProject = new DataGridView();
             addBtn = new Button();
             updateBtn = new Button();
-            button1 = new Button();
-            textBox1 = new TextBox();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
+            cbSearch = new ComboBox();
+            DTPSearch = new DateTimePicker();
+            cbSearchActive = new ComboBox();
+            btnFindAll = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProject).BeginInit();
             SuspendLayout();
             // 
@@ -80,32 +84,74 @@
             updateBtn.UseVisualStyleBackColor = true;
             updateBtn.Click += updateBtn_Click;
             // 
-            // button1
+            // btnSearch
             // 
-            button1.Location = new Point(298, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 17;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
+            btnSearch.Location = new Point(298, 6);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 29);
+            btnSearch.TabIndex = 17;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // textBox1
+            // txtSearch
             // 
-            textBox1.Location = new Point(22, 6);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(258, 27);
-            textBox1.TabIndex = 16;
+            txtSearch.Location = new Point(22, 6);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(258, 27);
+            txtSearch.TabIndex = 16;
+            // 
+            // cbSearch
+            // 
+            cbSearch.FormattingEnabled = true;
+            cbSearch.Location = new Point(22, 51);
+            cbSearch.Name = "cbSearch";
+            cbSearch.Size = new Size(253, 28);
+            cbSearch.TabIndex = 22;
+            cbSearch.Text = "Chọn mục muốn tìm kiếm";
+            cbSearch.SelectedIndexChanged += cbSearch_SelectedIndexChanged;
+            // 
+            // DTPSearch
+            // 
+            DTPSearch.Location = new Point(22, 6);
+            DTPSearch.Name = "DTPSearch";
+            DTPSearch.Size = new Size(258, 27);
+            DTPSearch.TabIndex = 23;
+            DTPSearch.Visible = false;
+            // 
+            // cbSearchActive
+            // 
+            cbSearchActive.FormattingEnabled = true;
+            cbSearchActive.Location = new Point(22, 5);
+            cbSearchActive.Name = "cbSearchActive";
+            cbSearchActive.Size = new Size(258, 28);
+            cbSearchActive.TabIndex = 24;
+            cbSearchActive.Visible = false;
+            // 
+            // btnFindAll
+            // 
+            btnFindAll.Location = new Point(415, 7);
+            btnFindAll.Name = "btnFindAll";
+            btnFindAll.Size = new Size(94, 29);
+            btnFindAll.TabIndex = 25;
+            btnFindAll.Text = "Find All";
+            btnFindAll.UseVisualStyleBackColor = true;
+            btnFindAll.Click += btnFindAll_Click;
             // 
             // projectsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnFindAll);
+            Controls.Add(cbSearchActive);
+            Controls.Add(DTPSearch);
+            Controls.Add(cbSearch);
             Controls.Add(deleteBtn);
             Controls.Add(dgvProject);
             Controls.Add(addBtn);
             Controls.Add(updateBtn);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
             Name = "projectsPage";
             Size = new Size(903, 709);
             Load += projectsPage_Load;
@@ -120,7 +166,11 @@
         private DataGridView dgvProject;
         private Button addBtn;
         private Button updateBtn;
-        private Button button1;
-        private TextBox textBox1;
+        private Button btnSearch;
+        private TextBox txtSearch;
+        private ComboBox cbSearch;
+        private DateTimePicker DTPSearch;
+        private ComboBox cbSearchActive;
+        private Button btnFindAll;
     }
 }

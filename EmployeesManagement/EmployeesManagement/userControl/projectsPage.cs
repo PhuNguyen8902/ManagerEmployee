@@ -18,11 +18,15 @@ namespace EmployeesManagement.userControl
     public partial class projectsPage : UserControl
     {
         private projectController projectController;
+        private salaryController salaryController;
+        private departmentController departmentController;
         SqlConnection connection = Connection.Connection.GetConnection();
 
         public projectsPage()
         {
             projectController = new projectController();
+            salaryController = new salaryController();
+            departmentController = new departmentController();
             InitializeComponent();
         }
 
@@ -34,8 +38,7 @@ namespace EmployeesManagement.userControl
 
         private void projectsPage_Load(object sender, EventArgs e)
         {
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            Encoding encoding = Encoding.GetEncoding("Windows-1252");
+
             connection.Open();
 
             DataTable dataTable = projectController.GetProjectData();
@@ -43,13 +46,10 @@ namespace EmployeesManagement.userControl
             dgvProject.DataSource = dataTable;
 
             connection.Close();
-            List<String> strList = new List<String>();
-            strList.Add("id");
-            strList.Add("name");
-            strList.Add("description");
-            strList.Add("start_date");
-            strList.Add("end_date");
-            strList.Add("is_active");
+            loadComboBoxSearch();
+            loadComboBoxSearchActive();
+            btnSearch.Enabled = false;
+
             if (dgvProject.Columns.Contains("is_active"))
             {
                 for (int i = 0; i < dgvProject.Rows.Count; i++)
@@ -111,6 +111,68 @@ namespace EmployeesManagement.userControl
             {
                 MessageBox.Show("Hãy chọn thành viên muốn xóa");
             }
+        }
+
+        private void loadComboBoxSearch()
+        {
+            List<String> strList = new List<String>();
+            strList.Add("id");
+            strList.Add("name");
+            strList.Add("description");
+            strList.Add("start_date");
+            strList.Add("end_date");
+            strList.Add("is_active");
+            salaryController.loadComboBoxSearch(cbSearch, strList);
+        }
+        private void loadComboBoxSearchActive()
+        {
+            cbSearchActive.Items.Add("Đang hoạt động");
+            cbSearchActive.Items.Add("Đã kết thúc");
+            cbSearchActive.SelectedIndex = 0;
+        }
+
+        private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSearch.SelectedIndex == -1)
+            {
+                btnSearch.Enabled = false;
+            }
+            else
+            {
+                btnSearch.Enabled = true;
+                string value = cbSearch.SelectedItem.ToString();
+                if (value == "start_date" || value == "end_date")
+                {
+                    txtSearch.Visible = false;
+                    cbSearchActive.Visible = false;
+                    DTPSearch.Visible = true;
+                }
+                else if (value == "is_active")
+                {
+                    txtSearch.Visible = false;
+                    cbSearchActive.Visible = true;
+                    DTPSearch.Visible = false;
+                }
+                else
+                {
+                    txtSearch.Visible = true;
+                    cbSearchActive.Visible = false;
+                    DTPSearch.Visible = false;
+                }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            projectController.Search(cbSearch, txtSearch, cbSearchActive, DTPSearch, dgvProject);
+
+        }
+
+        private void btnFindAll_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = projectController.GetProjectData();
+
+            dgvProject.DataSource = dataTable;
         }
     }
 }

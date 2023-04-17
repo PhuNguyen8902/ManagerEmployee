@@ -37,12 +37,6 @@ namespace EmployeesManagement.userControl
 
             dgvSalary.DataSource = dataTable;
 
-            int countRow = dgvSalary.RowCount;
-            for (int i = 0; i < countRow - 1; i++)
-            {
-
-
-            }
             connection.Close();
             List<String> strList = new List<String>();
             strList.Add("id");
@@ -51,6 +45,7 @@ namespace EmployeesManagement.userControl
             strList.Add("allowance");
             strList.Add("net_salary");
             salaryController.loadComboBoxSearch(cbSearch, strList);
+            salaryController.LoadLevelData(cbSearchLevel);
             btnSearch.Enabled = false;
         }
 
@@ -68,8 +63,6 @@ namespace EmployeesManagement.userControl
                 int id = Int32.Parse(row.Cells[0].Value.ToString());
                 string s = row.Cells[2].Value.ToString();
                 int level = salaryController.FindIdByLever(s);
-                //MessageBox.Show(s);
-                //int level = l;
                 int allow = Int32.Parse(row.Cells[3].Value.ToString());
                 updateSalaryDetail formUpdateSalary = new updateSalaryDetail(id, level, allow);
                 formUpdateSalary.ShowDialog();
@@ -109,13 +102,22 @@ namespace EmployeesManagement.userControl
         {
             if (cbSearch.SelectedIndex == -1)
             {
-                // Không có mục nào được chọn
                 btnSearch.Enabled = false;
             }
             else
             {
-                // Có mục được chọn
                 btnSearch.Enabled = true;
+                 string value = cbSearch.SelectedItem.ToString();
+                if (value == "level")
+                {
+                    tbSearch.Visible = false;
+                    cbSearchLevel.Visible = true;
+                }
+                else
+                {
+                    tbSearch.Visible = true;
+                    cbSearchLevel.Visible = false;
+                }
             }
         }
 
@@ -126,7 +128,6 @@ namespace EmployeesManagement.userControl
             string selectedValue = cbSearch.SelectedItem.ToString();
             if (selectedValue == "id")
             {
-                //int id = Convert.ToInt32(tbSearch.Text);
                 int id;
                 if (!int.TryParse(tbSearch.Text, out id))
                 {
@@ -150,7 +151,7 @@ namespace EmployeesManagement.userControl
             }
             else if (selectedValue == "level")
             {
-                string level = tbSearch.Text;
+                string level = cbSearchLevel.SelectedItem.ToString();
                 DataTable dataTable = salaryController.findByLevel(level, str);
                 dgvSalary.DataSource = dataTable;
             }
@@ -176,6 +177,13 @@ namespace EmployeesManagement.userControl
                 DataTable dataTable = salaryController.findByNetSalary(net_salary, str);
                 dgvSalary.DataSource = dataTable;
             }
+        }
+
+        private void btnFindAll_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = salaryController.GetSalaryData();
+
+            dgvSalary.DataSource = dataTable;
         }
     }
 }

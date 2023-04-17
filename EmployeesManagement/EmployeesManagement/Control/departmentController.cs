@@ -36,7 +36,6 @@ namespace EmployeesManagement.Control
             string selectedValue = cbSearch.SelectedItem.ToString();
             if (selectedValue == "id")
             {
-                //int id = Convert.ToInt32(tbSearch.Text);
                 int id;
                 if (!int.TryParse(tbSearch.Text, out id))
                 {
@@ -71,5 +70,6 @@ namespace EmployeesManagement.Control
             }
             
         }
+    
     }
 }

@@ -28,18 +28,31 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
                 MessageBox.Show("Không được nhập quá 11 kí tự");
             }
         }
+        private Boolean checkPhone(string phone){
+            if (!phone.StartsWith("0") || phone.Length != 11 || !phone.All(char.IsDigit))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         private void btnComfirm_Click(object sender, EventArgs e)
         {
             if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "")
             {
+                Boolean phone =  checkPhone(txtPhone.Text);
+                if (!phone) {
+                    MessageBox.Show("Số điện thoạt bắt đầu bằng số 0 và nhận 11 số");
+                    return;
+                }
                 Department department = new Department(txtName.Text, txtPhone.Text, txtAddress.Text);
                 if (departmentController.addDepartment(department))
                 {
                     MessageBox.Show("Thêm thành công");
 
-
-                    // kiem tra xem form primary co dang mo hay khong
                     FormCollection allOpenedForm = Application.OpenForms;
                     foreach (Form form in allOpenedForm)
                     {
