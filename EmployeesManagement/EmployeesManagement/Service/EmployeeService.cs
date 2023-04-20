@@ -36,11 +36,55 @@ namespace EmployeesManagement.Service
         public DataTable GetEmployeeData()
         {
             DataTable table = new DataTable();
-            string query = "SELECT id,name,phone,gender,home_town FROM employeeDB.dbo.employee";
+            string query = "SELECT id,name,phone, home_town,department_id FROM employeeDB.dbo.employee";
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
             return table;
+        }
+        public byte getGenderByEmployeeId(int employeeId)
+        {
+            byte gender = new byte();
+            try
+            {
+                connection.Open();
+                string query = String.Format("select gender FROM employeeDB.dbo.employee where id = {0}", employeeId);
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader rdr = command.ExecuteReader();
+                while(rdr.Read())
+                {
+                    gender = byte.Parse(rdr["gender"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return gender;
+        }
+
+        public bool getDepartmentBaseOnItsId(int departmnetId)
+        {
+            try
+            {
+                connection.Open();
+              
+               
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
         }
         public bool deleteEmployee(int employeeId)
         {

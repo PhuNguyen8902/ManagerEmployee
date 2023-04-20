@@ -44,12 +44,10 @@ namespace EmployeesManagement.userControl
 
             dgvEmployee.DataSource = dataTable;
 
-            int countRow = dgvEmployee.RowCount;
-            for (int i = 0; i < countRow - 1; i++)
-            {
+            //tao column gender de in ra male hay female thay vi 0 hay 1
+           
 
 
-            }
             //// Tạo một cột mới chứa nút Xóa
             //DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
             //deleteButtonColumn.HeaderText = "Delete";

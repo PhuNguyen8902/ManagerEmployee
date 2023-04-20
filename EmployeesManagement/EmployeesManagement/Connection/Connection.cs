@@ -13,9 +13,9 @@ namespace EmployeesManagement.Connection
     class Connection
     {
         //Connection cua Phu
-        private static String conn = @"Data Source=MSI;User ID=sa;Password = 123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+        //private static String conn = @"Data Source=MSI;User ID=sa;Password = 123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
         //Connection cua Phan
-        //private static String conn = "Server = DESKTOP-V6TTSBE; Database = employeeDB; Integrated Security = true;";
+        private static string conn = "server = desktop-v6ttsbe; database = employeedb; integrated security = true;";
         //Data Source = MSI; Initial Catalog = employeeDB; User ID = sa
         public static SqlConnection GetConnection()
         {
