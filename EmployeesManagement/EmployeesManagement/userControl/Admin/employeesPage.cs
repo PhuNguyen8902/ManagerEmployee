@@ -44,22 +44,8 @@ namespace EmployeesManagement.userControl
 
             dgvEmployee.DataSource = dataTable;
 
-            int countRow = dgvEmployee.RowCount;
-            for (int i = 0; i < countRow - 1; i++)
-            {
-
-
-            }
-            //// Tạo một cột mới chứa nút Xóa
-            //DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            //deleteButtonColumn.HeaderText = "Delete";
-            //deleteButtonColumn.Name = "deleteButtonColumn";
-            //deleteButtonColumn.Text = "Delete";
-            //deleteButtonColumn.UseColumnTextForButtonValue = true;
-
-            //// Thêm cột mới vào DataGridView
-            //dgvEmployee.Columns.Add(deleteButtonColumn);
-
+           
+      
 
             employeeService.CloseConnection();
         }
