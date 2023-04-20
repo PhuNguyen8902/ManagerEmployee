@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RMQafa5/Hce1VNRNZjsM3iG31dGF6tIb+JS64tYZ9YvmSYaU1Q0ROfCoNlsHxdGJnqQz9sJi8qHHfaCkB2KjUw==",
+  "dgSpecHash": "FmpI2gEaWbP2z0YPlXUQovck9Oz2/su3g11YrzDr8BeWVwmXZMJ/M9dtGSPxziD5aY4WV8bYtKbnBGKDnpaEUg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\hoc\\Nam 3\\HK2\\lap trinh co so du lieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
+  "projectFilePath": "D:\\Hoc\\Nam3\\HK2\\LapTrinhCoSoDuLieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",

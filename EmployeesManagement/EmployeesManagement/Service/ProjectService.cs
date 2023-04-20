@@ -17,7 +17,7 @@ namespace EmployeesManagement.Service
         public DataTable GetProjectData()
         {
             DataTable table = new DataTable();
-            string query = "SELECT id,name,description,start_date,end_date, CASE WHEN is_active = 0 THEN 'Đang hoạt động' ELSE 'Đã kết thúc' END AS Active FROM employeeDB.dbo.project";
+            string query = "SELECT id,name,description,start_date,end_date, CASE WHEN is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project";
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -99,7 +99,7 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT id, name, description, start_date, end_date, IIF(is_active=1, 'Đã kết thúc', 'Đang hoạt động') AS Active FROM {1} WHERE id = {0};", id, str);
+                string sql = string.Format("SELECT id, name, description, start_date, end_date, IIF(is_active=1, 'End', 'Active') AS Active FROM {1} WHERE id = {0};", id, str);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);
@@ -122,7 +122,7 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT id, name, description, start_date, end_date, IIF(is_active=1, 'Đã kết thúc', 'Đang hoạt động') AS Active FROM {1} WHERE {2} like '%{0}%';", address, str, codition);
+                string sql = string.Format("SELECT id, name, description, start_date, end_date, IIF(is_active=1, 'End', 'Active') AS Active FROM {1} WHERE {2} like '%{0}%';", address, str, codition);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);

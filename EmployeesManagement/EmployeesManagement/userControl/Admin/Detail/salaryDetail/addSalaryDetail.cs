@@ -47,7 +47,7 @@ namespace EmployeesManagement.userControl.Detail.salaryDetail
                 Salary salary = new Salary(levelNum, allowanceNum);
                 if (salaryController.addSalary(levelNum, allowanceNum))
                 {
-                    MessageBox.Show("Thêm thành công");
+                    MessageBox.Show("Insert Success");
 
 
                     // kiem tra xem form primary co dang mo hay khong
@@ -66,12 +66,12 @@ namespace EmployeesManagement.userControl.Detail.salaryDetail
                 }
                 else
                 {
-                    MessageBox.Show("Thêm ko thành công");
+                    MessageBox.Show("Insert Fail");
                 }
             }
             else
             {
-                MessageBox.Show("Xin hãy nhập đầy đủ");
+                MessageBox.Show("Please enter in full");
             }
         }
     }

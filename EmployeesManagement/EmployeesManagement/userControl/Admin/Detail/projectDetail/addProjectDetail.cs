@@ -33,7 +33,7 @@ namespace EmployeesManagement.Detail
                 Project project = new Project(txtName.Text, txtDescription.Text, startDate, endDate);
                 if (projectController.addProject(project))
                 {
-                    MessageBox.Show("Thêm thành công");
+                    MessageBox.Show("Insert Success");
 
 
                     // kiem tra xem form primary co dang mo hay khong
@@ -52,12 +52,12 @@ namespace EmployeesManagement.Detail
                 }
                 else
                 {
-                    MessageBox.Show("Thêm ko thành công");
+                    MessageBox.Show("Insert Fail");
                 }
             }
             else
             {
-                MessageBox.Show("Xin hãy nhập đầy đủ");
+                MessageBox.Show("Please enter in full");
             }
         }
 

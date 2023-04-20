@@ -87,18 +87,18 @@ namespace EmployeesManagement.userControl
 
                 if (departmentController.deleteDepartment(id))
                 {
-                    MessageBox.Show("Xóa thành công");
+                    MessageBox.Show("Delete Success");
                     dgvDepartment.DataSource = departmentController.GetDepartmentData();
                 }
                 else
                 {
-                    MessageBox.Show("Xóa ko thành công");
+                    MessageBox.Show("Delete Fail");
                 }
 
             }
             else
             {
-                MessageBox.Show("Hãy chọn thành viên muốn xóa");
+                MessageBox.Show("Choose department want to delete");
             }
         }
 
