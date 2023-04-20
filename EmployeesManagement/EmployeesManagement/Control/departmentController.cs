@@ -39,7 +39,7 @@ namespace EmployeesManagement.Control
                 int id;
                 if (!int.TryParse(tbSearch.Text, out id))
                 {
-                    MessageBox.Show("Vui lòng nhập số nguyên cho ID!");
+                    MessageBox.Show("Please enter a number for the ID!");
                 }
                 else
                 {
@@ -52,7 +52,7 @@ namespace EmployeesManagement.Control
                 int phone;
                 if (!int.TryParse(tbSearch.Text, out phone))
                 {
-                    MessageBox.Show("Vui lòng nhập số nguyên cho phone!");
+                    MessageBox.Show("Please enter a number for the Phone!");
                     return;
                 }
                 else

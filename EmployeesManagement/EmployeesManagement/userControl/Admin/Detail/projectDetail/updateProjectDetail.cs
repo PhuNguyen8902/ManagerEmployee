@@ -47,7 +47,7 @@ namespace EmployeesManagement.userControl.Detail.projectDetail
                 string startDate = DTPStart.Value.ToString("yyyy-MM-dd");
                 string endDate = DTPEnd.Value.ToString("yyyy-MM-dd");
                 string active = cbActive.SelectedItem.ToString();
-                if (active == "Đang hoạt động")
+                if (active == "Active")
                     IsActive = false;
                 else
                     IsActive = true;
@@ -75,14 +75,14 @@ namespace EmployeesManagement.userControl.Detail.projectDetail
             }
             else
             {
-                MessageBox.Show("Xin hãy nhập đầy đủ");
+                MessageBox.Show("Please enter in full");
             }
         }
 
         private void updateProjectDetail_Load(object sender, EventArgs e)
         {
-            cbActive.Items.Add("Đang hoạt động");
-            cbActive.Items.Add("Đã kết thúc");
+            cbActive.Items.Add("Active");
+            cbActive.Items.Add("End");
             fillTextBox(Name, Description, StartDate, EndDate, IsActive);
         }
         private void fillTextBox(string name, string description, string startDate,string endDate,bool isActive)

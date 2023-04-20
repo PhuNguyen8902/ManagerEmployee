@@ -3170,11 +3170,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\hoc\\Nam 3\\HK2\\lap trinh co so du lieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
+      "projectUniqueName": "D:\\Hoc\\Nam3\\HK2\\LapTrinhCoSoDuLieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
       "projectName": "EmployeesManagement",
-      "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\hoc\\Nam 3\\HK2\\lap trinh co so du lieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
+      "projectPath": "D:\\Hoc\\Nam3\\HK2\\LapTrinhCoSoDuLieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\EmployeesManagement.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\hoc\\Nam 3\\HK2\\lap trinh co so du lieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\obj\\",
+      "outputPath": "D:\\Hoc\\Nam3\\HK2\\LapTrinhCoSoDuLieu\\ManagerEmployee\\EmployeesManagement\\EmployeesManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

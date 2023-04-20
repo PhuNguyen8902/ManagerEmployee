@@ -52,7 +52,7 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
                 Boolean phone = checkPhone(txtPhone.Text);
                 if (!phone)
                 {
-                    MessageBox.Show("Số điện thoạt bắt đầu bằng số 0 và nhận 11 số");
+                    MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
                     return;
                 }
                 Department department = new Department(id, txtName.Text, txtPhone.Text, txtAddress.Text);
@@ -79,7 +79,7 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
             }
             else
             {
-                MessageBox.Show("Xin hãy nhập đầy đủ");
+                MessageBox.Show("Please enter in full");
             }
         }
 
@@ -88,7 +88,7 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
             if (txtPhone.Text.Length > 11)
             {
                 txtPhone.Text = txtPhone.Text.Substring(0, 11);
-                MessageBox.Show("Không được nhập quá 11 kí tự");
+                MessageBox.Show("Do not enter more than 11 numbers");
             }
         }
 

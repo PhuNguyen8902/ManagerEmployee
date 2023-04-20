@@ -33,10 +33,24 @@ namespace EmployeesManagement
                 SqlDataReader mdr = sqlCommand.ExecuteReader();
                 if (mdr.Read())
                 {
+                    string type = mdr.GetString(mdr.GetOrdinal("type"));
                     MessageBox.Show("Login Successful!");
                     this.Hide();
-                    primary primaryPage = new primary();
-                    primaryPage.Show();
+                    if (type == "Admin")
+                    {
+                        primary primaryPage = new primary();
+                        primaryPage.Show();
+                    }
+                    else if (type == "Employee")
+                    {
+                        FormEmployee primaryPage = new FormEmployee();
+                        primaryPage.Show();
+                    }
+                    else if (type == "Manage")
+                    {
+                        FormManager primaryPage = new FormManager();
+                        primaryPage.Show();
+                    }
 
                 }
                 else

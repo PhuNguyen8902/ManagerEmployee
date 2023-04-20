@@ -69,7 +69,7 @@ namespace EmployeesManagement.userControl
             }
             else
             {
-                MessageBox.Show("Choose department to update");
+                MessageBox.Show("Choose salary to update");
             }
         }
 
@@ -83,18 +83,18 @@ namespace EmployeesManagement.userControl
 
                 if (salaryController.deleteSalary(id))
                 {
-                    MessageBox.Show("Xóa thành công");
+                    MessageBox.Show("Delete Success");
                     dgvSalary.DataSource = salaryController.GetSalaryData();
                 }
                 else
                 {
-                    MessageBox.Show("Xóa ko thành công");
+                    MessageBox.Show("Delete Fail");
                 }
 
             }
             else
             {
-                MessageBox.Show("Hãy chọn thành viên muốn xóa");
+                MessageBox.Show("Choose salary want to delete");
             }
         }
 
@@ -131,7 +131,7 @@ namespace EmployeesManagement.userControl
                 int id;
                 if (!int.TryParse(tbSearch.Text, out id))
                 {
-                    MessageBox.Show("Vui lòng nhập số nguyên cho ID!");
+                    MessageBox.Show("Please enter a number for the ID!");
                     return;
                 }
 
@@ -143,7 +143,7 @@ namespace EmployeesManagement.userControl
                 int coefficient;
                 if (!int.TryParse(tbSearch.Text, out coefficient))
                 {
-                    MessageBox.Show("Vui lòng nhập số nguyên cho Coefficient!");
+                    MessageBox.Show("Please enter a number for the Coefficient!");
                     return;
                 }
                 DataTable dataTable = salaryController.findByCoefficient(coefficient, str);
@@ -160,7 +160,7 @@ namespace EmployeesManagement.userControl
                 int allowance;
                 if (!int.TryParse(tbSearch.Text, out allowance))
                 {
-                    MessageBox.Show("Vui lòng nhập số nguyên cho Allowance!");
+                    MessageBox.Show("Please enter a number for the Allowance!");
                     return;
                 }
                 DataTable dataTable = salaryController.findByAllowance(allowance, str);
@@ -171,7 +171,7 @@ namespace EmployeesManagement.userControl
                 int net_salary;
                 if (!int.TryParse(tbSearch.Text, out net_salary))
                 {
-                    MessageBox.Show("Vui lòng nhập số nguyên cho Net_salary!");
+                    MessageBox.Show("Please enter a number for the Net_salary!");
                     return;
                 }
                 DataTable dataTable = salaryController.findByNetSalary(net_salary, str);

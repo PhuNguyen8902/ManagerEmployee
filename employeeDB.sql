@@ -112,13 +112,15 @@ CREATE TABLE account (
 GO
 
 insert into account(user_name,password,full_name,email,type,employee_id) values ('admin','123','Admin','admin@gmail.com','Admin',null);
+insert into account(user_name,password,full_name,email,type,employee_id) values ('employee','123','Employee','employee@gmail.com','Employee',null);
+insert into account(user_name,password,full_name,email,type,employee_id) values ('manage','123','Manage','manage@gmail.com','Manage',null);
 
-insert into department(name,phone,address) values ('toa 1',012312312,'hoc mon');
 
-insert into levelSalary_Detail (coefficient,level) values(5000000,'nhan vien');
-insert into levelSalary_Detail (coefficient,level) values(10000000,'quan ly');
-insert into levelSalary_Detail (coefficient,level) values(15000000,'pho giam đoc');
-insert into levelSalary_Detail (coefficient,level) values(20000000,'giam đoc');
+insert into department(name,phone,address) values ('Department 1',012312312,'hoc mon');
+
+insert into levelSalary_Detail (coefficient,level) values(5000000,'Employee');
+insert into levelSalary_Detail (coefficient,level) values(10000000,'Manage');
+insert into levelSalary_Detail (coefficient,level) values(20000000,'Admin');
 
 insert into allowanceSalary_Detail (allowance) values (1000000);
 insert into allowanceSalary_Detail (allowance) values (2000000);
@@ -126,15 +128,15 @@ insert into allowanceSalary_Detail (allowance) values (3000000);
 
 insert into salary(coefficient,level,allowance,net_salary) values (5000000,1,1,6000000);
 
-insert into position(name,description) values('nhanvien','khong');
+insert into position(name,description) values('Employee','khong');
 
-insert into project( name,description,start_date,end_date) values ('du an 1','mo ta 1','2003-10-10','2010-01-01');
+insert into project( name,description,start_date,end_date) values ('Project 1','Description 1','2003-10-10','2010-01-01');
 
 insert into employee(name,phone,gender,home_town,department_id,salary_id,position_id) values ('phu',01321232,0,'hoc mon',1,1,1);
 
 insert into timekeeping (date,working_hour,employee_id) values ('2002-10-02','11:00:00',1);
 
-insert into employee_project (description,start_date,end_date,role,employee_id,project_id) values('mo ta 1','2005-10-10','2008-04-04','nhan vien','1','1');
+insert into employee_project (description,start_date,end_date,role,employee_id,project_id) values('mo ta 1','2005-10-10','2008-04-04','Employee','1','1');
 
 
 

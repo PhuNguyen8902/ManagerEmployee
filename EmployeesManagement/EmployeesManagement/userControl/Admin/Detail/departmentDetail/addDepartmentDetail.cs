@@ -25,7 +25,7 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
             if (txtPhone.Text.Length > 11)
             {
                 txtPhone.Text = txtPhone.Text.Substring(0, 11);
-                MessageBox.Show("Không được nhập quá 11 kí tự");
+                MessageBox.Show("Do not enter more than 11 numbers");
             }
         }
         private Boolean checkPhone(string phone){
@@ -45,13 +45,13 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
             {
                 Boolean phone =  checkPhone(txtPhone.Text);
                 if (!phone) {
-                    MessageBox.Show("Số điện thoạt bắt đầu bằng số 0 và nhận 11 số");
+                    MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
                     return;
                 }
                 Department department = new Department(txtName.Text, txtPhone.Text, txtAddress.Text);
                 if (departmentController.addDepartment(department))
                 {
-                    MessageBox.Show("Thêm thành công");
+                    MessageBox.Show("Insert Success");
 
                     FormCollection allOpenedForm = Application.OpenForms;
                     foreach (Form form in allOpenedForm)
@@ -68,12 +68,12 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
                 }
                 else
                 {
-                    MessageBox.Show("Thêm ko thành công");
+                    MessageBox.Show("Insert Fail");
                 }
             }
             else
             {
-                MessageBox.Show("Xin hãy nhập đầy đủ");
+                MessageBox.Show("Please enter in full");
             }
         }
 
