@@ -1,4 +1,5 @@
 ﻿using EmployeesManagement.Control;
+using EmployeesManagement.Models;
 using EmployeesManagement.userControl;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,18 @@ namespace EmployeesManagement
     public partial class FormEmployee : Form
     {
         navigationController navigationControl;
+        private int employeeId;
+        private string type;
         public FormEmployee()
         {
             InitializeComponent();
+            initializeNavigationController(0);
+        }
+        public FormEmployee(int employeeId, string type)
+        {
+            InitializeComponent();
+            this.employeeId = employeeId;
+            this.type = type;
             initializeNavigationController(0);
         }
         public FormEmployee(int display)
@@ -59,6 +69,11 @@ namespace EmployeesManagement
         private void salaryBtn_Click(object sender, EventArgs e)
         {
             navigationControl.display(3);
+        }
+
+        private void buttontest_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("id ne: " + employeeId);
         }
     }
 }
