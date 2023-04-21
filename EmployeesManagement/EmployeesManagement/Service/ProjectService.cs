@@ -35,6 +35,20 @@ namespace EmployeesManagement.Service
             return table;
         }
 
+        // lay ra cac employee lam viec trong project do
+        public DataTable getEmployeeWorkInSpecificProject(int projectId)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("select e.id, e.name, e.phone, ep.start_date, ep.end_date, d.name as department from employeeDB.dbo.employee e " +
+                "inner join employeeDB.dbo.employee_project ep on e.id = ep.employee_id " +
+                "inner join employeeDB.dbo.department d on e.department_id = d.id " +
+                "where ep.project_id={0}", projectId);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
         // Xử lý thêm project vào database
         public bool addProject(Project project)
         {
@@ -149,5 +163,21 @@ namespace EmployeesManagement.Service
             return dataTable;
         }
 
+        public void addEmployeeToProject(EmployeeProject ep)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("insert into employeeDB.dbo.employee_project(employeeId) VALUES('{0}', '{1}', '{2}','{3}','0')");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

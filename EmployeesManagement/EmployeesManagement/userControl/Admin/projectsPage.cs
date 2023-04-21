@@ -196,7 +196,19 @@ namespace EmployeesManagement.userControl
         {
             if (dgvProject.SelectedRows.Count > 0)
             {
-                projectDetail formDetail = new projectDetail();
+                DataGridViewRow row = dgvProject.SelectedRows[0];
+                int id = Int32.Parse(row.Cells[0].Value.ToString());
+                string name = row.Cells[1].Value.ToString();
+                string desciption = row.Cells[2].Value.ToString();
+                string startDate = row.Cells[3].Value.ToString();
+                string endDate = row.Cells[4].Value.ToString();
+
+                bool active = true;
+
+                if (isActive == 0)
+                    active = false;
+
+                projectDetail formDetail = new projectDetail(id, name, desciption, startDate, endDate, active);
                 formDetail.ShowDialog();
             }
             else
