@@ -14,5 +14,14 @@ namespace EmployeesManagement.Utils
         {
             utilsService.loadSpecificColumnToComboBoxByItsId(cbDepartment, specificColumn, table);
         }
+        public int getIdFromValueOfComboBox(ComboBox comboBox)
+        {
+            return utilsService.getIdFromValueOfComboBox(comboBox);
+        }
+        public Boolean isPhoneNumber(String phone)
+        {
+            return utilsService.isPhoneNumber(phone);
+        }
+       
     }
 }

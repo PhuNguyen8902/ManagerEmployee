@@ -1,4 +1,5 @@
 ﻿using EmployeesManagement.Models;
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,14 +19,80 @@ namespace EmployeesManagement.Service
         public DataTable GetEmployeeData()
         {
             DataTable table = new DataTable();
-            string query = "SELECT e.id, e.name, e.phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.coefficient, p.name as position " +
-                "FROM employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.id = d.id " +
-                "inner join employeeDB.dbo.salary s on e.id = s.id " +
-                "inner join employeeDB.dbo.position p on e.id = p.id";
+            string query = "SELECT e.id, e.name, e.phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.net_salary as salary, p.name as position " +
+                "FROM employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+                "inner join employeeDB.dbo.salary s on e.salary_id = s.id " +
+                "inner join employeeDB.dbo.position p on e.position_id = p.id";
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
             return table;
+        }
+
+        public int getIdByDeparementName(String name)
+        {
+            connection.Open();
+            int id = -1;
+
+            string query = string.Format("SELECT id FROM employeeDB.dbo.department WHERE name like '%{0}%' ", name);
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                        connection.Close();
+                        return id;
+                    }
+                }
+            }
+            connection.Close();
+            return id;
+        }
+        public int getIdByNetSalary(int netSalary)
+        {
+            connection.Open();
+            int id = -1;
+            string query = string.Format("SELECT id FROM employeeDB.dbo.salary WHERE net_salary like '%{0}%' ", netSalary);
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                        connection.Close();
+                        return id;
+                    }
+                }
+            }
+            connection.Close();
+            return id;
+        }
+        public int getIdByPositionName(String name)
+        {
+            connection.Open();
+            int id = -1;
+
+            string query = string.Format("SELECT id FROM employeeDB.dbo.position WHERE name like '%{0}%' ", name);
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                        connection.Close();
+                        return id;
+                    }
+                }
+            }
+            connection.Close();
+            return id;
         }
         public bool deleteEmployee(int employeeId)
         {
@@ -55,7 +122,8 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string SQL = string.Format("insert into employeeDB.dbo.employee(name, phone,gender,home_town) VALUES('{0}', '{1}', '{2}', '{3}')", employee.Name, employee.Phone, employee.Gender, employee.HomeTown);
+                string SQL = string.Format("insert into employeeDB.dbo.employee(name, phone,gender,home_town, department_id, salary_id, position_id) VALUES('{0}', '{1}', '{2}', '{3}', {4}, {5}, {6})"
+                   , employee.Name, employee.Phone, employee.Gender, employee.HomeTown, employee.DepartmentId, employee.SalaryId, employee.PositionId);
                 SqlCommand cmd = new SqlCommand(SQL, connection);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
@@ -76,7 +144,9 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("update employee set name = '{0}', phone = '{1}', gender = '{2}', home_town = '{3}' where id = {4}", employee.Name, employee.Phone, employee.Gender, employee.HomeTown, employee.Id);
+                string sql = string.Format("update employee set name = '{0}', phone = '{1}', gender = '{2}', home_town = '{3}'," +
+                    " department_id = '{4}', salary_id = '{5}', position_id = '{6}'  where id = {7}"
+                    , employee.Name, employee.Phone, employee.Gender, employee.HomeTown, employee.DepartmentId, employee.SalaryId, employee.PositionId, employee.Id);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;

@@ -3,6 +3,7 @@ using EmployeesManagement.Detail;
 using EmployeesManagement.Models;
 using EmployeesManagement.Service;
 using EmployeesManagement.userControl.Detail.employeeDetail;
+using EmployeesManagement.Utils;
 using Google.Protobuf;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -27,6 +28,7 @@ namespace EmployeesManagement.userControl
         private Employee employeeModel;
         private EmployeeService employeeService;
         private employeeController employeeController;
+        private UtilsController utilsController;
         public employeesPage()
         {
             InitializeComponent();
@@ -113,10 +115,25 @@ namespace EmployeesManagement.userControl
                 int id = Int32.Parse(row.Cells[0].Value.ToString());
                 string name = row.Cells[1].Value.ToString();
                 string phone = row.Cells[2].Value.ToString();
-                byte gender = Byte.Parse(row.Cells[3].Value.ToString());
-                string hometown = row.Cells[4].Value.ToString();
 
-                updateEmployeeDetail formUpdateEmployee = new updateEmployeeDetail(id, name, phone, gender, hometown);
+                String genderString = row.Cells[3].Value.ToString();
+                byte gender = 1;
+                if (genderString == "Male")
+                    gender = 0;
+
+                string hometown = row.Cells[4].Value.ToString();
+                String departmentString = row.Cells[5].Value.ToString();
+
+                int departmentId = employeeController.getIdByDeparementName(departmentString);
+                int salaryNet = Int32.Parse(row.Cells[6].Value.ToString());
+                int salaryId = employeeController.getIdByNetSalary(salaryNet);
+
+
+                String positionString = row.Cells[7].Value.ToString();
+                int positionId = employeeController.getIdByPositionName(positionString);
+
+
+                updateEmployeeDetail formUpdateEmployee = new updateEmployeeDetail(id, name, phone, gender, hometown, departmentId, salaryId, positionId);
                 formUpdateEmployee.ShowDialog();
             }
             else

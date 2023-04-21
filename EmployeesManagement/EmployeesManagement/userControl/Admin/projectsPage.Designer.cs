@@ -38,6 +38,8 @@
             DTPSearch = new DateTimePicker();
             cbSearchActive = new ComboBox();
             btnFindAll = new Button();
+            btnActiveProject = new Button();
+            btnEndProject = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProject).BeginInit();
             SuspendLayout();
             // 
@@ -113,7 +115,7 @@
             // 
             // DTPSearch
             // 
-            DTPSearch.Location = new Point(537, 99);
+            DTPSearch.Location = new Point(22, 6);
             DTPSearch.Name = "DTPSearch";
             DTPSearch.Size = new Size(258, 27);
             DTPSearch.TabIndex = 23;
@@ -122,7 +124,7 @@
             // cbSearchActive
             // 
             cbSearchActive.FormattingEnabled = true;
-            cbSearchActive.Location = new Point(251, 85);
+            cbSearchActive.Location = new Point(22, 6);
             cbSearchActive.Name = "cbSearchActive";
             cbSearchActive.Size = new Size(258, 28);
             cbSearchActive.TabIndex = 24;
@@ -137,11 +139,31 @@
             btnFindAll.Text = "Find All";
             btnFindAll.UseVisualStyleBackColor = true;
             btnFindAll.Click += btnFindAll_Click;
+            //
+            // btnActiveProject
+            // 
+            btnActiveProject.Location = new Point(10, 125);
+            btnActiveProject.Name = "btnActiveProject";
+            btnActiveProject.Size = new Size(94, 29);
+            btnActiveProject.TabIndex = 25;
+            btnActiveProject.Text = "Active";
+            btnActiveProject.UseVisualStyleBackColor = true;
+            //
+            // btnEndProject
+            // 
+            btnEndProject.Location = new Point(110, 125);
+            btnEndProject.Name = "btnEndProject";
+            btnEndProject.Size = new Size(94, 29);
+            btnEndProject.TabIndex = 25;
+            btnEndProject.Text = "End";
+            btnEndProject.UseVisualStyleBackColor = true;
             // 
             // projectsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnEndProject);
+            Controls.Add(btnActiveProject);
             Controls.Add(btnFindAll);
             Controls.Add(cbSearchActive);
             Controls.Add(DTPSearch);
@@ -172,5 +194,7 @@
         private DateTimePicker DTPSearch;
         private ComboBox cbSearchActive;
         private Button btnFindAll;
+        private Button btnActiveProject;
+        private Button btnEndProject;
     }
 }
