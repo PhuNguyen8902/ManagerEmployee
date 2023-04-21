@@ -31,6 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbSalary = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,6 +45,7 @@
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.txtHometown = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
+            this.cbPosition = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,13 +66,17 @@
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtName.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtName.Location = new System.Drawing.Point(121, 51);
+            this.txtName.Location = new System.Drawing.Point(121, 21);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(205, 34);
             this.txtName.TabIndex = 1;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cbPosition);
+            this.panel1.Controls.Add(this.cbSalary);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.cbDepartment);
             this.panel1.Controls.Add(this.label5);
@@ -87,10 +95,37 @@
             this.panel1.Size = new System.Drawing.Size(406, 431);
             this.panel1.TabIndex = 2;
             // 
+            // cbSalary
+            // 
+            this.cbSalary.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbSalary.FormattingEnabled = true;
+            this.cbSalary.Location = new System.Drawing.Point(121, 264);
+            this.cbSalary.Name = "cbSalary";
+            this.cbSalary.Size = new System.Drawing.Size(205, 31);
+            this.cbSalary.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 320);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 20);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Position:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 269);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 20);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Salary:";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 307);
+            this.label6.Location = new System.Drawing.Point(13, 224);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 20);
             this.label6.TabIndex = 11;
@@ -100,7 +135,7 @@
             // 
             this.cbDepartment.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbDepartment.FormattingEnabled = true;
-            this.cbDepartment.Location = new System.Drawing.Point(121, 297);
+            this.cbDepartment.Location = new System.Drawing.Point(121, 219);
             this.cbDepartment.Name = "cbDepartment";
             this.cbDepartment.Size = new System.Drawing.Size(205, 31);
             this.cbDepartment.TabIndex = 3;
@@ -108,7 +143,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 183);
+            this.label5.Location = new System.Drawing.Point(13, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 20);
             this.label5.TabIndex = 10;
@@ -117,7 +152,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 243);
+            this.label4.Location = new System.Drawing.Point(13, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 20);
             this.label4.TabIndex = 9;
@@ -126,7 +161,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 125);
+            this.label3.Location = new System.Drawing.Point(13, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 20);
             this.label3.TabIndex = 8;
@@ -135,7 +170,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 61);
+            this.label2.Location = new System.Drawing.Point(13, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 20);
             this.label2.TabIndex = 7;
@@ -143,7 +178,7 @@
             // 
             // btnComfirm
             // 
-            this.btnComfirm.Location = new System.Drawing.Point(148, 355);
+            this.btnComfirm.Location = new System.Drawing.Point(145, 381);
             this.btnComfirm.Name = "btnComfirm";
             this.btnComfirm.Size = new System.Drawing.Size(94, 29);
             this.btnComfirm.TabIndex = 6;
@@ -154,7 +189,7 @@
             // rbFemale
             // 
             this.rbFemale.AutoSize = true;
-            this.rbFemale.Location = new System.Drawing.Point(248, 179);
+            this.rbFemale.Location = new System.Drawing.Point(248, 121);
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(78, 24);
             this.rbFemale.TabIndex = 5;
@@ -165,7 +200,7 @@
             // 
             this.rbMale.AutoSize = true;
             this.rbMale.Checked = true;
-            this.rbMale.Location = new System.Drawing.Point(121, 179);
+            this.rbMale.Location = new System.Drawing.Point(121, 121);
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(63, 24);
             this.rbMale.TabIndex = 4;
@@ -177,7 +212,7 @@
             // 
             this.txtHometown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtHometown.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtHometown.Location = new System.Drawing.Point(121, 233);
+            this.txtHometown.Location = new System.Drawing.Point(121, 168);
             this.txtHometown.Name = "txtHometown";
             this.txtHometown.Size = new System.Drawing.Size(205, 34);
             this.txtHometown.TabIndex = 3;
@@ -186,10 +221,19 @@
             // 
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPhone.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtPhone.Location = new System.Drawing.Point(121, 115);
+            this.txtPhone.Location = new System.Drawing.Point(121, 71);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(205, 34);
             this.txtPhone.TabIndex = 2;
+            // 
+            // cbPosition
+            // 
+            this.cbPosition.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbPosition.FormattingEnabled = true;
+            this.cbPosition.Location = new System.Drawing.Point(121, 315);
+            this.cbPosition.Name = "cbPosition";
+            this.cbPosition.Size = new System.Drawing.Size(205, 31);
+            this.cbPosition.TabIndex = 15;
             // 
             // addEmployeeDetail
             // 
@@ -222,5 +266,9 @@
         private Label label5;
         private Label label6;
         private ComboBox cbDepartment;
+        private ComboBox cbSalary;
+        private Label label8;
+        private Label label7;
+        private ComboBox cbPosition;
     }
 }
