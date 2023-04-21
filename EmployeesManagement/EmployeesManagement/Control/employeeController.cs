@@ -29,6 +29,18 @@ namespace EmployeesManagement.Control
         {
             return empService.updateEmployee(employee);
         }
+        public int getIdByDeparementName(String name)
+        {
+            return empService.getIdByDeparementName(name);
+        }
+        public int getIdByNetSalary(int netSalary)
+        {
+            return empService.getIdByNetSalary(netSalary);
+        }
+        public int getIdByPositionName(String name)
+        {
+            return empService.getIdByPositionName(name);
+        }
 
         public Employee getInforEmployee(int id) {
             return empService.getInforEmployee(id);

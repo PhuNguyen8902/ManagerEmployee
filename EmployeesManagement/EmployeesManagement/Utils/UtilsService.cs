@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static EmployeesManagement.Service.SalaryService;
+using static Mysqlx.Notice.Warning.Types;
 
 namespace EmployeesManagement.Utils
 {
@@ -53,5 +54,26 @@ namespace EmployeesManagement.Utils
                 return true;
             }
         }
+        // lay id tu value trong combo box
+        public int getIdFromValueOfComboBox(ComboBox comboBox)
+        {
+            string value = comboBox.SelectedItem.ToString();
+            System.Windows.Controls.ComboBoxItem levelItem = (System.Windows.Controls.ComboBoxItem)comboBox.SelectedItem;
+            string idString = levelItem.Tag.ToString();
+            int id = Int32.Parse(idString);
+
+            return id;
+        }
+
+        // kiem tra so dien thoai
+        public Boolean isPhoneNumber(string phone)
+        {
+            if (!phone.StartsWith("0") || phone.Length >= 11 || !phone.All(char.IsDigit))
+                return false;
+
+            return true;
+        }
+
+      
     }
 }

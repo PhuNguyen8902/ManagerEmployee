@@ -1,4 +1,4 @@
-﻿using EmployeesManagement.Service;
+using EmployeesManagement.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +18,15 @@ namespace EmployeesManagement.Utils
         public Boolean checkPhone(string phone){
             return utilsService.checkPhone(phone);
         }
+
+        public int getIdFromValueOfComboBox(ComboBox comboBox)
+        {
+            return utilsService.getIdFromValueOfComboBox(comboBox);
+        }
+        public Boolean isPhoneNumber(String phone)
+        {
+            return utilsService.isPhoneNumber(phone);
+        }
+       
     }
 }
