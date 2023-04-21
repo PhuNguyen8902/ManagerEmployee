@@ -40,6 +40,7 @@
             btnFindAll = new Button();
             btnActiveProject = new Button();
             btnEndProject = new Button();
+            btnDetail = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProject).BeginInit();
             SuspendLayout();
             // 
@@ -148,6 +149,7 @@
             btnActiveProject.TabIndex = 25;
             btnActiveProject.Text = "Active";
             btnActiveProject.UseVisualStyleBackColor = true;
+            btnActiveProject.Click += btnActiveProject_Click;
             //
             // btnEndProject
             // 
@@ -157,11 +159,23 @@
             btnEndProject.TabIndex = 25;
             btnEndProject.Text = "End";
             btnEndProject.UseVisualStyleBackColor = true;
+            btnEndProject.Click += btnEndProject_Click;
+            //
+            // btnDetail
+            //
+            btnDetail.Location = new Point(800, 125);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(94, 29);
+            btnDetail.TabIndex = 25;
+            btnDetail.Text = "Detail";
+            btnDetail.UseVisualStyleBackColor = true;
+            btnDetail.Click+= btnDetail_Click;
             // 
             // projectsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnDetail);
             Controls.Add(btnEndProject);
             Controls.Add(btnActiveProject);
             Controls.Add(btnFindAll);
@@ -196,5 +210,6 @@
         private Button btnFindAll;
         private Button btnActiveProject;
         private Button btnEndProject;
+        private Button btnDetail;
     }
 }

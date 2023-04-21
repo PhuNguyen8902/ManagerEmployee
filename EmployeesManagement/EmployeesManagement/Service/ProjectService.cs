@@ -14,10 +14,10 @@ namespace EmployeesManagement.Service
     {
         SqlConnection connection = Connection.Connection.GetConnection();
         // Lấy thông tin project để truyền vào datagridview
-        public DataTable GetProjectData()
+        public DataTable GetProjectData(int isActive)
         {
             DataTable table = new DataTable();
-            string query = "SELECT id,name,description,start_date,end_date, CASE WHEN is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project";
+            string query = String.Format("SELECT id,name,description,start_date,end_date FROM employeeDB.dbo.project where is_active={0}", isActive);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
