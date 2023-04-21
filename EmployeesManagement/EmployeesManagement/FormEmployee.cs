@@ -1,6 +1,7 @@
 ﻿using EmployeesManagement.Control;
 using EmployeesManagement.Models;
 using EmployeesManagement.userControl;
+using EmployeesManagement.userControl.UserControlEmployee;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,7 @@ namespace EmployeesManagement
         private void initializeNavigationController(int display)
         {
             List<UserControl> userControls = new List<UserControl>()
-            { new employeesPage(), new projectsPage(), new DepartmentPage(),new salaryPage()};
+            { new userControl.UserControlEmployee.informationEmployeePage(employeeId), new userControl.UserControlEmployee.projectEmployeePage(employeeId), new DepartmentPage(),new salaryPage()};
 
             navigationControl = new navigationController(userControls, mainPanel); // create an instance of navigationControl
             navigationControl.display(display);
@@ -69,11 +70,6 @@ namespace EmployeesManagement
         private void salaryBtn_Click(object sender, EventArgs e)
         {
             navigationControl.display(3);
-        }
-
-        private void buttontest_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("id ne: " + employeeId);
         }
     }
 }

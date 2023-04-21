@@ -49,5 +49,11 @@
     <Compile Update="userControl\Admin\salaryPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="userControl\UserControlEmployee\informationEmployeePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="userControl\UserControlEmployee\projectEmployeePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

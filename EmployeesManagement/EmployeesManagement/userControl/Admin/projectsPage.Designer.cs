@@ -113,7 +113,7 @@
             // 
             // DTPSearch
             // 
-            DTPSearch.Location = new Point(22, 6);
+            DTPSearch.Location = new Point(537, 99);
             DTPSearch.Name = "DTPSearch";
             DTPSearch.Size = new Size(258, 27);
             DTPSearch.TabIndex = 23;
@@ -122,7 +122,7 @@
             // cbSearchActive
             // 
             cbSearchActive.FormattingEnabled = true;
-            cbSearchActive.Location = new Point(22, 5);
+            cbSearchActive.Location = new Point(251, 85);
             cbSearchActive.Name = "cbSearchActive";
             cbSearchActive.Size = new Size(258, 28);
             cbSearchActive.TabIndex = 24;

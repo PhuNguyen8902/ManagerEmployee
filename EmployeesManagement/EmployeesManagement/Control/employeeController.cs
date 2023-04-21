@@ -21,7 +21,7 @@ namespace EmployeesManagement.Control
         {
             return empService.addEmployee(employee);
         }
-        public bool deleteEmployee(int empId) 
+        public bool deleteEmployee(int empId)
         {
             return empService.deleteEmployee(empId);
         }
@@ -30,5 +30,12 @@ namespace EmployeesManagement.Control
             return empService.updateEmployee(employee);
         }
 
+        public Employee getInforEmployee(int id){
+            return empService.getInforEmployee(id);
+        }
+
+        public Account getAccountOfEmployee(int emid) { 
+            return empService.getAccountOfEmployee(emid);
+        }
     }
 }
