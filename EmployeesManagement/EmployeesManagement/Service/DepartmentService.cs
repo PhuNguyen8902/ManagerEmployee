@@ -38,12 +38,14 @@ namespace EmployeesManagement.Service
         public DataTable GetDepartmentData()
         {
             DataTable table = new DataTable();
-            string query = "SELECT id,name,phone,address FROM employeeDB.dbo.department";
+            string query = "SELECT id, name, FORMAT(CAST(phone AS BIGINT), '000-0000-0000') AS phone, address FROM employeeDB.dbo.department";
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
             return table;
         }
+
+
 
         // Xử lý thêm department vào database
         public bool addDepartment(Department department)

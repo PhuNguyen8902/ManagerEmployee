@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using EmployeesManagement.Connection;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace EmployeesManagement
 {
@@ -33,23 +34,38 @@ namespace EmployeesManagement
                 SqlDataReader mdr = sqlCommand.ExecuteReader();
                 if (mdr.Read())
                 {
-                    string type = mdr.GetString(mdr.GetOrdinal("type"));
-                    MessageBox.Show("Login Successful!");
-                    this.Hide();
-                    if (type == "Admin")
+                    int employeeId = -1;
+                    if (mdr.IsDBNull(mdr.GetOrdinal("employee_id")))
                     {
+                        MessageBox.Show("You need to assign employee to this account");
+                    }
+                    else { employeeId = mdr.GetInt32(mdr.GetOrdinal("employee_id")); }
+                    string type = mdr.GetString(mdr.GetOrdinal("type"));
+                    
+                    if (type == "Admin" && employeeId != -1)
+                    {
+                        MessageBox.Show("Login Successful!");
+                        this.Hide();
                         primary primaryPage = new primary();
                         primaryPage.Show();
                     }
-                    else if (type == "Employee")
+                    else if (type == "Employee" && employeeId != -1)
                     {
-                        FormEmployee primaryPage = new FormEmployee();
+                        MessageBox.Show("Login Successful!");
+                        this.Hide();
+                        FormEmployee primaryPage = new FormEmployee(employeeId, type);
+                        //FormEmployee primaryPage = new FormEmployee();
                         primaryPage.Show();
                     }
-                    else if (type == "Manage")
+                    else if (type == "Manage" && employeeId != -1)
                     {
+                        MessageBox.Show("Login Successful!");
+                        this.Hide();
                         FormManager primaryPage = new FormManager();
                         primaryPage.Show();
+                    }
+                    else {
+                        MessageBox.Show("Login Fail");
                     }
 
                 }
