@@ -1,5 +1,6 @@
 ﻿using EmployeesManagement.Control;
 using EmployeesManagement.Models;
+using EmployeesManagement.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         private int id;
         private employeeController empController;
         private departmentController departmentController;
+        UtilsController utilsController = new UtilsController();
 
 
         public informationEmployeePage()
@@ -30,13 +32,14 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             this.id = id;
             empController = new employeeController();
             departmentController = new departmentController();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-        private void loadInforEmployee()
+        public void loadInforEmployee()
         {
             Employee e = new Employee();
             Account a = new Account();
@@ -48,7 +51,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             d = departmentController.getDepartmentOfEmployee(departmentId);
             tbInforId.Text = e.Id.ToString();
             tbInforName.Text = e.Name;
-            tbInforPhone.Text = "0" +e.Phone;
+            tbInforPhone.Text = "0" + e.Phone;
             if (e.Gender == 0)
             {
                 cbInforGender.SelectedIndex = 0;
@@ -67,7 +70,41 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         {
             cbInforGender.Items.Add("Male");
             cbInforGender.Items.Add("Female");
+            cbInforGender.KeyDown += (s, e) => e.SuppressKeyPress = true;
             loadInforEmployee();
+        }
+
+        private void btnInforUpdate_Click(object sender, EventArgs e)
+        {
+            Employee emp = new Employee();
+            emp.Id = int.Parse(tbInforId.Text);
+            emp.Name = tbInforName.Text;
+            String strPhone = tbInforPhone.Text.Trim();
+            Boolean phoneRs = utilsController.checkPhone(strPhone);
+            if (phoneRs)
+            {
+                emp.Phone = strPhone;
+            }
+            else
+            {
+                MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
+                tbInforPhone.Text = "";
+            }
+            emp.Gender = (byte)cbInforGender.SelectedIndex;
+            emp.HomeTown = tbInforHomeTown.Text;
+            if (phoneRs)
+            {
+                Boolean rs = empController.updateInforEmployee(emp);
+                if (rs)
+                {
+                    MessageBox.Show("Update successful");
+                }
+                else
+                {
+                    MessageBox.Show("Update fail");
+                }
+            }
+
         }
     }
 }

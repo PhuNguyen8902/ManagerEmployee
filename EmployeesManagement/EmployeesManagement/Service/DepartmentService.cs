@@ -38,7 +38,7 @@ namespace EmployeesManagement.Service
         public DataTable GetDepartmentData()
         {
             DataTable table = new DataTable();
-            string query = "SELECT id, name, FORMAT(CAST(phone AS BIGINT), '000-0000-0000') AS phone, address FROM employeeDB.dbo.department";
+            string query = "SELECT id, name, FORMAT(CAST(phone AS BIGINT), '00000000000') AS phone, address FROM employeeDB.dbo.department";
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -159,7 +159,7 @@ namespace EmployeesManagement.Service
             return dataTable;
         }
 
-        //Lấy thông tin deparment
+        //Lấy thông tin deparment của 1 nhân viên
         public Department getDepartmentOfEmployee(int departmentId)
         {
             Department a = new Department();

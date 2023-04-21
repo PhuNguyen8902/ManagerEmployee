@@ -41,6 +41,19 @@ namespace EmployeesManagement.Utils
             }
             connection.Close();
         }
+
+        //Kiểm tra phone hợp lệ
+        public Boolean checkPhone(string phone)
+        {
+            if (!phone.StartsWith("0") || phone.Length != 11 || !phone.All(char.IsDigit))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         // lay id tu value trong combo box
         public int getIdFromValueOfComboBox(ComboBox comboBox)
         {
@@ -61,6 +74,6 @@ namespace EmployeesManagement.Utils
             return true;
         }
 
-       
+      
     }
 }

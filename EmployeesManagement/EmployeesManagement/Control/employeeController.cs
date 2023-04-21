@@ -42,12 +42,16 @@ namespace EmployeesManagement.Control
             return empService.getIdByPositionName(name);
         }
 
-        public Employee getInforEmployee(int id){
+        public Employee getInforEmployee(int id) {
             return empService.getInforEmployee(id);
         }
 
-        public Account getAccountOfEmployee(int emid) { 
+        public Account getAccountOfEmployee(int emid) {
             return empService.getAccountOfEmployee(emid);
+        }
+
+        public Boolean updateInforEmployee(Employee e){
+            return empService.updateInforEmployee(e);
         }
     }
 }
