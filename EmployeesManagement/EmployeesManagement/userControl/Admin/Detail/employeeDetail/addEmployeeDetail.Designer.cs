@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbPosition = new System.Windows.Forms.ComboBox();
             this.cbSalary = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.txtHometown = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.cbPosition = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +94,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(406, 431);
             this.panel1.TabIndex = 2;
+            // 
+            // cbPosition
+            // 
+            this.cbPosition.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbPosition.FormattingEnabled = true;
+            this.cbPosition.Location = new System.Drawing.Point(121, 315);
+            this.cbPosition.Name = "cbPosition";
+            this.cbPosition.Size = new System.Drawing.Size(205, 31);
+            this.cbPosition.TabIndex = 15;
             // 
             // cbSalary
             // 
@@ -225,15 +234,8 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(205, 34);
             this.txtPhone.TabIndex = 2;
-            // 
-            // cbPosition
-            // 
-            this.cbPosition.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbPosition.FormattingEnabled = true;
-            this.cbPosition.Location = new System.Drawing.Point(121, 315);
-            this.cbPosition.Name = "cbPosition";
-            this.cbPosition.Size = new System.Drawing.Size(205, 31);
-            this.cbPosition.TabIndex = 15;
+            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // addEmployeeDetail
             // 

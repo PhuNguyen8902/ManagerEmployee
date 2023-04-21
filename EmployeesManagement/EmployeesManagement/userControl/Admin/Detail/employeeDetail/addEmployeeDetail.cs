@@ -24,7 +24,7 @@ namespace EmployeesManagement.Detail
         {
             InitializeComponent();
             utilsController.loadSpecificColumnToComboBoxByItsId(cbDepartment, "name", "department");
-            utilsController.loadSpecificColumnToComboBoxByItsId(cbSalary, "coefficient", "salary");
+            utilsController.loadSpecificColumnToComboBoxByItsId(cbSalary, "net_salary", "salary");
             utilsController.loadSpecificColumnToComboBoxByItsId(cbPosition, "name", "position");
         }
 
@@ -37,10 +37,25 @@ namespace EmployeesManagement.Detail
                 gender = 1;
             }
 
-            if(txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbDepartment.SelectedIndex != -1)
+            
+
+            if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbDepartment.SelectedIndex != -1 && cbSalary.SelectedIndex != -1 && cbPosition.SelectedIndex != -1)
             {
-                Employee emp = new Employee(txtName.Text,txtPhone.Text,gender,txtHometown.Text);
-                if(empController.addEmployee(emp) )
+                bool isPhone = utilsController.isPhoneNumber(txtPhone.Text);
+
+                if (!isPhone)
+                {
+                    MessageBox.Show("Phone number has to start with 0");
+                    return;
+                }
+
+                int departmentId = utilsController.getIdFromValueOfComboBox(cbDepartment);
+                int salaryId = utilsController.getIdFromValueOfComboBox(cbSalary);
+                int positionId = utilsController.getIdFromValueOfComboBox(cbPosition);
+
+
+                Employee emp = new Employee(txtName.Text, txtPhone.Text, gender, txtHometown.Text, departmentId, salaryId, positionId);
+                if (empController.addEmployee(emp) )
                 {
                     MessageBox.Show("Thêm thành công");
 
@@ -68,6 +83,20 @@ namespace EmployeesManagement.Detail
             {
                 MessageBox.Show("Xin hãy nhập đầy đủ");
             }
+        }
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPhone.Text.Length > 11)
+            {
+                txtPhone.Text = txtPhone.Text.Substring(0, 11);
+                MessageBox.Show("Can't enter more than 11 numbers");
+            }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
     }
 }
