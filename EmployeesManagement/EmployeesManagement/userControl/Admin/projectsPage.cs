@@ -1,5 +1,6 @@
 ﻿using EmployeesManagement.Control;
 using EmployeesManagement.Detail;
+using EmployeesManagement.userControl.Admin.Detail.projectDetail;
 using EmployeesManagement.userControl.Detail.departmentDetail;
 using EmployeesManagement.userControl.Detail.projectDetail;
 using System;
@@ -17,6 +18,7 @@ namespace EmployeesManagement.userControl
 {
     public partial class projectsPage : UserControl
     {
+        int isActive = 0;
         private projectController projectController;
         private salaryController salaryController;
         private departmentController departmentController;
@@ -41,7 +43,7 @@ namespace EmployeesManagement.userControl
 
             connection.Open();
 
-            DataTable dataTable = projectController.GetProjectData();
+            DataTable dataTable = projectController.GetProjectData(isActive);
 
             dgvProject.DataSource = dataTable;
 
@@ -99,7 +101,7 @@ namespace EmployeesManagement.userControl
                 if (projectController.deleteProject(id))
                 {
                     MessageBox.Show("Delete Success");
-                    dgvProject.DataSource = projectController.GetProjectData();
+                    dgvProject.DataSource = projectController.GetProjectData(isActive);
                 }
                 else
                 {
@@ -121,7 +123,7 @@ namespace EmployeesManagement.userControl
             strList.Add("description");
             strList.Add("start_date");
             strList.Add("end_date");
-            strList.Add("is_active");
+            //strList.Add("is_active");
             salaryController.loadComboBoxSearch(cbSearch, strList);
         }
         private void loadComboBoxSearchActive()
@@ -170,9 +172,38 @@ namespace EmployeesManagement.userControl
 
         private void btnFindAll_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = projectController.GetProjectData();
+            DataTable dataTable = projectController.GetProjectData(isActive);
 
             dgvProject.DataSource = dataTable;
         }
+
+        private void btnActiveProject_Click(object sender, EventArgs e)
+        {
+            isActive = 0;
+            DataTable dataTable = projectController.GetProjectData(isActive);
+
+            dgvProject.DataSource = dataTable;
+        }
+        private void btnEndProject_Click(object sender, EventArgs e)
+        {
+            isActive = 1;
+            DataTable dataTable = projectController.GetProjectData(isActive);
+
+            dgvProject.DataSource = dataTable;
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            if (dgvProject.SelectedRows.Count > 0)
+            {
+                projectDetail formDetail = new projectDetail();
+                formDetail.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You must choose project to continue this action");
+            }
+        }
+
     }
 }

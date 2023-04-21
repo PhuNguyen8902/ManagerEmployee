@@ -13,9 +13,9 @@ namespace EmployeesManagement.Control
     {
         ProjectService projectService = new ProjectService();
 
-        public DataTable GetProjectData()
+        public DataTable GetProjectData(int isActive)
         {
-            return projectService.GetProjectData();
+            return projectService.GetProjectData(isActive);
         }
 
         public DataTable GetProjectEmployeeData(int employeeId) { 
