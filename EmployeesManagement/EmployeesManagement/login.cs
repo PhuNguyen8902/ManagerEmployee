@@ -54,7 +54,6 @@ namespace EmployeesManagement
                         MessageBox.Show("Login Successful!");
                         this.Hide();
                         FormEmployee primaryPage = new FormEmployee(employeeId, type);
-                        //FormEmployee primaryPage = new FormEmployee();
                         primaryPage.Show();
                     }
                     else if (type == "Manage" && employeeId != -1)

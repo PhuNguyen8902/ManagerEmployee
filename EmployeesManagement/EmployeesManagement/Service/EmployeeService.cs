@@ -92,6 +92,69 @@ namespace EmployeesManagement.Service
             return false;
         }
 
+        //Lấy thông tin nhân viên
+        public Employee getInforEmployee(int id) {
+            Employee e = new Employee();
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.employee WHERE id = {0};", id);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    e.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    e.Name = reader.GetString(reader.GetOrdinal("name"));
+                    e.Phone = reader.GetString(reader.GetOrdinal("phone"));
+                    e.Gender = reader.GetByte(reader.GetOrdinal("gender"));
+                    e.HomeTown = reader.GetString(reader.GetOrdinal("home_town"));
+                    e.DepartmentId = reader.GetInt32(reader.GetOrdinal("department_id"));
+                    e.PositionId = reader.GetInt32(reader.GetOrdinal("position_id"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return e;
+        }
+
+        //Lấy thông tin nhân viên
+        public Account getAccountOfEmployee(int emid)
+        {
+            Account a = new Account();
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.account WHERE employee_id = {0};", emid);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    a.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    a.UserName = reader.GetString(reader.GetOrdinal("user_name"));
+                    a.Password = reader.GetString(reader.GetOrdinal("password"));
+                    a.FullName = reader.GetString(reader.GetOrdinal("full_name"));
+                    a.Type = reader.GetString(reader.GetOrdinal("type"));
+                    a.Email = reader.GetString(reader.GetOrdinal("email"));
+                    a.EmployeeId = reader.GetInt32(reader.GetOrdinal("employee_id"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return a;
+        }
+
         public void CloseConnection()
         {
             connection.Close();

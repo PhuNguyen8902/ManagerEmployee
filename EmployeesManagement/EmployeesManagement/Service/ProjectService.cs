@@ -24,6 +24,17 @@ namespace EmployeesManagement.Service
             return table;
         }
 
+        // Lấy thông tin project của employee cụ thể để truyền vào datagridview
+        public DataTable GetProjectEmployeeData(int employeeId)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("SELECT ep.employee_id,p.id,p.name,ep.description,ep.start_date,ep.end_date, CASE WHEN p.is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id=p.id where ep.employee_id = {0}", employeeId);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
         // Xử lý thêm project vào database
         public bool addProject(Project project)
         {

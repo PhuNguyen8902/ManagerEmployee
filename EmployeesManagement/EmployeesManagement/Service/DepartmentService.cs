@@ -158,5 +158,35 @@ namespace EmployeesManagement.Service
             }
             return dataTable;
         }
+
+        //Lấy thông tin deparment
+        public Department getDepartmentOfEmployee(int departmentId)
+        {
+            Department a = new Department();
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.department WHERE id = {0};", departmentId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    a.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    a.Name = reader.GetString(reader.GetOrdinal("name"));
+                    a.Phone = reader.GetString(reader.GetOrdinal("phone"));
+                    a.Address = reader.GetString(reader.GetOrdinal("address"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return a;
+        }
+
     }
 }

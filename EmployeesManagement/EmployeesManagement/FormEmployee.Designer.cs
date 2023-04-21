@@ -155,7 +155,7 @@
             employeesBtn.Name = "employeesBtn";
             employeesBtn.Size = new Size(258, 59);
             employeesBtn.TabIndex = 2;
-            employeesBtn.Text = "Employees";
+            employeesBtn.Text = "Information";
             employeesBtn.TextAlign = ContentAlignment.MiddleLeft;
             employeesBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             employeesBtn.UseVisualStyleBackColor = false;

@@ -70,6 +70,10 @@ namespace EmployeesManagement.Control
             }
             
         }
-    
+
+
+        public Department getDepartmentOfEmployee(int departmentId) { 
+            return departmentService.getDepartmentOfEmployee(departmentId);
+         }
     }
 }

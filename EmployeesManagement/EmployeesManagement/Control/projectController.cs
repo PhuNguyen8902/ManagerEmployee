@@ -17,6 +17,10 @@ namespace EmployeesManagement.Control
         {
             return projectService.GetProjectData();
         }
+
+        public DataTable GetProjectEmployeeData(int employeeId) { 
+            return projectService.GetProjectEmployeeData(employeeId);
+        }
         public bool addProject(Project project) { 
             return projectService.addProject(project);
         }
