@@ -80,7 +80,7 @@ namespace EmployeesManagement.userControl.Detail.salaryDetail
             }
             else
             {
-                MessageBox.Show("Xin hãy nhập đầy đủ");
+                MessageBox.Show("Please enter in full");
             }
         }
         private void fillTextBox(int l, int a)

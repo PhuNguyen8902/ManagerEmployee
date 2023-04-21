@@ -38,7 +38,7 @@ namespace EmployeesManagement.Service
                     return true;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -48,9 +48,9 @@ namespace EmployeesManagement.Service
             }
             return false;
         }
-       
 
-            public bool addEmployee(Employee employee)
+
+        public bool addEmployee(Employee employee)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace EmployeesManagement.Service
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -93,7 +93,8 @@ namespace EmployeesManagement.Service
         }
 
         //Lấy thông tin nhân viên
-        public Employee getInforEmployee(int id) {
+        public Employee getInforEmployee(int id)
+        {
             Employee e = new Employee();
             try
             {
@@ -123,7 +124,7 @@ namespace EmployeesManagement.Service
             return e;
         }
 
-        //Lấy thông tin nhân viên
+        //Lấy thông tin account của nhân viên đó
         public Account getAccountOfEmployee(int emid)
         {
             Account a = new Account();
@@ -154,6 +155,29 @@ namespace EmployeesManagement.Service
             }
             return a;
         }
+
+        //Chỉnh sửa thông tin nhân viên
+        public Boolean updateInforEmployee(Employee e)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("update employeeDB.dbo.employee set name ='{0}',phone={1},gender={2},home_town='{3}' where id={4}",e.Name,e.Phone,e.Gender,e.HomeTown,e.Id);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
 
         public void CloseConnection()
         {

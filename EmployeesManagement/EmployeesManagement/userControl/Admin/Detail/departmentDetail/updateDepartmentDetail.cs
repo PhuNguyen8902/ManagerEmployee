@@ -1,5 +1,6 @@
 ﻿using EmployeesManagement.Control;
 using EmployeesManagement.Models;
+using EmployeesManagement.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
     public partial class updateDepartmentDetail : Form
     {
         departmentController departmentController = new departmentController();
+        UtilsController utilsController = new UtilsController();
 
         public int id { get; set; }
         public string name { get; set; }
@@ -33,23 +35,23 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
             this.address = address;
         }
 
-        private Boolean checkPhone(string phone)
-        {
-            if (!phone.StartsWith("0") || phone.Length != 11 || !phone.All(char.IsDigit))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+        //private Boolean checkPhone(string phone)
+        //{
+        //    if (!phone.StartsWith("0") || phone.Length != 11 || !phone.All(char.IsDigit))
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
 
         private void btnComfirm_Click(object sender, EventArgs e)
         {
             if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "")
             {
-                Boolean phone = checkPhone(txtPhone.Text);
+                Boolean phone = utilsController.checkPhone(txtPhone.Text);
                 if (!phone)
                 {
                     MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
@@ -85,11 +87,11 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
 
         private void txtPhone_TextChanged(object sender, EventArgs e)
         {
-            if (txtPhone.Text.Length > 11)
-            {
-                txtPhone.Text = txtPhone.Text.Substring(0, 11);
-                MessageBox.Show("Do not enter more than 11 numbers");
-            }
+            //if (txtPhone.Text.Length > 11)
+            //{
+            //    txtPhone.Text = txtPhone.Text.Substring(0, 11);
+            //    MessageBox.Show("Do not enter more than 11 numbers");
+            //}
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)

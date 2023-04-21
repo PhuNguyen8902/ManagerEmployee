@@ -111,9 +111,7 @@ CREATE TABLE account (
 )
 GO
 
-insert into account(user_name,password,full_name,email,type,employee_id) values ('admin','123','Admin','admin@gmail.com','Admin',1);
-insert into account(user_name,password,full_name,email,type,employee_id) values ('employee','123','Employee','employee@gmail.com','Employee',5);
-insert into account(user_name,password,full_name,email,type,employee_id) values ('manage','123','Manage','manage@gmail.com','Manage',2);
+
 
 
 insert into department(name,phone,address) values ('IT',09374725826,'hoc mon');
@@ -156,6 +154,9 @@ insert into employee(name,phone,gender,home_town,department_id,salary_id,positio
 insert into employee(name,phone,gender,home_town,department_id,salary_id,position_id) values ('tu',08937674659,1,'quan 7',3,1,1);
 insert into employee(name,phone,gender,home_town,department_id,salary_id,position_id) values ('hoa',08937265365,0,'hoc mon',1,1,1);
 
+insert into account(user_name,password,full_name,email,type,employee_id) values ('admin','123','Admin','admin@gmail.com','Admin',1);
+insert into account(user_name,password,full_name,email,type,employee_id) values ('employee','123','Employee','employee@gmail.com','Employee',5);
+insert into account(user_name,password,full_name,email,type,employee_id) values ('manage','123','Manage','manage@gmail.com','Manage',2);
 
 
 insert into timekeeping (date,working_hour,employee_id) values ('2002-10-02','11:00:00',1);

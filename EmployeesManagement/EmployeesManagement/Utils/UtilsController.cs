@@ -14,5 +14,9 @@ namespace EmployeesManagement.Utils
         {
             utilsService.loadSpecificColumnToComboBoxByItsId(cbDepartment, specificColumn, table);
         }
+
+        public Boolean checkPhone(string phone){
+            return utilsService.checkPhone(phone);
+        }
     }
 }

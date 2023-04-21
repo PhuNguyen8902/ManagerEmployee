@@ -196,9 +196,11 @@
             btnInforUpdate.TabIndex = 28;
             btnInforUpdate.Text = "Update";
             btnInforUpdate.UseVisualStyleBackColor = false;
+            btnInforUpdate.Click += btnInforUpdate_Click;
             // 
             // tbInforEmail
             // 
+            tbInforEmail.Enabled = false;
             tbInforEmail.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             tbInforEmail.Location = new Point(330, 537);
             tbInforEmail.Name = "tbInforEmail";
