@@ -8,6 +8,8 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         private int id;
         private employeeController empController;
         private departmentController departmentController;
+        private accountController accController;
+
 
         public managerEmployeePage()
         {
@@ -19,6 +21,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             InitializeComponent();
             empController = new employeeController();
             departmentController = new departmentController();
+            accController = new accountController();
             this.id = id;
             loadManagerInfor();
         }
@@ -47,6 +50,17 @@ namespace EmployeesManagement.userControl.UserControlEmployee
                 else
                 {
                     tbManagerGender.Text = "Female";
+                }
+                int managerId = manager.Id;
+                Account accountManager = new Account();
+                accountManager=accController.getAccountOfEmployee(managerId);
+                if (accountManager != null)
+                {
+                    string emailManager = accountManager.Email;
+                    tbManagerEmail.Text = emailManager;
+                }
+                else {
+                    tbManagerEmail.Text = "Does not have an email";
                 }
             }
             else

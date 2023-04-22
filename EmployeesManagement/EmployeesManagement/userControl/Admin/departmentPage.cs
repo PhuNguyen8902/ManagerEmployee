@@ -104,7 +104,42 @@ namespace EmployeesManagement.userControl
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            departmentController.Search(cbSearch, tbSearch, dgvDepartment);
+            string str = "employeeDB.dbo.department";
+            string selectedValue = cbSearch.SelectedItem.ToString();
+            if (selectedValue == "id")
+            {
+                int id;
+                if (!int.TryParse(tbSearch.Text, out id))
+                {
+                    MessageBox.Show("Please enter a number for the ID!");
+                }
+                else
+                {
+                    DataTable dataTable = departmentController.findById(id, str);
+                    dgvDepartment.DataSource = dataTable;
+                }
+            }
+            else if (selectedValue == "phone")
+            {
+                int phone;
+                if (!int.TryParse(tbSearch.Text, out phone))
+                {
+                    MessageBox.Show("Please enter a number for the Phone!");
+                    return;
+                }
+                else
+                {
+                    string strPhone = phone.ToString();
+                    DataTable dataTable = departmentController.findByCodition(strPhone, str, selectedValue);
+                    dgvDepartment.DataSource = dataTable;
+                }
+            }
+            else
+            {
+                string strValue = tbSearch.Text;
+                DataTable dataTable = departmentController.findByCodition(strValue, str, selectedValue);
+                dgvDepartment.DataSource = dataTable;
+            }
         }
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)

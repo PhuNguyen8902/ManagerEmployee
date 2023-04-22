@@ -31,47 +31,10 @@ namespace EmployeesManagement.Control
         public DataTable findById(int id, string str) {
             return departmentService.findById(id, str);
         }
-        public void Search(ComboBox cbSearch, TextBox tbSearch,DataGridView dgvDepartment ) {
-            string str = "employeeDB.dbo.department";
-            string selectedValue = cbSearch.SelectedItem.ToString();
-            if (selectedValue == "id")
-            {
-                int id;
-                if (!int.TryParse(tbSearch.Text, out id))
-                {
-                    MessageBox.Show("Please enter a number for the ID!");
-                }
-                else
-                {
-                    DataTable dataTable = departmentService.findById(id, str);
-                    dgvDepartment.DataSource = dataTable;
-                }
-            }
-            else if (selectedValue == "phone")
-            {
-                int phone;
-                if (!int.TryParse(tbSearch.Text, out phone))
-                {
-                    MessageBox.Show("Please enter a number for the Phone!");
-                    return;
-                }
-                else
-                {
-                    string strPhone = phone.ToString();
-                    DataTable dataTable = departmentService.findByCodition(strPhone, str,selectedValue);
-                    dgvDepartment.DataSource = dataTable;
-                }
-            }
-            else 
-            {
-                string strValue = tbSearch.Text;
-                DataTable dataTable = departmentService.findByCodition(strValue, str, selectedValue);
-                dgvDepartment.DataSource = dataTable;
-            }
-            
+
+        public DataTable findByCodition(string address, string str, string codition) { 
+            return departmentService.findByCodition(address, str, codition);
         }
-
-
         public Department getDepartmentOfEmployee(int departmentId) { 
             return departmentService.getDepartmentOfEmployee(departmentId);
          }

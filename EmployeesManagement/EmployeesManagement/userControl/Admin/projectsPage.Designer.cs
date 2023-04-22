@@ -140,7 +140,7 @@
             btnFindAll.Text = "Find All";
             btnFindAll.UseVisualStyleBackColor = true;
             btnFindAll.Click += btnFindAll_Click;
-            //
+            // 
             // btnActiveProject
             // 
             btnActiveProject.Location = new Point(10, 125);
@@ -150,7 +150,7 @@
             btnActiveProject.Text = "Active";
             btnActiveProject.UseVisualStyleBackColor = true;
             btnActiveProject.Click += btnActiveProject_Click;
-            //
+            // 
             // btnEndProject
             // 
             btnEndProject.Location = new Point(110, 125);
@@ -160,16 +160,16 @@
             btnEndProject.Text = "End";
             btnEndProject.UseVisualStyleBackColor = true;
             btnEndProject.Click += btnEndProject_Click;
-            //
+            // 
             // btnDetail
-            //
+            // 
             btnDetail.Location = new Point(800, 125);
             btnDetail.Name = "btnDetail";
             btnDetail.Size = new Size(94, 29);
             btnDetail.TabIndex = 25;
             btnDetail.Text = "Detail";
             btnDetail.UseVisualStyleBackColor = true;
-            btnDetail.Click+= btnDetail_Click;
+            btnDetail.Click += btnDetail_Click;
             // 
             // projectsPage
             // 
