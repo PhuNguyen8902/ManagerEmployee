@@ -51,10 +51,10 @@
             // 
             // iconPictureBox1
             // 
-            iconPictureBox1.BackColor = SystemColors.Control;
-            iconPictureBox1.ForeColor = Color.FromArgb(64, 64, 0);
+            iconPictureBox1.BackColor = Color.LightGray;
+            iconPictureBox1.ForeColor = Color.FromArgb(64, 64, 64);
             iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.User;
-            iconPictureBox1.IconColor = Color.FromArgb(64, 64, 0);
+            iconPictureBox1.IconColor = Color.FromArgb(64, 64, 64);
             iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox1.IconSize = 100;
             iconPictureBox1.Location = new Point(400, 8);
@@ -200,7 +200,6 @@
             // 
             // tbInforEmail
             // 
-            tbInforEmail.Enabled = false;
             tbInforEmail.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             tbInforEmail.Location = new Point(330, 537);
             tbInforEmail.Name = "tbInforEmail";
@@ -230,7 +229,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
+            BackColor = Color.WhiteSmoke;
             Controls.Add(cbInforGender);
             Controls.Add(tbInforEmail);
             Controls.Add(label4);

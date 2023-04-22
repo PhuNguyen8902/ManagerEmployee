@@ -42,16 +42,33 @@ namespace EmployeesManagement.Control
             return empService.getIdByPositionName(name);
         }
 
-        public Employee getInforEmployee(int id) {
+        public Employee getInforEmployee(int id)
+        {
             return empService.getInforEmployee(id);
         }
 
-        public Account getAccountOfEmployee(int emid) {
+        public Account getAccountOfEmployee(int emid)
+        {
             return empService.getAccountOfEmployee(emid);
         }
 
-        public Boolean updateInforEmployee(Employee e){
+        public Boolean updateInforEmployee(Employee e)
+        {
             return empService.updateInforEmployee(e);
+        }
+
+        public Employee getInforManagerOfEmployee(int departmentId)
+        {
+            return empService.getInforManagerOfEmployee(departmentId);
+        }
+        public Boolean updateEmailEmployee(int id, string email)
+        {
+            return empService.updateEmailEmployee(id, email);
+        }
+
+        public Boolean checkEmailDuplicate(string email)
+        {
+            return empService.checkEmailDuplicate(email);
         }
     }
 }

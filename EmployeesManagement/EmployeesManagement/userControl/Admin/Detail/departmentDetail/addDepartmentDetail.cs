@@ -24,28 +24,13 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
 
         private void txtPhone_TextChanged(object sender, EventArgs e)
         {
-            //if (txtPhone.Text.Length > 11)
-            //{
-            //    txtPhone.Text = txtPhone.Text.Substring(0, 11);
-            //    MessageBox.Show("Do not enter more than 11 numbers");
-            //}
         }
-        //private Boolean checkPhone(string phone){
-        //    if (!phone.StartsWith("0") || phone.Length != 11 || !phone.All(char.IsDigit))
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
 
         private void btnComfirm_Click(object sender, EventArgs e)
         {
             if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "")
             {
-                Boolean phone =  utilsController.checkPhone(txtPhone.Text);
+                Boolean phone =  utilsController.isPhoneNumber(txtPhone.Text);
                 if (!phone) {
                     MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
                     return;
