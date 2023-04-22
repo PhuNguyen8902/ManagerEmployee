@@ -47,10 +47,6 @@ namespace EmployeesManagement.Control
             return empService.getInforEmployee(id);
         }
 
-        public Account getAccountOfEmployee(int emid)
-        {
-            return empService.getAccountOfEmployee(emid);
-        }
 
         public Boolean updateInforEmployee(Employee e)
         {
@@ -61,14 +57,6 @@ namespace EmployeesManagement.Control
         {
             return empService.getInforManagerOfEmployee(departmentId);
         }
-        public Boolean updateEmailEmployee(int id, string email)
-        {
-            return empService.updateEmailEmployee(id, email);
-        }
-
-        public Boolean checkEmailDuplicate(string email)
-        {
-            return empService.checkEmailDuplicate(email);
-        }
+  
     }
 }

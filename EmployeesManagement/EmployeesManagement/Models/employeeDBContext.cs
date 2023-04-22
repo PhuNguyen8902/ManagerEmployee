@@ -55,7 +55,7 @@ namespace EmployeesManagement.Models
                     .HasColumnName("full_name");
 
                 entity.Property(e => e.Password)
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .HasColumnName("password");
 
                 entity.Property(e => e.Type)

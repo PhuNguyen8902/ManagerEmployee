@@ -228,37 +228,7 @@ namespace EmployeesManagement.Service
 
         }
 
-        //Lấy thông tin account của nhân viên đó
-        public Account getAccountOfEmployee(int emid)
-        {
-            Account a = new Account();
-            try
-            {
-                connection.Open();
-                string sql = string.Format("SELECT * FROM employeeDB.dbo.account WHERE employee_id = {0};", emid);
-                SqlCommand cmd = new SqlCommand(sql, connection);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    a.Id = reader.GetInt32(reader.GetOrdinal("id"));
-                    a.UserName = reader.GetString(reader.GetOrdinal("user_name"));
-                    a.Password = reader.GetString(reader.GetOrdinal("password"));
-                    a.FullName = reader.GetString(reader.GetOrdinal("full_name"));
-                    a.Type = reader.GetString(reader.GetOrdinal("type"));
-                    a.Email = reader.GetString(reader.GetOrdinal("email"));
-                    a.EmployeeId = reader.GetInt32(reader.GetOrdinal("employee_id"));
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return a;
-        }
+
 
         //Chỉnh sửa thông tin nhân viên
         public Boolean updateInforEmployee(Employee e)
@@ -266,7 +236,7 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("update employeeDB.dbo.employee set name ='{0}',phone={1},gender={2},home_town='{3}' where id={4}",e.Name,e.Phone,e.Gender,e.HomeTown,e.Id);
+                string sql = string.Format("update employeeDB.dbo.employee set name ='{0}',phone={1},gender={2},home_town='{3}' where id={4}", e.Name, e.Phone, e.Gender, e.HomeTown, e.Id);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
@@ -282,50 +252,7 @@ namespace EmployeesManagement.Service
             return false;
         }
 
-        //Chỉnh sửa email nhân viên
-        public Boolean updateEmailEmployee(int id,string email)
-        {
-            try
-            {
-                connection.Open();
-                string sql = string.Format("update employeeDB.dbo.account set email ='{0}' where employee_id={1}", email,id);
-                SqlCommand cmd = new SqlCommand(sql, connection);
-                if (cmd.ExecuteNonQuery() > 0)
-                    return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return false;
-        }
 
-        //Kiểm tra trong database có bị trùng email hay không
-        public Boolean checkEmailDuplicate(string email) {
-            try
-            {
-                connection.Open();
-                string sql = string.Format("SELECT COUNT(*) FROM [employeeDB].[dbo].[account] WHERE email = '{0}'", email);
-                using (SqlCommand cmd = new SqlCommand(sql, connection))
-                {
-                    int count = (int)cmd.ExecuteScalar();
-                    if (count > 0) { return false; }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return true;
-        }
 
 
         public void CloseConnection()
