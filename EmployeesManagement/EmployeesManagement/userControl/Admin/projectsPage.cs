@@ -166,7 +166,56 @@ namespace EmployeesManagement.userControl
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            projectController.Search(cbSearch, txtSearch, cbSearchActive, DTPSearch, dgvProject);
+            string str = "employeeDB.dbo.project";
+            string selectedValue = cbSearch.SelectedItem.ToString();
+            if (selectedValue == "id")
+            {
+                int id;
+                if (!int.TryParse(txtSearch.Text, out id))
+                {
+                    MessageBox.Show("Please enter a number for the ID!");
+                }
+                else
+                {
+                    DataTable dataTable = projectController.findById(id, str);
+                    dgvProject.DataSource = dataTable;
+                }
+            }
+            else if (selectedValue == "name")
+            {
+                string strName = txtSearch.Text;
+                DataTable dataTable = projectController.findByCodition(strName, str, selectedValue);
+                dgvProject.DataSource = dataTable;
+            }
+            else if (selectedValue == "description")
+            {
+                string strDescription = txtSearch.Text;
+                DataTable dataTable = projectController.findByCodition(strDescription, str, selectedValue);
+                dgvProject.DataSource = dataTable;
+            }
+            else if (selectedValue == "start_date")
+            {
+                string strStartDate = DTPSearch.Value.ToString("yyyy-MM-dd");
+                DataTable dataTable = projectController.findByCodition(strStartDate, str, selectedValue);
+                dgvProject.DataSource = dataTable;
+            }
+            else if (selectedValue == "end_date")
+            {
+                string strEndDate = DTPSearch.Value.ToString("yyyy-MM-dd");
+                DataTable dataTable = projectController.findByCodition(strEndDate, str, selectedValue);
+                dgvProject.DataSource = dataTable;
+            }
+            else
+            {
+                string strActive = cbSearchActive.SelectedItem.ToString();
+                string Active = "0";
+                if (strActive == "Active")
+                    Active = "0";
+                else
+                    Active = "1";
+                DataTable dataTable = projectController.findByCodition(Active, str, selectedValue);
+                dgvProject.DataSource = dataTable;
+            }
 
         }
 

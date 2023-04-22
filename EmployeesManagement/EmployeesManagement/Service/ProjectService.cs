@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static EmployeesManagement.Service.SalaryService;
 
 namespace EmployeesManagement.Service
@@ -140,6 +141,29 @@ namespace EmployeesManagement.Service
             return dataTable;
         }
 
+        // Tìm kiếm project của employee bằng project id
+        public DataTable findEmployeeProjectByProjectId(int id,int emid)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT ep.employee_id,p.id,p.name,ep.description,ep.start_date,ep.end_date, CASE WHEN p.is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id=p.id where ep.project_id = {0} and ep.employee_id = {1}", id,emid);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dataTable);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable;
+        }
+
         //Tìm kiếm bằng codition
         public DataTable findByCodition(string address, string str, string codition)
         {
@@ -148,6 +172,29 @@ namespace EmployeesManagement.Service
             {
                 connection.Open();
                 string sql = string.Format("SELECT id, name, description, start_date, end_date, IIF(is_active=1, 'End', 'Active') AS Active FROM {1} WHERE {2} like '%{0}%';", address, str, codition);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dataTable);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable;
+        }
+
+        //Tìm kiếm project của employee bằng codition
+        public DataTable findEmployeeProjectByCodition(string value, int emid, string codition)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT ep.employee_id, p.id, p.name, ep.description, ep.start_date, ep.end_date, CASE WHEN p.is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id = p.id where ep.employee_id = {1} and {2} like '%{0}%';", value, emid, codition);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);

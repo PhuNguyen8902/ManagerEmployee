@@ -44,6 +44,8 @@
             tbDepartmentName = new TextBox();
             tbDepartmentPhone = new TextBox();
             lbNotifyManager = new Label();
+            tbManagerEmail = new TextBox();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(112, 466);
+            label4.Location = new Point(112, 522);
             label4.Name = "label4";
             label4.Size = new Size(212, 31);
             label4.TabIndex = 46;
@@ -61,7 +63,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(182, 398);
+            label2.Location = new Point(182, 454);
             label2.Name = "label2";
             label2.Size = new Size(142, 31);
             label2.TabIndex = 44;
@@ -161,7 +163,7 @@
             // 
             tbDepartmentAddress.Enabled = false;
             tbDepartmentAddress.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            tbDepartmentAddress.Location = new Point(338, 530);
+            tbDepartmentAddress.Location = new Point(338, 586);
             tbDepartmentAddress.Name = "tbDepartmentAddress";
             tbDepartmentAddress.Size = new Size(269, 38);
             tbDepartmentAddress.TabIndex = 52;
@@ -170,7 +172,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(93, 533);
+            label1.Location = new Point(93, 589);
             label1.Name = "label1";
             label1.Size = new Size(231, 31);
             label1.TabIndex = 51;
@@ -180,7 +182,7 @@
             // 
             tbDepartmentName.Enabled = false;
             tbDepartmentName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            tbDepartmentName.Location = new Point(338, 398);
+            tbDepartmentName.Location = new Point(338, 454);
             tbDepartmentName.Name = "tbDepartmentName";
             tbDepartmentName.Size = new Size(269, 38);
             tbDepartmentName.TabIndex = 53;
@@ -189,7 +191,7 @@
             // 
             tbDepartmentPhone.Enabled = false;
             tbDepartmentPhone.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            tbDepartmentPhone.Location = new Point(338, 463);
+            tbDepartmentPhone.Location = new Point(338, 519);
             tbDepartmentPhone.Name = "tbDepartmentPhone";
             tbDepartmentPhone.Size = new Size(269, 38);
             tbDepartmentPhone.TabIndex = 54;
@@ -199,17 +201,38 @@
             lbNotifyManager.AutoSize = true;
             lbNotifyManager.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             lbNotifyManager.ForeColor = Color.Red;
-            lbNotifyManager.Location = new Point(224, 596);
+            lbNotifyManager.Location = new Point(224, 652);
             lbNotifyManager.Name = "lbNotifyManager";
             lbNotifyManager.Size = new Size(464, 31);
             lbNotifyManager.TabIndex = 55;
             lbNotifyManager.Text = "This department does not have a manager";
             lbNotifyManager.Visible = false;
             // 
+            // tbManagerEmail
+            // 
+            tbManagerEmail.Enabled = false;
+            tbManagerEmail.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            tbManagerEmail.Location = new Point(338, 392);
+            tbManagerEmail.Name = "tbManagerEmail";
+            tbManagerEmail.Size = new Size(269, 38);
+            tbManagerEmail.TabIndex = 57;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(249, 395);
+            label6.Name = "label6";
+            label6.Size = new Size(75, 31);
+            label6.TabIndex = 56;
+            label6.Text = "Email:";
+            // 
             // managerEmployeePage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(tbManagerEmail);
+            Controls.Add(label6);
             Controls.Add(lbNotifyManager);
             Controls.Add(tbDepartmentPhone);
             Controls.Add(tbDepartmentName);
@@ -256,5 +279,7 @@
         private TextBox tbDepartmentName;
         private TextBox tbDepartmentPhone;
         private Label lbNotifyManager;
+        private TextBox tbManagerEmail;
+        private Label label6;
     }
 }

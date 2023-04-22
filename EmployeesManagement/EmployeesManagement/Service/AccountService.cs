@@ -88,7 +88,8 @@ namespace EmployeesManagement.Service
         //Lấy thông tin account của nhân viên đó
         public Account getAccountOfEmployee(int emid)
         {
-            Account a = new Account();
+            Account a = null;
+            bool recordFound = false;
             try
             {
                 connection.Open();
@@ -97,6 +98,7 @@ namespace EmployeesManagement.Service
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                    a = new Account();
                     a.Id = reader.GetInt32(reader.GetOrdinal("id"));
                     a.UserName = reader.GetString(reader.GetOrdinal("user_name"));
                     a.Password = reader.GetString(reader.GetOrdinal("password"));
@@ -104,6 +106,7 @@ namespace EmployeesManagement.Service
                     a.Type = reader.GetString(reader.GetOrdinal("type"));
                     a.Email = reader.GetString(reader.GetOrdinal("email"));
                     a.EmployeeId = reader.GetInt32(reader.GetOrdinal("employee_id"));
+                    recordFound = true;
                 }
             }
             catch (Exception ex)
@@ -114,8 +117,13 @@ namespace EmployeesManagement.Service
             {
                 connection.Close();
             }
+            if (!recordFound)
+            {
+                a = null;
+            }
             return a;
         }
+
 
         //Hash password
         public string hashPassword(string password)
@@ -188,10 +196,6 @@ namespace EmployeesManagement.Service
                 return storedHash.Equals(sb.ToString(), StringComparison.OrdinalIgnoreCase);
             }
         }
-
-
-
-
 
         //Tạo tài khoản
         public Boolean createAccount(Account a)

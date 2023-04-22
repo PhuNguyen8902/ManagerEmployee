@@ -46,6 +46,7 @@
             btnFindAll.TabIndex = 33;
             btnFindAll.Text = "Find All";
             btnFindAll.UseVisualStyleBackColor = true;
+            btnFindAll.Click += btnFindAll_Click;
             // 
             // cbSearchActive
             // 
@@ -87,6 +88,7 @@
             btnSearch.TabIndex = 26;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // DTPSearch
             // 
