@@ -30,6 +30,8 @@
         {
             panel1 = new Panel();
             panel4 = new Panel();
+            panel2 = new Panel();
+            createAccountBtn = new FontAwesome.Sharp.IconButton();
             salaryBtn = new FontAwesome.Sharp.IconButton();
             departmentBtn = new FontAwesome.Sharp.IconButton();
             projectsBtn = new FontAwesome.Sharp.IconButton();
@@ -44,6 +46,7 @@
             mainPanel = new Panel();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
+            panel2.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
@@ -63,6 +66,7 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(panel2);
             panel4.Controls.Add(salaryBtn);
             panel4.Controls.Add(departmentBtn);
             panel4.Controls.Add(projectsBtn);
@@ -72,6 +76,36 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(258, 492);
             panel4.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(createAccountBtn);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 417);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(258, 75);
+            panel2.TabIndex = 6;
+            // 
+            // createAccountBtn
+            // 
+            createAccountBtn.BackColor = Color.Teal;
+            createAccountBtn.FlatAppearance.BorderColor = Color.Teal;
+            createAccountBtn.FlatStyle = FlatStyle.Flat;
+            createAccountBtn.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            createAccountBtn.ForeColor = SystemColors.ControlLightLight;
+            createAccountBtn.IconChar = FontAwesome.Sharp.IconChar.User;
+            createAccountBtn.IconColor = Color.White;
+            createAccountBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            createAccountBtn.IconSize = 24;
+            createAccountBtn.Location = new Point(3, 3);
+            createAccountBtn.Name = "createAccountBtn";
+            createAccountBtn.Size = new Size(249, 69);
+            createAccountBtn.TabIndex = 0;
+            createAccountBtn.Text = "Create Account";
+            createAccountBtn.TextAlign = ContentAlignment.MiddleLeft;
+            createAccountBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            createAccountBtn.UseVisualStyleBackColor = false;
+            createAccountBtn.Click += createAccountBtn_Click;
             // 
             // salaryBtn
             // 
@@ -169,6 +203,7 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(258, 75);
             panel5.TabIndex = 3;
+            panel5.Paint += panel5_Paint;
             // 
             // returnBtn
             // 
@@ -268,6 +303,7 @@
             Text = "primary";
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -291,5 +327,7 @@
         private FontAwesome.Sharp.IconButton returnBtn;
         private FontAwesome.Sharp.IconButton salaryBtn;
         private FontAwesome.Sharp.IconButton projectsBtn;
+        private Panel panel2;
+        private FontAwesome.Sharp.IconButton createAccountBtn;
     }
 }

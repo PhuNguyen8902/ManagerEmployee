@@ -18,6 +18,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         private int id;
         private employeeController empController;
         private departmentController departmentController;
+        private accountController accController;
         UtilsController utilsController = new UtilsController();
 
 
@@ -32,6 +33,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             this.id = id;
             empController = new employeeController();
             departmentController = new departmentController();
+            accController = new accountController();
 
         }
 
@@ -46,7 +48,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             Department d = new Department();
             String gender = "";
             e = empController.getInforEmployee(id);
-            a = empController.getAccountOfEmployee(id);
+            a = accController.getAccountOfEmployee(id);
             int departmentId = (int)e.DepartmentId;
             d = departmentController.getDepartmentOfEmployee(departmentId);
             tbInforId.Text = e.Id.ToString();
@@ -81,24 +83,15 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             emp.Name = tbInforName.Text;
             String strPhone = tbInforPhone.Text.Trim();
             Boolean phoneRs = utilsController.isPhoneNumber(strPhone);
-            //if (phoneRs)
-            //{
-            //    emp.Phone = strPhone;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
-            //    tbInforPhone.Text = "";
-            //}
             emp.Gender = (byte)cbInforGender.SelectedIndex;
             emp.HomeTown = tbInforHomeTown.Text;
             string email = tbInforEmail.Text;
-            Boolean rsEmailDuplicate = empController.checkEmailDuplicate(email);
+            Boolean rsEmailDuplicate = accController.checkEmailDuplicate(email);
             if (phoneRs && rsEmailDuplicate)
             {
                 emp.Phone = strPhone;
                 Boolean rs = empController.updateInforEmployee(emp);
-                Boolean rsUpdateEmail = empController.updateEmailEmployee(emp.Id, email);
+                Boolean rsUpdateEmail = accController.updateEmailEmployee(emp.Id, email);
                 if (rs && rsUpdateEmail)
                 {
                     MessageBox.Show("Update successful");

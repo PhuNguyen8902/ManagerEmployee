@@ -60,5 +60,17 @@ namespace EmployeesManagement
         {
             navigationControl.display(3);
         }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void createAccountBtn_Click(object sender, EventArgs e)
+        {
+            createAccount createAccountPage = new createAccount();
+            createAccountPage.Show();
+            this.Close();
+        }
     }
 }
