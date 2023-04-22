@@ -194,6 +194,40 @@ namespace EmployeesManagement.Service
             return e;
         }
 
+        //Lấy thông tin manager của nhân viên
+        public Employee getInforManagerOfEmployee(int departmentId)
+        {
+            Employee e = null;
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.employee WHERE department_id = {0} and position_id = 3;", departmentId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    e = new Employee();
+                    e.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    e.Name = reader.GetString(reader.GetOrdinal("name"));
+                    e.Phone = reader.GetString(reader.GetOrdinal("phone"));
+                    e.Gender = reader.GetByte(reader.GetOrdinal("gender"));
+                    e.HomeTown = reader.GetString(reader.GetOrdinal("home_town"));
+                    e.DepartmentId = reader.GetInt32(reader.GetOrdinal("department_id"));
+                    e.PositionId = reader.GetInt32(reader.GetOrdinal("position_id"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return e;
+
+        }
+
         //Lấy thông tin account của nhân viên đó
         public Account getAccountOfEmployee(int emid)
         {
@@ -246,6 +280,51 @@ namespace EmployeesManagement.Service
                 connection.Close();
             }
             return false;
+        }
+
+        //Chỉnh sửa email nhân viên
+        public Boolean updateEmailEmployee(int id,string email)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("update employeeDB.dbo.account set email ='{0}' where employee_id={1}", email,id);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        //Kiểm tra trong database có bị trùng email hay không
+        public Boolean checkEmailDuplicate(string email) {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT COUNT(*) FROM [employeeDB].[dbo].[account] WHERE email = '{0}'", email);
+                using (SqlCommand cmd = new SqlCommand(sql, connection))
+                {
+                    int count = (int)cmd.ExecuteScalar();
+                    if (count > 0) { return false; }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
         }
 
 

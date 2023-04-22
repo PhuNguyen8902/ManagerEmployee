@@ -262,3 +262,4 @@ D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\Employees
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\ref\EmployeesManagement.dll
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlEmployee.projectEmployeePage.resources
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlEmployee.informationEmployeePage.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlEmployee.managerEmployeePage.resources

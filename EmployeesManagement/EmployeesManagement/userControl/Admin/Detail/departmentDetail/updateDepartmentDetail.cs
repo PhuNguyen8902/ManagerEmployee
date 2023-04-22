@@ -35,23 +35,11 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
             this.address = address;
         }
 
-        //private Boolean checkPhone(string phone)
-        //{
-        //    if (!phone.StartsWith("0") || phone.Length != 11 || !phone.All(char.IsDigit))
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
-
         private void btnComfirm_Click(object sender, EventArgs e)
         {
             if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "")
             {
-                Boolean phone = utilsController.checkPhone(txtPhone.Text);
+                Boolean phone = utilsController.isPhoneNumber(txtPhone.Text);
                 if (!phone)
                 {
                     MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");

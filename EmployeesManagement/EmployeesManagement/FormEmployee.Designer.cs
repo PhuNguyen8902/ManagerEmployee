@@ -30,10 +30,9 @@
         {
             panel1 = new Panel();
             panel4 = new Panel();
-            salaryBtn = new FontAwesome.Sharp.IconButton();
-            departmentBtn = new FontAwesome.Sharp.IconButton();
             projectsBtn = new FontAwesome.Sharp.IconButton();
-            employeesBtn = new FontAwesome.Sharp.IconButton();
+            departmentBtn = new FontAwesome.Sharp.IconButton();
+            informationBtn = new FontAwesome.Sharp.IconButton();
             panel5 = new Panel();
             returnBtn = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
@@ -63,59 +62,14 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(salaryBtn);
-            panel4.Controls.Add(departmentBtn);
             panel4.Controls.Add(projectsBtn);
-            panel4.Controls.Add(employeesBtn);
+            panel4.Controls.Add(departmentBtn);
+            panel4.Controls.Add(informationBtn);
             panel4.Dock = DockStyle.Right;
             panel4.Location = new Point(0, 143);
             panel4.Name = "panel4";
             panel4.Size = new Size(258, 492);
             panel4.TabIndex = 2;
-            // 
-            // salaryBtn
-            // 
-            salaryBtn.BackColor = Color.Teal;
-            salaryBtn.Dock = DockStyle.Top;
-            salaryBtn.FlatAppearance.BorderColor = Color.Teal;
-            salaryBtn.FlatStyle = FlatStyle.Flat;
-            salaryBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            salaryBtn.ForeColor = SystemColors.ControlLightLight;
-            salaryBtn.IconChar = FontAwesome.Sharp.IconChar.MoneyBillAlt;
-            salaryBtn.IconColor = Color.White;
-            salaryBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            salaryBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            salaryBtn.Location = new Point(0, 177);
-            salaryBtn.Name = "salaryBtn";
-            salaryBtn.Size = new Size(258, 59);
-            salaryBtn.TabIndex = 5;
-            salaryBtn.Text = "Salary";
-            salaryBtn.TextAlign = ContentAlignment.MiddleLeft;
-            salaryBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            salaryBtn.UseVisualStyleBackColor = false;
-            salaryBtn.Click += salaryBtn_Click;
-            // 
-            // departmentBtn
-            // 
-            departmentBtn.BackColor = Color.Teal;
-            departmentBtn.Dock = DockStyle.Top;
-            departmentBtn.FlatAppearance.BorderColor = Color.Teal;
-            departmentBtn.FlatStyle = FlatStyle.Flat;
-            departmentBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            departmentBtn.ForeColor = SystemColors.ControlLightLight;
-            departmentBtn.IconChar = FontAwesome.Sharp.IconChar.Building;
-            departmentBtn.IconColor = Color.White;
-            departmentBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            departmentBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            departmentBtn.Location = new Point(0, 118);
-            departmentBtn.Name = "departmentBtn";
-            departmentBtn.Size = new Size(258, 59);
-            departmentBtn.TabIndex = 4;
-            departmentBtn.Text = "Department";
-            departmentBtn.TextAlign = ContentAlignment.MiddleLeft;
-            departmentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            departmentBtn.UseVisualStyleBackColor = false;
-            departmentBtn.Click += departmentBtn_Click;
             // 
             // projectsBtn
             // 
@@ -129,37 +83,59 @@
             projectsBtn.IconColor = Color.White;
             projectsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             projectsBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            projectsBtn.Location = new Point(0, 59);
+            projectsBtn.Location = new Point(0, 125);
             projectsBtn.Name = "projectsBtn";
             projectsBtn.Size = new Size(258, 59);
-            projectsBtn.TabIndex = 3;
+            projectsBtn.TabIndex = 6;
             projectsBtn.Text = "Projects";
             projectsBtn.TextAlign = ContentAlignment.MiddleLeft;
             projectsBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             projectsBtn.UseVisualStyleBackColor = false;
             projectsBtn.Click += projectsBtn_Click;
             // 
-            // employeesBtn
+            // departmentBtn
             // 
-            employeesBtn.BackColor = Color.Teal;
-            employeesBtn.Dock = DockStyle.Top;
-            employeesBtn.FlatAppearance.BorderColor = Color.Teal;
-            employeesBtn.FlatStyle = FlatStyle.Flat;
-            employeesBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            employeesBtn.ForeColor = SystemColors.ControlLightLight;
-            employeesBtn.IconChar = FontAwesome.Sharp.IconChar.Users;
-            employeesBtn.IconColor = Color.White;
-            employeesBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            employeesBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            employeesBtn.Location = new Point(0, 0);
-            employeesBtn.Name = "employeesBtn";
-            employeesBtn.Size = new Size(258, 59);
-            employeesBtn.TabIndex = 2;
-            employeesBtn.Text = "Information";
-            employeesBtn.TextAlign = ContentAlignment.MiddleLeft;
-            employeesBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            employeesBtn.UseVisualStyleBackColor = false;
-            employeesBtn.Click += employeesBtn_Click;
+            departmentBtn.BackColor = Color.Teal;
+            departmentBtn.Dock = DockStyle.Top;
+            departmentBtn.FlatAppearance.BorderColor = Color.Teal;
+            departmentBtn.FlatStyle = FlatStyle.Flat;
+            departmentBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            departmentBtn.ForeColor = SystemColors.ControlLightLight;
+            departmentBtn.IconChar = FontAwesome.Sharp.IconChar.User;
+            departmentBtn.IconColor = Color.White;
+            departmentBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            departmentBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            departmentBtn.Location = new Point(0, 59);
+            departmentBtn.Name = "departmentBtn";
+            departmentBtn.Size = new Size(258, 66);
+            departmentBtn.TabIndex = 4;
+            departmentBtn.Text = "Manager";
+            departmentBtn.TextAlign = ContentAlignment.MiddleLeft;
+            departmentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            departmentBtn.UseVisualStyleBackColor = false;
+            departmentBtn.Click += departmentBtn_Click;
+            // 
+            // informationBtn
+            // 
+            informationBtn.BackColor = Color.Teal;
+            informationBtn.Dock = DockStyle.Top;
+            informationBtn.FlatAppearance.BorderColor = Color.Teal;
+            informationBtn.FlatStyle = FlatStyle.Flat;
+            informationBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            informationBtn.ForeColor = SystemColors.ControlLightLight;
+            informationBtn.IconChar = FontAwesome.Sharp.IconChar.Users;
+            informationBtn.IconColor = Color.White;
+            informationBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            informationBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            informationBtn.Location = new Point(0, 0);
+            informationBtn.Name = "informationBtn";
+            informationBtn.Size = new Size(258, 59);
+            informationBtn.TabIndex = 2;
+            informationBtn.Text = "Information";
+            informationBtn.TextAlign = ContentAlignment.MiddleLeft;
+            informationBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            informationBtn.UseVisualStyleBackColor = false;
+            informationBtn.Click += employeesBtn_Click;
             // 
             // panel5
             // 
@@ -282,14 +258,13 @@
         private Panel panel3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Panel mainPanel;
-        private FontAwesome.Sharp.IconButton employeesBtn;
+        private FontAwesome.Sharp.IconButton informationBtn;
         private Label label3;
         private Label label2;
         private Panel panel4;
         private FontAwesome.Sharp.IconButton departmentBtn;
         private Panel panel5;
         private FontAwesome.Sharp.IconButton returnBtn;
-        private FontAwesome.Sharp.IconButton salaryBtn;
         private FontAwesome.Sharp.IconButton projectsBtn;
     }
 }

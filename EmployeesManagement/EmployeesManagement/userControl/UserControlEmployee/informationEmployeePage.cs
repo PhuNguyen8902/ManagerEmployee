@@ -80,28 +80,42 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             emp.Id = int.Parse(tbInforId.Text);
             emp.Name = tbInforName.Text;
             String strPhone = tbInforPhone.Text.Trim();
-            Boolean phoneRs = utilsController.checkPhone(strPhone);
-            if (phoneRs)
-            {
-                emp.Phone = strPhone;
-            }
-            else
-            {
-                MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
-                tbInforPhone.Text = "";
-            }
+            Boolean phoneRs = utilsController.isPhoneNumber(strPhone);
+            //if (phoneRs)
+            //{
+            //    emp.Phone = strPhone;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
+            //    tbInforPhone.Text = "";
+            //}
             emp.Gender = (byte)cbInforGender.SelectedIndex;
             emp.HomeTown = tbInforHomeTown.Text;
-            if (phoneRs)
+            string email = tbInforEmail.Text;
+            Boolean rsEmailDuplicate = empController.checkEmailDuplicate(email);
+            if (phoneRs && rsEmailDuplicate)
             {
+                emp.Phone = strPhone;
                 Boolean rs = empController.updateInforEmployee(emp);
-                if (rs)
+                Boolean rsUpdateEmail = empController.updateEmailEmployee(emp.Id, email);
+                if (rs && rsUpdateEmail)
                 {
                     MessageBox.Show("Update successful");
                 }
                 else
                 {
                     MessageBox.Show("Update fail");
+                }
+            }
+            else {
+                if (!phoneRs) {
+                    MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
+                    tbInforPhone.Text = "";
+                }
+                if (!rsEmailDuplicate) {
+                    MessageBox.Show("Email is duplicated");
+                    tbInforEmail.Text = "";
                 }
             }
 
