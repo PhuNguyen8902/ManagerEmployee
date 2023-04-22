@@ -36,6 +36,14 @@ namespace EmployeesManagement.Control
         public bool deleteProject(int id) { 
             return projectService.deleteProject(id);
         }
+        public bool addEmployeeToProject(EmployeeProject ep)
+        {
+            return projectService.addEmployeeToProject(ep);
+        }
+        public bool deleteEmployeeInProject(int employeeId, int projectId)
+        {
+            return projectService.deleteEmployeeInProject(employeeId, projectId);
+        }
 
         public void Search(ComboBox cbSearch, TextBox tbSearch, ComboBox cbSearchActive,DateTimePicker DTPSearch, DataGridView dgvDepartment)
         {

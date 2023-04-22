@@ -53,7 +53,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
             }
             else
             {
-                MessageBox.Show("Choose project to update");
+                MessageBox.Show("Choose employee to add");
             }
         }
     }
