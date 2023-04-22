@@ -163,12 +163,14 @@ namespace EmployeesManagement.Service
             return dataTable;
         }
 
-        public void addEmployeeToProject(EmployeeProject ep)
+        public bool addEmployeeToProject(EmployeeProject ep)
         {
             try
             {
                 connection.Open();
-                string sql = string.Format("insert into employeeDB.dbo.employee_project(employeeId) VALUES('{0}', '{1}', '{2}','{3}','0')");
+                string sql = string.Format("insert into employeeDB.dbo.employee_project(employee_id, position_id, start_date, end_date) " +
+                    "VALUES('{0}', '{1}', '{2}','{3}',{4})", ep.EmployeeId, ep.ProjectId, ep.StartDate, ep.EndDate);
+                return true;
             }
             catch (Exception ex)
             {
@@ -178,6 +180,29 @@ namespace EmployeesManagement.Service
             {
                 connection.Close();
             }
+            return false;
+        }
+
+        public bool deleteEmployeeInProject(int employeeId, int projectId)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("DELETE FROM employeeDB.dbo.employee_project WHERE employee_id = {0} and project_id={1};", employeeId, projectId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
         }
     }
 }
