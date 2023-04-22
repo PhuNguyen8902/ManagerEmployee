@@ -150,7 +150,7 @@ namespace EmployeesManagement.Models
                 entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
 
                 entity.Property(e => e.EndDate)
-                    .HasColumnType("date")
+                    .HasMaxLength(50)
                     .HasColumnName("end_date");
 
                 entity.Property(e => e.ProjectId).HasColumnName("project_id");
@@ -160,7 +160,7 @@ namespace EmployeesManagement.Models
                     .HasColumnName("role");
 
                 entity.Property(e => e.StartDate)
-                    .HasColumnType("date")
+                    .HasMaxLength(50)
                     .HasColumnName("start_date");
 
                 entity.HasOne(d => d.Employee)
@@ -282,7 +282,7 @@ namespace EmployeesManagement.Models
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Date)
-                    .HasColumnType("date")
+                    .HasMaxLength(50)
                     .HasColumnName("date");
 
                 entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
