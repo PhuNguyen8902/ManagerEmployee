@@ -49,8 +49,12 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             String gender = "";
             e = empController.getInforEmployee(id);
             a = accController.getAccountOfEmployee(id);
-            int departmentId = (int)e.DepartmentId;
-            d = departmentController.getDepartmentOfEmployee(departmentId);
+            if (e.DepartmentId != null)
+            {
+                int departmentId = (int)e.DepartmentId;
+                d = departmentController.getDepartmentOfEmployee(departmentId);
+                tbInforDepartment.Text = d.Name;
+            }
             tbInforId.Text = e.Id.ToString();
             tbInforName.Text = e.Name;
             tbInforPhone.Text = "0" + e.Phone;
@@ -63,7 +67,6 @@ namespace EmployeesManagement.userControl.UserControlEmployee
                 cbInforGender.SelectedIndex = 1;
             }
             tbInforHomeTown.Text = e.HomeTown;
-            tbInforDepartment.Text = d.Name;
             tbInforPosition.Text = a.Type;
             tbInforEmail.Text = a.Email;
         }
@@ -86,7 +89,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             emp.Gender = (byte)cbInforGender.SelectedIndex;
             emp.HomeTown = tbInforHomeTown.Text;
             string email = tbInforEmail.Text;
-            Boolean rsEmailDuplicate = accController.checkEmailDuplicate(email);
+            Boolean rsEmailDuplicate = accController.checkEmailDuplicate(email,emp.Id);
             if (phoneRs && rsEmailDuplicate)
             {
                 emp.Phone = strPhone;

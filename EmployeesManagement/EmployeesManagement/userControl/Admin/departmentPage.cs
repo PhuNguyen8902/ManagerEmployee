@@ -21,6 +21,8 @@ namespace EmployeesManagement.userControl
     {
         private departmentController departmentController;
         private salaryController salaryController;
+        private employeeController empController;
+        private notifyController notify;
 
 
 
@@ -30,6 +32,8 @@ namespace EmployeesManagement.userControl
         {
             departmentController = new departmentController();
             salaryController = new salaryController();
+            empController = new employeeController();
+            notify = new notifyController();
             InitializeComponent();
         }
 
@@ -84,10 +88,20 @@ namespace EmployeesManagement.userControl
                 DataGridViewRow row = dgvDepartment.SelectedRows[0];
 
                 int id = Int32.Parse(row.Cells[0].Value.ToString());
+                List<int> empList = empController.getEmployeesInDepartment(id);
+
 
                 if (departmentController.deleteDepartment(id))
                 {
                     MessageBox.Show("Delete Success");
+
+                    foreach (int empId in empList)
+                    {
+                        DateTime now = DateTime.Now;
+                        string message = string.Format("Admin has delete the Department you are working with ({0})", now.ToString());
+                        notify.addNotify(empId, message);
+                    }
+
                     FormCollection allOpenedForm = Application.OpenForms;
                     foreach (Form form in allOpenedForm)
                     {

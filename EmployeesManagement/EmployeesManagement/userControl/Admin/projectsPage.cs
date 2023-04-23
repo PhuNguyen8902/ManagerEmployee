@@ -22,6 +22,8 @@ namespace EmployeesManagement.userControl
         private projectController projectController;
         private salaryController salaryController;
         private departmentController departmentController;
+        private employeeController empController;
+        private notifyController notify;
         SqlConnection connection = Connection.Connection.GetConnection();
 
         public projectsPage()
@@ -29,6 +31,8 @@ namespace EmployeesManagement.userControl
             projectController = new projectController();
             salaryController = new salaryController();
             departmentController = new departmentController();
+            empController = new employeeController();
+            notify = new notifyController();
             InitializeComponent();
         }
 
@@ -96,10 +100,18 @@ namespace EmployeesManagement.userControl
                 DataGridViewRow row = dgvProject.SelectedRows[0];
 
                 int id = Int32.Parse(row.Cells[0].Value.ToString());
+                List<int> empList = empController.getEmployeesInEmployeeProject(id);
+
 
                 if (projectController.deleteProject(id))
                 {
                     MessageBox.Show("Delete Success");
+                    foreach (int empId in empList)
+                    {
+                        DateTime now = DateTime.Now;
+                        string message = string.Format("Admin has delete the Project you are working with ({0})", now.ToString());
+                        notify.addNotify(empId, message);
+                    }
                     dgvProject.DataSource = projectController.GetProjectData(isActive);
                 }
                 else

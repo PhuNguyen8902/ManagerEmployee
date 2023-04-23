@@ -40,12 +40,12 @@ namespace EmployeesManagement.Service
         }
 
         //Kiểm tra trong database có bị trùng email hay không
-        public Boolean checkEmailDuplicate(string email)
+        public Boolean checkEmailDuplicate(string email,int emid)
         {
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT COUNT(*) FROM [employeeDB].[dbo].[account] WHERE email = '{0}'", email);
+                string sql = string.Format("SELECT COUNT(*) FROM [employeeDB].[dbo].[account] WHERE email = '{0}' AND (employee_id IS NULL OR employee_id <> {1})", email,emid);
                 using (SqlCommand cmd = new SqlCommand(sql, connection))
                 {
                     int count = (int)cmd.ExecuteScalar();
@@ -64,12 +64,12 @@ namespace EmployeesManagement.Service
         }
 
         //Kiểm tra trong database có bị trùng user_name hay không
-        public Boolean checkUserNameDuplicate(string user_name)
+        public Boolean checkUserNameDuplicate(string user_name,int emid)
         {
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT COUNT(*) FROM [employeeDB].[dbo].[account] WHERE user_name = '{0}'", user_name);
+                string sql = string.Format("SELECT COUNT(*) FROM [employeeDB].[dbo].[account] WHERE user_name = '{0}' AND (employee_id IS NULL OR employee_id <> {1})", user_name, emid);
                 using (SqlCommand cmd = new SqlCommand(sql, connection))
                 {
                     int count = (int)cmd.ExecuteScalar();

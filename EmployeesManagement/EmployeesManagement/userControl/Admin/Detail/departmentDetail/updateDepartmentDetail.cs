@@ -16,6 +16,8 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
     public partial class updateDepartmentDetail : Form
     {
         departmentController departmentController = new departmentController();
+        employeeController empController = new employeeController();
+        notifyController notify = new notifyController();
         UtilsController utilsController = new UtilsController();
 
         public int id { get; set; }
@@ -49,6 +51,15 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
                 if (departmentController.updateDepartment(department))
                 {
                     MessageBox.Show("Update successfully");
+                    int deId = department.Id;
+                    List<int> empList = empController.getEmployeesInDepartment(deId);
+                    foreach (int empId in empList)
+                    {
+                        DateTime now = DateTime.Now;
+                        string message = string.Format("Admin has changed the information of the Department you are working with ({0})", now.ToString());
+                        notify.addNotify(empId, message);
+                    }
+
                     FormCollection allOpenedForm = Application.OpenForms;
                     foreach (Form form in allOpenedForm)
                     {

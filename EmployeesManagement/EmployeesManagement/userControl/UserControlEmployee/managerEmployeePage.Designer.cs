@@ -201,11 +201,11 @@
             lbNotifyManager.AutoSize = true;
             lbNotifyManager.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             lbNotifyManager.ForeColor = Color.Red;
-            lbNotifyManager.Location = new Point(224, 652);
+            lbNotifyManager.Location = new Point(141, 656);
             lbNotifyManager.Name = "lbNotifyManager";
-            lbNotifyManager.Size = new Size(464, 31);
+            lbNotifyManager.Size = new Size(603, 31);
             lbNotifyManager.TabIndex = 55;
-            lbNotifyManager.Text = "This department does not have a manager";
+            lbNotifyManager.Text = "This employee does not have a manager or department";
             lbNotifyManager.Visible = false;
             // 
             // tbManagerEmail

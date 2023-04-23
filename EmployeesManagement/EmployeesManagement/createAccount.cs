@@ -61,8 +61,8 @@ namespace EmployeesManagement
             Account account = new Account();
             string userName = txtUsername.Text;
             string email = txtEmail.Text;
-            Boolean rsUserName = accController.checkUserNameDuplicate(userName);
-            Boolean rsEmail = accController.checkEmailDuplicate(email);
+            Boolean rsUserName = accController.checkUserNameDuplicate(userName,-1);
+            Boolean rsEmail = accController.checkEmailDuplicate(email,-1);
             if (rsUserName)
             {
                 account.UserName = userName;

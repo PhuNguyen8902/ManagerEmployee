@@ -26,6 +26,8 @@ namespace EmployeesManagement.Models
         public virtual DbSet<allowanceSalary> AllowanceSalaries { get; set; } = null!;
         public virtual DbSet<Salary> Salaries { get; set; } = null!;
         public virtual DbSet<Timekeeping> Timekeepings { get; set; } = null!;
+        public virtual DbSet<Notify> Notifys { get; set; } = null!;
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -70,6 +72,24 @@ namespace EmployeesManagement.Models
                     .WithMany(p => p.Accounts)
                     .HasForeignKey(d => d.EmployeeId)
                     .HasConstraintName("fk_a_employee");
+            });
+
+            modelBuilder.Entity<Notify>(entity =>
+            {
+                entity.ToTable("notify");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+
+                entity.Property(e => e.Value)
+                    .HasMaxLength(200)
+                    .HasColumnName("value");
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Notifys)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .HasConstraintName("fk_n_employee");
             });
 
             modelBuilder.Entity<Department>(entity =>

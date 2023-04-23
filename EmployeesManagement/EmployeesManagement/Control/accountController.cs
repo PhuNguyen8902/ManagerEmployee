@@ -18,17 +18,17 @@ namespace EmployeesManagement.Control
             return accountService.updateEmailEmployee(id, email);
         }
 
-        public Boolean checkEmailDuplicate(string email)
+        public Boolean checkEmailDuplicate(string email, int emid)
         {
-            return accountService.checkEmailDuplicate(email);
+            return accountService.checkEmailDuplicate(email,emid);
         }
 
         public Account getAccountOfEmployee(int emid)
         {
             return accountService.getAccountOfEmployee(emid);
         }
-        public Boolean checkUserNameDuplicate(string user_name) {
-            return accountService.checkUserNameDuplicate(user_name);
+        public Boolean checkUserNameDuplicate(string user_name, int emid) {
+            return accountService.checkUserNameDuplicate(user_name,emid);
         }
 
         public Boolean createAccount(Account a) {

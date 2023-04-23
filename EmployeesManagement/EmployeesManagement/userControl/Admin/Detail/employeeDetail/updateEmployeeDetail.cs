@@ -29,6 +29,8 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
 
         employeeController updateEmployee = new employeeController();
         UtilsController utilsController = new UtilsController();
+        notifyController notify = new notifyController();
+
 
         public updateEmployeeDetail()
         {
@@ -98,6 +100,9 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
                 if (updateEmployee.updateEmployee(emp))
                 {
                     MessageBox.Show("Update successfully");
+                    DateTime now = DateTime.Now;
+                    string message = string.Format("Admin has changed your information ({0})", now.ToString());
+                    notify.addNotify(id, message);
                     FormCollection allOpenedForm = Application.OpenForms;
                     foreach (Form form in allOpenedForm)
                     {

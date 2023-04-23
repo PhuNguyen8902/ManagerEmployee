@@ -37,7 +37,6 @@
             tbSearch = new TextBox();
             btnSearch2 = new Button();
             cbSearchPosition = new ComboBox();
-            testBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAccount).BeginInit();
             SuspendLayout();
             // 
@@ -134,21 +133,10 @@
             cbSearchPosition.Text = "Select the item";
             cbSearchPosition.Visible = false;
             // 
-            // testBtn
-            // 
-            testBtn.Location = new Point(668, 66);
-            testBtn.Name = "testBtn";
-            testBtn.Size = new Size(94, 29);
-            testBtn.TabIndex = 41;
-            testBtn.Text = "Test";
-            testBtn.UseVisualStyleBackColor = true;
-            testBtn.Click += testBtn_Click;
-            // 
             // accountPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(testBtn);
             Controls.Add(cbSearchPosition);
             Controls.Add(btnSearch2);
             Controls.Add(cbSearch);
@@ -177,6 +165,5 @@
         private TextBox tbSearch;
         private Button btnSearch2;
         private ComboBox cbSearchPosition;
-        private Button testBtn;
     }
 }
