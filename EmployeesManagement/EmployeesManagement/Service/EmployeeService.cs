@@ -393,6 +393,59 @@ namespace EmployeesManagement.Service
             return p;
         }
 
+        //Lấy danh sách các employee bên trong deparment
+        public List<int> getEmployeesInDepartment(int deid)
+        {
+            List<int> list= new List<int>();
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.employee WHERE department_id = '{0}'", deid);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int empId = reader.GetInt32(reader.GetOrdinal("id"));
+                    list.Add(empId);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+
+        //Lấy danh sách các employee bên trong employeeproject
+        public List<int> getEmployeesInEmployeeProject(int proid)
+        {
+            List<int> list = new List<int>();
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.employee_project WHERE project_id = '{0}'", proid);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int empId = reader.GetInt32(reader.GetOrdinal("employee_id"));
+                    list.Add(empId);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
         public void CloseConnection()
         {
             connection.Close();

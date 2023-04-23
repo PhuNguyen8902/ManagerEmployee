@@ -15,6 +15,9 @@ namespace EmployeesManagement.userControl.Detail.projectDetail
     public partial class updateProjectDetail : Form
     {
         projectController projectController = new projectController();
+        employeeController empController = new employeeController();
+        notifyController notify = new notifyController();
+
 
         public updateProjectDetail()
         {
@@ -55,6 +58,14 @@ namespace EmployeesManagement.userControl.Detail.projectDetail
                 if (projectController.updateProject(project))
                 {
                     MessageBox.Show("Update successfully");
+                    List<int> empList = empController.getEmployeesInEmployeeProject(Id);
+                    foreach (int empId in empList)
+                    {
+                        DateTime now = DateTime.Now;
+                        string message = string.Format("Admin has changed the information of the Project you are working with ({0})", now.ToString());
+                        notify.addNotify(empId, message);
+                    }
+
                     FormCollection allOpenedForm = Application.OpenForms;
                     foreach (Form form in allOpenedForm)
                     {

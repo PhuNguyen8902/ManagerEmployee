@@ -72,5 +72,11 @@ namespace EmployeesManagement.Control
         public Position getPositionValueByName(string name) { 
             return empService.getPositionValueByName(name);
         }
+        public List<int> getEmployeesInDepartment(int deid) {
+            return empService.getEmployeesInDepartment(deid);
+        }
+        public List<int> getEmployeesInEmployeeProject(int proid) { 
+            return empService.getEmployeesInEmployeeProject(proid);
+        }
     }
 }

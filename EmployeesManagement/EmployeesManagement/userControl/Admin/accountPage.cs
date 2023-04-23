@@ -20,12 +20,14 @@ namespace EmployeesManagement.userControl.Admin
     public partial class accountPage : System.Windows.Forms.UserControl
     {
         private accountController accController;
+        private notifyController notify;
         SqlConnection connection = Connection.Connection.GetConnection();
 
         public accountPage()
         {
             InitializeComponent();
             accController = new accountController();
+            notify = new notifyController();
         }
 
         private void accountPage_Load(object sender, EventArgs e)
@@ -277,12 +279,6 @@ namespace EmployeesManagement.userControl.Admin
                     cbSearchPosition.Visible = false;
                 }
             }
-        }
-
-        private void testBtn_Click(object sender, EventArgs e)
-        {
-            notifyEmployeePage notify = new notifyEmployeePage();
-            notify.SendMessage("dayne");
         }
 
     }

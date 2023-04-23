@@ -111,6 +111,14 @@ CREATE TABLE account (
 )
 GO
 
+CREATE TABLE notify (
+	id int primary key identity(1,1),
+	value nvarchar (200),
+	employee_id int,
+	constraint fk_n_employee foreign key (employee_id) references employee(id)
+)
+GO
+
 
 
 
@@ -159,6 +167,7 @@ insert into account(user_name,password,full_name,email,type,employee_id) values 
 insert into account(user_name,password,full_name,email,type,employee_id) values ('employee','F579544FB8301A3C0E06F51DFC660617832DA8B443A0484670302E6C2B1013ABdfdd9bc4b0869177002fc98116140ae777197db3279ab7212e595dc2207242d0','Employee','employee@gmail.com','Employee',5);
 insert into account(user_name,password,full_name,email,type,employee_id) values ('manage','42B5A18E7D8725CCC3DC26734913292C334E73B43D57447F1C1C7C1B0869F944d14f21cfa5db4dd1d3e3f3b0a44a874d9043becd6177b73126b9979f7c6ed0c4','Manage','manage@gmail.com','Manage',2);
 
+insert into notify (value,employee_id) values ('Thong bao 1',5);
 
 insert into timekeeping (date,working_hour,employee_id) values ('2002-10-02','11:00:00',1);
 

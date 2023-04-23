@@ -30,49 +30,57 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         {
             Employee employee = new Employee();
             employee = empController.getInforEmployee(id);
-            int departmentId = (int)employee.DepartmentId;
-            Department department = new Department();
-            Employee manager = new Employee();
-            department = departmentController.getDepartmentOfEmployee(departmentId);
-            manager = empController.getInforManagerOfEmployee(departmentId);
-            Position position = new Position();
-            int positionId = (int)manager.PositionId;
-            position = empController.getPositionValue(positionId);
-            if (manager != null)
+            if (employee.DepartmentId != null)
             {
-                if (position.Name == "Manage")
+                int departmentId = (int)employee.DepartmentId;
+                Department department = new Department();
+                Employee manager = new Employee();
+                department = departmentController.getDepartmentOfEmployee(departmentId);
+                manager = empController.getInforManagerOfEmployee(departmentId);
+                Position position = new Position();
+                int positionId = (int)manager.PositionId;
+                position = empController.getPositionValue(positionId);
+                if (manager != null)
                 {
-                    tbManagerPosition.Text = "Manager";
-                }
-                tbManagerName.Text = manager.Name;
-                tbManagerPhone.Text = "0" + manager.Phone;
-                if (manager.Gender == 0)
-                {
-                    tbManagerGender.Text = "Male";
+                    if (position.Name == "Manage")
+                    {
+                        tbManagerPosition.Text = "Manager";
+                    }
+                    tbManagerName.Text = manager.Name;
+                    tbManagerPhone.Text = "0" + manager.Phone;
+                    if (manager.Gender == 0)
+                    {
+                        tbManagerGender.Text = "Male";
+                    }
+                    else
+                    {
+                        tbManagerGender.Text = "Female";
+                    }
+                    int managerId = manager.Id;
+                    Account accountManager = new Account();
+                    accountManager = accController.getAccountOfEmployee(managerId);
+                    if (accountManager != null)
+                    {
+                        string emailManager = accountManager.Email;
+                        tbManagerEmail.Text = emailManager;
+                    }
+                    else
+                    {
+                        tbManagerEmail.Text = "Does not have an email";
+                    }
                 }
                 else
                 {
-                    tbManagerGender.Text = "Female";
+                    lbNotifyManager.Visible = true;
                 }
-                int managerId = manager.Id;
-                Account accountManager = new Account();
-                accountManager=accController.getAccountOfEmployee(managerId);
-                if (accountManager != null)
-                {
-                    string emailManager = accountManager.Email;
-                    tbManagerEmail.Text = emailManager;
-                }
-                else {
-                    tbManagerEmail.Text = "Does not have an email";
-                }
+                tbDepartmentName.Text = department.Name;
+                tbDepartmentPhone.Text = "0" + department.Phone;
+                tbDepartmentAddress.Text = department.Address;
             }
             else
             {
                 lbNotifyManager.Visible = true;
             }
-            tbDepartmentName.Text = department.Name;
-            tbDepartmentPhone.Text = "0" + department.Phone;
-            tbDepartmentAddress.Text = department.Address;
         }
     }
 }

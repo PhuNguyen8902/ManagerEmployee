@@ -12,6 +12,7 @@ namespace EmployeesManagement.Models
         {
             Accounts = new HashSet<Account>();
             Timekeepings = new HashSet<Timekeeping>();
+            Notifys = new HashSet<Notify>();
         }
         public Employee(string Name, string Phone, byte Gender, string Hometown, int DepartmentId, int SalaryId, int PositionId)
         {
@@ -48,6 +49,8 @@ namespace EmployeesManagement.Models
         public virtual Salary? Salary { get; set; }
         public virtual ICollection<Account> Accounts { get; set; }
         public virtual ICollection<Timekeeping> Timekeepings { get; set; }
-       
+        public virtual ICollection<Notify> Notifys { get; set; }
+
+
     }
 }

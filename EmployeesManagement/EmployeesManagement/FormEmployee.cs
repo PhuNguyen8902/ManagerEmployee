@@ -40,7 +40,7 @@ namespace EmployeesManagement
         private void initializeNavigationController(int display)
         {
             List<UserControl> userControls = new List<UserControl>()
-            { new userControl.UserControlEmployee.informationEmployeePage(employeeId), new userControl.UserControlEmployee.projectEmployeePage(employeeId),new userControl.UserControlEmployee.managerEmployeePage(employeeId),new userControl.UserControlEmployee.notifyEmployeePage()};
+            { new userControl.UserControlEmployee.informationEmployeePage(employeeId), new userControl.UserControlEmployee.projectEmployeePage(employeeId),new userControl.UserControlEmployee.managerEmployeePage(employeeId),new userControl.UserControlEmployee.notifyEmployeePage(employeeId)};
 
             navigationControl = new navigationController(userControls, mainPanel); // create an instance of navigationControl
             navigationControl.display(display);

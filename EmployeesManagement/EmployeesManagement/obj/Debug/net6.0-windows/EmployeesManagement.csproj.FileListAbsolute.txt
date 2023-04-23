@@ -267,3 +267,6 @@ D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\Employees
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.accountPage.resources
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.assignAccountDeatil.assignAccountDetail.resources
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlEmployee.notifyEmployeePage.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.projectDetail.addEmployeeToProjectForm.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.projectDetail.projectDetail.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.projectDetail.updateEmployeeInProject.resources
