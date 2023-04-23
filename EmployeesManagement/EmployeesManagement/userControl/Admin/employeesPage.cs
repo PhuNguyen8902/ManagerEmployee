@@ -45,35 +45,10 @@ namespace EmployeesManagement.userControl
             DataTable dataTable = employeeController.getEmployee();
 
             dgvEmployee.DataSource = dataTable;
-
-           
       
 
             employeeService.CloseConnection();
         }
-
-        //private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    employeeService.OpenConnection();
-
-        //    // Kiểm tra xem nút Xóa đã được nhấp vào chưa
-        //    if (e.ColumnIndex == dgvEmployee.Columns["deleteButtonColumn"].Index && e.RowIndex >= 0)
-        //    {
-        //        // Lấy ID của nhân viên được chọn để xóa
-        //        int employeeId = Convert.ToInt32(dgvEmployee.Rows[e.RowIndex].Cells["id"].Value);
-
-        //        // Thực hiện hành động xóa trong cơ sở dữ liệu
-        //        employeeService.deleteEmployee(employeeId);
-
-        //        // Cập nhật lại DataGridView để hiển thị dữ liệu mới nhất
-        //        MessageBox.Show("Xóa thành công");
-        //        dgvEmployee.DataSource = employeeService.GetEmployeeData();
-        //    }
-        //    employeeService.CloseConnection();
-
-        //}
-
-
 
         private void addBtn_Click(object sender, EventArgs e)
         {
@@ -93,7 +68,17 @@ namespace EmployeesManagement.userControl
                 if (employeeController.deleteEmployee(id))
                 {
                     MessageBox.Show("Xóa thành công");
-                    dgvEmployee.DataSource = employeeController.getEmployee();
+                    FormCollection allOpenedForm = Application.OpenForms;
+                    foreach (Form form in allOpenedForm)
+                    {
+                        if (form.Name == "primary")
+                        {
+                            form.Close();
+                            primary primaryPage = new primary(0);
+                            primaryPage.Show();
+                            return;
+                        }
+                    }
                 }
                 else
                 {
@@ -125,7 +110,12 @@ namespace EmployeesManagement.userControl
                 String departmentString = row.Cells[5].Value.ToString();
 
                 int departmentId = employeeController.getIdByDeparementName(departmentString);
-                int salaryNet = Int32.Parse(row.Cells[6].Value.ToString());
+
+                string salaryNetString = row.Cells[6].Value.ToString();
+                int salaryNet = 0;
+                if (salaryNetString != "")
+                    salaryNet = Int32.Parse(salaryNetString);
+                 
                 int salaryId = employeeController.getIdByNetSalary(salaryNet);
 
 

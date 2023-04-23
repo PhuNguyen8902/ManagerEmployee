@@ -88,7 +88,17 @@ namespace EmployeesManagement.userControl
                 if (departmentController.deleteDepartment(id))
                 {
                     MessageBox.Show("Delete Success");
-                    dgvDepartment.DataSource = departmentController.GetDepartmentData();
+                    FormCollection allOpenedForm = Application.OpenForms;
+                    foreach (Form form in allOpenedForm)
+                    {
+                        if (form.Name == "primary")
+                        {
+                            form.Close();
+                            primary primaryPage = new primary(2);
+                            primaryPage.Show();
+                            return;
+                        }
+                    }
                 }
                 else
                 {

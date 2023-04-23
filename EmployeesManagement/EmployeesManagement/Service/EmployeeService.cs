@@ -21,8 +21,8 @@ namespace EmployeesManagement.Service
         {
             DataTable table = new DataTable();
             string query = "SELECT e.id, e.name, e.phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.net_salary as salary, p.name as position " +
-                "FROM employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
-                "inner join employeeDB.dbo.salary s on e.salary_id = s.id " +
+                "FROM employeeDB.dbo.employee e left join employeeDB.dbo.department d on e.department_id = d.id " +
+                "left join employeeDB.dbo.salary s on e.salary_id = s.id " +
                 "inner join employeeDB.dbo.position p on e.position_id = p.id";
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -100,9 +100,35 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("DELETE FROM employeeDB.dbo.employee WHERE id = {0};", employeeId);
+                List<int> listAccountId = new List<int>();
+                string sql = string.Format("select * from employeeDB.dbo.account where employee_id={0}", employeeId);
                 SqlCommand cmd = new SqlCommand(sql, connection);
-                if (cmd.ExecuteNonQuery() > 0)
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    listAccountId.Add(rdr.GetInt32(0));
+                }
+                connection.Close();
+
+                connection.Open();
+                foreach (int accountId in listAccountId)
+                {
+                    sql = string.Format("update employeeDB.dbo.account set employee_id = NULL where id={0}", accountId);
+                    SqlCommand cmd1 = new SqlCommand(sql, connection);
+                    cmd1.ExecuteReader();
+                }
+                connection.Close();
+
+                connection.Open();
+                sql = string.Format("delete from employeeDB.dbo.employee_project where employee_id = {0}", employeeId);
+                SqlCommand cmd3 = new SqlCommand(sql, connection);
+                cmd3.ExecuteReader();
+                connection.Close();
+
+                connection.Open();
+                sql = string.Format("DELETE FROM employeeDB.dbo.employee WHERE id = {0};", employeeId);
+                SqlCommand cmd2 = new SqlCommand(sql, connection);
+                if (cmd2.ExecuteNonQuery() > 0)
                     return true;
 
             }
@@ -123,10 +149,25 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
+                string sql = string.Format("select * from employeeDB.dbo.employee where department_id = {0}", employee.DepartmentId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader["position_id"].Equals(3) && employee.PositionId.Equals(3))
+                    {
+                        MessageBox.Show("This department already has manager");
+                        return false;
+                    }
+                }
+                connection.Close();
+
+
+                connection.Open();
                 string SQL = string.Format("insert into employeeDB.dbo.employee(name, phone,gender,home_town, department_id, salary_id, position_id) VALUES('{0}', '{1}', '{2}', '{3}', {4}, {5}, {6})"
                    , employee.Name, employee.Phone, employee.Gender, employee.HomeTown, employee.DepartmentId, employee.SalaryId, employee.PositionId);
-                SqlCommand cmd = new SqlCommand(SQL, connection);
-                if (cmd.ExecuteNonQuery() > 0)
+                SqlCommand cmd1 = new SqlCommand(SQL, connection);
+                if (cmd1.ExecuteNonQuery() > 0)
                     return true;
             }
             catch (Exception ex)
@@ -145,11 +186,25 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("update employee set name = '{0}', phone = '{1}', gender = '{2}', home_town = '{3}'," +
+                string sql = string.Format("select * from employeeDB.dbo.employee where department_id = {0}", employee.DepartmentId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader["position_id"].Equals(3) && employee.PositionId.Equals(3))
+                    {
+                        MessageBox.Show("This department already has manager");
+                        return false;
+                    }
+                }
+                connection.Close();
+
+                connection.Open();
+                sql = string.Format("update employee set name = '{0}', phone = '{1}', gender = '{2}', home_town = '{3}'," +
                     " department_id = '{4}', salary_id = '{5}', position_id = '{6}'  where id = {7}"
                     , employee.Name, employee.Phone, employee.Gender, employee.HomeTown, employee.DepartmentId, employee.SalaryId, employee.PositionId, employee.Id);
-                SqlCommand cmd = new SqlCommand(sql, connection);
-                if (cmd.ExecuteNonQuery() > 0)
+                SqlCommand cmd1 = new SqlCommand(sql, connection);
+                if (cmd1.ExecuteNonQuery() > 0)
                     return true;
             }
             catch (Exception ex)
