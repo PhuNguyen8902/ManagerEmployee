@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             panel4 = new Panel();
+            notifyBtn = new FontAwesome.Sharp.IconButton();
             projectsBtn = new FontAwesome.Sharp.IconButton();
             departmentBtn = new FontAwesome.Sharp.IconButton();
             informationBtn = new FontAwesome.Sharp.IconButton();
@@ -62,6 +63,7 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(notifyBtn);
             panel4.Controls.Add(projectsBtn);
             panel4.Controls.Add(departmentBtn);
             panel4.Controls.Add(informationBtn);
@@ -70,6 +72,28 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(258, 492);
             panel4.TabIndex = 2;
+            // 
+            // notifyBtn
+            // 
+            notifyBtn.BackColor = Color.Teal;
+            notifyBtn.Dock = DockStyle.Top;
+            notifyBtn.FlatAppearance.BorderColor = Color.Teal;
+            notifyBtn.FlatStyle = FlatStyle.Flat;
+            notifyBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            notifyBtn.ForeColor = SystemColors.ControlLightLight;
+            notifyBtn.IconChar = FontAwesome.Sharp.IconChar.Bell;
+            notifyBtn.IconColor = Color.White;
+            notifyBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            notifyBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.Location = new Point(0, 184);
+            notifyBtn.Name = "notifyBtn";
+            notifyBtn.Size = new Size(258, 59);
+            notifyBtn.TabIndex = 7;
+            notifyBtn.Text = "Notify";
+            notifyBtn.TextAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            notifyBtn.UseVisualStyleBackColor = false;
+            notifyBtn.Click += notifyBtn_Click;
             // 
             // projectsBtn
             // 
@@ -266,5 +290,6 @@
         private Panel panel5;
         private FontAwesome.Sharp.IconButton returnBtn;
         private FontAwesome.Sharp.IconButton projectsBtn;
+        private FontAwesome.Sharp.IconButton notifyBtn;
     }
 }

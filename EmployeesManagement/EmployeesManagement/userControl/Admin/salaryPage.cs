@@ -161,9 +161,12 @@ namespace EmployeesManagement.userControl
             }
             else if (selectedValue == "level")
             {
-                string level = cbSearchLevel.SelectedItem.ToString();
-                DataTable dataTable = salaryController.findByLevel(level, str);
-                dgvSalary.DataSource = dataTable;
+                if (cbSearchLevel.SelectedIndex != -1)
+                {
+                    string level = cbSearchLevel.SelectedItem.ToString();
+                    DataTable dataTable = salaryController.findByLevel(level, str);
+                    dgvSalary.DataSource = dataTable;
+                }
             }
             else if (selectedValue == "allowance")
             {

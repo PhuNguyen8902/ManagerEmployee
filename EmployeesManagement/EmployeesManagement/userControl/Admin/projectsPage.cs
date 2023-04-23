@@ -206,14 +206,17 @@ namespace EmployeesManagement.userControl
             }
             else
             {
-                string strActive = cbSearchActive.SelectedItem.ToString();
-                string Active = "0";
-                if (strActive == "Active")
-                    Active = "0";
-                else
-                    Active = "1";
-                DataTable dataTable = projectController.findByCodition(Active, str, selectedValue);
-                dgvProject.DataSource = dataTable;
+                if (cbSearchActive.SelectedIndex != -1)
+                {
+                    string strActive = cbSearchActive.SelectedItem.ToString();
+                    string Active = "0";
+                    if (strActive == "Active")
+                        Active = "0";
+                    else
+                        Active = "1";
+                    DataTable dataTable = projectController.findByCodition(Active, str, selectedValue);
+                    dgvProject.DataSource = dataTable;
+                }
             }
 
         }

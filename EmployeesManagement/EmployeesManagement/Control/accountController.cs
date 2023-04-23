@@ -38,7 +38,7 @@ namespace EmployeesManagement.Control
             return accountService.hashPassword(password);
         }
 
-        public bool verifyPassword(string password, string storedHash){
+        public bool verifyPassword(string password, string storedHash) {
             return accountService.verifyPassword(password, storedHash);
         }
 
@@ -49,8 +49,26 @@ namespace EmployeesManagement.Control
         public DataTable GetAccountNeedAssignData() {
             return accountService.GetAccountNeedAssignData();
         }
-        public Boolean updateEmployeeIdForAccount(int accountId, int emId) { 
+        public Boolean updateEmployeeIdForAccount(int accountId, int emId) {
             return accountService.updateEmployeeIdForAccount(accountId, emId);
+        }
+
+        public Boolean removeeEmployeeIdOutAccount(int accountId){
+            return accountService.removeEmployeeIdOutAccount(accountId);
+        }
+
+        public DataTable searchAccountDataByConditionId(string condition, int id) { 
+            return accountService.searchAccountDataByConditionId(condition, id);
+        }
+
+        public DataTable searchAccountNeedAssignDataByCondition(string condition, string value) { 
+            return accountService.searchAccountNeedAssignDataByCondition(condition, value);
+        }
+        public DataTable searchAccountDataByCondition(string condition, string id) {
+            return accountService.searchAccountDataByCondition(condition, id);
+        }
+        public DataTable searchAccountNeedAssignDataByConditionId(string condition, int id) {
+            return accountService.searchAccountNeedAssignDataByConditionId(condition, id);
         }
     }
 }

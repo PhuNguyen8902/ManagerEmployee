@@ -67,6 +67,9 @@
     <Compile Update="userControl\UserControlEmployee\informationEmployeePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="userControl\UserControlEmployee\notifyEmployeePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="userControl\UserControlEmployee\projectEmployeePage.cs">
       <SubType>UserControl</SubType>
     </Compile>

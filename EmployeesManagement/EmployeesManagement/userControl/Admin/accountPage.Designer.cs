@@ -31,12 +31,19 @@
             btnFindAll = new Button();
             dgvAccount = new DataGridView();
             assignBtn = new Button();
+            removeBtn = new Button();
+            cbSearch = new ComboBox();
+            btnSearch1 = new Button();
+            tbSearch = new TextBox();
+            btnSearch2 = new Button();
+            cbSearchPosition = new ComboBox();
+            testBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAccount).BeginInit();
             SuspendLayout();
             // 
             // btnFindAll
             // 
-            btnFindAll.Location = new Point(257, 116);
+            btnFindAll.Location = new Point(421, 12);
             btnFindAll.Name = "btnFindAll";
             btnFindAll.Size = new Size(94, 29);
             btnFindAll.TabIndex = 31;
@@ -69,10 +76,85 @@
             assignBtn.UseVisualStyleBackColor = true;
             assignBtn.Click += assignBtn_Click;
             // 
+            // removeBtn
+            // 
+            removeBtn.Location = new Point(270, 116);
+            removeBtn.Name = "removeBtn";
+            removeBtn.Size = new Size(169, 29);
+            removeBtn.TabIndex = 33;
+            removeBtn.Text = "Remove employee id";
+            removeBtn.UseVisualStyleBackColor = true;
+            removeBtn.Click += removeBtn_Click;
+            // 
+            // cbSearch
+            // 
+            cbSearch.FormattingEnabled = true;
+            cbSearch.Location = new Point(31, 50);
+            cbSearch.Name = "cbSearch";
+            cbSearch.Size = new Size(258, 28);
+            cbSearch.TabIndex = 38;
+            cbSearch.Text = "Select the item you want to search";
+            cbSearch.SelectedIndexChanged += cbSearch_SelectedIndexChanged;
+            // 
+            // btnSearch1
+            // 
+            btnSearch1.Location = new Point(307, 12);
+            btnSearch1.Name = "btnSearch1";
+            btnSearch1.Size = new Size(94, 29);
+            btnSearch1.TabIndex = 37;
+            btnSearch1.Text = "Search";
+            btnSearch1.UseVisualStyleBackColor = true;
+            btnSearch1.Click += btnSearch1_Click;
+            // 
+            // tbSearch
+            // 
+            tbSearch.Location = new Point(31, 12);
+            tbSearch.Name = "tbSearch";
+            tbSearch.Size = new Size(258, 27);
+            tbSearch.TabIndex = 36;
+            // 
+            // btnSearch2
+            // 
+            btnSearch2.Location = new Point(307, 12);
+            btnSearch2.Name = "btnSearch2";
+            btnSearch2.Size = new Size(94, 29);
+            btnSearch2.TabIndex = 39;
+            btnSearch2.Text = "Search 2";
+            btnSearch2.UseVisualStyleBackColor = true;
+            btnSearch2.Visible = false;
+            btnSearch2.Click += btnSearch2_Click;
+            // 
+            // cbSearchPosition
+            // 
+            cbSearchPosition.FormattingEnabled = true;
+            cbSearchPosition.Location = new Point(31, 11);
+            cbSearchPosition.Name = "cbSearchPosition";
+            cbSearchPosition.Size = new Size(258, 28);
+            cbSearchPosition.TabIndex = 40;
+            cbSearchPosition.Text = "Select the item";
+            cbSearchPosition.Visible = false;
+            // 
+            // testBtn
+            // 
+            testBtn.Location = new Point(668, 66);
+            testBtn.Name = "testBtn";
+            testBtn.Size = new Size(94, 29);
+            testBtn.TabIndex = 41;
+            testBtn.Text = "Test";
+            testBtn.UseVisualStyleBackColor = true;
+            testBtn.Click += testBtn_Click;
+            // 
             // accountPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(testBtn);
+            Controls.Add(cbSearchPosition);
+            Controls.Add(btnSearch2);
+            Controls.Add(cbSearch);
+            Controls.Add(btnSearch1);
+            Controls.Add(tbSearch);
+            Controls.Add(removeBtn);
             Controls.Add(assignBtn);
             Controls.Add(btnFindAll);
             Controls.Add(dgvAccount);
@@ -81,6 +163,7 @@
             Load += accountPage_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAccount).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -88,5 +171,12 @@
         private Button btnFindAll;
         private DataGridView dgvAccount;
         private Button assignBtn;
+        private Button removeBtn;
+        private ComboBox cbSearch;
+        private Button btnSearch1;
+        private TextBox tbSearch;
+        private Button btnSearch2;
+        private ComboBox cbSearchPosition;
+        private Button testBtn;
     }
 }
