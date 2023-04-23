@@ -2,6 +2,7 @@
 using EmployeesManagement.Service;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,17 @@ namespace EmployeesManagement.Control
 
         public bool verifyPassword(string password, string storedHash){
             return accountService.verifyPassword(password, storedHash);
+        }
+
+        public DataTable GetAccountData() {
+            return accountService.GetAccountData();
+        }
+
+        public DataTable GetAccountNeedAssignData() {
+            return accountService.GetAccountNeedAssignData();
+        }
+        public Boolean updateEmployeeIdForAccount(int accountId, int emId) { 
+            return accountService.updateEmployeeIdForAccount(accountId, emId);
         }
     }
 }

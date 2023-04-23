@@ -1,5 +1,6 @@
 ﻿using EmployeesManagement.Control;
 using EmployeesManagement.userControl;
+using EmployeesManagement.userControl.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace EmployeesManagement
         private void initializeNavigationController(int display)
         {
             List<UserControl> userControls = new List<UserControl>()
-            { new employeesPage(), new projectsPage(), new DepartmentPage(),new salaryPage()};
+            { new employeesPage(), new projectsPage(), new DepartmentPage(),new salaryPage(),new accountPage()};
 
             navigationControl = new navigationController(userControls, mainPanel); // create an instance of navigationControl
             navigationControl.display(display);
@@ -71,6 +72,11 @@ namespace EmployeesManagement
             createAccount createAccountPage = new createAccount();
             createAccountPage.Show();
             this.Close();
+        }
+
+        private void accountBtn_Click(object sender, EventArgs e)
+        {
+            navigationControl.display(4);
         }
     }
 }
