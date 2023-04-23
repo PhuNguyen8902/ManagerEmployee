@@ -57,6 +57,20 @@ namespace EmployeesManagement.Control
         {
             return empService.getInforManagerOfEmployee(departmentId);
         }
-  
+
+        public DataTable getEmployeeNeedAssignData() { 
+            return empService.getEmployeeNeedAssignData();
+        }
+        public Position getPositionValue(int id) { 
+            return empService.getPositionValue(id);
+        }
+
+        public DataTable searchEmployeeNeedAssignData(string condition, int value) { 
+            return empService.searchEmployeeNeedAssignData(condition, value);
+        }
+
+        public Position getPositionValueByName(string name) { 
+            return empService.getPositionValueByName(name);
+        }
     }
 }

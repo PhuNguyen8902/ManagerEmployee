@@ -166,7 +166,7 @@
             backBtn.Location = new Point(375, 391);
             backBtn.Name = "backBtn";
             backBtn.Size = new Size(71, 47);
-            backBtn.TabIndex = 11;
+            backBtn.TabIndex = 7;
             backBtn.Text = "Back";
             backBtn.UseVisualStyleBackColor = false;
             backBtn.Click += button1_Click_1;
@@ -187,8 +187,8 @@
             cbType.FormattingEnabled = true;
             cbType.Location = new Point(49, 10);
             cbType.Name = "cbType";
-            cbType.Size = new Size(319, 31);
-            cbType.TabIndex = 1;
+            cbType.Size = new Size(336, 31);
+            cbType.TabIndex = 5;
             cbType.Text = "Select type";
             // 
             // iconPictureBox6
@@ -222,7 +222,7 @@
             txtEmail.Location = new Point(49, 13);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(304, 23);
-            txtEmail.TabIndex = 1;
+            txtEmail.TabIndex = 4;
             txtEmail.Enter += txtEmail_Enter;
             txtEmail.Leave += txtEmail_Leave;
             // 
@@ -257,7 +257,7 @@
             txtFullName.Location = new Point(49, 13);
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(304, 23);
-            txtFullName.TabIndex = 1;
+            txtFullName.TabIndex = 3;
             txtFullName.Enter += txtFullName_Enter;
             txtFullName.Leave += txtFullName_Leave;
             // 
@@ -284,7 +284,7 @@
             createAccountBtn.Location = new Point(154, 391);
             createAccountBtn.Name = "createAccountBtn";
             createAccountBtn.Size = new Size(169, 47);
-            createAccountBtn.TabIndex = 7;
+            createAccountBtn.TabIndex = 6;
             createAccountBtn.Text = "Create Account";
             createAccountBtn.UseVisualStyleBackColor = false;
             createAccountBtn.Click += createAccountBtn_Click;

@@ -1,5 +1,6 @@
 ﻿using EmployeesManagement.Models;
 using Google.Protobuf.WellKnownTypes;
+using Mysqlx.Datatypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -252,8 +253,90 @@ namespace EmployeesManagement.Service
             return false;
         }
 
+        // Lấy thông tin employee chưa có account
+        public DataTable getEmployeeNeedAssignData()
+        {
+            DataTable table = new DataTable();
+            string query = "SELECT e.id, e.name,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, p.name as position " +
+                "FROM employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+                "inner join employeeDB.dbo.position p on e.position_id = p.id WHERE e.id NOT IN (SELECT employee_id FROM employeeDB.dbo.account WHERE employee_id IS NOT NULL)";
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
 
+        // Xử lý search thông tin employee chưa có account
+        public DataTable searchEmployeeNeedAssignData(string condition,int value)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("SELECT e.id, e.name,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, p.name as position " +
+                "FROM employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+                "inner join employeeDB.dbo.position p on e.position_id = p.id WHERE e.{0}={1} and e.id NOT IN (SELECT employee_id FROM employeeDB.dbo.account WHERE employee_id IS NOT NULL)", condition,value);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
 
+        //Lấy Position bang id
+        public Position getPositionValue(int id) {
+            Position p = null;
+
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.position WHERE id = {0}", id);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    p = new Position();
+                    p.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    p.Name = reader.GetString(reader.GetOrdinal("name"));
+                    p.Description = reader.GetString(reader.GetOrdinal("description"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return p;
+        }
+
+        //Lấy Position bằng name
+        public Position getPositionValueByName(string name)
+        {
+            Position p = null;
+
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.position WHERE name = '{0}'", name);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    p = new Position();
+                    p.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    p.Name = reader.GetString(reader.GetOrdinal("name"));
+                    p.Description = reader.GetString(reader.GetOrdinal("description"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return p;
+        }
 
         public void CloseConnection()
         {

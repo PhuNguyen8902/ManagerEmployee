@@ -1,11 +1,13 @@
 ﻿using EmployeesManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static Mysqlx.Notice.Warning.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -226,5 +228,51 @@ namespace EmployeesManagement.Service
             }
             return false;
         }
+
+        // Lấy thông tin account để truyền vào datagridview
+        public DataTable GetAccountData()
+        {
+            DataTable table = new DataTable();
+            string query = "SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id";
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+        // Lấy thông tin account cần gán employee_id để truyền vào datagridview
+        public DataTable GetAccountNeedAssignData()
+        {
+            DataTable table = new DataTable();
+            string query = "SELECT id, user_name, email, type FROM employeeDB.dbo.account Where employee_id IS NULL";
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+
+        //Gán nhân viên cho account
+        public Boolean updateEmployeeIdForAccount(int accountId, int emId)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("update employeeDB.dbo.account set employee_id ='{0}' where id={1}", emId, accountId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
     }
 }

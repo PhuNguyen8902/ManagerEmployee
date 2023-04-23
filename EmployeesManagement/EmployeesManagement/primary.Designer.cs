@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             panel4 = new Panel();
+            accountBtn = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
             createAccountBtn = new FontAwesome.Sharp.IconButton();
             salaryBtn = new FontAwesome.Sharp.IconButton();
@@ -66,6 +67,7 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(accountBtn);
             panel4.Controls.Add(panel2);
             panel4.Controls.Add(salaryBtn);
             panel4.Controls.Add(departmentBtn);
@@ -76,6 +78,28 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(258, 492);
             panel4.TabIndex = 2;
+            // 
+            // accountBtn
+            // 
+            accountBtn.BackColor = Color.Teal;
+            accountBtn.Dock = DockStyle.Top;
+            accountBtn.FlatAppearance.BorderColor = Color.Teal;
+            accountBtn.FlatStyle = FlatStyle.Flat;
+            accountBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            accountBtn.ForeColor = SystemColors.ControlLightLight;
+            accountBtn.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
+            accountBtn.IconColor = Color.White;
+            accountBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            accountBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            accountBtn.Location = new Point(0, 236);
+            accountBtn.Name = "accountBtn";
+            accountBtn.Size = new Size(258, 59);
+            accountBtn.TabIndex = 6;
+            accountBtn.Text = "Account";
+            accountBtn.TextAlign = ContentAlignment.MiddleLeft;
+            accountBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            accountBtn.UseVisualStyleBackColor = false;
+            accountBtn.Click += accountBtn_Click;
             // 
             // panel2
             // 
@@ -100,7 +124,7 @@
             createAccountBtn.Location = new Point(3, 3);
             createAccountBtn.Name = "createAccountBtn";
             createAccountBtn.Size = new Size(249, 69);
-            createAccountBtn.TabIndex = 0;
+            createAccountBtn.TabIndex = 7;
             createAccountBtn.Text = "Create Account";
             createAccountBtn.TextAlign = ContentAlignment.MiddleLeft;
             createAccountBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -218,7 +242,7 @@
             returnBtn.Location = new Point(18, 14);
             returnBtn.Name = "returnBtn";
             returnBtn.Size = new Size(117, 49);
-            returnBtn.TabIndex = 0;
+            returnBtn.TabIndex = 8;
             returnBtn.Text = "Sign out";
             returnBtn.TextAlign = ContentAlignment.MiddleLeft;
             returnBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -329,5 +353,6 @@
         private FontAwesome.Sharp.IconButton projectsBtn;
         private Panel panel2;
         private FontAwesome.Sharp.IconButton createAccountBtn;
+        private FontAwesome.Sharp.IconButton accountBtn;
     }
 }

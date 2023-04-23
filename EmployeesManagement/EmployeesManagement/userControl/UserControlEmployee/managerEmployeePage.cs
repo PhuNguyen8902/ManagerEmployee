@@ -35,9 +35,12 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             Employee manager = new Employee();
             department = departmentController.getDepartmentOfEmployee(departmentId);
             manager = empController.getInforManagerOfEmployee(departmentId);
+            Position position = new Position();
+            int positionId = (int)manager.PositionId;
+            position = empController.getPositionValue(positionId);
             if (manager != null)
             {
-                if (manager.PositionId == 3)
+                if (position.Name == "Manage")
                 {
                     tbManagerPosition.Text = "Manager";
                 }
