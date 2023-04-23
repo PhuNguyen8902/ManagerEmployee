@@ -109,20 +109,30 @@ namespace EmployeesManagement.userControl.Admin.Detail.assignAccountDeatil
             string condition = cbSearch.SelectedItem.ToString();
             if (condition == "Employee Id")
             {
-                int id = int.Parse(tbSearch.Text);
-                DataTable dataTable = empController.searchEmployeeNeedAssignData("id",id);
+                int id;
+                if (!int.TryParse(tbSearch.Text, out id))
+                {
+                    MessageBox.Show("Please enter a number for the ID!");
+                }
+                else
+                {
+                    DataTable dataTable = empController.searchEmployeeNeedAssignData("id", id);
 
-                dgvAssignAccount.DataSource = dataTable;
+                    dgvAssignAccount.DataSource = dataTable;
+                }
             }
             else
             {
-                string position = cbSearchPosition.SelectedItem.ToString();
-                Position pos = new Position();
-                pos = empController.getPositionValueByName(position);
-                int posId = pos.Id;
-                DataTable dataTable = empController.searchEmployeeNeedAssignData("position_id", posId);
+                if (cbSearchPosition.SelectedIndex != -1)
+                {
+                    string position = cbSearchPosition.SelectedItem.ToString();
+                    Position pos = new Position();
+                    pos = empController.getPositionValueByName(position);
+                    int posId = pos.Id;
+                    DataTable dataTable = empController.searchEmployeeNeedAssignData("position_id", posId);
 
-                dgvAssignAccount.DataSource = dataTable;
+                    dgvAssignAccount.DataSource = dataTable;
+                }
             }
         }
 

@@ -274,5 +274,71 @@ namespace EmployeesManagement.Service
             return false;
         }
 
+        //Gỡ nhân viên của account
+        public Boolean removeEmployeeIdOutAccount(int accountId)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("update employeeDB.dbo.account set employee_id = NULL where id={0}", accountId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        // Search thông tin account để truyền vào datagridview bằng các condition chính xác như id
+        public DataTable searchAccountDataByConditionId(string condition,int id)
+        {
+            DataTable table = new DataTable();
+            string query =string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE a.{0}={1}",condition,id);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+        // Search thông tin account để truyền vào datagridview bằng các condition khác
+        public DataTable searchAccountDataByCondition(string condition, string id)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE a.{0} like '%{1}%'", condition, id);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+        // Search thông tin account cần gán employee_id để truyền vào datagridview bằng các condition khác
+        public DataTable searchAccountNeedAssignDataByConditionId(string condition,int id)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("SELECT id, user_name, email, type FROM employeeDB.dbo.account Where employee_id IS NULL and {0} ={1}", condition, id);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+        // Search thông tin account cần gán employee_id để truyền vào datagridview bằng các condition khác
+        public DataTable searchAccountNeedAssignDataByCondition(string condition, string value)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("SELECT id, user_name, email, type FROM employeeDB.dbo.account Where employee_id IS NULL and {0} like '%{1}%'",condition,value);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
     }
 }
