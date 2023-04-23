@@ -58,7 +58,7 @@ namespace EmployeesManagement.userControl.Detail.salaryDetail
                         {
                             this.Close();
                             form.Close();
-                            primary primaryPage = new primary();
+                            primary primaryPage = new primary(3);
                             primaryPage.Show();
                             return;
                         }

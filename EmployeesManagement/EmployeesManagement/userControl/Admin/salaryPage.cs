@@ -84,7 +84,17 @@ namespace EmployeesManagement.userControl
                 if (salaryController.deleteSalary(id))
                 {
                     MessageBox.Show("Delete Success");
-                    dgvSalary.DataSource = salaryController.GetSalaryData();
+                    FormCollection allOpenedForm = Application.OpenForms;
+                    foreach (Form form in allOpenedForm)
+                    {
+                        if (form.Name == "primary")
+                        {
+                            form.Close();
+                            primary primaryPage = new primary(3);
+                            primaryPage.Show();
+                            return;
+                        }
+                    }
                 }
                 else
                 {

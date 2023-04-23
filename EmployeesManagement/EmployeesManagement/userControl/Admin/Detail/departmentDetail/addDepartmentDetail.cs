@@ -47,7 +47,7 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
                         {
                             this.Close();
                             form.Close();
-                            primary primaryPage = new primary();
+                            primary primaryPage = new primary(2);
                             primaryPage.Show();
                             return;
                         }

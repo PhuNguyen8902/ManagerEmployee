@@ -214,9 +214,29 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("DELETE FROM employeeDB.dbo.salary WHERE id = {0};", id);
+                List<int> listEmployeeId = new List<int>();
+                string sql = string.Format("select * from employeeDB.dbo.employee where salary_id={0}", id);
                 SqlCommand cmd = new SqlCommand(sql, connection);
-                if (cmd.ExecuteNonQuery() > 0)
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    listEmployeeId.Add(rdr.GetInt32(0));
+                }
+                connection.Close();
+
+                connection.Open();
+                foreach (int employeeId in listEmployeeId)
+                {
+                    sql = string.Format("update employeeDB.dbo.employee set salary_id = NULL where id={0}", employeeId);
+                    SqlCommand cmd1 = new SqlCommand(sql, connection);
+                    cmd1.ExecuteReader();
+                }
+                connection.Close();
+
+                connection.Open();
+                sql = string.Format("DELETE FROM employeeDB.dbo.salary WHERE id = {0};", id);
+                SqlCommand cmd2 = new SqlCommand(sql, connection);
+                if (cmd2.ExecuteNonQuery() > 0)
                     return true;
 
             }
