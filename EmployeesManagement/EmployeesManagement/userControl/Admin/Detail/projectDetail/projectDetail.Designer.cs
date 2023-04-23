@@ -37,7 +37,7 @@
             this.lbCondition = new System.Windows.Forms.Label();
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnDeleteEmploye = new System.Windows.Forms.Button();
-            this.btnEndJob = new System.Windows.Forms.Button();
+            this.btnUpdateEmployee = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,22 +126,22 @@
             this.btnDeleteEmploye.UseVisualStyleBackColor = true;
             this.btnDeleteEmploye.Click += new System.EventHandler(this.btnDeleteEmploye_Click);
             // 
-            // btnEndJob
+            // btnUpdateEmployee
             // 
-            this.btnEndJob.Location = new System.Drawing.Point(12, 171);
-            this.btnEndJob.Name = "btnEndJob";
-            this.btnEndJob.Size = new System.Drawing.Size(94, 29);
-            this.btnEndJob.TabIndex = 10;
-            this.btnEndJob.Text = "End job";
-            this.btnEndJob.UseVisualStyleBackColor = true;
-            this.btnEndJob.Click += new System.EventHandler(this.btnEndJob_Click);
+            this.btnUpdateEmployee.Location = new System.Drawing.Point(380, 171);
+            this.btnUpdateEmployee.Name = "btnUpdateEmployee";
+            this.btnUpdateEmployee.Size = new System.Drawing.Size(139, 29);
+            this.btnUpdateEmployee.TabIndex = 10;
+            this.btnUpdateEmployee.Text = "Update employee";
+            this.btnUpdateEmployee.UseVisualStyleBackColor = true;
+            this.btnUpdateEmployee.Click += new System.EventHandler(this.btnUpdateEmployee_Click);
             // 
             // projectDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 563);
-            this.Controls.Add(this.btnEndJob);
+            this.Controls.Add(this.btnUpdateEmployee);
             this.Controls.Add(this.btnDeleteEmploye);
             this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.lbCondition);
@@ -171,6 +171,6 @@
         private Label lbCondition;
         private Button btnAddEmployee;
         private Button btnDeleteEmploye;
-        private Button btnEndJob;
+        private Button btnUpdateEmployee;
     }
 }

@@ -75,13 +75,12 @@ namespace EmployeesManagement.userControl
                 string desciption = row.Cells[2].Value.ToString();
                 string startDate = row.Cells[3].Value.ToString();
                 string endDate = row.Cells[4].Value.ToString();
-                bool isActive = false;
-                string Active = row.Cells[5].Value.ToString();
 
-                if (Active == "Active")
-                    isActive = true;
-                else isActive = false;
-                updateProjectDetail formUpdateProject = new updateProjectDetail(id, name, desciption, startDate, endDate, isActive);
+                bool isBoolActive = true;
+                if (isActive == 1)
+                    isBoolActive = false;
+                
+                updateProjectDetail formUpdateProject = new updateProjectDetail(id, name, desciption, startDate, endDate, isBoolActive);
                 formUpdateProject.ShowDialog();
             }
             else

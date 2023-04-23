@@ -1,4 +1,5 @@
 ﻿using EmployeesManagement.Models;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -144,6 +145,7 @@ namespace EmployeesManagement.Service
         // Tìm kiếm project của employee bằng project id
         public DataTable findEmployeeProjectByProjectId(int id,int emid)
         {
+            
             DataTable dataTable = new DataTable();
             try
             {
@@ -215,9 +217,23 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("insert into employeeDB.dbo.employee_project(employee_id, position_id, start_date, end_date) " +
-                    "VALUES('{0}', '{1}', '{2}','{3}',{4})", ep.EmployeeId, ep.ProjectId, ep.StartDate, ep.EndDate);
-                return true;
+                string sql = string.Format("select employee_id from employeeDB.dbo.employee_project where project_id={0}", ep.ProjectId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.Read())
+                {
+                    if(rdr["employee_id"].Equals(ep.EmployeeId))
+                    {
+                        MessageBox.Show("This employee already in this project");
+                        return false;
+                    }
+                }
+
+                sql = string.Format("insert into employeeDB.dbo.employee_project(employee_id, project_id, start_date, end_date) " +
+                    "VALUES('{0}', '{1}' , '{2}', '{3}')", ep.EmployeeId, ep.ProjectId, ep.StartDate, ep.EndDate);
+                SqlCommand cmd1 = new SqlCommand(sql, connection);
+                if (cmd1.ExecuteNonQuery() > 0)
+                    return true;
             }
             catch (Exception ex)
             {
@@ -236,6 +252,28 @@ namespace EmployeesManagement.Service
             {
                 connection.Open();
                 string sql = string.Format("DELETE FROM employeeDB.dbo.employee_project WHERE employee_id = {0} and project_id={1};", employeeId, projectId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+        public bool updateEmployeeInProject(EmployeeProject ep)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("update employeeDB.dbo.employee_project set start_date = '{0}',end_date ='{1}' where employee_id = {2} and project_id = {3}"
+                    , ep.StartDate, ep.EndDate, ep.EmployeeId, ep.ProjectId);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;

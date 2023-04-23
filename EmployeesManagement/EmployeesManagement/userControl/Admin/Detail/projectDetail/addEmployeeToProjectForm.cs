@@ -1,4 +1,5 @@
 ﻿using EmployeesManagement.Control;
+using EmployeesManagement.Models;
 using EmployeesManagement.userControl.Detail.projectDetail;
 using System;
 using System.Collections.Generic;
@@ -17,17 +18,23 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
     {
         employeeController employeeController = new employeeController();
         SqlConnection connection = Connection.Connection.GetConnection();
+        projectController projectController = new projectController();
+
+        DataGridView dgvProjectDetail;
 
         private int projectId { get; set; }
 
-        public string? EndDate { get; set; }
+        public string endDate { get; set; }
 
         
-        public addEmployeeToProjectForm(int projectId, String endDate)
+
+        
+        public addEmployeeToProjectForm(int projectId, String endDate, DataGridView dgb)
         {
             InitializeComponent();
             this.projectId= projectId;
-            this.EndDate = endDate;
+            this.endDate = endDate;
+            this.dgvProjectDetail = dgb;
         }
 
         private void addEmployeeToProjectForm_Load(object sender, EventArgs e)
@@ -47,9 +54,25 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
             if (dgvAllEmployees.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvAllEmployees.SelectedRows[0];
-                int id = Int32.Parse(row.Cells[0].Value.ToString());
+                int employyId = Int32.Parse(row.Cells[0].Value.ToString());
 
-               
+                String today = DateTime.Today.ToString();
+                
+
+                EmployeeProject ep = new EmployeeProject(employyId, projectId, today, endDate);
+
+                if (projectController.addEmployeeToProject(ep))
+                {
+                    this.Close();
+
+                    DataTable dataTable = projectController.getEmployeeWorkInSpecificProject(projectId);
+                    dgvProjectDetail.DataSource = dataTable;
+
+                    MessageBox.Show("Add Success");
+                    return;
+                }
+
+                MessageBox.Show("Can't add employee to project");
             }
             else
             {

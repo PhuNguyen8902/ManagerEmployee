@@ -44,7 +44,7 @@ namespace EmployeesManagement.Detail
                         {
                             this.Close();
                             form.Close();
-                            primary primaryPage = new primary();
+                            primary primaryPage = new primary(1);
                             primaryPage.Show();
                             return;
                         }

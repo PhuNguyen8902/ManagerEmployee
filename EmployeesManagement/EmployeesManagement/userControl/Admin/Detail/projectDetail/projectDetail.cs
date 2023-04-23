@@ -1,4 +1,5 @@
 ﻿using EmployeesManagement.Control;
+using EmployeesManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,12 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
         SqlConnection connection = Connection.Connection.GetConnection();
         projectController projectController = new projectController();
 
+
+        public projectDetail(int Id)
+        {
+            InitializeComponent();
+            this.Id = Id;
+        }
 
         public projectDetail(int Id, string Name, string Description, string StartDate, string EndDate, bool IsActive)
         {
@@ -58,29 +65,40 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
                 lbCondition.Text += "\t" + "end";
                 btnAddEmployee.Visible = false;
                 btnDeleteEmploye.Visible = false;
-                btnEndJob.Visible = false;
+                btnUpdateEmployee.Visible = false;
             }
             else
             {
                 lbCondition.Text += "\t" + "active";
                 btnAddEmployee.Visible = true;
                 btnDeleteEmploye.Visible = true;
-                btnEndJob.Visible = true;
+                btnUpdateEmployee.Visible = true;
             }
         }
 
-        private void addEmployee_Click(object sender, EventArgs e)
+        private  void addEmployee_Click(object sender, EventArgs e)
         {
-            addEmployeeToProjectForm form = new addEmployeeToProjectForm(Id, EndDate);
+            addEmployeeToProjectForm form = new addEmployeeToProjectForm(Id, EndDate, dgvEmployee);
 
             form.ShowDialog();
+
         }
 
         private void btnDeleteEmploye_Click(object sender, EventArgs e)
         {
             if (dgvEmployee.SelectedRows.Count > 0)
             {
-                
+                DataGridViewRow row = dgvEmployee.SelectedRows[0];
+                int employyId = Int32.Parse(row.Cells[0].Value.ToString());
+
+                if(projectController.deleteEmployeeInProject(employyId, Id))
+                {
+                    MessageBox.Show("Delete Success");
+                    DataTable dataTable = projectController.getEmployeeWorkInSpecificProject(Id);
+                    dgvEmployee.DataSource = dataTable;
+                    return;
+                }
+                MessageBox.Show("Can't delete employee");
             }
             else
             {
@@ -88,15 +106,21 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
             }
         }
 
-        private void btnEndJob_Click(object sender, EventArgs e)
+        private void btnUpdateEmployee_Click(object sender, EventArgs e)
         {
             if (dgvEmployee.SelectedRows.Count > 0)
             {
+                DataGridViewRow row = dgvEmployee.SelectedRows[0];
+                int employeeId = Int32.Parse(row.Cells[0].Value.ToString());
+                string startDate = row.Cells[3].Value.ToString();
+                string endDate = row.Cells[4].Value.ToString();
 
+                updateEmployeeInProject form = new updateEmployeeInProject(employeeId, Id, startDate, endDate, dgvEmployee);
+                form.ShowDialog();
             }
             else
             {
-                MessageBox.Show("You must choose employee to end job");
+                MessageBox.Show("You must choose employee to update");
             }
         }
     }

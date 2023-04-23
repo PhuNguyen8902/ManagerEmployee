@@ -11,6 +11,7 @@ namespace EmployeesManagement.Control
 {
     public class projectController
     {
+        // project in Admin
         ProjectService projectService = new ProjectService();
 
         public DataTable GetProjectData(int isActive)
@@ -44,7 +45,10 @@ namespace EmployeesManagement.Control
         {
             return projectService.deleteEmployeeInProject(employeeId, projectId);
         }
-
+        public bool updateEmployeeInProject(EmployeeProject ep)
+        {
+            return projectService.updateEmployeeInProject(ep);
+        }
         public DataTable findById(int id, string str) { 
             return projectService.findById(id, str);
         }

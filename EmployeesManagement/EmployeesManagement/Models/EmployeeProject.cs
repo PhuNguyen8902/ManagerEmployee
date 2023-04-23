@@ -18,6 +18,10 @@ namespace EmployeesManagement.Models
             this.StartDate = startDate;
             this.EndDate = endDate;
         }
+        public EmployeeProject(string startDate, string endDate) {
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
         public virtual Employee? Employee { get; set; }
         public virtual Project? Project { get; set; }
     }
