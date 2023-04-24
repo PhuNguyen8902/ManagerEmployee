@@ -537,6 +537,51 @@ namespace EmployeesManagement.Service
             }
             return list;
         }
+
+        // Lấy tất cả các employee làm việc trong department
+        public DataTable GetEmployeeDataInDeparment(int deId)
+        {
+            DataTable table = new DataTable();
+            string query =string.Format("select e.id as EmployeeId,e.name as EmployeeName,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS Phone " +
+               ",case when e.gender = 0 then 'Male' else 'Female' end as Gender,e.home_town as HomeTown,d.name as DepartmentName,p.name as Position " +
+                "from employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+                "inner join employeeDB.dbo.position p on p.id=e.position_id where e.department_id={0} ORDER BY CASE p.name " +
+                "WHEN 'Admin' THEN 1 WHEN 'Manage' THEN 2 WHEN 'Employee' THEN 3 ELSE 4 END", deId);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+        // Search các employee làm việc trong department bằng các condition chính xác
+        public DataTable searchEmployeeDataInDeparmentByConditionId(int deId,string condition,string value)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("select e.id as EmployeeId,e.name as EmployeeName,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS Phone " +
+               ",case when e.gender = 0 then 'Male' else 'Female' end as Gender,e.home_town as HomeTown,d.name as DepartmentName,p.name as Position " +
+                "from employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+                "inner join employeeDB.dbo.position p on p.id=e.position_id where e.department_id={0} and {1}='{2}' ORDER BY CASE p.name " +
+                "WHEN 'Admin' THEN 1 WHEN 'Manage' THEN 2 WHEN 'Employee' THEN 3 ELSE 4 END", deId,condition,value);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+        // Search các employee làm việc trong department bằng các condition mơ hồ
+        public DataTable searchEmployeeDataInDeparmentByConditionElse(int deId, string condition, string value)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("select e.id as EmployeeId,e.name as EmployeeName,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS Phone " +
+               ",case when e.gender = 0 then 'Male' else 'Female' end as Gender,e.home_town as HomeTown,d.name as DepartmentName,p.name as Position " +
+                "from employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+                "inner join employeeDB.dbo.position p on p.id=e.position_id where e.department_id={0} and {1} like '%{2}%' ORDER BY CASE p.name " +
+                "WHEN 'Admin' THEN 1 WHEN 'Manage' THEN 2 WHEN 'Employee' THEN 3 ELSE 4 END", deId, condition, value);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
         public void CloseConnection()
         {
             connection.Close();

@@ -2,6 +2,7 @@
 using EmployeesManagement.Detail;
 using EmployeesManagement.Models;
 using EmployeesManagement.Service;
+using EmployeesManagement.userControl.Admin.Detail.departmentDetail;
 using EmployeesManagement.userControl.Detail.departmentDetail;
 using EmployeesManagement.userControl.Detail.employeeDetail;
 using System;
@@ -183,6 +184,19 @@ namespace EmployeesManagement.userControl
             DataTable dataTable = departmentController.GetDepartmentData();
 
             dgvDepartment.DataSource = dataTable;
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            if (dgvDepartment.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvDepartment.SelectedRows[0];
+
+                int id = Int32.Parse(row.Cells[0].Value.ToString());
+                inforDepartmentDetail infoDeDetail = new inforDepartmentDetail(id);
+                infoDeDetail.ShowDialog();
+            }
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace EmployeesManagement.userControl.Admin.Detail.assignAccountDeatil
 {
     partial class assignAccountDetail
+
     {
         /// <summary>
         /// Required designer variable.

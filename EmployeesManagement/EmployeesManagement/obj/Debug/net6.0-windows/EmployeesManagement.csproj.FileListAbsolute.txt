@@ -278,3 +278,4 @@ D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\Employees
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.employeePage.resources
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.informationManagerPage.resources
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.projectPage.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.departmentDetail.inforDepartmentDetail.resources

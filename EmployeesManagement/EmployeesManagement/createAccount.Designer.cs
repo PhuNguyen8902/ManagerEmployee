@@ -179,7 +179,7 @@
             panel6.Location = new Point(29, 331);
             panel6.Name = "panel6";
             panel6.Size = new Size(386, 43);
-            panel6.TabIndex = 10;
+            panel6.TabIndex = 5;
             // 
             // cbType
             // 
@@ -213,7 +213,7 @@
             panel5.Location = new Point(29, 273);
             panel5.Name = "panel5";
             panel5.Size = new Size(386, 43);
-            panel5.TabIndex = 9;
+            panel5.TabIndex = 4;
             // 
             // txtEmail
             // 
@@ -248,7 +248,7 @@
             panel3.Location = new Point(28, 212);
             panel3.Name = "panel3";
             panel3.Size = new Size(386, 43);
-            panel3.TabIndex = 8;
+            panel3.TabIndex = 3;
             // 
             // txtFullName
             // 
@@ -297,7 +297,7 @@
             panel4.Location = new Point(28, 151);
             panel4.Name = "panel4";
             panel4.Size = new Size(386, 44);
-            panel4.TabIndex = 6;
+            panel4.TabIndex = 2;
             // 
             // txtPassword
             // 
@@ -333,7 +333,7 @@
             panel.Location = new Point(28, 83);
             panel.Name = "panel";
             panel.Size = new Size(386, 43);
-            panel.TabIndex = 5;
+            panel.TabIndex = 1;
             // 
             // txtUsername
             // 
