@@ -36,6 +36,7 @@
             tbSearch = new TextBox();
             cbSearch = new ComboBox();
             btnFindAll = new Button();
+            btnDetail = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvDepartment).BeginInit();
             SuspendLayout();
             // 
@@ -94,7 +95,7 @@
             // 
             // tbSearch
             // 
-            tbSearch.Location = new Point(22, 11);
+            tbSearch.Location = new Point(22, 12);
             tbSearch.Name = "tbSearch";
             tbSearch.Size = new Size(258, 27);
             tbSearch.TabIndex = 10;
@@ -119,10 +120,21 @@
             btnFindAll.UseVisualStyleBackColor = true;
             btnFindAll.Click += btnFindAll_Click;
             // 
+            // btnDetail
+            // 
+            btnDetail.Location = new Point(771, 118);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(94, 29);
+            btnDetail.TabIndex = 27;
+            btnDetail.Text = "Detail";
+            btnDetail.UseVisualStyleBackColor = true;
+            btnDetail.Click += btnDetail_Click;
+            // 
             // DepartmentPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnDetail);
             Controls.Add(btnFindAll);
             Controls.Add(cbSearch);
             Controls.Add(deleteBtn);
@@ -149,5 +161,6 @@
         private TextBox tbSearch;
         private ComboBox cbSearch;
         private Button btnFindAll;
+        private Button btnDetail;
     }
 }

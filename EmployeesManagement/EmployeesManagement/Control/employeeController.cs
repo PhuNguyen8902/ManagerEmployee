@@ -98,5 +98,16 @@ namespace EmployeesManagement.Control
         {
             return empService.GetDepartmentDataByManagerId(managerid);
         }
+
+        // Employee trong Department
+        public DataTable GetEmployeeDataInDeparment(int deId) { 
+            return empService.GetEmployeeDataInDeparment(deId);
+        }
+        public DataTable searchEmployeeDataInDeparmentByConditionId(int deId, string condition, string value) { 
+            return empService.searchEmployeeDataInDeparmentByConditionId(deId, condition, value);
+        }
+        public DataTable searchEmployeeDataInDeparmentByConditionElse(int deId, string condition, string value) { 
+            return empService.searchEmployeeDataInDeparmentByConditionElse(deId, condition, value);
+        }
     }
 }

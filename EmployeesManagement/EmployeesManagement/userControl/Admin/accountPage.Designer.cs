@@ -118,7 +118,7 @@
             btnSearch2.Name = "btnSearch2";
             btnSearch2.Size = new Size(94, 29);
             btnSearch2.TabIndex = 39;
-            btnSearch2.Text = "Search 2";
+            btnSearch2.Text = "Search";
             btnSearch2.UseVisualStyleBackColor = true;
             btnSearch2.Visible = false;
             btnSearch2.Click += btnSearch2_Click;
