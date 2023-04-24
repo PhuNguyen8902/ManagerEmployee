@@ -20,7 +20,7 @@ namespace EmployeesManagement.Service
         public DataTable GetEmployeeData()
         {
             DataTable table = new DataTable();
-            string query = "SELECT e.id, e.name, e.phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.net_salary as salary, p.name as position " +
+            string query = "SELECT e.id, e.name, FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.net_salary as salary, p.name as position " +
                 "FROM employeeDB.dbo.employee e left join employeeDB.dbo.department d on e.department_id = d.id " +
                 "left join employeeDB.dbo.salary s on e.salary_id = s.id " +
                 "inner join employeeDB.dbo.position p on e.position_id = p.id";
@@ -53,7 +53,7 @@ namespace EmployeesManagement.Service
             }
 
             connection.Open();
-            string query = String.Format("SELECT e.id, e.name, e.phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.net_salary as salary, p.name as position " +
+            string query = String.Format("SELECT e.id, e.name, FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.net_salary as salary, p.name as position " +
                 "FROM employeeDB.dbo.employee e left join employeeDB.dbo.department d on e.department_id = d.id " +
                 "left join employeeDB.dbo.salary s on e.salary_id = s.id " +
                 "inner join employeeDB.dbo.position p on e.position_id = p.id " +
@@ -284,8 +284,12 @@ namespace EmployeesManagement.Service
                 {
                     if (reader["position_id"].Equals(3) && employee.PositionId.Equals(3))
                     {
-                        MessageBox.Show("This department already has manager");
-                        return false;
+                        if (!reader["id"].Equals(employee.Id))
+                        {
+                            MessageBox.Show("This department already has manager");
+                            return false;
+                        }
+                        
                     }
                 }
                 connection.Close();

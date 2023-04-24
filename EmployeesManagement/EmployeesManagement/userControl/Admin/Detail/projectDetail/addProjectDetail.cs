@@ -26,7 +26,13 @@ namespace EmployeesManagement.Detail
         {
             if (txtName.Text != "" && txtDescription.Text != "")
             {
-                DTPStart.CustomFormat= "yyyy-MM-dd";
+                DateTime currentDate = DateTime.Now;
+                if(currentDate > DTPEnd.Value.Date)
+                {
+                    MessageBox.Show("You can't add project that already end");
+                    return;
+                }
+                DTPStart.CustomFormat = "yyyy-MM-dd";
                 DTPEnd.CustomFormat = "yyyy-MM-dd";
                 string startDate = DTPStart.Value.ToString("yyyy-MM-dd");
                 string endDate = DTPEnd.Value.ToString("yyyy-MM-dd");
