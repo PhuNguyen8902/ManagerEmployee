@@ -25,6 +25,8 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
 
         SqlConnection connection = Connection.Connection.GetConnection();
         projectController projectController = new projectController();
+        notifyController notify =new notifyController();
+
 
 
         public projectDetail(int Id)
@@ -94,6 +96,9 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
                 if(projectController.deleteEmployeeInProject(employyId, Id))
                 {
                     MessageBox.Show("Delete Success");
+                    DateTime now = DateTime.Now;
+                    string message = string.Format("Admin has removed you from the {1} at ({0})", now.ToString(),Name);
+                    notify.addNotify(employyId, message);
                     DataTable dataTable = projectController.getEmployeeWorkInSpecificProject(Id);
                     dgvEmployee.DataSource = dataTable;
                     return;

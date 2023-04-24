@@ -39,6 +39,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
                 int labelFontSize = 10;
                 string labelFontName = "Segoe UI";
                 List<Notify> notifyList = notify.getNotify(emid);
+                notifyList.Reverse();   
 
                 for (int i = 0; i < count; i++)
                 {

@@ -26,7 +26,7 @@ namespace EmployeesManagement.Service
             return table;
         }
 
-      
+
 
         // Lấy thông tin project của employee cụ thể để truyền vào datagridview
         public DataTable GetProjectEmployeeData(int employeeId)
@@ -59,7 +59,7 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string SQL = string.Format("insert into employeeDB.dbo.project(name, description,start_date,end_date,is_active) VALUES('{0}', '{1}', '{2}','{3}','0')", project.Name, project.Description, project.StartDate,project.EndDate);
+                string SQL = string.Format("insert into employeeDB.dbo.project(name, description,start_date,end_date,is_active) VALUES('{0}', '{1}', '{2}','{3}','0')", project.Name, project.Description, project.StartDate, project.EndDate);
                 SqlCommand cmd = new SqlCommand(SQL, connection);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
@@ -145,14 +145,14 @@ namespace EmployeesManagement.Service
         }
 
         // Tìm kiếm project của employee bằng project id
-        public DataTable findEmployeeProjectByProjectId(int id,int emid)
+        public DataTable findEmployeeProjectByProjectId(int id, int emid)
         {
-            
+
             DataTable dataTable = new DataTable();
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT ep.employee_id,p.id,p.name,ep.description,ep.start_date,ep.end_date, CASE WHEN p.is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id=p.id where ep.project_id = {0} and ep.employee_id = {1}", id,emid);
+                string sql = string.Format("SELECT ep.employee_id,p.id,p.name,ep.description,ep.start_date,ep.end_date, CASE WHEN p.is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id=p.id where ep.project_id = {0} and ep.employee_id = {1}", id, emid);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);
@@ -222,9 +222,9 @@ namespace EmployeesManagement.Service
                 string sql = string.Format("select employee_id from employeeDB.dbo.employee_project where project_id={0}", ep.ProjectId);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataReader rdr = cmd.ExecuteReader();
-                while(rdr.Read())
+                while (rdr.Read())
                 {
-                    if(rdr["employee_id"].Equals(ep.EmployeeId))
+                    if (rdr["employee_id"].Equals(ep.EmployeeId))
                     {
                         MessageBox.Show("This employee already in this project");
                         return false;
@@ -292,6 +292,38 @@ namespace EmployeesManagement.Service
                 connection.Close();
             }
             return false;
+        }
+
+        // Lấy thông tin project
+        public Project getProject(int proId)
+        {
+            Project p = new Project();
+            try
+            {
+                connection.Open();
+                string sql = string.Format("select * from employeeDB.dbo.project where id= {0} ", proId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    p.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    p.Name = reader.GetString(reader.GetOrdinal("name"));
+                    p.Description = reader.GetString(reader.GetOrdinal("description"));
+                    p.IsActive = reader.GetBoolean(reader.GetOrdinal("is_active"));
+                    p.StartDate = reader.GetString(reader.GetOrdinal("start_date"));
+                    p.EndDate = reader.GetString(reader.GetOrdinal("end_date"));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return p;
         }
     }
 }

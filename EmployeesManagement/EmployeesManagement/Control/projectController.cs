@@ -65,5 +65,9 @@ namespace EmployeesManagement.Control
             return projectService.findEmployeeProjectByCodition(value, emid, codition);
         }
 
+        public Project getProject(int proId) { 
+            return projectService.getProject(proId);
+        }
+
     }
 }

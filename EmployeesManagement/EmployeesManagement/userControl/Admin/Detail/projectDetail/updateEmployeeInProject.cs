@@ -22,6 +22,8 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
         public DataGridView dgvEmployee;
         
         projectController projectController = new projectController();
+        notifyController notify = new notifyController();
+
         public updateEmployeeInProject(int employeeId, int projectId, string startDate, string endDate, DataGridView dgv)
         {
             InitializeComponent();
@@ -48,6 +50,11 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
             if (projectController.updateEmployeeInProject(ep))
             {
                 MessageBox.Show("Update successfully");
+                Project pro = projectController.getProject(projectId);
+                string proName = pro.Name;
+                DateTime now = DateTime.Now;
+                string message = string.Format("Admin has changed your {1} time at ({0})", now.ToString(),proName);
+                notify.addNotify(employeeId, message);
 
                 DataTable dataTable = projectController.getEmployeeWorkInSpecificProject(projectId);
 
