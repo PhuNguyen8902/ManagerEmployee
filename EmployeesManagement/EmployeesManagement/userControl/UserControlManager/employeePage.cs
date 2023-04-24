@@ -135,24 +135,21 @@ namespace EmployeesManagement.userControl.UserControlManager
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            if(dgvEmployee.Rows.Count > 0)
-            {
-                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-                excel.Application.Workbooks.Add(Type.Missing);
-                for(int i = 0; i < dgvEmployee.Columns.Count + 1; i++)
-                {
-                    excel.Cells[1, i] = dgvEmployee.Columns[i - 1].HeaderText;
-                }
-                for (int i = 0; i < dgvEmployee.Rows.Count; i++)
-                {
-                    for (int j = 0; j < dgvEmployee.Columns.Count; j++)
-                    {
-                        excel.Cells[i+2, j+1] = dgvEmployee.Rows[i].Cells[j].Value.ToString();
-                    }
-                }
-                excel.Columns.AutoFit();
-                excel.Visible = true;
-            }
+            dgvEmployee.SelectAll();
+            DataObject copydata = dgvEmployee.GetClipboardContent();
+            if (copydata != null) { Clipboard.SetDataObject(copydata); }
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            excel.Visible = true;
+            Microsoft.Office.Interop.Excel.Workbook xlWbook;
+            Microsoft.Office.Interop.Excel.Worksheet xlsheet;
+            object miseddata = System.Reflection.Missing.Value;
+            xlWbook = excel.Workbooks.Add(miseddata);
+
+            xlsheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWbook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range xlr = (Microsoft.Office.Interop.Excel.Range)xlsheet.Cells[1, 1];
+            xlr.Select();
+
+            xlsheet.PasteSpecial(xlr, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
     }
 }
