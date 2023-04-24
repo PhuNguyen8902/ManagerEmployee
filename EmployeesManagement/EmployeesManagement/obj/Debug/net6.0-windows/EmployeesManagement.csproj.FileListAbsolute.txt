@@ -270,3 +270,11 @@ D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\Employees
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.projectDetail.addEmployeeToProjectForm.resources
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.projectDetail.projectDetail.resources
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.projectDetail.updateEmployeeInProject.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.csproj.ResolveComReference.cache
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.departmentInformationPage.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.Detail.employeePage.addEmployeeByManager.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.Detail.employeePage.updateEmployeeByManager.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.employeePage.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.informationManagerPage.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.projectPage.resources

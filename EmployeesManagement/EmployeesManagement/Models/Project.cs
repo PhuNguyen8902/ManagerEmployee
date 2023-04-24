@@ -11,6 +11,7 @@ namespace EmployeesManagement.Models
         public bool? IsActive { get; set; }
         public string? StartDate { get; set; }
         public string? EndDate { get; set; }
+
         public Project(string Name, string Description, string StartDate, string EndDate)
         {
             this.Name = Name;
@@ -26,6 +27,10 @@ namespace EmployeesManagement.Models
             this.StartDate = StartDate;
             this.EndDate = EndDate;
             this.IsActive = IsActive;
+        }
+
+        public Project()
+        {
         }
     }
 }

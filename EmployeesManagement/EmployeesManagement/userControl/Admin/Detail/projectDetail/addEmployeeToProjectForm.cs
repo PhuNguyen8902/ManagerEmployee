@@ -19,6 +19,8 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
         employeeController employeeController = new employeeController();
         SqlConnection connection = Connection.Connection.GetConnection();
         projectController projectController = new projectController();
+        notifyController notify = new notifyController();
+
 
         DataGridView dgvProjectDetail;
 
@@ -69,6 +71,11 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
                     dgvProjectDetail.DataSource = dataTable;
 
                     MessageBox.Show("Add Success");
+                    Project pro = projectController.getProject(projectId);
+                    string proName = pro.Name;
+                    DateTime now = DateTime.Now;
+                    string message = string.Format("Admin added you to {1} at ({0})", now.ToString(),proName);
+                    notify.addNotify(employyId, message);
                     return;
                 }
 
