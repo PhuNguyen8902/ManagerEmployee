@@ -26,6 +26,8 @@ namespace EmployeesManagement.Service
             return table;
         }
 
+      
+
         // Lấy thông tin project của employee cụ thể để truyền vào datagridview
         public DataTable GetProjectEmployeeData(int employeeId)
         {
@@ -228,7 +230,9 @@ namespace EmployeesManagement.Service
                         return false;
                     }
                 }
+                connection.Close();
 
+                connection.Open();
                 sql = string.Format("insert into employeeDB.dbo.employee_project(employee_id, project_id, start_date, end_date) " +
                     "VALUES('{0}', '{1}' , '{2}', '{3}')", ep.EmployeeId, ep.ProjectId, ep.StartDate, ep.EndDate);
                 SqlCommand cmd1 = new SqlCommand(sql, connection);

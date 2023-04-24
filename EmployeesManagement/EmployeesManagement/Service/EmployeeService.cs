@@ -30,6 +30,40 @@ namespace EmployeesManagement.Service
             return table;
         }
 
+        // lay nhan vien trong department cua manager cu the
+        public DataTable GetEmployeeDataByItsManagerId(int managerId)
+        {
+            int departmentId = 0;
+            DataTable table = new DataTable();
+
+            connection.Open();
+            string sql = String.Format("select department_id FROM employeeDB.dbo.employee where id={0} ", managerId);
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if(reader.Read())
+            {
+                departmentId = int.Parse(reader["department_id"].ToString());
+            }
+            connection.Close();
+
+            if(departmentId == 0)
+            {
+                MessageBox.Show("ERROR: Can't get department id");
+                return table;
+            }
+
+            connection.Open();
+            string query = String.Format("SELECT e.id, e.name, e.phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.net_salary as salary, p.name as position " +
+                "FROM employeeDB.dbo.employee e left join employeeDB.dbo.department d on e.department_id = d.id " +
+                "left join employeeDB.dbo.salary s on e.salary_id = s.id " +
+                "inner join employeeDB.dbo.position p on e.position_id = p.id " +
+                "where e.department_id = {0} and e.position_id={1}", departmentId, 1);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            connection.Close();
+            return table;
+        }
         public int getIdByDeparementName(String name)
         {
             connection.Open();
@@ -181,6 +215,63 @@ namespace EmployeesManagement.Service
             return false;
         }
 
+        public bool addEmployeeByManager(Employee employee)
+        {
+            try
+            {
+                connection.Open();
+                string SQL = string.Format("insert into employeeDB.dbo.employee(name, phone,gender,home_town, department_id, salary_id, position_id) VALUES('{0}', '{1}', '{2}', '{3}', {4}, {5}, {6})"
+                   , employee.Name, employee.Phone, employee.Gender, employee.HomeTown, employee.DepartmentId, employee.SalaryId, employee.PositionId);
+                SqlCommand cmd1 = new SqlCommand(SQL, connection);
+                if (cmd1.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+        public int getDepartmentIdByManagerId(int managerId)
+        {
+            int departmentId = 0;
+
+            connection.Open();
+            string sql = String.Format("select department_id FROM employeeDB.dbo.employee where id={0} ", managerId);
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                departmentId = int.Parse(reader["department_id"].ToString());
+            }
+            connection.Close();
+            return departmentId;
+        }
+        public Department GetDepartmentDataByManagerId(int managerid)
+        {
+
+            Department department = new Department();
+            int departmentId = getDepartmentIdByManagerId(managerid);
+
+            connection.Open();
+            string sql = string.Format("select * FROM employeeDB.dbo.department where id={0}", departmentId);
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                string name = reader["name"].ToString();
+                string phone = reader["phone"].ToString();
+                string address = reader["address"].ToString();
+                department = new Department(departmentId, name, phone, address);
+            }
+            connection.Close();
+
+            return department;
+        }
         public bool updateEmployee(Employee employee)
         {
             try

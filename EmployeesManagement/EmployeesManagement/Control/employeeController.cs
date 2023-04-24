@@ -78,5 +78,25 @@ namespace EmployeesManagement.Control
         public List<int> getEmployeesInEmployeeProject(int proid) { 
             return empService.getEmployeesInEmployeeProject(proid);
         }
+
+        // Manager controller
+
+        public DataTable GetEmployeeDataByItsManagerId(int managerId)
+        {
+            return empService.GetEmployeeDataByItsManagerId(managerId);
+        }
+
+        public bool addEmployeeByManager(Employee employee)
+        {
+            return empService.addEmployeeByManager(employee);
+        }
+        public int getDepartmentIdByManagerId(int managerId)
+        {
+            return empService.getDepartmentIdByManagerId(managerId);
+        }
+        public Department GetDepartmentDataByManagerId(int managerid)
+        {
+            return empService.GetDepartmentDataByManagerId(managerid);
+        }
     }
 }

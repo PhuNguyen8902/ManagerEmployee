@@ -67,7 +67,7 @@ namespace EmployeesManagement
                         {
                             MessageBox.Show("Login Successful!");
                             this.Hide();
-                            FormManager primaryPage = new FormManager();
+                            FormManager primaryPage = new FormManager(0, employeeId, type);
                             primaryPage.Show();
                         }
                         else

@@ -33,6 +33,7 @@
             button1 = new Button();
             updateBtn = new Button();
             addBtn = new Button();
+            btnExportExcel = new Button();
             employeeBindingSource1 = new BindingSource(components);
             employeeBindingSource = new BindingSource(components);
             employeeBindingSource2 = new BindingSource(components);
@@ -125,10 +126,21 @@
             deleteBtn.UseVisualStyleBackColor = true;
             deleteBtn.Click += deleteBtn_Click;
             // 
+            // btnExportExcel
+            // 
+            btnExportExcel.Location = new Point(10, 120);
+            btnExportExcel.Name = "deleteBtn";
+            btnExportExcel.Size = new Size(120, 29);
+            btnExportExcel.TabIndex = 9;
+            btnExportExcel.Text = "Export Excel";
+            btnExportExcel.UseVisualStyleBackColor = true;
+            btnExportExcel.Click += btnExportExcel_Click;
+            // 
             // employeesPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnExportExcel);
             Controls.Add(deleteBtn);
             Controls.Add(dgvEmployee);
             Controls.Add(addBtn);
@@ -162,5 +174,6 @@
         private BindingSource employeeBindingSource5;
         private DataGridView dgvEmployee;
         private Button deleteBtn;
+        private Button btnExportExcel;
     }
 }
