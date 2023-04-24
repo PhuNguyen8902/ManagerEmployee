@@ -40,14 +40,10 @@ namespace EmployeesManagement.userControl
 
         private void employeesPage_Load()
         {
-            employeeService.OpenConnection();
-
             DataTable dataTable = employeeController.getEmployee();
 
             dgvEmployee.DataSource = dataTable;
-      
 
-            employeeService.CloseConnection();
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -130,6 +126,30 @@ namespace EmployeesManagement.userControl
             {
                 MessageBox.Show("Choose employee to update");
             }
+        }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+
+            if (dgvEmployee.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Application.Workbooks.Add(Type.Missing);
+                for (int i = 0; i < dgvEmployee.Columns.Count + 1; i++)
+                {
+                    excel.Cells[1, i] = dgvEmployee.Columns[i].HeaderText;
+                }
+                for (int i = 0; i < dgvEmployee.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dgvEmployee.Columns.Count; j++)
+                    {
+                        excel.Cells[i + 2, j + 1] = dgvEmployee.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+                excel.Columns.AutoFit();
+                excel.Visible = true;
+            }
+
         }
     }
 }
