@@ -37,7 +37,7 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.assignAccoun
 
         private void assignAccountDetail_Load(object sender, EventArgs e)
         {
-
+            tbSearch.Text = "Please enter Employee Id";
             findAll();
             dgvAssignAccount.Columns.Add(new DataGridViewButtonColumn()
             {
@@ -45,10 +45,6 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.assignAccoun
                 Text = "Assign",
                 UseColumnTextForButtonValue = true
             });
-            cbSearch.Items.Add("Employee Id");
-            cbSearch.Items.Add("Employee Position");
-            cbSearchPosition.Items.Add("Employee");
-            btnSearch.Enabled = false;
         }
         private void findAll()
         {
@@ -101,56 +97,38 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.assignAccoun
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string condition = cbSearch.SelectedItem.ToString();
-            if (condition == "Employee Id")
+            int id;
+            if (!int.TryParse(tbSearch.Text, out id))
             {
-                int id;
-                if (!int.TryParse(tbSearch.Text, out id))
-                {
-                    MessageBox.Show("Please enter a number for the ID!");
-                }
-                else
-                {
-                    DataTable dataTable = empController.searchEmployeeNeedAssignDataInDepartment("id", id, deId);
-
-                    dgvAssignAccount.DataSource = dataTable;
-                }
+                MessageBox.Show("Please enter a number for the ID!");
             }
             else
             {
-                if (cbSearchPosition.SelectedIndex != -1)
-                {
-                    string position = cbSearchPosition.SelectedItem.ToString();
-                    Position pos = new Position();
-                    pos = empController.getPositionValueByName(position);
-                    int posId = pos.Id;
-                    DataTable dataTable = empController.searchEmployeeNeedAssignDataInDepartment("position_id", posId, deId);
+                DataTable dataTable = empController.searchEmployeeNeedAssignDataInDepartment("id", id, deId);
 
-                    dgvAssignAccount.DataSource = dataTable;
-                }
+                dgvAssignAccount.DataSource = dataTable;
             }
         }
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbSearch.SelectedIndex == -1)
+        }
+
+        private void tbSearch_Enter(object sender, EventArgs e)
+        {
+            if (tbSearch.Text == "Please enter Employee Id")
             {
-                btnSearch.Enabled = false;
+                tbSearch.Text = "";
+                tbSearch.ForeColor = Color.Black;
             }
-            else
+        }
+
+        private void tbSearch_Leave(object sender, EventArgs e)
+        {
+            if (tbSearch.Text == "")
             {
-                btnSearch.Enabled = true;
-                string value = cbSearch.SelectedItem.ToString();
-                if (value == "Employee Id")
-                {
-                    tbSearch.Visible = true;
-                    cbSearchPosition.Visible = false;
-                }
-                else
-                {
-                    tbSearch.Visible = false;
-                    cbSearchPosition.Visible = true;
-                }
+                tbSearch.Text = "Please enter Employee Id";
+                tbSearch.ForeColor = Color.Gray;
             }
         }
     }

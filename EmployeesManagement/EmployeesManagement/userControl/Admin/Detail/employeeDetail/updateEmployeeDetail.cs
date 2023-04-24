@@ -79,9 +79,6 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
             {
                 gender = 1;
             }
-
-            
-
             if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbDepartment.SelectedIndex != -1 && cbSalary.SelectedIndex != -1 && cbPosition.SelectedIndex != -1)
             {
                 String phoneNumber = txtPhone.Text.Trim();

@@ -141,7 +141,7 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT * FROM {1} WHERE id = {0};", id,str);
+                string sql = string.Format("SELECT id,name,FORMAT(CAST(phone AS BIGINT), '00000000000') AS phone,address FROM {1} WHERE id = {0};", id,str);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);
@@ -163,7 +163,7 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT * FROM {1} WHERE {2} like '%{0}%';", address, str,codition);
+                string sql = string.Format("SELECT id,name,FORMAT(CAST(phone AS BIGINT), '00000000000') AS phone,address FROM {1} WHERE {2} like '%{0}%';", address, str,codition);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);

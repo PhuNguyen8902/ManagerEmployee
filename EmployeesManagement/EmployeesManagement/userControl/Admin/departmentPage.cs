@@ -146,8 +146,8 @@ namespace EmployeesManagement.userControl
             }
             else if (selectedValue == "phone")
             {
-                int phone;
-                if (!int.TryParse(tbSearch.Text, out phone))
+                long phone;
+                if (!long.TryParse(tbSearch.Text, out phone))
                 {
                     MessageBox.Show("Please enter a number for the Phone!");
                     return;

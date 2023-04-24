@@ -616,6 +616,34 @@ namespace EmployeesManagement.Service
             adapter.Fill(table);
             return table;
         }
+
+        //find by id
+        public DataTable findById(int id,string condition)
+        {
+            DataTable table = new DataTable();
+            string query =string.Format("SELECT e.id, e.name, FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.net_salary as salary, p.name as position " +
+                "FROM employeeDB.dbo.employee e left join employeeDB.dbo.department d on e.department_id = d.id " +
+                "left join employeeDB.dbo.salary s on e.salary_id = s.id " +
+                "inner join employeeDB.dbo.position p on e.position_id = p.id where {0}={1}",condition,id);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+        //find by condition
+        public DataTable findByCondition(string value, string condition)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("SELECT e.id, e.name, FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, s.net_salary as salary, p.name as position " +
+                "FROM employeeDB.dbo.employee e left join employeeDB.dbo.department d on e.department_id = d.id " +
+                "left join employeeDB.dbo.salary s on e.salary_id = s.id " +
+                "inner join employeeDB.dbo.position p on e.position_id = p.id where {0} like '%{1}%'", condition, value);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
         public void CloseConnection()
         {
             connection.Close();

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            textBox1 = new TextBox();
-            button1 = new Button();
+            tbSearch = new TextBox();
+            btnSearch = new Button();
             updateBtn = new Button();
             addBtn = new Button();
             btnExportExcel = new Button();
@@ -42,6 +42,11 @@
             employeeBindingSource4 = new BindingSource(components);
             dgvEmployee = new DataGridView();
             deleteBtn = new Button();
+            cbSearch = new ComboBox();
+            cbSearchGender = new ComboBox();
+            cbSearchPosition = new ComboBox();
+            btnFindAll = new Button();
+            btnEmail = new Button();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource2).BeginInit();
@@ -51,21 +56,22 @@
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // tbSearch
             // 
-            textBox1.Location = new Point(22, 21);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(258, 27);
-            textBox1.TabIndex = 0;
+            tbSearch.Location = new Point(22, 21);
+            tbSearch.Name = "tbSearch";
+            tbSearch.Size = new Size(258, 27);
+            tbSearch.TabIndex = 0;
             // 
-            // button1
+            // btnSearch
             // 
-            button1.Location = new Point(298, 21);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 3;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
+            btnSearch.Location = new Point(298, 21);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 29);
+            btnSearch.TabIndex = 3;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // updateBtn
             // 
@@ -86,6 +92,16 @@
             addBtn.Text = "Add";
             addBtn.UseVisualStyleBackColor = true;
             addBtn.Click += addBtn_Click;
+            // 
+            // btnExportExcel
+            // 
+            btnExportExcel.Location = new Point(10, 120);
+            btnExportExcel.Name = "btnExportExcel";
+            btnExportExcel.Size = new Size(120, 29);
+            btnExportExcel.TabIndex = 9;
+            btnExportExcel.Text = "Export Excel";
+            btnExportExcel.UseVisualStyleBackColor = true;
+            btnExportExcel.Click += btnExportExcel_Click;
             // 
             // employeeBindingSource1
             // 
@@ -126,27 +142,72 @@
             deleteBtn.UseVisualStyleBackColor = true;
             deleteBtn.Click += deleteBtn_Click;
             // 
-            // btnExportExcel
+            // cbSearch
             // 
-            btnExportExcel.Location = new Point(10, 120);
-            btnExportExcel.Name = "deleteBtn";
-            btnExportExcel.Size = new Size(120, 29);
-            btnExportExcel.TabIndex = 9;
-            btnExportExcel.Text = "Export Excel";
-            btnExportExcel.UseVisualStyleBackColor = true;
-            btnExportExcel.Click += btnExportExcel_Click;
+            cbSearch.FormattingEnabled = true;
+            cbSearch.Location = new Point(22, 64);
+            cbSearch.Name = "cbSearch";
+            cbSearch.Size = new Size(258, 28);
+            cbSearch.TabIndex = 10;
+            cbSearch.Text = "Select the item you want to search";
+            cbSearch.SelectedIndexChanged += cbSearch_SelectedIndexChanged;
+            // 
+            // cbSearchGender
+            // 
+            cbSearchGender.FormattingEnabled = true;
+            cbSearchGender.Location = new Point(22, 21);
+            cbSearchGender.Name = "cbSearchGender";
+            cbSearchGender.Size = new Size(258, 28);
+            cbSearchGender.TabIndex = 11;
+            cbSearchGender.Text = "Select the geder";
+            cbSearchGender.Visible = false;
+            // 
+            // cbSearchPosition
+            // 
+            cbSearchPosition.FormattingEnabled = true;
+            cbSearchPosition.Location = new Point(22, 22);
+            cbSearchPosition.Name = "cbSearchPosition";
+            cbSearchPosition.Size = new Size(258, 28);
+            cbSearchPosition.TabIndex = 12;
+            cbSearchPosition.Text = "Select the position";
+            cbSearchPosition.Visible = false;
+            // 
+            // btnFindAll
+            // 
+            btnFindAll.Location = new Point(411, 22);
+            btnFindAll.Name = "btnFindAll";
+            btnFindAll.Size = new Size(94, 29);
+            btnFindAll.TabIndex = 27;
+            btnFindAll.Text = "Find All";
+            btnFindAll.UseVisualStyleBackColor = true;
+            btnFindAll.Click += btnFindAll_Click;
+            // 
+            // btnEmail
+            // 
+            btnEmail.Location = new Point(151, 120);
+            btnEmail.Name = "btnEmail";
+            btnEmail.Size = new Size(120, 29);
+            btnEmail.TabIndex = 28;
+            btnEmail.Text = "Send Email";
+            btnEmail.UseVisualStyleBackColor = true;
+            btnEmail.Click += btnEmail_Click;
             // 
             // employeesPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnEmail);
+            Controls.Add(btnFindAll);
+            Controls.Add(cbSearchPosition);
+            Controls.Add(cbSearchGender);
+            Controls.Add(cbSearch);
             Controls.Add(btnExportExcel);
             Controls.Add(deleteBtn);
             Controls.Add(dgvEmployee);
             Controls.Add(addBtn);
             Controls.Add(updateBtn);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(btnSearch);
+            Controls.Add(tbSearch);
             Name = "employeesPage";
             Size = new Size(903, 709);
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).EndInit();
@@ -162,8 +223,8 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private Button button1;
+        private TextBox tbSearch;
+        private Button btnSearch;
         private Button updateBtn;
         private Button addBtn;
         private BindingSource employeeBindingSource;
@@ -175,5 +236,10 @@
         private DataGridView dgvEmployee;
         private Button deleteBtn;
         private Button btnExportExcel;
+        private ComboBox cbSearch;
+        private ComboBox cbSearchGender;
+        private ComboBox cbSearchPosition;
+        private Button btnFindAll;
+        private Button btnEmail;
     }
 }
