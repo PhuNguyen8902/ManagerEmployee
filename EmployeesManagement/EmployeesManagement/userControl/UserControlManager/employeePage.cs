@@ -135,21 +135,24 @@ namespace EmployeesManagement.userControl.UserControlManager
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            dgvEmployee.SelectAll();
-            DataObject copydata = dgvEmployee.GetClipboardContent();
-            if (copydata != null) { Clipboard.SetDataObject(copydata); }
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            excel.Visible = true;
-            Microsoft.Office.Interop.Excel.Workbook xlWbook;
-            Microsoft.Office.Interop.Excel.Worksheet xlsheet;
-            object miseddata = System.Reflection.Missing.Value;
-            xlWbook = excel.Workbooks.Add(miseddata);
-
-            xlsheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWbook.Worksheets.get_Item(1);
-            Microsoft.Office.Interop.Excel.Range xlr = (Microsoft.Office.Interop.Excel.Range)xlsheet.Cells[1, 1];
-            xlr.Select();
-
-            xlsheet.PasteSpecial(xlr, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            if (dgvEmployee.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Application.Workbooks.Add(Type.Missing);
+                for (int i = 1; i < dgvEmployee.Columns.Count + 1; i++)
+                {
+                    excel.Cells[1, i] = dgvEmployee.Columns[i - 1].HeaderText;
+                }
+                for (int i = 1; i < dgvEmployee.Rows.Count - 1; i++)
+                {
+                    for (int j = 1; j < dgvEmployee.Columns.Count + 1; j++)
+                    {
+                        excel.Cells[i + 1, j] = dgvEmployee.Rows[i - 1].Cells[j - 1].Value.ToString();
+                    }
+                }
+                excel.Columns.AutoFit();
+                excel.Visible = true;
+            }
         }
     }
 }
