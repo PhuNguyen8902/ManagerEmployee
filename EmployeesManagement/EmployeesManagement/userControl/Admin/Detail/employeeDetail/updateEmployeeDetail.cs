@@ -87,7 +87,7 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
                 bool isPhone = utilsController.isPhoneNumber(txtPhone.Text);
                 if (!isPhone)
                 {
-                    MessageBox.Show("Phone number has to start with 0");
+                    MessageBox.Show("Phone number has to start with 0 and has 11 numbers");
                     return;
                 }
 
@@ -153,15 +153,6 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
                 }
             }
 
-        }
-
-        private void txtPhone_TextChanged(object sender, EventArgs e)
-        {
-            if (txtPhone.Text.Length > 11)
-            {
-                txtPhone.Text = txtPhone.Text.Substring(0, 11);
-                MessageBox.Show("Can't enter more than 11 numbers");
-            }
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
