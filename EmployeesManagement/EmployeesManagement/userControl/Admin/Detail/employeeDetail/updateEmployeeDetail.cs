@@ -84,7 +84,8 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
 
             if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbDepartment.SelectedIndex != -1 && cbSalary.SelectedIndex != -1 && cbPosition.SelectedIndex != -1)
             {
-                bool isPhone = utilsController.isPhoneNumber(txtPhone.Text);
+                String phoneNumber = txtPhone.Text.Trim();
+                bool isPhone = utilsController.isPhoneNumber(phoneNumber);
                 if (!isPhone)
                 {
                     MessageBox.Show("Phone number has to start with 0 and has 11 numbers");
@@ -96,7 +97,7 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
                 int positionId = utilsController.getIdFromValueOfComboBox(cbPosition);
 
 
-                Employee emp = new Employee(id, txtName.Text, txtPhone.Text, gender, txtHometown.Text, departmentId, salaryId, positionId);
+                Employee emp = new Employee(id, txtName.Text, phoneNumber, gender, txtHometown.Text, departmentId, salaryId, positionId);
                 if (updateEmployee.updateEmployee(emp))
                 {
                     MessageBox.Show("Update successfully");
