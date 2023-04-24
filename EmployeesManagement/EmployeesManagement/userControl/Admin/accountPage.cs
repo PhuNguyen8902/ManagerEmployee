@@ -72,6 +72,7 @@ namespace EmployeesManagement.userControl.Admin
             cbSearch.Items.Add("Position");
             btnSearch1.Visible = false;
             btnSearch2.Visible = true;
+            reset();
         }
 
         private void btnFindAll_Click(object sender, EventArgs e)
@@ -86,6 +87,8 @@ namespace EmployeesManagement.userControl.Admin
 
             connection.Close();
             loadCbSearch();
+            reset();
+
         }
 
         private void dgvAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -112,8 +115,9 @@ namespace EmployeesManagement.userControl.Admin
             dgvAccount.DataSource = dataTable;
 
             connection.Close();
-            loadCbSearch();
             btnSearch1.Visible = true;
+            reset();
+
         }
 
         private void removeBtn_Click(object sender, EventArgs e)
@@ -145,6 +149,8 @@ namespace EmployeesManagement.userControl.Admin
             {
                 MessageBox.Show("Choose account want to remove employee id");
             }
+            reset();
+
         }
 
         private void loadCbSearch()
@@ -157,6 +163,10 @@ namespace EmployeesManagement.userControl.Admin
             cbSearch.Items.Add("Employee Id");
             btnSearch1.Visible = true;
             btnSearch2.Visible = false;
+        }
+        private void reset() { 
+            btnSearch1.Enabled = false;
+            btnSearch2.Enabled = false;
         }
 
         private void btnSearch1_Click(object sender, EventArgs e)

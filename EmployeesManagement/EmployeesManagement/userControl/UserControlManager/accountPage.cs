@@ -58,24 +58,19 @@ namespace EmployeesManagement.userControl.UserControlManager
 
             connection.Close();
         }
-        private void reset() { 
-            btnSearch1.Enabled=false;
-            btnSearch2.Enabled=false;
-            btnSearch1.Visible = true;
-            btnSearch2.Visible = false;
-            cbSearchPosition.Visible = false;
-            tbSearch.Visible = true;
-        }
         private void loadCbSearch()
         {
             cbSearch.Items.Clear();
             cbSearch.Items.Add("Account Id");
             cbSearch.Items.Add("User Name");
             cbSearch.Items.Add("Email");
-            cbSearch.Items.Add("Position");
             cbSearch.Items.Add("Employee Id");
             btnSearch1.Visible = true;
             btnSearch2.Visible = false;
+        }
+        private void reset() { 
+            btnSearch1.Enabled=false;
+            btnSearch2.Enabled = false;
         }
 
         private void assignBtn_Click(object sender, EventArgs e)
@@ -99,13 +94,11 @@ namespace EmployeesManagement.userControl.UserControlManager
             cbSearch.Items.Add("Account Id");
             cbSearch.Items.Add("User Name");
             cbSearch.Items.Add("Email");
-            cbSearch.Items.Add("Position");
             cbSearchPosition.Items.Clear();
             cbSearchPosition.Items.Add("Employee");
             btnSearch1.Visible = false;
             btnSearch2.Visible = true;
             reset();
-
         }
 
         private void btnFindAll_Click(object sender, EventArgs e)
@@ -124,7 +117,7 @@ namespace EmployeesManagement.userControl.UserControlManager
                 Employee manage = empController.getInforEmployee(maId);
                 int deId = (int)manage.DepartmentId;
 
-                assignAccountDetail formAssign = new assignAccountDetail(accountId, type,deId);
+                assignAccountDetail formAssign = new assignAccountDetail(accountId, type, deId);
                 formAssign.FormClosed += new FormClosedEventHandler(assignAccountDetail_FormClosed);
                 formAssign.ShowDialog();
             }
@@ -132,7 +125,6 @@ namespace EmployeesManagement.userControl.UserControlManager
         private void assignAccountDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
             findAll();
-            loadCbSearch();
             reset();
             btnSearch1.Visible = true;
         }
@@ -166,9 +158,7 @@ namespace EmployeesManagement.userControl.UserControlManager
             {
                 MessageBox.Show("Choose account want to remove employee id");
             }
-
             reset();
-
         }
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
@@ -212,7 +202,7 @@ namespace EmployeesManagement.userControl.UserControlManager
                 }
                 else
                 {
-                    DataTable dataTable = accController.searchAccountDataByConditionIdInManage("a.id", id,deId);
+                    DataTable dataTable = accController.searchAccountDataByConditionIdInManage("a.id", id, deId);
 
                     dgvAccount.DataSource = dataTable;
                 }
@@ -230,15 +220,6 @@ namespace EmployeesManagement.userControl.UserControlManager
                 DataTable dataTable = accController.searchAccountDataByConditionInManage("a.email", email, deId);
 
                 dgvAccount.DataSource = dataTable;
-            }
-            else if (condition == "Position")
-            {
-                if (cbSearchPosition.SelectedIndex != -1)
-                {
-                    string position = cbSearchPosition.SelectedItem.ToString();
-                    DataTable dataTable = accController.searchAccountDataByConditionInManage("a.type", position,deId);
-                    dgvAccount.DataSource = dataTable;
-                }
             }
             else if (condition == "Employee Id")
             {
@@ -287,15 +268,6 @@ namespace EmployeesManagement.userControl.UserControlManager
                 DataTable dataTable = accController.searchAccountNeedAssignDataByCondition("email", email);
 
                 dgvAccount.DataSource = dataTable;
-            }
-            else if (condition == "Position")
-            {
-                if (cbSearchPosition.SelectedIndex != -1)
-                {
-                    string position = cbSearchPosition.SelectedItem.ToString();
-                    DataTable dataTable = accController.searchAccountNeedAssignDataByCondition("type", position);
-                    dgvAccount.DataSource = dataTable;
-                }
             }
         }
     }

@@ -28,34 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cbSearchPosition = new ComboBox();
-            cbSearch = new ComboBox();
             btnFindAll = new Button();
             btnSearch = new Button();
             dgvAssignAccount = new DataGridView();
             tbSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvAssignAccount).BeginInit();
             SuspendLayout();
-            // 
-            // cbSearchPosition
-            // 
-            cbSearchPosition.FormattingEnabled = true;
-            cbSearchPosition.Location = new Point(18, 8);
-            cbSearchPosition.Name = "cbSearchPosition";
-            cbSearchPosition.Size = new Size(258, 28);
-            cbSearchPosition.TabIndex = 41;
-            cbSearchPosition.Text = "Select position";
-            cbSearchPosition.Visible = false;
-            // 
-            // cbSearch
-            // 
-            cbSearch.FormattingEnabled = true;
-            cbSearch.Location = new Point(18, 45);
-            cbSearch.Name = "cbSearch";
-            cbSearch.Size = new Size(258, 28);
-            cbSearch.TabIndex = 40;
-            cbSearch.Text = "Select the item you want to search";
-            cbSearch.SelectedIndexChanged += cbSearch_SelectedIndexChanged;
             // 
             // btnFindAll
             // 
@@ -94,10 +72,12 @@
             // 
             // tbSearch
             // 
-            tbSearch.Location = new Point(18, 8);
+            tbSearch.Location = new Point(18, 7);
             tbSearch.Name = "tbSearch";
             tbSearch.Size = new Size(258, 27);
             tbSearch.TabIndex = 42;
+            tbSearch.Enter += tbSearch_Enter;
+            tbSearch.Leave += tbSearch_Leave;
             // 
             // assignAccountDetail
             // 
@@ -105,8 +85,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tbSearch);
-            Controls.Add(cbSearchPosition);
-            Controls.Add(cbSearch);
             Controls.Add(btnFindAll);
             Controls.Add(btnSearch);
             Controls.Add(dgvAssignAccount);
@@ -119,9 +97,6 @@
         }
 
         #endregion
-
-        private ComboBox cbSearchPosition;
-        private ComboBox cbSearch;
         private Button btnFindAll;
         private Button btnSearch;
         private DataGridView dgvAssignAccount;

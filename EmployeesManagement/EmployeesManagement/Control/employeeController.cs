@@ -116,5 +116,12 @@ namespace EmployeesManagement.Control
         public DataTable searchEmployeeNeedAssignDataInDepartment(string condition, int value, int deId) { 
             return empService.searchEmployeeNeedAssignDataInDepartment(condition, value, deId);
         }
+        //search
+        public DataTable findById(int id, string condition) { 
+            return empService.findById(id, condition);
+        }
+        public DataTable findByCondition(string value, string condition) { 
+            return empService.findByCondition(value, condition);
+        }
     }
 }
