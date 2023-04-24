@@ -1,5 +1,6 @@
 ﻿using EmployeesManagement.Control;
 using EmployeesManagement.Models;
+using EmployeesManagement.Service;
 using EmployeesManagement.userControl;
 using EmployeesManagement.userControl.UserControlManager;
 using System;
@@ -10,7 +11,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using system.windows.controls;
 using System.Windows.Forms;
 
 namespace EmployeesManagement
@@ -18,6 +18,7 @@ namespace EmployeesManagement
     public partial class FormManager : Form
     {
         navigationController navigationControl;
+        employeeController empController = new employeeController();
         private int managerId;
         private string type;
         private string name;
@@ -37,7 +38,7 @@ namespace EmployeesManagement
         {
             List<UserControl> userControls = new List<UserControl>()
             { new informationManagerPage(managerId), new userControl.UserControlManager.employeePage(managerId, type)
-            , new departmentInformationPage(managerId), new  userControl.UserControlManager.projectPage(managerId, type)};
+            , new departmentInformationPage(managerId), new  userControl.UserControlManager.projectPage(managerId, type),new userControl.UserControlManager.accountPage(managerId)};
 
             navigationControl = new navigationController(userControls, mainPanel); // create an instance of navigationControl
             navigationControl.display(display);
@@ -67,6 +68,18 @@ namespace EmployeesManagement
             this.Close();
         }
 
-       
+        private void createAccountBtn_Click(object sender, EventArgs e)
+        {
+            //Employee manager = empController.getInforEmployee(managerId);
+            //int deId = (int)manager.DepartmentId;
+            createAccount createAccountPage = new createAccount(managerId);
+            createAccountPage.Show();
+            this.Close();
+        }
+
+        private void accountBtn_Click(object sender, EventArgs e)
+        {
+            navigationControl.display(4);
+        }
     }
 }

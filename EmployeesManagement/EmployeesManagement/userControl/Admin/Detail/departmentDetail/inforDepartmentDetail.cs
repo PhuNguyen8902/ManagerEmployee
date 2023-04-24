@@ -32,6 +32,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.departmentDetail
             DataTable dataTable = empController.GetEmployeeDataInDeparment(deId);
 
             dgvDepartmentDetail.DataSource = dataTable;
+         
             loadSearchEntity();
             cbSearchGender.Items.Add("Male");
             cbSearchGender.Items.Add("Female");
@@ -93,6 +94,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.departmentDetail
                 DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionId(deId, "e.id", value);
 
                 dgvDepartmentDetail.DataSource = dataTable;
+             
             }
             else if (selectedValue == "Employee Name")
             {
@@ -100,6 +102,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.departmentDetail
                 DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionElse(deId, "e.name", value);
 
                 dgvDepartmentDetail.DataSource = dataTable;
+          
             }
             else if (selectedValue == "Employee Phone")
             {
@@ -107,6 +110,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.departmentDetail
                 DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionElse(deId, "e.phone", value);
 
                 dgvDepartmentDetail.DataSource = dataTable;
+             
             }
             else if (selectedValue == "Employee Gender")
             {
@@ -115,16 +119,15 @@ namespace EmployeesManagement.userControl.Admin.Detail.departmentDetail
                     string value = cbSearchGender.SelectedIndex.ToString();
                     DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionId(deId, "e.gender", value);
                     dgvDepartmentDetail.DataSource = dataTable;
+             
                 }
             }
             else if (selectedValue == "Employee HomeTown")
             {
-                if (cbSearchGender.SelectedIndex != -1)
-                {
-                    string value = cbSearchGender.SelectedIndex.ToString();
-                    DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionElse(deId, "e.home_town", value);
-                    dgvDepartmentDetail.DataSource = dataTable;
-                }
+                string value = tbSearch.Text;
+                DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionElse(deId, "e.home_town", value);
+
+                dgvDepartmentDetail.DataSource = dataTable;
             }
             else
             {
@@ -133,6 +136,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.departmentDetail
                     string value = cbSearchPosition.SelectedItem.ToString();
                     DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionId(deId, "p.name", value);
                     dgvDepartmentDetail.DataSource = dataTable;
+             
                 }
             }
         }

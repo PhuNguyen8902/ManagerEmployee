@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Shell;
 using static Mysqlx.Notice.Warning.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -240,6 +241,23 @@ namespace EmployeesManagement.Service
             return table;
         }
 
+        // Lấy thông tin account của các employee trong empList để truyền vào datagridview
+        public DataTable GetAccountDataOfEmpList(List<int> empList,int maId)
+        {
+            DataTable table = new DataTable();
+            string query = "SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a " +
+                "LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE (a.type = 'Employee' and " +
+                "(employee_id is null or e.id IN (" + string.Join(",", empList) + "))) " +
+                "OR (a.type = 'Manage' and employee_id = @maId)";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@maId", maId);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+
+            return table;
+        }
+
+
         // Lấy thông tin account cần gán employee_id để truyền vào datagridview
         public DataTable GetAccountNeedAssignData()
         {
@@ -251,6 +269,16 @@ namespace EmployeesManagement.Service
             return table;
         }
 
+        // Lấy thông tin account employee cần gán employee_id  để truyền vào datagridview
+        public DataTable GetAccountNeedAssignDataInManage()
+        {
+            DataTable table = new DataTable();
+            string query = "SELECT id, user_name, email, type FROM employeeDB.dbo.account Where employee_id IS NULL and type='Employee'";
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
 
         //Gán nhân viên cho account
         public Boolean updateEmployeeIdForAccount(int accountId, int emId)
@@ -300,7 +328,7 @@ namespace EmployeesManagement.Service
         public DataTable searchAccountDataByConditionId(string condition,int id)
         {
             DataTable table = new DataTable();
-            string query =string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE a.{0}={1}",condition,id);
+            string query =string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE {0}={1}",condition,id);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -311,7 +339,7 @@ namespace EmployeesManagement.Service
         public DataTable searchAccountDataByCondition(string condition, string id)
         {
             DataTable table = new DataTable();
-            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE a.{0} like '%{1}%'", condition, id);
+            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE {0} like '%{1}%'", condition, id);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -340,5 +368,26 @@ namespace EmployeesManagement.Service
             return table;
         }
 
+        // Search thông tin account để truyền vào datagridview bằng các condition chính xác như id trong manager page
+        public DataTable searchAccountDataByConditionIdInManage(string condition, int id,int deId)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a inner JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE ( {0}={1} and a.employee_id is null) or ( e.department_id = {2} and {0}={1})", condition, id,deId);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+        // Search thông tin account để truyền vào datagridview bằng các condition khác
+        public DataTable searchAccountDataByConditionInManage(string condition, string id,int deId)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE (a.employee_id is null and {0} like '%{1}%') or ( e.department_id = {2} and {0} like '%{1}%')", condition, id,deId);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
     }
 }

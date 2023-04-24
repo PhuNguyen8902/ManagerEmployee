@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -263,11 +264,10 @@ namespace EmployeesManagement.userControl
                 int id = Int32.Parse(row.Cells[0].Value.ToString());
                 string name = row.Cells[1].Value.ToString();
                 string desciption = row.Cells[2].Value.ToString();
-                string startDate = row.Cells[3].Value.ToString();
-                string endDate = row.Cells[4].Value.ToString();
+                string startDate = DateTime.Parse(row.Cells[3].Value.ToString()).ToString("yyyy-MM-dd");
+                string endDate = DateTime.Parse(row.Cells[4].Value.ToString()).ToString("yyyy-MM-dd");
 
                 bool active = true;
-
                 if (isActive == 0)
                     active = false;
 

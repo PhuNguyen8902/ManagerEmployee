@@ -1,8 +1,6 @@
 ﻿using EmployeesManagement.Control;
-using EmployeesManagement.Detail;
 using EmployeesManagement.Models;
-using EmployeesManagement.userControl.Admin.Detail.assignAccountDeatil;
-using EmployeesManagement.userControl.UserControlEmployee;
+using EmployeesManagement.userControl.UserControlManager.Detail.assignAccountDetail;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,40 +10,72 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 
-namespace EmployeesManagement.userControl.Admin
+namespace EmployeesManagement.userControl.UserControlManager
 {
-    public partial class accountPage : System.Windows.Forms.UserControl
+    public partial class accountPage : UserControl
     {
+        int maId = -1;
         private accountController accController;
         private notifyController notify;
+        private employeeController empController;
         SqlConnection connection = Connection.Connection.GetConnection();
-
         public accountPage()
+        {
+            InitializeComponent();
+        }
+        public accountPage(int maId)
         {
             InitializeComponent();
             accController = new accountController();
             notify = new notifyController();
+            empController = new employeeController();
+            this.maId = maId;
         }
 
         private void accountPage_Load(object sender, EventArgs e)
         {
+            findAll();
+            loadCbSearch();
+            btnSearch1.Enabled = false;
+            btnSearch2.Enabled = false;
+            cbSearchPosition.Items.Add("Employee");
+        }
+        private void findAll()
+        {
             connection.Open();
 
-            DataTable dataTable = accController.GetAccountData();
+            Employee manage = empController.getInforEmployee(maId);
+            int deId = (int)manage.DepartmentId;
+
+            List<int> empList = empController.getEmployeesInDepartment(deId);
+
+            DataTable dataTable = accController.GetAccountDataOfEmpList(empList, maId);
+            dgvAccount.Columns.Clear();
 
             dgvAccount.DataSource = dataTable;
 
             connection.Close();
-            loadCbSearch();
-            btnSearch1.Enabled = false;
-            btnSearch2.Enabled = false;
-            cbSearchPosition.Items.Add("Admin");
-            cbSearchPosition.Items.Add("Manage");
-            cbSearchPosition.Items.Add("Employee");
-
+        }
+        private void reset() { 
+            btnSearch1.Enabled=false;
+            btnSearch2.Enabled=false;
+            btnSearch1.Visible = true;
+            btnSearch2.Visible = false;
+            cbSearchPosition.Visible = false;
+            tbSearch.Visible = true;
+        }
+        private void loadCbSearch()
+        {
+            cbSearch.Items.Clear();
+            cbSearch.Items.Add("Account Id");
+            cbSearch.Items.Add("User Name");
+            cbSearch.Items.Add("Email");
+            cbSearch.Items.Add("Position");
+            cbSearch.Items.Add("Employee Id");
+            btnSearch1.Visible = true;
+            btnSearch2.Visible = false;
         }
 
         private void assignBtn_Click(object sender, EventArgs e)
@@ -54,7 +84,7 @@ namespace EmployeesManagement.userControl.Admin
 
             connection.Open();
 
-            DataTable dataTable = accController.GetAccountNeedAssignData();
+            DataTable dataTable = accController.GetAccountNeedAssignDataInManage();
 
             dgvAccount.DataSource = dataTable;
 
@@ -70,22 +100,19 @@ namespace EmployeesManagement.userControl.Admin
             cbSearch.Items.Add("User Name");
             cbSearch.Items.Add("Email");
             cbSearch.Items.Add("Position");
+            cbSearchPosition.Items.Clear();
+            cbSearchPosition.Items.Add("Employee");
             btnSearch1.Visible = false;
             btnSearch2.Visible = true;
+            reset();
+
         }
 
         private void btnFindAll_Click(object sender, EventArgs e)
         {
-            dgvAccount.Columns.Clear();
-
-            connection.Open();
-
-            DataTable dataTable = accController.GetAccountData();
-
-            dgvAccount.DataSource = dataTable;
-
-            connection.Close();
+            findAll();
             loadCbSearch();
+            reset();
         }
 
         private void dgvAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -94,25 +121,19 @@ namespace EmployeesManagement.userControl.Admin
             {
                 int accountId = (int)dgvAccount.Rows[e.RowIndex].Cells["id"].Value;
                 string type = dgvAccount.Rows[e.RowIndex].Cells["type"].Value.ToString();
+                Employee manage = empController.getInforEmployee(maId);
+                int deId = (int)manage.DepartmentId;
 
-                assignAccountDetail formAssign = new assignAccountDetail(accountId, type);
+                assignAccountDetail formAssign = new assignAccountDetail(accountId, type,deId);
                 formAssign.FormClosed += new FormClosedEventHandler(assignAccountDetail_FormClosed);
                 formAssign.ShowDialog();
             }
         }
-
         private void assignAccountDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            dgvAccount.Columns.Clear();
-
-            connection.Open();
-
-            DataTable dataTable = accController.GetAccountData();
-
-            dgvAccount.DataSource = dataTable;
-
-            connection.Close();
+            findAll();
             loadCbSearch();
+            reset();
             btnSearch1.Visible = true;
         }
 
@@ -122,13 +143,13 @@ namespace EmployeesManagement.userControl.Admin
             {
                 DataGridViewRow row = dgvAccount.SelectedRows[0];
                 string type = row.Cells[3].Value.ToString();
-                if (type != "Admin")
+                if (type != "Manage")
                 {
                     int id = Int32.Parse(row.Cells[0].Value.ToString());
                     Boolean rs = accController.removeeEmployeeIdOutAccount(id);
                     if (rs)
                     {
-                        dgvAccount.DataSource = accController.GetAccountData();
+                        findAll();
                         MessageBox.Show("Delete Success");
                     }
                     else
@@ -145,23 +166,43 @@ namespace EmployeesManagement.userControl.Admin
             {
                 MessageBox.Show("Choose account want to remove employee id");
             }
+
+            reset();
+
         }
 
-        private void loadCbSearch()
+        private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbSearch.Items.Clear();
-            cbSearch.Items.Add("Account Id");
-            cbSearch.Items.Add("User Name");
-            cbSearch.Items.Add("Email");
-            cbSearch.Items.Add("Position");
-            cbSearch.Items.Add("Employee Id");
-            btnSearch1.Visible = true;
-            btnSearch2.Visible = false;
+            if (cbSearch.SelectedIndex == -1)
+            {
+                btnSearch1.Enabled = false;
+                btnSearch2.Enabled = false;
+
+            }
+            else
+            {
+                btnSearch1.Enabled = true;
+                btnSearch2.Enabled = true;
+
+                string value = cbSearch.SelectedItem.ToString();
+                if (value == "Position")
+                {
+                    tbSearch.Visible = false;
+                    cbSearchPosition.Visible = true;
+                }
+                else
+                {
+                    tbSearch.Visible = true;
+                    cbSearchPosition.Visible = false;
+                }
+            }
         }
 
         private void btnSearch1_Click(object sender, EventArgs e)
         {
             string condition = cbSearch.SelectedItem.ToString();
+            Employee manage = empController.getInforEmployee(maId);
+            int deId = (int)manage.DepartmentId;
             if (condition == "Account Id")
             {
                 int id;
@@ -171,7 +212,7 @@ namespace EmployeesManagement.userControl.Admin
                 }
                 else
                 {
-                    DataTable dataTable = accController.searchAccountDataByConditionId("a.id", id);
+                    DataTable dataTable = accController.searchAccountDataByConditionIdInManage("a.id", id,deId);
 
                     dgvAccount.DataSource = dataTable;
                 }
@@ -179,14 +220,14 @@ namespace EmployeesManagement.userControl.Admin
             else if (condition == "User Name")
             {
                 string name = tbSearch.Text;
-                DataTable dataTable = accController.searchAccountDataByCondition("a.user_name", name);
+                DataTable dataTable = accController.searchAccountDataByConditionInManage("a.user_name", name, deId);
 
                 dgvAccount.DataSource = dataTable;
             }
             else if (condition == "Email")
             {
                 string email = tbSearch.Text;
-                DataTable dataTable = accController.searchAccountDataByCondition("a.email", email);
+                DataTable dataTable = accController.searchAccountDataByConditionInManage("a.email", email, deId);
 
                 dgvAccount.DataSource = dataTable;
             }
@@ -195,7 +236,7 @@ namespace EmployeesManagement.userControl.Admin
                 if (cbSearchPosition.SelectedIndex != -1)
                 {
                     string position = cbSearchPosition.SelectedItem.ToString();
-                    DataTable dataTable = accController.searchAccountDataByCondition("a.type", position);
+                    DataTable dataTable = accController.searchAccountDataByConditionInManage("a.type", position,deId);
                     dgvAccount.DataSource = dataTable;
                 }
             }
@@ -208,13 +249,12 @@ namespace EmployeesManagement.userControl.Admin
                 }
                 else
                 {
-                    DataTable dataTable = accController.searchAccountDataByConditionId("e.id", emid);
+                    DataTable dataTable = accController.searchAccountDataByConditionIdInManage("e.id", emid, deId);
 
                     dgvAccount.DataSource = dataTable;
                 }
             }
         }
-
 
         private void btnSearch2_Click(object sender, EventArgs e)
         {
@@ -258,33 +298,5 @@ namespace EmployeesManagement.userControl.Admin
                 }
             }
         }
-
-        private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbSearch.SelectedIndex == -1)
-            {
-                btnSearch1.Enabled = false;
-                btnSearch2.Enabled = false;
-
-            }
-            else
-            {
-                btnSearch1.Enabled = true;
-                btnSearch2.Enabled = true;
-
-                string value = cbSearch.SelectedItem.ToString();
-                if (value == "Position")
-                {
-                    tbSearch.Visible = false;
-                    cbSearchPosition.Visible = true;
-                }
-                else
-                {
-                    tbSearch.Visible = true;
-                    cbSearchPosition.Visible = false;
-                }
-            }
-        }
-
     }
 }
