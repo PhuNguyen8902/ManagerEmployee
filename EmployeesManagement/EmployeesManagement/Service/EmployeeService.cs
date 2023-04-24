@@ -295,7 +295,7 @@ namespace EmployeesManagement.Service
                 connection.Close();
 
                 connection.Open();
-                sql = string.Format("update employee set name = '{0}', phone = '{1}', gender = '{2}', home_town = '{3}'," +
+                sql = string.Format("update employeeDB.dbo.employee set name = '{0}', phone = '{1}', gender = '{2}', home_town = '{3}'," +
                     " department_id = '{4}', salary_id = '{5}', position_id = '{6}'  where id = {7}"
                     , employee.Name, employee.Phone, employee.Gender, employee.HomeTown, employee.DepartmentId, employee.SalaryId, employee.PositionId, employee.Id);
                 SqlCommand cmd1 = new SqlCommand(sql, connection);
@@ -416,6 +416,21 @@ namespace EmployeesManagement.Service
             return table;
         }
 
+        // Lấy thông tin employee chưa có account mà trong department đó
+        public DataTable getEmployeeNeedAssignDataInDepartment(int deId)
+        {
+            DataTable table = new DataTable();
+            string query =string.Format("SELECT e.id, e.name,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, case when e.gender = 0 " +
+                "then 'Male' else 'Female' end as gender, e.home_town, d.name as department, p.name as position " +
+                "FROM employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+                "inner join employeeDB.dbo.position p on e.position_id = p.id WHERE e.department_id ={0} and e.id NOT IN (SELECT employee_id " +
+                "FROM employeeDB.dbo.account WHERE employee_id IS NOT NULL)",deId);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
         // Xử lý search thông tin employee chưa có account
         public DataTable searchEmployeeNeedAssignData(string condition,int value)
         {
@@ -423,6 +438,21 @@ namespace EmployeesManagement.Service
             string query = string.Format("SELECT e.id, e.name,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, case when e.gender = 0 then 'Male' else 'Female' end as gender, e.home_town, d.name as department, p.name as position " +
                 "FROM employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
                 "inner join employeeDB.dbo.position p on e.position_id = p.id WHERE e.{0}={1} and e.id NOT IN (SELECT employee_id FROM employeeDB.dbo.account WHERE employee_id IS NOT NULL)", condition,value);
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+
+        // Xử lý search thông tin employee chưa có account trong department
+        public DataTable searchEmployeeNeedAssignDataInDepartment(string condition, int value,int deId)
+        {
+            DataTable table = new DataTable();
+            string query = string.Format("SELECT e.id, e.name,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, case when e.gender = 0 " +
+                "then 'Male' else 'Female' end as gender, e.home_town, d.name as department, p.name as position " +
+                "FROM employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+                "inner join employeeDB.dbo.position p on e.position_id = p.id WHERE e.department_id={2} and e.{0}={1} and e.id NOT IN (SELECT employee_id " +
+                "FROM employeeDB.dbo.account WHERE employee_id IS NOT NULL)", condition, value,deId);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -547,10 +577,10 @@ namespace EmployeesManagement.Service
         {
             DataTable table = new DataTable();
             string query =string.Format("select e.id as EmployeeId,e.name as EmployeeName,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS Phone " +
-               ",case when e.gender = 0 then 'Male' else 'Female' end as Gender,e.home_town as HomeTown,d.name as DepartmentName,p.name as Position " +
-                "from employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
-                "inner join employeeDB.dbo.position p on p.id=e.position_id where e.department_id={0} ORDER BY CASE p.name " +
-                "WHEN 'Admin' THEN 1 WHEN 'Manage' THEN 2 WHEN 'Employee' THEN 3 ELSE 4 END", deId);
+               ",case when e.gender = 0 then 'Male' else 'Female' end as Gender,e.home_town as HomeTown,d.name as DepartmentName" +
+               ",p.name as Position from employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+               "inner join employeeDB.dbo.position p on p.id=e.position_id where e.department_id={0} ORDER BY CASE p.name WHEN 'Admin' THEN 1 WHEN 'Manage' " +
+               "THEN 2 WHEN 'Employee' THEN 3 ELSE 4 END", deId);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -563,9 +593,9 @@ namespace EmployeesManagement.Service
             DataTable table = new DataTable();
             string query = string.Format("select e.id as EmployeeId,e.name as EmployeeName,FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS Phone " +
                ",case when e.gender = 0 then 'Male' else 'Female' end as Gender,e.home_town as HomeTown,d.name as DepartmentName,p.name as Position " +
-                "from employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
-                "inner join employeeDB.dbo.position p on p.id=e.position_id where e.department_id={0} and {1}='{2}' ORDER BY CASE p.name " +
-                "WHEN 'Admin' THEN 1 WHEN 'Manage' THEN 2 WHEN 'Employee' THEN 3 ELSE 4 END", deId,condition,value);
+               "from employeeDB.dbo.employee e inner join employeeDB.dbo.department d on e.department_id = d.id " +
+               "inner join employeeDB.dbo.position p on p.id=e.position_id where e.department_id={0} and {1}='{2}' ORDER BY CASE p.name WHEN 'Admin' " +
+               "THEN 1 WHEN 'Manage' THEN 2 WHEN 'Employee' THEN 3 ELSE 4 END", deId, condition, value);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);

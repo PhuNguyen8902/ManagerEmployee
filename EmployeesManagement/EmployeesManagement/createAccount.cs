@@ -13,15 +13,30 @@ namespace EmployeesManagement
 {
     public partial class createAccount : Form
     {
+        int manageId = -1;
         private accountController accController;
         SqlConnection connection = Connection.Connection.GetConnection();
         public createAccount()
         {
             InitializeComponent();
             accController = new accountController();
+            createAccountBtn.Visible = true;
+            createAccountBtn2.Visible = false;
+            backBtn.Visible = true;
+            backBtn2.Visible = false;
         }
 
-
+        public createAccount(int manageId)
+        {
+            InitializeComponent();
+            accController = new accountController();
+            this.manageId = manageId;
+            panel6.Visible = false;
+            createAccountBtn2.Visible = true;
+            createAccountBtn.Visible = false;
+            backBtn2.Visible = true;
+            backBtn.Visible = false;
+        }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
@@ -179,6 +194,64 @@ namespace EmployeesManagement
                 txtEmail.Text = "";
                 txtEmail.ForeColor = Color.Black;
             }
+        }
+
+        private void createAccountBtn2_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == "" || txtEmail.Text == "" || txtPassword.Text == "" || txtFullName.Text == "")
+            {
+                MessageBox.Show("Please fill in all required fields.");
+                return;
+            }
+            Account account = new Account();
+            string userName = txtUsername.Text;
+            string email = txtEmail.Text;
+            Boolean rsUserName = accController.checkUserNameDuplicate(userName, -1);
+            Boolean rsEmail = accController.checkEmailDuplicate(email, -1);
+            if (rsUserName)
+            {
+                account.UserName = userName;
+            }
+            else
+            {
+                MessageBox.Show("UserName has been duplicated");
+                txtUsername.Text = "";
+            }
+            if (rsEmail)
+            {
+                account.Email = email;
+            }
+            else
+            {
+                MessageBox.Show("Email has been duplicated");
+                txtEmail.Text = "";
+            }
+            string password = txtPassword.Text;
+            string passwordAfterHash = accController.hashPassword(password);
+            account.Password = passwordAfterHash;
+            account.FullName = txtFullName.Text;
+            account.Type = "Employee";
+            Boolean rsCreateAccount = accController.createAccount(account);
+            if (rsCreateAccount)
+            {
+                MessageBox.Show("Account successfully created");
+                txtUsername.Text = "";
+                txtPassword.Text = "";
+                txtFullName.Text = "";
+                txtEmail.Text = "";
+                cbType.SelectedIndex = -1;
+            }
+            else
+            {
+                MessageBox.Show("Account creation failed");
+            }
+        }
+
+        private void backBtn2_Click(object sender, EventArgs e)
+        {
+            FormManager manage = new FormManager(0,manageId,"Manage");
+            manage.Show();
+            this.Close();
         }
     }
 }

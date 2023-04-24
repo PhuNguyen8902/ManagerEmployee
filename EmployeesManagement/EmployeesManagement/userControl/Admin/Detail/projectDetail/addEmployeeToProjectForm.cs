@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,8 +59,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
                 DataGridViewRow row = dgvAllEmployees.SelectedRows[0];
                 int employyId = Int32.Parse(row.Cells[0].Value.ToString());
 
-                String today = DateTime.Today.ToString();
-                
+                String today = DateTime.Today.ToString("yyyy-MM-dd");
 
                 EmployeeProject ep = new EmployeeProject(employyId, projectId, today, endDate);
 

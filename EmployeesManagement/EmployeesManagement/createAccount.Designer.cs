@@ -35,6 +35,8 @@
             label1 = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panel2 = new Panel();
+            backBtn2 = new Button();
+            createAccountBtn2 = new Button();
             backBtn = new Button();
             panel6 = new Panel();
             cbType = new ComboBox();
@@ -142,6 +144,8 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(backBtn2);
+            panel2.Controls.Add(createAccountBtn2);
             panel2.Controls.Add(backBtn);
             panel2.Controls.Add(panel6);
             panel2.Controls.Add(panel5);
@@ -156,6 +160,36 @@
             panel2.Size = new Size(458, 450);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // backBtn2
+            // 
+            backBtn2.BackColor = Color.Teal;
+            backBtn2.Cursor = Cursors.Hand;
+            backBtn2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            backBtn2.ForeColor = SystemColors.ControlLightLight;
+            backBtn2.Location = new Point(375, 391);
+            backBtn2.Name = "backBtn2";
+            backBtn2.Size = new Size(71, 47);
+            backBtn2.TabIndex = 9;
+            backBtn2.Text = "Back";
+            backBtn2.UseVisualStyleBackColor = false;
+            backBtn2.Visible = false;
+            backBtn2.Click += backBtn2_Click;
+            // 
+            // createAccountBtn2
+            // 
+            createAccountBtn2.BackColor = Color.Teal;
+            createAccountBtn2.Cursor = Cursors.Hand;
+            createAccountBtn2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            createAccountBtn2.ForeColor = SystemColors.ControlLightLight;
+            createAccountBtn2.Location = new Point(154, 389);
+            createAccountBtn2.Name = "createAccountBtn2";
+            createAccountBtn2.Size = new Size(169, 47);
+            createAccountBtn2.TabIndex = 8;
+            createAccountBtn2.Text = "Create Account";
+            createAccountBtn2.UseVisualStyleBackColor = false;
+            createAccountBtn2.Visible = false;
+            createAccountBtn2.Click += createAccountBtn2_Click;
             // 
             // backBtn
             // 
@@ -176,7 +210,7 @@
             panel6.BackColor = SystemColors.ControlLightLight;
             panel6.Controls.Add(cbType);
             panel6.Controls.Add(iconPictureBox6);
-            panel6.Location = new Point(29, 331);
+            panel6.Location = new Point(29, 336);
             panel6.Name = "panel6";
             panel6.Size = new Size(386, 43);
             panel6.TabIndex = 5;
@@ -210,7 +244,7 @@
             panel5.BackColor = SystemColors.ControlLightLight;
             panel5.Controls.Add(txtEmail);
             panel5.Controls.Add(iconPictureBox5);
-            panel5.Location = new Point(29, 273);
+            panel5.Location = new Point(29, 281);
             panel5.Name = "panel5";
             panel5.Size = new Size(386, 43);
             panel5.TabIndex = 4;
@@ -245,7 +279,7 @@
             panel3.BackColor = SystemColors.ControlLightLight;
             panel3.Controls.Add(txtFullName);
             panel3.Controls.Add(iconPictureBox4);
-            panel3.Location = new Point(28, 212);
+            panel3.Location = new Point(28, 220);
             panel3.Name = "panel3";
             panel3.Size = new Size(386, 43);
             panel3.TabIndex = 3;
@@ -294,7 +328,7 @@
             panel4.BackColor = SystemColors.ControlLightLight;
             panel4.Controls.Add(txtPassword);
             panel4.Controls.Add(iconPictureBox3);
-            panel4.Location = new Point(28, 151);
+            panel4.Location = new Point(28, 159);
             panel4.Name = "panel4";
             panel4.Size = new Size(386, 44);
             panel4.TabIndex = 2;
@@ -330,7 +364,7 @@
             panel.BackColor = SystemColors.ControlLightLight;
             panel.Controls.Add(txtUsername);
             panel.Controls.Add(iconPictureBox2);
-            panel.Location = new Point(28, 83);
+            panel.Location = new Point(28, 91);
             panel.Name = "panel";
             panel.Size = new Size(386, 43);
             panel.TabIndex = 1;
@@ -431,5 +465,7 @@
         private TextBox txtFullName;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private Button backBtn;
+        private Button createAccountBtn2;
+        private Button backBtn2;
     }
 }

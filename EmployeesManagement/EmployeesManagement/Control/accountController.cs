@@ -20,7 +20,7 @@ namespace EmployeesManagement.Control
 
         public Boolean checkEmailDuplicate(string email, int emid)
         {
-            return accountService.checkEmailDuplicate(email,emid);
+            return accountService.checkEmailDuplicate(email, emid);
         }
 
         public Account getAccountOfEmployee(int emid)
@@ -28,7 +28,7 @@ namespace EmployeesManagement.Control
             return accountService.getAccountOfEmployee(emid);
         }
         public Boolean checkUserNameDuplicate(string user_name, int emid) {
-            return accountService.checkUserNameDuplicate(user_name,emid);
+            return accountService.checkUserNameDuplicate(user_name, emid);
         }
 
         public Boolean createAccount(Account a) {
@@ -53,15 +53,15 @@ namespace EmployeesManagement.Control
             return accountService.updateEmployeeIdForAccount(accountId, emId);
         }
 
-        public Boolean removeeEmployeeIdOutAccount(int accountId){
+        public Boolean removeeEmployeeIdOutAccount(int accountId) {
             return accountService.removeEmployeeIdOutAccount(accountId);
         }
 
-        public DataTable searchAccountDataByConditionId(string condition, int id) { 
+        public DataTable searchAccountDataByConditionId(string condition, int id) {
             return accountService.searchAccountDataByConditionId(condition, id);
         }
 
-        public DataTable searchAccountNeedAssignDataByCondition(string condition, string value) { 
+        public DataTable searchAccountNeedAssignDataByCondition(string condition, string value) {
             return accountService.searchAccountNeedAssignDataByCondition(condition, value);
         }
         public DataTable searchAccountDataByCondition(string condition, string id) {
@@ -69,6 +69,18 @@ namespace EmployeesManagement.Control
         }
         public DataTable searchAccountNeedAssignDataByConditionId(string condition, int id) {
             return accountService.searchAccountNeedAssignDataByConditionId(condition, id);
+        }
+        public DataTable GetAccountDataOfEmpList(List<int> empList, int maId) {
+            return accountService.GetAccountDataOfEmpList(empList, maId);
+        }
+        public DataTable GetAccountNeedAssignDataInManage(){
+            return accountService.GetAccountNeedAssignDataInManage();
+        }
+        public DataTable searchAccountDataByConditionIdInManage(string condition, int id, int deId) {
+            return accountService.searchAccountDataByConditionIdInManage(condition, id, deId);
+        }
+        public DataTable searchAccountDataByConditionInManage(string condition, string id, int deId) { 
+            return accountService.searchAccountDataByConditionInManage(condition, id, deId);
         }
     }
 }

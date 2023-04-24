@@ -76,8 +76,14 @@
     <Compile Update="userControl\UserControlEmployee\projectEmployeePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="userControl\UserControlManager\accountPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="userControl\UserControlManager\departmentInformationPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="userControl\UserControlManager\Detail\assignAccountDetail\assignAccountDetail.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="userControl\UserControlManager\Detail\employeePage\addEmployeeByManager.cs">
       <SubType>Form</SubType>
