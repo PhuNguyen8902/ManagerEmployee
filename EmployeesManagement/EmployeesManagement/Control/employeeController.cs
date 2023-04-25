@@ -17,6 +17,10 @@ namespace EmployeesManagement.Control
         {
             return empService.GetEmployeeData();
         }
+        public DataTable getProjectDataByEmployeeId(int employeeId, bool isParticipateNow)
+        {
+            return empService.getProjectDataByEmployeeId(employeeId, isParticipateNow);
+        }
         public bool addEmployee(Employee employee)
         {
             return empService.addEmployee(employee);

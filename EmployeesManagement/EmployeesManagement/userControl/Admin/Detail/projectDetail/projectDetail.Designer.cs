@@ -38,6 +38,7 @@
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnDeleteEmploye = new System.Windows.Forms.Button();
             this.btnUpdateEmployee = new System.Windows.Forms.Button();
+            this.btnExportExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,11 +137,22 @@
             this.btnUpdateEmployee.UseVisualStyleBackColor = true;
             this.btnUpdateEmployee.Click += new System.EventHandler(this.btnUpdateEmployee_Click);
             // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.Location = new System.Drawing.Point(12, 171);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(106, 29);
+            this.btnExportExcel.TabIndex = 11;
+            this.btnExportExcel.Text = "Export excel";
+            this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            // 
             // projectDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 563);
+            this.Controls.Add(this.btnExportExcel);
             this.Controls.Add(this.btnUpdateEmployee);
             this.Controls.Add(this.btnDeleteEmploye);
             this.Controls.Add(this.btnAddEmployee);
@@ -172,5 +184,6 @@
         private Button btnAddEmployee;
         private Button btnDeleteEmploye;
         private Button btnUpdateEmployee;
+        private Button btnExportExcel;
     }
 }

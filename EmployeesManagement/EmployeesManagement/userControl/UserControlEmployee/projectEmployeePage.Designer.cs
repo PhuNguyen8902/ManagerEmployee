@@ -35,6 +35,10 @@
             btnSearch = new Button();
             DTPSearch = new DateTimePicker();
             txtSearch = new TextBox();
+            btnActive = new Button();
+            btnEnd = new Button();
+            btnExportExcel = new Button();
+            btnDetail = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProject).BeginInit();
             SuspendLayout();
             // 
@@ -90,6 +94,46 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
+            // btnActive
+            // 
+            btnActive.Location = new Point(5, 130);
+            btnActive.Name = "btnActive";
+            btnActive.Size = new Size(94, 29);
+            btnActive.TabIndex = 26;
+            btnActive.Text = "Active";
+            btnActive.UseVisualStyleBackColor = true;
+            btnActive.Click += btnAcitve_Click;
+            // 
+            // btnEnd
+            // 
+            btnEnd.Location = new Point(100, 130);
+            btnEnd.Name = "btnEnd";
+            btnEnd.Size = new Size(94, 29);
+            btnEnd.TabIndex = 26;
+            btnEnd.Text = "End";
+            btnEnd.UseVisualStyleBackColor = true;
+            btnEnd.Click += btnEnd_Click;
+            // 
+            // btnExportExcel
+            // 
+            btnExportExcel.Location = new Point(680, 130);
+            btnExportExcel.Name = "btnExportExcel";
+            btnExportExcel.Size = new Size(114, 29);
+            btnExportExcel.TabIndex = 26;
+            btnExportExcel.Text = "Export excel";
+            btnExportExcel.UseVisualStyleBackColor = true;
+            btnExportExcel.Click += btnExportExcel_Click;
+            // 
+            // btnDetail
+            // 
+            btnDetail.Location = new Point(800, 130);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(94, 29);
+            btnDetail.TabIndex = 26;
+            btnDetail.Text = "Detail";
+            btnDetail.UseVisualStyleBackColor = true;
+            btnDetail.Click += btnDetail_Click;
+            // 
             // DTPSearch
             // 
             DTPSearch.Location = new Point(22, 7);
@@ -109,6 +153,10 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnActive);
+            Controls.Add(btnEnd);
+            Controls.Add(btnExportExcel);
+            Controls.Add(btnDetail);
             Controls.Add(DTPSearch);
             Controls.Add(txtSearch);
             Controls.Add(btnFindAll);
@@ -133,6 +181,11 @@
         private Button btnSearch;
         private DateTimePicker DTPSearch;
         private TextBox txtSearch;
-        
+        private Button btnActive;
+        private Button btnEnd;
+        private Button btnExportExcel;
+        private Button btnDetail;
+
+
     }
 }
