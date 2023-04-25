@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             panel4 = new Panel();
+            accountBtn = new FontAwesome.Sharp.IconButton();
             createAccountBtn = new FontAwesome.Sharp.IconButton();
             projectsBtn = new FontAwesome.Sharp.IconButton();
             departmentBtn = new FontAwesome.Sharp.IconButton();
@@ -43,7 +44,7 @@
             label2 = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             mainPanel = new Panel();
-            accountBtn = new FontAwesome.Sharp.IconButton();
+            notifyBtn = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(notifyBtn);
             panel4.Controls.Add(accountBtn);
             panel4.Controls.Add(createAccountBtn);
             panel4.Controls.Add(projectsBtn);
@@ -76,6 +78,28 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(258, 492);
             panel4.TabIndex = 2;
+            // 
+            // accountBtn
+            // 
+            accountBtn.BackColor = Color.Teal;
+            accountBtn.Dock = DockStyle.Top;
+            accountBtn.FlatAppearance.BorderColor = Color.Teal;
+            accountBtn.FlatStyle = FlatStyle.Flat;
+            accountBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            accountBtn.ForeColor = SystemColors.ControlLightLight;
+            accountBtn.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
+            accountBtn.IconColor = Color.White;
+            accountBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            accountBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            accountBtn.Location = new Point(0, 236);
+            accountBtn.Name = "accountBtn";
+            accountBtn.Size = new Size(258, 59);
+            accountBtn.TabIndex = 9;
+            accountBtn.Text = "Account";
+            accountBtn.TextAlign = ContentAlignment.MiddleLeft;
+            accountBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            accountBtn.UseVisualStyleBackColor = false;
+            accountBtn.Click += accountBtn_Click;
             // 
             // createAccountBtn
             // 
@@ -282,27 +306,27 @@
             mainPanel.Size = new Size(903, 710);
             mainPanel.TabIndex = 1;
             // 
-            // accountBtn
+            // notifyBtn
             // 
-            accountBtn.BackColor = Color.Teal;
-            accountBtn.Dock = DockStyle.Top;
-            accountBtn.FlatAppearance.BorderColor = Color.Teal;
-            accountBtn.FlatStyle = FlatStyle.Flat;
-            accountBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            accountBtn.ForeColor = SystemColors.ControlLightLight;
-            accountBtn.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
-            accountBtn.IconColor = Color.White;
-            accountBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            accountBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            accountBtn.Location = new Point(0, 236);
-            accountBtn.Name = "accountBtn";
-            accountBtn.Size = new Size(258, 59);
-            accountBtn.TabIndex = 9;
-            accountBtn.Text = "Account";
-            accountBtn.TextAlign = ContentAlignment.MiddleLeft;
-            accountBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            accountBtn.UseVisualStyleBackColor = false;
-            accountBtn.Click += accountBtn_Click;
+            notifyBtn.BackColor = Color.Teal;
+            notifyBtn.Dock = DockStyle.Top;
+            notifyBtn.FlatAppearance.BorderColor = Color.Teal;
+            notifyBtn.FlatStyle = FlatStyle.Flat;
+            notifyBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            notifyBtn.ForeColor = SystemColors.ControlLightLight;
+            notifyBtn.IconChar = FontAwesome.Sharp.IconChar.Bell;
+            notifyBtn.IconColor = Color.White;
+            notifyBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            notifyBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.Location = new Point(0, 295);
+            notifyBtn.Name = "notifyBtn";
+            notifyBtn.Size = new Size(258, 59);
+            notifyBtn.TabIndex = 10;
+            notifyBtn.Text = "Notify";
+            notifyBtn.TextAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            notifyBtn.UseVisualStyleBackColor = false;
+            notifyBtn.Click += notifyBtn_Click;
             // 
             // FormManager
             // 
@@ -340,5 +364,6 @@
         private FontAwesome.Sharp.IconButton projectsBtn;
         private FontAwesome.Sharp.IconButton createAccountBtn;
         private FontAwesome.Sharp.IconButton accountBtn;
+        private FontAwesome.Sharp.IconButton notifyBtn;
     }
 }

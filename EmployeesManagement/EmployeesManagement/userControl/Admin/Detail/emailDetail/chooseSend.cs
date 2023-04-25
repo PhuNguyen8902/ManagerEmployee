@@ -90,7 +90,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.emailDetail
         private void btnConfirm_Click(object sender, EventArgs e)
         {
           
-            Account acc = accController.getAccountOfEmployee(accId);
+            Account acc = accController.findById("id",accId.ToString());
             from = acc.Email;
             List<string> toRemove = new List<string>();
             foreach (string str in toList)

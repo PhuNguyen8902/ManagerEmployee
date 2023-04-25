@@ -38,7 +38,7 @@ namespace EmployeesManagement
         {
             List<UserControl> userControls = new List<UserControl>()
             { new informationManagerPage(managerId), new userControl.UserControlManager.employeePage(managerId, type)
-            , new departmentInformationPage(managerId), new  userControl.UserControlManager.projectPage(managerId, type),new userControl.UserControlManager.accountPage(managerId)};
+            , new departmentInformationPage(managerId), new  userControl.UserControlManager.projectPage(managerId, type),new userControl.UserControlManager.accountPage(managerId),new userControl.UserControlEmployee.notifyEmployeePage(managerId)};
 
             navigationControl = new navigationController(userControls, mainPanel); // create an instance of navigationControl
             navigationControl.display(display);
@@ -80,6 +80,12 @@ namespace EmployeesManagement
         private void accountBtn_Click(object sender, EventArgs e)
         {
             navigationControl.display(4);
+        }
+
+        private void notifyBtn_Click(object sender, EventArgs e)
+        {
+            navigationControl.display(5);
+
         }
     }
 }

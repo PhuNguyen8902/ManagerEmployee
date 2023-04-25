@@ -96,8 +96,8 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.employeePage
                 {
                     MessageBox.Show("Update successfully");
                     DateTime now = DateTime.Now;
-                    //string message = string.Format("Admin has changed your information ({0})", now.ToString());
-                    //notify.addNotify(id, message);
+                    string message = string.Format("Manager has changed your information ({0})", now.ToString());
+                    notify.addNotify(id, message);
                     FormCollection allOpenedForm = Application.OpenForms;
                     foreach (Form form in allOpenedForm)
                     {
