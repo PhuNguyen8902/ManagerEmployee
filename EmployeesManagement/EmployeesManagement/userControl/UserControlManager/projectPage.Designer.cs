@@ -31,14 +31,12 @@
             this.cbSearchActive = new System.Windows.Forms.ComboBox();
             this.cbSearch = new System.Windows.Forms.ComboBox();
             this.btnFindAll = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.updateBtn = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDetail = new System.Windows.Forms.Button();
             this.btnEndProject = new System.Windows.Forms.Button();
             this.btnActiveProject = new System.Windows.Forms.Button();
             this.dgvProject = new System.Windows.Forms.DataGridView();
+            this.btnExportExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,36 +65,6 @@
             this.btnFindAll.TabIndex = 31;
             this.btnFindAll.Text = "Find All";
             this.btnFindAll.UseVisualStyleBackColor = true;
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Location = new System.Drawing.Point(789, 19);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(94, 29);
-            this.deleteBtn.TabIndex = 30;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
-            // 
-            // addBtn
-            // 
-            this.addBtn.Location = new System.Drawing.Point(569, 21);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(94, 29);
-            this.addBtn.TabIndex = 29;
-            this.addBtn.Text = "Add";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // updateBtn
-            // 
-            this.updateBtn.Location = new System.Drawing.Point(679, 21);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(94, 29);
-            this.updateBtn.TabIndex = 28;
-            this.updateBtn.Text = "Update";
-            this.updateBtn.UseVisualStyleBackColor = true;
-            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // btnSearch
             // 
@@ -150,18 +118,26 @@
             this.dgvProject.Size = new System.Drawing.Size(903, 517);
             this.dgvProject.TabIndex = 35;
             // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.Location = new System.Drawing.Point(673, 157);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(118, 29);
+            this.btnExportExcel.TabIndex = 36;
+            this.btnExportExcel.Text = "Export Excel";
+            this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            // 
             // projectPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnExportExcel);
             this.Controls.Add(this.dgvProject);
             this.Controls.Add(this.btnDetail);
             this.Controls.Add(this.btnEndProject);
             this.Controls.Add(this.btnActiveProject);
             this.Controls.Add(this.btnFindAll);
-            this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cbSearchActive);
             this.Controls.Add(this.cbSearch);
@@ -178,13 +154,11 @@
         private ComboBox cbSearchActive;
         private ComboBox cbSearch;
         private Button btnFindAll;
-        private Button deleteBtn;
-        private Button addBtn;
-        private Button updateBtn;
         private Button btnSearch;
         private Button btnDetail;
         private Button btnEndProject;
         private Button btnActiveProject;
         private DataGridView dgvProject;
+        private Button btnExportExcel;
     }
 }

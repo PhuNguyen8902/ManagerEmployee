@@ -29,10 +29,12 @@ namespace EmployeesManagement.Service
 
 
         // Lấy thông tin project của employee cụ thể để truyền vào datagridview
-        public DataTable GetProjectEmployeeData(int employeeId)
+        public DataTable GetProjectEmployeeData(int employeeId, int isActive)
         {
             DataTable table = new DataTable();
-            string query = string.Format("SELECT ep.employee_id,p.id,p.name,ep.description,ep.start_date,ep.end_date, CASE WHEN p.is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id=p.id where ep.employee_id = {0}", employeeId);
+            string query = string.Format("SELECT p.id,p.name, p.description,ep.start_date,ep.end_date FROM employeeDB.dbo.project p " +
+                "INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id=p.id " +
+                "where ep.employee_id = {0} and p.is_active = {1}", employeeId, isActive);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -43,7 +45,7 @@ namespace EmployeesManagement.Service
         public DataTable getEmployeeWorkInSpecificProject(int projectId)
         {
             DataTable table = new DataTable();
-            string query = string.Format("select e.id, e.name, e.phone, ep.start_date, ep.end_date, d.name as department from employeeDB.dbo.employee e " +
+            string query = string.Format("select e.id, e.name, FORMAT(CAST(e.phone AS BIGINT), '00000000000') AS phone, ep.start_date, ep.end_date, d.name as department from employeeDB.dbo.employee e " +
                 "inner join employeeDB.dbo.employee_project ep on e.id = ep.employee_id " +
                 "inner join employeeDB.dbo.department d on e.department_id = d.id " +
                 "where ep.project_id={0}", projectId);

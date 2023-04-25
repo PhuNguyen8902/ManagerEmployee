@@ -133,5 +133,6 @@
         private Button btnSearch;
         private DateTimePicker DTPSearch;
         private TextBox txtSearch;
+        
     }
 }

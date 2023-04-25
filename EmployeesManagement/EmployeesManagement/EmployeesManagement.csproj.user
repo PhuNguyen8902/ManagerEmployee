@@ -94,6 +94,9 @@
     <Compile Update="userControl\UserControlManager\Detail\employeePage\updateEmployeeByManager.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="userControl\UserControlManager\Detail\projectPage\projectEmployeeDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="userControl\UserControlManager\employeePage.cs">
       <SubType>UserControl</SubType>
     </Compile>

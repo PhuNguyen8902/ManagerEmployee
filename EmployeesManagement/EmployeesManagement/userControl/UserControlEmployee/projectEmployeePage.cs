@@ -15,6 +15,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
     public partial class projectEmployeePage : UserControl
     {
         private int id;
+        int isActive = 0;
         private projectController projectController;
         private salaryController salaryController;
         SqlConnection connection = Connection.Connection.GetConnection();
@@ -35,7 +36,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         {
             connection.Open();
 
-            DataTable dataTable = projectController.GetProjectEmployeeData(id);
+            DataTable dataTable = projectController.GetProjectEmployeeData(id, isActive);
 
             dgvProject.DataSource = dataTable;
 
@@ -162,7 +163,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         private void btnFindAll_Click(object sender, EventArgs e)
         {
 
-            DataTable dataTable = projectController.GetProjectEmployeeData(id);
+            DataTable dataTable = projectController.GetProjectEmployeeData(id, isActive);
 
             dgvProject.DataSource = dataTable;
         }

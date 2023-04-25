@@ -19,8 +19,8 @@ namespace EmployeesManagement.Control
             return projectService.GetProjectData(isActive);
         }
 
-        public DataTable GetProjectEmployeeData(int employeeId) { 
-            return projectService.GetProjectEmployeeData(employeeId);
+        public DataTable GetProjectEmployeeData(int employeeId, int isAtive) { 
+            return projectService.GetProjectEmployeeData(employeeId, isAtive);
         }
         public DataTable getEmployeeWorkInSpecificProject(int projectId)
         {
