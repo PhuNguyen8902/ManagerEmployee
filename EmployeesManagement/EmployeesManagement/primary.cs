@@ -16,6 +16,8 @@ namespace EmployeesManagement
 {
     public partial class primary : Form
     {
+        private int accId;
+        private string type;
         navigationController navigationControl;
         public primary()
         {
@@ -27,10 +29,17 @@ namespace EmployeesManagement
             InitializeComponent();
             initializeNavigationController(display);
         }
+        public primary(int display, int accId, string type)
+        {
+            InitializeComponent();
+            this.accId = accId;
+            this.type = type;
+            initializeNavigationController(display);
+        }
         private void initializeNavigationController(int display)
         {
             List<UserControl> userControls = new List<UserControl>()
-            { new employeesPage(), new projectsPage(), new DepartmentPage(),new salaryPage(),new accountPage()};
+            { new employeesPage(accId), new projectsPage(), new DepartmentPage(),new salaryPage(),new accountPage(),new chartPage()};
 
             navigationControl = new navigationController(userControls, mainPanel); // create an instance of navigationControl
             navigationControl.display(display);
@@ -77,6 +86,11 @@ namespace EmployeesManagement
         private void accountBtn_Click(object sender, EventArgs e)
         {
             navigationControl.display(4);
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            navigationControl.display(5);
         }
     }
 }

@@ -37,6 +37,7 @@
             tbSearch = new TextBox();
             btnSearch2 = new Button();
             cbSearchPosition = new ComboBox();
+            changeEmailBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAccount).BeginInit();
             SuspendLayout();
             // 
@@ -133,10 +134,21 @@
             cbSearchPosition.Text = "Select the item";
             cbSearchPosition.Visible = false;
             // 
+            // changeEmailBtn
+            // 
+            changeEmailBtn.Location = new Point(720, 116);
+            changeEmailBtn.Name = "changeEmailBtn";
+            changeEmailBtn.Size = new Size(130, 29);
+            changeEmailBtn.TabIndex = 41;
+            changeEmailBtn.Text = "Change Email";
+            changeEmailBtn.UseVisualStyleBackColor = true;
+            changeEmailBtn.Click += changeEmailBtn_Click;
+            // 
             // accountPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(changeEmailBtn);
             Controls.Add(cbSearchPosition);
             Controls.Add(btnSearch2);
             Controls.Add(cbSearch);
@@ -165,5 +177,6 @@
         private TextBox tbSearch;
         private Button btnSearch2;
         private ComboBox cbSearchPosition;
+        private Button changeEmailBtn;
     }
 }

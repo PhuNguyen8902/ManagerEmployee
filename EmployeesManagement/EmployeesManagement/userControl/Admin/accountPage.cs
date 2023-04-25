@@ -2,6 +2,7 @@
 using EmployeesManagement.Detail;
 using EmployeesManagement.Models;
 using EmployeesManagement.userControl.Admin.Detail.assignAccountDeatil;
+using EmployeesManagement.userControl.Admin.Detail.emailDetail;
 using EmployeesManagement.userControl.UserControlEmployee;
 using System;
 using System.Collections.Generic;
@@ -164,7 +165,8 @@ namespace EmployeesManagement.userControl.Admin
             btnSearch1.Visible = true;
             btnSearch2.Visible = false;
         }
-        private void reset() { 
+        private void reset()
+        {
             btnSearch1.Enabled = false;
             btnSearch2.Enabled = false;
         }
@@ -296,5 +298,31 @@ namespace EmployeesManagement.userControl.Admin
             }
         }
 
+        private void changeEmailBtn_Click(object sender, EventArgs e)
+        {
+            if (dgvAccount.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvAccount.SelectedRows[0];
+                int accId = Int32.Parse(row.Cells[0].Value.ToString());
+                changeEmailDetail formChange = new changeEmailDetail(accId);
+                formChange.FormClosed += new FormClosedEventHandler(FormChange_FormClosed);
+                formChange.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Choose account want to change email");
+            }
+            reset();
+        }
+        private void FormChange_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            connection.Open();
+
+            DataTable dataTable = accController.GetAccountData();
+
+            dgvAccount.DataSource = dataTable;
+
+            connection.Close();
+        }
     }
 }

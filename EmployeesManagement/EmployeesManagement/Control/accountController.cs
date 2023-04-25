@@ -17,6 +17,9 @@ namespace EmployeesManagement.Control
         {
             return accountService.updateEmailEmployee(id, email);
         }
+        public Boolean updateEmailEmployeeById(int id, string email) { 
+            return accountService.updateEmailEmployeeById(id, email);
+        }
 
         public Boolean checkEmailDuplicate(string email, int emid)
         {
@@ -73,14 +76,35 @@ namespace EmployeesManagement.Control
         public DataTable GetAccountDataOfEmpList(List<int> empList, int maId) {
             return accountService.GetAccountDataOfEmpList(empList, maId);
         }
-        public DataTable GetAccountNeedAssignDataInManage(){
+        public DataTable GetAccountNeedAssignDataInManage() {
             return accountService.GetAccountNeedAssignDataInManage();
         }
         public DataTable searchAccountDataByConditionIdInManage(string condition, int id, int deId) {
             return accountService.searchAccountDataByConditionIdInManage(condition, id, deId);
         }
-        public DataTable searchAccountDataByConditionInManage(string condition, string id, int deId) { 
+        public DataTable searchAccountDataByConditionInManage(string condition, string id, int deId) {
             return accountService.searchAccountDataByConditionInManage(condition, id, deId);
+        }
+
+        public Account findById(string condition, string value) {
+            return accountService.findById(condition, value);
+        }
+
+        public Boolean insertPassApp(string value, int accId) {
+            return accountService.insertPassApp(value, accId);
+        }
+
+        public PassApp getPassApp(int accId) {
+            return accountService.getPassApp(accId);
+        }
+        public Boolean sendEmails(String fromEmail, String[] toEmails, String passApp, String body, String subject) {
+            return accountService.sendEmails(fromEmail, toEmails, passApp, body, subject);
+        }
+        public List<string> getEmailsHaveEmployeeId() {
+            return accountService.getEmailsHaveEmployeeId();
+        }
+        public bool SendEmailWithAttachment(string fromEmail, string[] toEmails, string passApp, string body, string subject, string attachmentFilePath) { 
+            return accountService.SendEmailWithAttachment(fromEmail,toEmails, passApp, body,subject,attachmentFilePath);
         }
     }
 }

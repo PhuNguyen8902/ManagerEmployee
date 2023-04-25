@@ -200,6 +200,7 @@
             // 
             // tbInforEmail
             // 
+            tbInforEmail.Enabled = false;
             tbInforEmail.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             tbInforEmail.Location = new Point(330, 537);
             tbInforEmail.Name = "tbInforEmail";

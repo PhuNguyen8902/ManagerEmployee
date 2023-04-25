@@ -89,7 +89,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             emp.Gender = (byte)cbInforGender.SelectedIndex;
             emp.HomeTown = tbInforHomeTown.Text;
             string email = tbInforEmail.Text;
-            Boolean rsEmailDuplicate = accController.checkEmailDuplicate(email,emp.Id);
+            Boolean rsEmailDuplicate = accController.checkEmailDuplicate(email, emp.Id);
             if (phoneRs && rsEmailDuplicate)
             {
                 emp.Phone = strPhone;
@@ -104,12 +104,15 @@ namespace EmployeesManagement.userControl.UserControlEmployee
                     MessageBox.Show("Update fail");
                 }
             }
-            else {
-                if (!phoneRs) {
+            else
+            {
+                if (!phoneRs)
+                {
                     MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
                     tbInforPhone.Text = "";
                 }
-                if (!rsEmailDuplicate) {
+                if (!rsEmailDuplicate)
+                {
                     MessageBox.Show("Email is duplicated");
                     tbInforEmail.Text = "";
                 }

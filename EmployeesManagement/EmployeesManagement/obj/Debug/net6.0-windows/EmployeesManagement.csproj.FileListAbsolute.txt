@@ -282,3 +282,9 @@ D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\Employees
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.accountPage.resources
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.UserControlManager.Detail.assignAccountDetail.assignAccountDetail.resources
 D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.emailDetail.sendEmailDetail.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.emailDetail.passAppDetail.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.emailDetail.chooseSend.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.emailDetail.sendMailDepartmentDetail.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.emailDetail.sendMailEmployeeDetail.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.Detail.emailDetail.changeEmailDetail.resources
+D:\Hoc\Nam3\HK2\LapTrinhCoSoDuLieu\ManagerEmployee\EmployeesManagement\EmployeesManagement\obj\Debug\net6.0-windows\EmployeesManagement.userControl.Admin.chartPage.resources

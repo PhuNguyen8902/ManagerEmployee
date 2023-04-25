@@ -1,9 +1,13 @@
 ﻿using EmployeesManagement.Models;
+using Google.Protobuf.WellKnownTypes;
+using Org.BouncyCastle.Asn1.Mozilla;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,14 +43,35 @@ namespace EmployeesManagement.Service
             }
             return false;
         }
-
-        //Kiểm tra trong database có bị trùng email hay không
-        public Boolean checkEmailDuplicate(string email,int emid)
+        //Chỉnh sửa email nhân viên by id
+        public Boolean updateEmailEmployeeById(int id, string email)
         {
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT COUNT(*) FROM [employeeDB].[dbo].[account] WHERE email = '{0}' AND (employee_id IS NULL OR employee_id <> {1})", email,emid);
+                string sql = string.Format("update employeeDB.dbo.account set email ='{0}' where id={1}", email, id);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        //Kiểm tra trong database có bị trùng email hay không
+        public Boolean checkEmailDuplicate(string email, int emid)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT COUNT(*) FROM [employeeDB].[dbo].[account] WHERE email = '{0}' AND (employee_id IS NULL OR employee_id <> {1})", email, emid);
                 using (SqlCommand cmd = new SqlCommand(sql, connection))
                 {
                     int count = (int)cmd.ExecuteScalar();
@@ -65,7 +90,7 @@ namespace EmployeesManagement.Service
         }
 
         //Kiểm tra trong database có bị trùng user_name hay không
-        public Boolean checkUserNameDuplicate(string user_name,int emid)
+        public Boolean checkUserNameDuplicate(string user_name, int emid)
         {
             try
             {
@@ -242,7 +267,7 @@ namespace EmployeesManagement.Service
         }
 
         // Lấy thông tin account của các employee trong empList để truyền vào datagridview
-        public DataTable GetAccountDataOfEmpList(List<int> empList,int maId)
+        public DataTable GetAccountDataOfEmpList(List<int> empList, int maId)
         {
             DataTable table = new DataTable();
             string query = "SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a " +
@@ -302,6 +327,34 @@ namespace EmployeesManagement.Service
             return false;
         }
 
+        //Lấy danh sách các email có employee id
+        public List<string> getEmailsHaveEmployeeId()
+        {
+            List<string> list = new List<string>();
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.account WHERE employee_id is not null");
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string emailList = reader.GetString(reader.GetOrdinal("email"));
+                    list.Add(emailList);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+
         //Gỡ nhân viên của account
         public Boolean removeEmployeeIdOutAccount(int accountId)
         {
@@ -325,10 +378,10 @@ namespace EmployeesManagement.Service
         }
 
         // Search thông tin account để truyền vào datagridview bằng các condition chính xác như id
-        public DataTable searchAccountDataByConditionId(string condition,int id)
+        public DataTable searchAccountDataByConditionId(string condition, int id)
         {
             DataTable table = new DataTable();
-            string query =string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE {0}={1}",condition,id);
+            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE {0}={1}", condition, id);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -347,7 +400,7 @@ namespace EmployeesManagement.Service
         }
 
         // Search thông tin account cần gán employee_id để truyền vào datagridview bằng các condition khác
-        public DataTable searchAccountNeedAssignDataByConditionId(string condition,int id)
+        public DataTable searchAccountNeedAssignDataByConditionId(string condition, int id)
         {
             DataTable table = new DataTable();
             string query = string.Format("SELECT id, user_name, email, type FROM employeeDB.dbo.account Where employee_id IS NULL and {0} ={1}", condition, id);
@@ -361,7 +414,7 @@ namespace EmployeesManagement.Service
         public DataTable searchAccountNeedAssignDataByCondition(string condition, string value)
         {
             DataTable table = new DataTable();
-            string query = string.Format("SELECT id, user_name, email, type FROM employeeDB.dbo.account Where employee_id IS NULL and {0} like '%{1}%'",condition,value);
+            string query = string.Format("SELECT id, user_name, email, type FROM employeeDB.dbo.account Where employee_id IS NULL and {0} like '%{1}%'", condition, value);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -369,10 +422,10 @@ namespace EmployeesManagement.Service
         }
 
         // Search thông tin account để truyền vào datagridview bằng các condition chính xác như id trong manager page
-        public DataTable searchAccountDataByConditionIdInManage(string condition, int id,int deId)
+        public DataTable searchAccountDataByConditionIdInManage(string condition, int id, int deId)
         {
             DataTable table = new DataTable();
-            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a inner JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE ( {0}={1} and a.employee_id is null) or ( e.department_id = {2} and {0}={1})", condition, id,deId);
+            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a inner JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE ( {0}={1} and a.employee_id is null) or ( e.department_id = {2} and {0}={1})", condition, id, deId);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
@@ -380,14 +433,232 @@ namespace EmployeesManagement.Service
         }
 
         // Search thông tin account để truyền vào datagridview bằng các condition khác
-        public DataTable searchAccountDataByConditionInManage(string condition, string id,int deId)
+        public DataTable searchAccountDataByConditionInManage(string condition, string id, int deId)
         {
             DataTable table = new DataTable();
-            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE (a.employee_id is null and {0} like '%{1}%') or ( e.department_id = {2} and {0} like '%{1}%')", condition, id,deId);
+            string query = string.Format("SELECT a.id, a.user_name, a.email, a.type, e.id AS EmployeeId, e.name AS EmployeeName FROM employeeDB.dbo.account a LEFT JOIN employeeDB.dbo.employee e ON a.employee_id = e.id WHERE (a.employee_id is null and {0} like '%{1}%') or ( e.department_id = {2} and {0} like '%{1}%')", condition, id, deId);
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
             return table;
         }
+
+        //Tìm account bằng condition chinh xác như id
+        public Account findById(string condition, string value)
+        {
+            Account a = null;
+
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.account WHERE {1} = '{0}'", value, condition);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    a = new Account();
+                    a.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    a.UserName = reader.GetString(reader.GetOrdinal("user_name"));
+                    a.Password = reader.GetString(reader.GetOrdinal("password"));
+                    a.FullName = reader.GetString(reader.GetOrdinal("full_name"));
+                    a.Type = reader.GetString(reader.GetOrdinal("type"));
+                    a.Email = reader.GetString(reader.GetOrdinal("email"));
+                    a.EmployeeId = reader.GetInt32(reader.GetOrdinal("employee_id"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return a;
+        }
+
+        //Thêm passapp cho account
+        public Boolean insertPassApp(string value, int accId)
+        {
+            connection.Open();
+            try
+            {
+                Boolean rsCheck = checkHaveAccountIdInPassApp(accId);
+                if (rsCheck)
+                {
+                    // Thực hiện thêm bản ghi vào bảng salary
+                    SqlCommand cmdAddSalary = new SqlCommand("INSERT INTO employeeDB.dbo.passApp (value, account_id) VALUES (@value, @account_id)", connection);
+                    cmdAddSalary.Parameters.AddWithValue("@value", value);
+                    cmdAddSalary.Parameters.AddWithValue("@account_id", accId);
+                    if (cmdAddSalary.ExecuteNonQuery() > 0)
+                    {
+                        return true;
+                    }
+                }
+                else { 
+                    Boolean rsUpdate = updatePassApp(accId, value);
+                    return rsUpdate;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        //Lấy passapp 
+        public PassApp getPassApp(int accId)
+        {
+            PassApp p = null;
+
+            try
+            {
+                connection.Open();
+                string sql = string.Format("SELECT * FROM employeeDB.dbo.passApp WHERE account_id = '{0}'", accId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    p = new PassApp();
+                    p.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    p.Value = reader.GetString(reader.GetOrdinal("value"));
+                    p.AccountId = reader.GetInt32(reader.GetOrdinal("account_id"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return p;
+        }
+
+        //Hàm update passapp cho account đã có
+        public bool updatePassApp(int accId,string value)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("update employeeDB.dbo.passApp set value = '{0}' where account_id = {1}", value,accId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        //Kiểm tra trong passapp có account id này chưa
+        public bool checkHaveAccountIdInPassApp(int accId)
+        {
+            try
+            {
+                connection.Open();
+                string sql = string.Format("select id from employeeDB.dbo.passApp where account_id={0}", accId);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader rdr = cmd.ExecuteReader();
+                if (!rdr.Read())
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        //////////////
+        // Gửi mail
+        public Boolean sendEmails(String fromEmail, String[] toEmails, String passApp, String body, String subject) {
+            MailMessage mail = new MailMessage();
+            string fromAddress = fromEmail;
+            foreach (String toEmail in toEmails)
+            {
+                string toAddress = toEmail;
+                mail.To.Add(toAddress);
+
+            }
+
+            string pass = passApp;
+            mail.From = new MailAddress(fromAddress);
+            mail.Subject = subject;
+            mail.Body = body;
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            smtp.EnableSsl = true;
+            smtp.Port = 587;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential(fromAddress, pass);
+            smtp.Timeout = 20000;
+            smtp.DeliveryFormat = SmtpDeliveryFormat.International;
+
+            try
+            {
+                smtp.Send(mail);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //test mail
+        public bool SendEmailWithAttachment(string fromEmail, string[] toEmails, string passApp, string body, string subject, string attachmentFilePath)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                string fromAddress = fromEmail;
+                foreach (string toEmail in toEmails)
+                {
+                    string toAddress = toEmail;
+                    mail.To.Add(toAddress);
+                }
+                string pass = passApp;
+                mail.From = new MailAddress(fromAddress);
+                mail.Subject = subject;
+                mail.Body = body;
+                Attachment attachment = new Attachment(attachmentFilePath);
+                mail.Attachments.Add(attachment);
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+                smtp.EnableSsl = true;
+                smtp.Port = 587;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential(fromAddress, pass);
+                smtp.Timeout = 20000;
+                smtp.DeliveryFormat = SmtpDeliveryFormat.International;
+                smtp.Send(mail);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
     }
 }

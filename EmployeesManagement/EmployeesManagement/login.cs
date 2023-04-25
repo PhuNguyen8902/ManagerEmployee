@@ -48,12 +48,13 @@ namespace EmployeesManagement
                             employeeId = mdr.GetInt32(mdr.GetOrdinal("employee_id"));
                         }
                         string type = mdr.GetString(mdr.GetOrdinal("type"));
+                        int accId = mdr.GetInt32(mdr.GetOrdinal("id"));
 
                         if (type == "Admin" && employeeId != -1)
                         {
                             MessageBox.Show("Login Successful!");
                             this.Hide();
-                            primary primaryPage = new primary();
+                            primary primaryPage = new primary(0,accId,type);
                             primaryPage.Show();
                         }
                         else if (type == "Employee" && employeeId != -1)

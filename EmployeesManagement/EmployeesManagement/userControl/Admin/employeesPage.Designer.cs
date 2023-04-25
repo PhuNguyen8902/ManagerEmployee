@@ -155,7 +155,7 @@
             // cbSearchGender
             // 
             cbSearchGender.FormattingEnabled = true;
-            cbSearchGender.Location = new Point(22, 21);
+            cbSearchGender.Location = new Point(22, 20);
             cbSearchGender.Name = "cbSearchGender";
             cbSearchGender.Size = new Size(258, 28);
             cbSearchGender.TabIndex = 11;
@@ -165,7 +165,7 @@
             // cbSearchPosition
             // 
             cbSearchPosition.FormattingEnabled = true;
-            cbSearchPosition.Location = new Point(22, 22);
+            cbSearchPosition.Location = new Point(22, 20);
             cbSearchPosition.Name = "cbSearchPosition";
             cbSearchPosition.Size = new Size(258, 28);
             cbSearchPosition.TabIndex = 12;

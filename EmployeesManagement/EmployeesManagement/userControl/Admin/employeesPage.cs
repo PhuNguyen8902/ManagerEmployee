@@ -24,6 +24,7 @@ namespace EmployeesManagement.userControl
 {
     public partial class employeesPage : UserControl
     {
+        int accId = -1;
         SqlConnection connection = Connection.Connection.GetConnection();
 
         private Employee employeeModel;
@@ -37,6 +38,15 @@ namespace EmployeesManagement.userControl
             employeeService = new EmployeeService();
             employeeController = new employeeController();
             employeesPage_Load();
+        }
+        public employeesPage(int accId)
+        {
+            InitializeComponent();
+            employeeModel = new Employee();
+            employeeService = new EmployeeService();
+            employeeController = new employeeController();
+            employeesPage_Load();
+            this.accId = accId;
         }
 
         private void employeesPage_Load()
@@ -292,8 +302,8 @@ namespace EmployeesManagement.userControl
 
         private void btnEmail_Click(object sender, EventArgs e)
         {
-            sendEmailDetail formEmail = new sendEmailDetail();
-            formEmail.ShowDialog();
+            chooseSend formChoose = new chooseSend(accId);
+            formChoose.ShowDialog();
         }
     }
 }
