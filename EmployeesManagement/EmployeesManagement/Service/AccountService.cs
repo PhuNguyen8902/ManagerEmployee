@@ -480,10 +480,10 @@ namespace EmployeesManagement.Service
         //Thêm passapp cho account
         public Boolean insertPassApp(string value, int accId)
         {
-            connection.Open();
             try
             {
                 Boolean rsCheck = checkHaveAccountIdInPassApp(accId);
+                connection.Open();
                 if (rsCheck)
                 {
                     // Thực hiện thêm bản ghi vào bảng salary
@@ -546,7 +546,7 @@ namespace EmployeesManagement.Service
         {
             try
             {
-                connection.Open();
+                //connection.Open();
                 string sql = string.Format("update employeeDB.dbo.passApp set value = '{0}' where account_id = {1}", value,accId);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 if (cmd.ExecuteNonQuery() > 0)
@@ -556,10 +556,10 @@ namespace EmployeesManagement.Service
             {
                 Console.WriteLine(ex.Message);
             }
-            finally
-            {
-                connection.Close();
-            }
+            //finally
+            //{
+            //    connection.Close();
+            //}
             return false;
         }
 

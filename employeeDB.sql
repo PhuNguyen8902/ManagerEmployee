@@ -106,7 +106,7 @@ CREATE TABLE account (
 	full_name nvarchar (50),
 	email nvarchar (50),
 	type nvarchar (50),
-	employee_id int unique,
+	employee_id int ,
 	constraint fk_a_employee foreign key (employee_id) references employee(id)
 )
 GO
