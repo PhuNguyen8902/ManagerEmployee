@@ -1,4 +1,5 @@
 ﻿using EmployeesManagement.Control;
+using EmployeesManagement.Models;
 using EmployeesManagement.userControl.UserControlManager.Detail.projectPage;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         int isActive = 0;
         private projectController projectController;
         private salaryController salaryController;
+        private notifyController notify;
+        private employeeController empController;
         SqlConnection connection = Connection.Connection.GetConnection();
         public projectEmployeePage()
         {
@@ -29,6 +32,8 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         {
             projectController = new projectController();
             salaryController = new salaryController();
+            notify = new notifyController();
+            empController = new employeeController();
             InitializeComponent();
             this.id = id;
         }
@@ -45,6 +50,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             loadComboBoxSearch();
             loadComboBoxSearchActive();
             btnSearch.Enabled = false;
+
 
             if (dgvProject.Columns.Contains("is_active"))
             {
@@ -110,6 +116,8 @@ namespace EmployeesManagement.userControl.UserControlEmployee
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            dgvProject.Columns.Clear();
+
             string selectedValue = cbSearch.SelectedItem.ToString();
             if (selectedValue == "Project Id")
             {
@@ -163,6 +171,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
 
         private void btnFindAll_Click(object sender, EventArgs e)
         {
+            dgvProject.Columns.Clear();
 
             DataTable dataTable = projectController.GetProjectEmployeeData(id, isActive);
 
@@ -171,6 +180,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
 
         private void btnAcitve_Click(object sender, EventArgs e)
         {
+            dgvProject.Columns.Clear();
             isActive = 0;
             connection.Open();
 
@@ -183,12 +193,20 @@ namespace EmployeesManagement.userControl.UserControlEmployee
 
         private void btnEnd_Click(object sender, EventArgs e)
         {
+            dgvProject.Columns.Clear();
+          
             isActive = 1;
             connection.Open();
 
             DataTable dataTable = projectController.GetProjectEmployeeData(id, isActive);
 
             dgvProject.DataSource = dataTable;
+            dgvProject.Columns.Add(new DataGridViewButtonColumn()
+            {
+                Name = "NotifyButton",
+                Text = "Notify",
+                UseColumnTextForButtonValue = true
+            });
 
             connection.Close();
         }
@@ -237,6 +255,20 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             else
             {
                 MessageBox.Show("You must choose project to continue this action");
+            }
+        }
+
+        private void dgvProject_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProject.Columns[e.ColumnIndex].Name == "NotifyButton")
+            {
+                int proId = (int)dgvProject.Rows[e.RowIndex].Cells["id"].Value;
+                DateTime now = DateTime.Now;
+                string message = string.Format("Employee with Id of {1} wants to change the Project status with Id of {2} to Active at ({0})", now.ToString(),id,proId);
+                Employee emp = empController.getInforEmployee(id);
+                int deId = (int)emp.DepartmentId;
+                Employee mana = empController.getInforManagerOfEmployee(deId);
+                notify.addNotify(mana.Id, message);
             }
         }
     }

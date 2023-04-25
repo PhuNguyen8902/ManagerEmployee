@@ -73,6 +73,7 @@
             // 
             // dgvProject
             // 
+            dgvProject.AllowUserToAddRows = false;
             dgvProject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProject.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProject.Dock = DockStyle.Bottom;
@@ -83,6 +84,7 @@
             dgvProject.RowTemplate.Height = 29;
             dgvProject.Size = new Size(903, 546);
             dgvProject.TabIndex = 29;
+            dgvProject.CellContentClick += dgvProject_CellContentClick;
             // 
             // btnSearch
             // 
@@ -93,6 +95,21 @@
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
+            // 
+            // DTPSearch
+            // 
+            DTPSearch.Location = new Point(22, 7);
+            DTPSearch.Name = "DTPSearch";
+            DTPSearch.Size = new Size(258, 27);
+            DTPSearch.TabIndex = 35;
+            DTPSearch.Visible = false;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(22, 7);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(258, 27);
+            txtSearch.TabIndex = 34;
             // 
             // btnActive
             // 
@@ -133,21 +150,6 @@
             btnDetail.Text = "Detail";
             btnDetail.UseVisualStyleBackColor = true;
             btnDetail.Click += btnDetail_Click;
-            // 
-            // DTPSearch
-            // 
-            DTPSearch.Location = new Point(22, 7);
-            DTPSearch.Name = "DTPSearch";
-            DTPSearch.Size = new Size(258, 27);
-            DTPSearch.TabIndex = 35;
-            DTPSearch.Visible = false;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Location = new Point(22, 7);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(258, 27);
-            txtSearch.TabIndex = 34;
             // 
             // projectEmployeePage
             // 

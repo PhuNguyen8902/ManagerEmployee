@@ -4,6 +4,7 @@ using EmployeesManagement.Models;
 using EmployeesManagement.Service;
 using EmployeesManagement.userControl.Admin.Detail.employeeDetail;
 using EmployeesManagement.userControl.Detail.employeeDetail;
+using EmployeesManagement.userControl.UserControlManager.Detail.emailDetail;
 using EmployeesManagement.userControl.UserControlManager.Detail.employeePage;
 using EmployeesManagement.Utils;
 using System;
@@ -19,7 +20,7 @@ using System.Windows.Forms;
 
 namespace EmployeesManagement.userControl.UserControlManager
 {
-    
+
     public partial class employeePage : UserControl
     {
         SqlConnection connection = Connection.Connection.GetConnection();
@@ -30,6 +31,7 @@ namespace EmployeesManagement.userControl.UserControlManager
         private Employee employeeModel;
         private EmployeeService employeeService = new EmployeeService();
         private employeeController employeeController = new employeeController();
+        private accountController accController = new accountController();
         private UtilsController utilsController = new UtilsController();
         public employeePage()
         {
@@ -178,6 +180,15 @@ namespace EmployeesManagement.userControl.UserControlManager
             {
                 MessageBox.Show("You must choose project to continue this action");
             }
+        }
+
+        private void btnEmail_Click(object sender, EventArgs e)
+        {
+            Account acc = new Account();
+            acc = accController.getAccountOfEmployee(managerId);
+            int accId = acc.Id;
+            manageChooseSend formChoose = new manageChooseSend(accId);
+            formChoose.ShowDialog();
         }
     }
 }

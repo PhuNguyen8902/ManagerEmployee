@@ -28,115 +28,126 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.updateBtn = new System.Windows.Forms.Button();
-            this.btnExportExcel = new System.Windows.Forms.Button();
-            this.dgvEmployee = new System.Windows.Forms.DataGridView();
-            this.btnDetail = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
-            this.SuspendLayout();
+            textBox1 = new TextBox();
+            button1 = new Button();
+            deleteBtn = new Button();
+            addBtn = new Button();
+            updateBtn = new Button();
+            btnExportExcel = new Button();
+            dgvEmployee = new DataGridView();
+            btnDetail = new Button();
+            btnEmail = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
+            SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(21, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 27);
-            this.textBox1.TabIndex = 1;
+            textBox1.Location = new Point(21, 19);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(258, 27);
+            textBox1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(297, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            button1.Location = new Point(297, 19);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 4;
+            button1.Text = "Search";
+            button1.UseVisualStyleBackColor = true;
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(793, 17);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(94, 29);
-            this.deleteBtn.TabIndex = 12;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            deleteBtn.Location = new Point(793, 17);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(94, 29);
+            deleteBtn.TabIndex = 12;
+            deleteBtn.Text = "Delete";
+            deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(573, 19);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(94, 29);
-            this.addBtn.TabIndex = 11;
-            this.addBtn.Text = "Add";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            addBtn.Location = new Point(573, 19);
+            addBtn.Name = "addBtn";
+            addBtn.Size = new Size(94, 29);
+            addBtn.TabIndex = 11;
+            addBtn.Text = "Add";
+            addBtn.UseVisualStyleBackColor = true;
+            addBtn.Click += addBtn_Click;
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(683, 19);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(94, 29);
-            this.updateBtn.TabIndex = 10;
-            this.updateBtn.Text = "Update";
-            this.updateBtn.UseVisualStyleBackColor = true;
-            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            updateBtn.Location = new Point(683, 19);
+            updateBtn.Name = "updateBtn";
+            updateBtn.Size = new Size(94, 29);
+            updateBtn.TabIndex = 10;
+            updateBtn.Text = "Update";
+            updateBtn.UseVisualStyleBackColor = true;
+            updateBtn.Click += updateBtn_Click;
             // 
             // btnExportExcel
             // 
-            this.btnExportExcel.Location = new System.Drawing.Point(10, 120);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(120, 29);
-            this.btnExportExcel.TabIndex = 10;
-            this.btnExportExcel.Text = "Export Excel";
-            this.btnExportExcel.UseVisualStyleBackColor = true;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            btnExportExcel.Location = new Point(10, 120);
+            btnExportExcel.Name = "btnExportExcel";
+            btnExportExcel.Size = new Size(120, 29);
+            btnExportExcel.TabIndex = 10;
+            btnExportExcel.Text = "Export Excel";
+            btnExportExcel.UseVisualStyleBackColor = true;
+            btnExportExcel.Click += btnExportExcel_Click;
             // 
             // dgvEmployee
             // 
-            this.dgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployee.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvEmployee.Location = new System.Drawing.Point(0, 163);
-            this.dgvEmployee.Name = "dgvEmployee";
-            this.dgvEmployee.ReadOnly = true;
-            this.dgvEmployee.RowHeadersWidth = 51;
-            this.dgvEmployee.RowTemplate.Height = 29;
-            this.dgvEmployee.Size = new System.Drawing.Size(903, 546);
-            this.dgvEmployee.TabIndex = 13;
+            dgvEmployee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmployee.Dock = DockStyle.Bottom;
+            dgvEmployee.Location = new Point(0, 163);
+            dgvEmployee.Name = "dgvEmployee";
+            dgvEmployee.ReadOnly = true;
+            dgvEmployee.RowHeadersWidth = 51;
+            dgvEmployee.RowTemplate.Height = 29;
+            dgvEmployee.Size = new Size(903, 546);
+            dgvEmployee.TabIndex = 13;
             // 
             // btnDetail
             // 
-            this.btnDetail.Location = new System.Drawing.Point(793, 128);
-            this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(94, 29);
-            this.btnDetail.TabIndex = 14;
-            this.btnDetail.Text = "Detail";
-            this.btnDetail.UseVisualStyleBackColor = true;
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            btnDetail.Location = new Point(793, 128);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(94, 29);
+            btnDetail.TabIndex = 14;
+            btnDetail.Text = "Detail";
+            btnDetail.UseVisualStyleBackColor = true;
+            btnDetail.Click += btnDetail_Click;
+            // 
+            // btnEmail
+            // 
+            btnEmail.Location = new Point(174, 120);
+            btnEmail.Name = "btnEmail";
+            btnEmail.Size = new Size(120, 29);
+            btnEmail.TabIndex = 29;
+            btnEmail.Text = "Send Email";
+            btnEmail.UseVisualStyleBackColor = true;
+            btnEmail.Click += btnEmail_Click;
             // 
             // employeePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnDetail);
-            this.Controls.Add(this.btnExportExcel);
-            this.Controls.Add(this.dgvEmployee);
-            this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.updateBtn);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Name = "employeePage";
-            this.Size = new System.Drawing.Size(903, 709);
-            this.Load += new System.EventHandler(this.employeePage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnEmail);
+            Controls.Add(btnDetail);
+            Controls.Add(btnExportExcel);
+            Controls.Add(dgvEmployee);
+            Controls.Add(deleteBtn);
+            Controls.Add(addBtn);
+            Controls.Add(updateBtn);
+            Controls.Add(button1);
+            Controls.Add(textBox1);
+            Name = "employeePage";
+            Size = new Size(903, 709);
+            Load += employeePage_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -149,5 +160,6 @@
         private Button btnExportExcel;
         private DataGridView dgvEmployee;
         private Button btnDetail;
+        private Button btnEmail;
     }
 }
