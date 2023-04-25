@@ -106,7 +106,7 @@ CREATE TABLE account (
 	full_name nvarchar (50),
 	email nvarchar (50),
 	type nvarchar (50),
-	employee_id int,
+	employee_id int unique,
 	constraint fk_a_employee foreign key (employee_id) references employee(id)
 )
 GO
@@ -116,6 +116,14 @@ CREATE TABLE notify (
 	value nvarchar (200),
 	employee_id int,
 	constraint fk_n_employee foreign key (employee_id) references employee(id)
+)
+GO
+
+CREATE TABLE passApp(
+	id int primary key identity(1,1),
+	value nvarchar (200),
+	account_id int unique,
+	constraint fk_pa_account foreign key (account_id) references account(id)
 )
 GO
 
@@ -163,11 +171,14 @@ insert into employee(name,phone,gender,home_town,department_id,salary_id,positio
 insert into employee(name,phone,gender,home_town,department_id,salary_id,position_id) values ('hoa',08937265365,0,'hoc mon',1,1,1);
 insert into employee(name,phone,gender,home_town,department_id,salary_id,position_id) values ('hiep',08937263925,0,'hoc mon',2,1,1);
 
-insert into account(user_name,password,full_name,email,type,employee_id) values ('admin','8AFF0186EBB7F8A784C5AC33FCBA2299D727D6DD52BE52B6A106CF58D607D08F7fee8531d375d2084a2a76cb7043ba862e07a2918f12f56efe4c0856be047460','Admin','admin@gmail.com','Admin',1);
+insert into account(user_name,password,full_name,email,type,employee_id) values ('admin','8AFF0186EBB7F8A784C5AC33FCBA2299D727D6DD52BE52B6A106CF58D607D08F7fee8531d375d2084a2a76cb7043ba862e07a2918f12f56efe4c0856be047460','Admin','phunguyen8902@gmail.com','Admin',1);
+insert into account(user_name,password,full_name,email,type,employee_id) values ('manage','42B5A18E7D8725CCC3DC26734913292C334E73B43D57447F1C1C7C1B0869F944d14f21cfa5db4dd1d3e3f3b0a44a874d9043becd6177b73126b9979f7c6ed0c4','Manage','anhphu892002@gmail.com','Manage',2);
 insert into account(user_name,password,full_name,email,type,employee_id) values ('employee','F579544FB8301A3C0E06F51DFC660617832DA8B443A0484670302E6C2B1013ABdfdd9bc4b0869177002fc98116140ae777197db3279ab7212e595dc2207242d0','Employee','employee@gmail.com','Employee',5);
-insert into account(user_name,password,full_name,email,type,employee_id) values ('manage','42B5A18E7D8725CCC3DC26734913292C334E73B43D57447F1C1C7C1B0869F944d14f21cfa5db4dd1d3e3f3b0a44a874d9043becd6177b73126b9979f7c6ed0c4','Manage','manage@gmail.com','Manage',2);
 
 insert into notify (value,employee_id) values ('Thong bao 1',5);
+
+insert into passApp(value,account_id) values ('qhxexlsxrwmncjdd',1);
+insert into passApp(value,account_id) values ('ejqyavokytgkwuzk',2);
 
 insert into timekeeping (date,working_hour,employee_id) values ('2002-10-02','11:00:00',1);
 

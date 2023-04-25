@@ -8,6 +8,9 @@ using System.Data.SqlClient;
 using System.Data;
 using EmployeesManagement.Models;
 using EmployeesManagement.Control;
+using EmployeesManagement.userControl.Detail.departmentDetail;
+using Microsoft.Office.Interop.Excel;
+using EmployeesManagement.userControl.Admin.Detail.emailDetail;
 
 namespace EmployeesManagement
 {
@@ -102,7 +105,7 @@ namespace EmployeesManagement
             account.FullName = txtFullName.Text;
             if (cbType.SelectedIndex == 0)
             {
-                account.Type = "Manager";
+                account.Type = "Manage";
             }
             else
             {
@@ -111,6 +114,10 @@ namespace EmployeesManagement
             Boolean rsCreateAccount = accController.createAccount(account);
             if (rsCreateAccount)
             {
+                if (cbType.SelectedIndex == 0) {
+                    passAppDetail formPassApp = new passAppDetail(account.Email);
+                    formPassApp.ShowDialog();
+                }
                 MessageBox.Show("Account successfully created");
                 txtUsername.Text = "";
                 txtPassword.Text = "";
@@ -249,7 +256,7 @@ namespace EmployeesManagement
 
         private void backBtn2_Click(object sender, EventArgs e)
         {
-            FormManager manage = new FormManager(0,manageId,"Manage");
+            FormManager manage = new FormManager(0, manageId, "Manage");
             manage.Show();
             this.Close();
         }

@@ -28,6 +28,9 @@ namespace EmployeesManagement.Models
         public virtual DbSet<Timekeeping> Timekeepings { get; set; } = null!;
         public virtual DbSet<Notify> Notifys { get; set; } = null!;
 
+        public virtual DbSet<PassApp> PassApps { get; set; } = null!;
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -72,6 +75,11 @@ namespace EmployeesManagement.Models
                     .WithMany(p => p.Accounts)
                     .HasForeignKey(d => d.EmployeeId)
                     .HasConstraintName("fk_a_employee");
+
+                entity.HasOne(d => d.PassApp)
+                    .WithOne(p => p.Account)
+                    .HasForeignKey<PassApp>(d => d.AccountId)
+                    .HasConstraintName("fk_pa_account");
             });
 
             modelBuilder.Entity<Notify>(entity =>
@@ -90,6 +98,17 @@ namespace EmployeesManagement.Models
                     .WithMany(p => p.Notifys)
                     .HasForeignKey(d => d.EmployeeId)
                     .HasConstraintName("fk_n_employee");
+            });
+
+            modelBuilder.Entity<PassApp>(entity =>
+            {
+                entity.ToTable("passApp");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Value)
+                    .HasMaxLength(200)
+                    .HasColumnName("value");
             });
 
             modelBuilder.Entity<Department>(entity =>

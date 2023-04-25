@@ -45,6 +45,7 @@
             label2 = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             mainPanel = new Panel();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(iconButton1);
             panel4.Controls.Add(accountBtn);
             panel4.Controls.Add(panel2);
             panel4.Controls.Add(salaryBtn);
@@ -316,6 +318,28 @@
             mainPanel.Size = new Size(903, 710);
             mainPanel.TabIndex = 1;
             // 
+            // iconButton1
+            // 
+            iconButton1.BackColor = Color.Teal;
+            iconButton1.Dock = DockStyle.Top;
+            iconButton1.FlatAppearance.BorderColor = Color.Teal;
+            iconButton1.FlatStyle = FlatStyle.Flat;
+            iconButton1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButton1.ForeColor = SystemColors.ControlLightLight;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.ChartArea;
+            iconButton1.IconColor = Color.White;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton1.Location = new Point(0, 295);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(258, 59);
+            iconButton1.TabIndex = 7;
+            iconButton1.Text = "Charts";
+            iconButton1.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.Click += iconButton1_Click;
+            // 
             // primary
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -354,5 +378,6 @@
         private Panel panel2;
         private FontAwesome.Sharp.IconButton createAccountBtn;
         private FontAwesome.Sharp.IconButton accountBtn;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }
