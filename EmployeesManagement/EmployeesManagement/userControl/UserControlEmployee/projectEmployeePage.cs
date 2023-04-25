@@ -187,6 +187,12 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             DataTable dataTable = projectController.GetProjectEmployeeData(id, isActive);
 
             dgvProject.DataSource = dataTable;
+            dgvProject.Columns.Add(new DataGridViewButtonColumn()
+            {
+                Name = "NotifyButton",
+                Text = "Notify",
+                UseColumnTextForButtonValue = true
+            });
 
             connection.Close();
         }
@@ -201,12 +207,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             DataTable dataTable = projectController.GetProjectEmployeeData(id, isActive);
 
             dgvProject.DataSource = dataTable;
-            dgvProject.Columns.Add(new DataGridViewButtonColumn()
-            {
-                Name = "NotifyButton",
-                Text = "Notify",
-                UseColumnTextForButtonValue = true
-            });
+          
 
             connection.Close();
         }
@@ -264,11 +265,12 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             {
                 int proId = (int)dgvProject.Rows[e.RowIndex].Cells["id"].Value;
                 DateTime now = DateTime.Now;
-                string message = string.Format("Employee with Id of {1} wants to change the Project status with Id of {2} to Active at ({0})", now.ToString(),id,proId);
+                string message = string.Format("Employee with Id of {1} wants to change the Project status with Id of {2} to End at ({0})", now.ToString(),id,proId);
                 Employee emp = empController.getInforEmployee(id);
                 int deId = (int)emp.DepartmentId;
                 Employee mana = empController.getInforManagerOfEmployee(deId);
                 notify.addNotify(mana.Id, message);
+                MessageBox.Show("Success");
             }
         }
     }
