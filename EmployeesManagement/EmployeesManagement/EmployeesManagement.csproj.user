@@ -37,6 +37,9 @@
     <Compile Update="userControl\Admin\Detail\employeeDetail\addEmployeeDetail.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="userControl\Admin\Detail\employeeDetail\employeeDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="userControl\Admin\Detail\employeeDetail\updateEmployeeDetail.cs">
       <SubType>Form</SubType>
     </Compile>

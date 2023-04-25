@@ -57,21 +57,21 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
 
             connection.Close();
 
-            lbId.Text += "\t" + Id.ToString();
-            lbName.Text += "\t" + Name;
-            lbDescription.Text += "\t" + Description;
-            lbStartDate.Text += "\t" + StartDate;
-            lbEndDate.Text += "\t" + EndDate;
+            lbId.Text += "   " + Id.ToString();
+            lbName.Text += "  " + Name;
+            lbDescription.Text += "  " + Description;
+            lbStartDate.Text += "  " + StartDate;
+            lbEndDate.Text += "  " + EndDate;
             if(IsActive)
             {
-                lbCondition.Text += "\t" + "end";
+                lbCondition.Text += "  " + "end";
                 btnAddEmployee.Visible = false;
                 btnDeleteEmploye.Visible = false;
                 btnUpdateEmployee.Visible = false;
             }
             else
             {
-                lbCondition.Text += "\t" + "active";
+                lbCondition.Text += "  " + "active";
                 btnAddEmployee.Visible = true;
                 btnDeleteEmploye.Visible = true;
                 btnUpdateEmployee.Visible = true;
@@ -126,6 +126,28 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
             else
             {
                 MessageBox.Show("You must choose employee to update");
+            }
+        }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            if (dgvEmployee.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Application.Workbooks.Add(Type.Missing);
+                for (int i = 1; i < dgvEmployee.Columns.Count + 1; i++)
+                {
+                    excel.Cells[1, i] = dgvEmployee.Columns[i - 1].HeaderText;
+                }
+                for (int i = 1; i < dgvEmployee.Rows.Count; i++)
+                {
+                    for (int j = 1; j < dgvEmployee.Columns.Count + 1; j++)
+                    {
+                        excel.Cells[i + 1, j] = dgvEmployee.Rows[i - 1].Cells[j - 1].Value.ToString();
+                    }
+                }
+                excel.Columns.AutoFit();
+                excel.Visible = true;
             }
         }
     }

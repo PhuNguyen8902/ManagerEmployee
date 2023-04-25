@@ -41,6 +41,7 @@
             btnActiveProject = new Button();
             btnEndProject = new Button();
             btnDetail = new Button();
+            btnExportExcel = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProject).BeginInit();
             SuspendLayout();
             // 
@@ -96,6 +97,16 @@
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
+            // 
+            // btnExportExcel
+            // 
+            btnExportExcel.Location = new Point(680, 125);
+            btnExportExcel.Name = "btnExportExcel";
+            btnExportExcel.Size = new Size(114, 29);
+            btnExportExcel.TabIndex = 26;
+            btnExportExcel.Text = "Export excel";
+            btnExportExcel.UseVisualStyleBackColor = true;
+            btnExportExcel.Click += btnExportExcel_Click;
             // 
             // txtSearch
             // 
@@ -175,6 +186,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnExportExcel);
             Controls.Add(btnDetail);
             Controls.Add(btnEndProject);
             Controls.Add(btnActiveProject);
@@ -211,5 +223,6 @@
         private Button btnActiveProject;
         private Button btnEndProject;
         private Button btnDetail;
+        private Button btnExportExcel;
     }
 }

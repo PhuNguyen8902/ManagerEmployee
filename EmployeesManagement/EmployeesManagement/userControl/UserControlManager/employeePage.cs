@@ -2,6 +2,7 @@
 using EmployeesManagement.Detail;
 using EmployeesManagement.Models;
 using EmployeesManagement.Service;
+using EmployeesManagement.userControl.Admin.Detail.employeeDetail;
 using EmployeesManagement.userControl.Detail.employeeDetail;
 using EmployeesManagement.userControl.UserControlManager.Detail.employeePage;
 using EmployeesManagement.Utils;
@@ -152,6 +153,30 @@ namespace EmployeesManagement.userControl.UserControlManager
                 }
                 excel.Columns.AutoFit();
                 excel.Visible = true;
+            }
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            if (dgvEmployee.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvEmployee.SelectedRows[0];
+                int id = Int32.Parse(row.Cells[0].Value.ToString());
+                string name = row.Cells[1].Value.ToString();
+                string phone = row.Cells[2].Value.ToString();
+                string gender = row.Cells[3].Value.ToString();
+                string homeTown = row.Cells[4].Value.ToString();
+                string department = row.Cells[5].Value.ToString();
+                string salary = row.Cells[6].Value.ToString();
+                string position = row.Cells[7].Value.ToString();
+
+
+                employeeDetail formDetail = new employeeDetail(id, name, phone, gender, homeTown, department, salary, position);
+                formDetail.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You must choose project to continue this action");
             }
         }
     }

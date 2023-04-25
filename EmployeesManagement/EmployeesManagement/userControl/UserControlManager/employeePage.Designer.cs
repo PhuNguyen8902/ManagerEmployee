@@ -33,8 +33,9 @@
             this.deleteBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
-            this.btnExportExcel= new System.Windows.Forms.Button();
+            this.btnExportExcel = new System.Windows.Forms.Button();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
+            this.btnDetail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +85,16 @@
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.Location = new System.Drawing.Point(10, 120);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(120, 29);
+            this.btnExportExcel.TabIndex = 10;
+            this.btnExportExcel.Text = "Export Excel";
+            this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            // 
             // dgvEmployee
             // 
             this.dgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -97,20 +108,21 @@
             this.dgvEmployee.Size = new System.Drawing.Size(903, 546);
             this.dgvEmployee.TabIndex = 13;
             // 
-            // btnExportExcel
+            // btnDetail
             // 
-            this.btnExportExcel.Location = new System.Drawing.Point(10, 120);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(120, 29);
-            this.btnExportExcel.TabIndex = 10;
-            this.btnExportExcel.Text = "Export Excel";
-            this.btnExportExcel.UseVisualStyleBackColor = true;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            this.btnDetail.Location = new System.Drawing.Point(793, 128);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(94, 29);
+            this.btnDetail.TabIndex = 14;
+            this.btnDetail.Text = "Detail";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // employeePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDetail);
             this.Controls.Add(this.btnExportExcel);
             this.Controls.Add(this.dgvEmployee);
             this.Controls.Add(this.deleteBtn);
@@ -136,5 +148,6 @@
         private Button updateBtn;
         private Button btnExportExcel;
         private DataGridView dgvEmployee;
+        private Button btnDetail;
     }
 }

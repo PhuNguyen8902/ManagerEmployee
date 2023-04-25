@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static EmployeesManagement.Service.SalaryService;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using static Mysqlx.Notice.Warning.Types;
 
 namespace EmployeesManagement.Service
@@ -30,6 +31,22 @@ namespace EmployeesManagement.Service
             return table;
         }
 
+        public DataTable getProjectDataByEmployeeId(int employeeId, bool isParticipateNow)
+        {
+            DateTime now = DateTime.Now;
+            string nowAndPast = ">";
+            if (!isParticipateNow)
+                nowAndPast = "<";
+
+            DataTable table = new DataTable();
+            string sql = string.Format("select p.id, p.name, p.description, ep.start_date as ParticipationStart, ep.end_date as ParticipateEnd, case when p.is_active = 0 then 'Active' else 'End' end as ConditionProject " +
+                "from employeeDB.dbo.employee_project ep left join employeeDB.dbo.project p on ep.project_id = p.id " +
+                "where ep.employee_id = {0} and ep.end_date {1} '{2}'", employeeId, nowAndPast, now);
+            SqlCommand command = new SqlCommand(sql, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
         // lay nhan vien trong department cua manager cu the
         public DataTable GetEmployeeDataByItsManagerId(int managerId)
         {

@@ -47,6 +47,7 @@
             cbSearchPosition = new ComboBox();
             btnFindAll = new Button();
             btnEmail = new Button();
+            btnDetail = new Button();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource2).BeginInit();
@@ -102,6 +103,16 @@
             btnExportExcel.Text = "Export Excel";
             btnExportExcel.UseVisualStyleBackColor = true;
             btnExportExcel.Click += btnExportExcel_Click;
+            // 
+            // btnDetail
+            // 
+            btnDetail.Location = new Point(800, 120);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(94, 29);
+            btnDetail.TabIndex = 9;
+            btnDetail.Text = "Detail";
+            btnDetail.UseVisualStyleBackColor = true;
+            btnDetail.Click += btnDetail_Click;
             // 
             // employeeBindingSource1
             // 
@@ -196,6 +207,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnDetail);
             Controls.Add(btnEmail);
             Controls.Add(btnFindAll);
             Controls.Add(cbSearchPosition);
@@ -241,5 +253,6 @@
         private ComboBox cbSearchPosition;
         private Button btnFindAll;
         private Button btnEmail;
+        private Button btnDetail;
     }
 }

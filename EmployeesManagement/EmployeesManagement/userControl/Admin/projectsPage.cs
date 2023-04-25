@@ -280,5 +280,26 @@ namespace EmployeesManagement.userControl
             }
         }
 
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            if (dgvProject.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Application.Workbooks.Add(Type.Missing);
+                for (int i = 1; i < dgvProject.Columns.Count + 1; i++)
+                {
+                    excel.Cells[1, i] = dgvProject.Columns[i - 1].HeaderText;
+                }
+                for (int i = 1; i < dgvProject.Rows.Count; i++)
+                {
+                    for (int j = 1; j < dgvProject.Columns.Count + 1; j++)
+                    {
+                        excel.Cells[i + 1, j] = dgvProject.Rows[i - 1].Cells[j - 1].Value.ToString();
+                    }
+                }
+                excel.Columns.AutoFit();
+                excel.Visible = true;
+            }
+        }
     }
 }
