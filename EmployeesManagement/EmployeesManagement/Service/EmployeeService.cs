@@ -33,7 +33,8 @@ namespace EmployeesManagement.Service
 
         public DataTable getProjectDataByEmployeeId(int employeeId, bool isParticipateNow)
         {
-            DateTime now = DateTime.Now;
+            DateTime nowFirst = DateTime.Now;
+            string now = nowFirst.ToString("yyyy-MM-dd");
             string nowAndPast = ">";
             if (!isParticipateNow)
                 nowAndPast = "<";

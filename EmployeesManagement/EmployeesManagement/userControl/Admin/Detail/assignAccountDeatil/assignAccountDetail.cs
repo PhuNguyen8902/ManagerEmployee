@@ -102,10 +102,17 @@ namespace EmployeesManagement.userControl.Admin.Detail.assignAccountDeatil
             dgvAssignAccount.DataSource = dataTable;
 
             connection.Close();
+            dgvAssignAccount.Columns.Add(new DataGridViewButtonColumn()
+            {
+                Name = "AssignButton",
+                Text = "Assign",
+                UseColumnTextForButtonValue = true
+            });
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            dgvAssignAccount.Columns.Clear();
             string condition = cbSearch.SelectedItem.ToString();
             if (condition == "Employee Id")
             {
@@ -134,6 +141,12 @@ namespace EmployeesManagement.userControl.Admin.Detail.assignAccountDeatil
                     dgvAssignAccount.DataSource = dataTable;
                 }
             }
+            dgvAssignAccount.Columns.Add(new DataGridViewButtonColumn()
+            {
+                Name = "AssignButton",
+                Text = "Assign",
+                UseColumnTextForButtonValue = true
+            });
         }
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)

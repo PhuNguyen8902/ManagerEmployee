@@ -90,10 +90,20 @@ namespace EmployeesManagement.userControl.Admin.Detail.departmentDetail
             string selectedValue = cbSearch.SelectedItem.ToString();
             if (selectedValue == "Employee Id")
             {
-                string value = tbSearch.Text;
-                DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionId(deId, "e.id", value);
+                int id;
+                if (!int.TryParse(tbSearch.Text, out id))
+                {
+                    MessageBox.Show("Please enter a number for the Id!");
+                    return;
+                }
+                else
+                {
+                    string strId = id.ToString();
+                    DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionId(deId, "e.id", strId);
 
-                dgvDepartmentDetail.DataSource = dataTable;
+                    dgvDepartmentDetail.DataSource = dataTable;
+
+                }
 
             }
             else if (selectedValue == "Employee Name")
@@ -106,10 +116,20 @@ namespace EmployeesManagement.userControl.Admin.Detail.departmentDetail
             }
             else if (selectedValue == "Employee Phone")
             {
-                string value = tbSearch.Text;
-                DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionElse(deId, "e.phone", value);
+                long phone;
+                if (!long.TryParse(tbSearch.Text, out phone))
+                {
+                    MessageBox.Show("Please enter a number for the Phone!");
+                    return;
+                }
+                else
+                {
+                    string strPhone = phone.ToString();
+                    DataTable dataTable = empController.searchEmployeeDataInDeparmentByConditionElse(deId, "e.phone", strPhone);
 
-                dgvDepartmentDetail.DataSource = dataTable;
+                    dgvDepartmentDetail.DataSource = dataTable;
+
+                }
 
             }
             else if (selectedValue == "Employee Gender")
