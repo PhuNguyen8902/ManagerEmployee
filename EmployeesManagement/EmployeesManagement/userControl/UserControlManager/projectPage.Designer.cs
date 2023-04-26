@@ -28,138 +28,145 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbSearch = new System.Windows.Forms.ComboBox();
-            this.btnFindAll = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnDetail = new System.Windows.Forms.Button();
-            this.btnEndProject = new System.Windows.Forms.Button();
-            this.btnActiveProject = new System.Windows.Forms.Button();
-            this.dgvProject = new System.Windows.Forms.DataGridView();
-            this.btnExportExcel = new System.Windows.Forms.Button();
-            this.DTPSearch = new System.Windows.Forms.DateTimePicker();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
-            this.SuspendLayout();
+            cbSearch = new ComboBox();
+            btnFindAll = new Button();
+            btnSearch = new Button();
+            btnDetail = new Button();
+            btnEndProject = new Button();
+            btnActiveProject = new Button();
+            dgvProject = new DataGridView();
+            btnExportExcel = new Button();
+            DTPSearch = new DateTimePicker();
+            txtSearch = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)dgvProject).BeginInit();
+            SuspendLayout();
             // 
             // cbSearch
             // 
-            this.cbSearch.FormattingEnabled = true;
-            this.cbSearch.Location = new System.Drawing.Point(21, 67);
-            this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(253, 28);
-            this.cbSearch.TabIndex = 25;
-            this.cbSearch.Text = "Chọn mục muốn tìm kiếm";
-            this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged_1);
+            cbSearch.FormattingEnabled = true;
+            cbSearch.Location = new Point(21, 67);
+            cbSearch.Name = "cbSearch";
+            cbSearch.Size = new Size(253, 28);
+            cbSearch.TabIndex = 25;
+            cbSearch.Text = "Chọn mục muốn tìm kiếm";
+            cbSearch.SelectedIndexChanged += cbSearch_SelectedIndexChanged_1;
             // 
             // btnFindAll
             // 
-            this.btnFindAll.Location = new System.Drawing.Point(417, 22);
-            this.btnFindAll.Name = "btnFindAll";
-            this.btnFindAll.Size = new System.Drawing.Size(94, 29);
-            this.btnFindAll.TabIndex = 31;
-            this.btnFindAll.Text = "Find All";
-            this.btnFindAll.UseVisualStyleBackColor = true;
-            this.btnFindAll.Click += new System.EventHandler(this.btnFindAll_Click);
+            btnFindAll.Cursor = Cursors.Hand;
+            btnFindAll.Location = new Point(417, 22);
+            btnFindAll.Name = "btnFindAll";
+            btnFindAll.Size = new Size(94, 29);
+            btnFindAll.TabIndex = 31;
+            btnFindAll.Text = "Find All";
+            btnFindAll.UseVisualStyleBackColor = true;
+            btnFindAll.Click += btnFindAll_Click;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(300, 21);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 29);
-            this.btnSearch.TabIndex = 27;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            btnSearch.Cursor = Cursors.Hand;
+            btnSearch.Location = new Point(300, 21);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 29);
+            btnSearch.TabIndex = 27;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // btnDetail
             // 
-            this.btnDetail.Location = new System.Drawing.Point(797, 157);
-            this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(94, 29);
-            this.btnDetail.TabIndex = 32;
-            this.btnDetail.Text = "Detail";
-            this.btnDetail.UseVisualStyleBackColor = true;
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            btnDetail.Cursor = Cursors.Hand;
+            btnDetail.Location = new Point(797, 157);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(94, 29);
+            btnDetail.TabIndex = 32;
+            btnDetail.Text = "Detail";
+            btnDetail.UseVisualStyleBackColor = true;
+            btnDetail.Click += btnDetail_Click;
             // 
             // btnEndProject
             // 
-            this.btnEndProject.Location = new System.Drawing.Point(107, 157);
-            this.btnEndProject.Name = "btnEndProject";
-            this.btnEndProject.Size = new System.Drawing.Size(94, 29);
-            this.btnEndProject.TabIndex = 33;
-            this.btnEndProject.Text = "End";
-            this.btnEndProject.UseVisualStyleBackColor = true;
-            this.btnEndProject.Click += new System.EventHandler(this.btnEndProject_Click);
+            btnEndProject.Cursor = Cursors.Hand;
+            btnEndProject.Location = new Point(107, 157);
+            btnEndProject.Name = "btnEndProject";
+            btnEndProject.Size = new Size(94, 29);
+            btnEndProject.TabIndex = 33;
+            btnEndProject.Text = "End";
+            btnEndProject.UseVisualStyleBackColor = true;
+            btnEndProject.Click += btnEndProject_Click;
             // 
             // btnActiveProject
             // 
-            this.btnActiveProject.Location = new System.Drawing.Point(7, 157);
-            this.btnActiveProject.Name = "btnActiveProject";
-            this.btnActiveProject.Size = new System.Drawing.Size(94, 29);
-            this.btnActiveProject.TabIndex = 34;
-            this.btnActiveProject.Text = "Active";
-            this.btnActiveProject.UseVisualStyleBackColor = true;
-            this.btnActiveProject.Click += new System.EventHandler(this.btnActiveProject_Click);
+            btnActiveProject.Cursor = Cursors.Hand;
+            btnActiveProject.Location = new Point(7, 157);
+            btnActiveProject.Name = "btnActiveProject";
+            btnActiveProject.Size = new Size(94, 29);
+            btnActiveProject.TabIndex = 34;
+            btnActiveProject.Text = "Active";
+            btnActiveProject.UseVisualStyleBackColor = true;
+            btnActiveProject.Click += btnActiveProject_Click;
             // 
             // dgvProject
             // 
-            this.dgvProject.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProject.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvProject.Location = new System.Drawing.Point(0, 192);
-            this.dgvProject.Name = "dgvProject";
-            this.dgvProject.ReadOnly = true;
-            this.dgvProject.RowHeadersWidth = 51;
-            this.dgvProject.RowTemplate.Height = 29;
-            this.dgvProject.Size = new System.Drawing.Size(903, 517);
-            this.dgvProject.TabIndex = 35;
+            dgvProject.AllowUserToAddRows = false;
+            dgvProject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProject.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProject.Dock = DockStyle.Bottom;
+            dgvProject.Location = new Point(0, 192);
+            dgvProject.Name = "dgvProject";
+            dgvProject.ReadOnly = true;
+            dgvProject.RowHeadersWidth = 51;
+            dgvProject.RowTemplate.Height = 29;
+            dgvProject.Size = new Size(903, 517);
+            dgvProject.TabIndex = 35;
+            dgvProject.CellContentClick += dgvProject_CellContentClick;
             // 
             // btnExportExcel
             // 
-            this.btnExportExcel.Location = new System.Drawing.Point(673, 157);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(118, 29);
-            this.btnExportExcel.TabIndex = 36;
-            this.btnExportExcel.Text = "Export Excel";
-            this.btnExportExcel.UseVisualStyleBackColor = true;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            btnExportExcel.Cursor = Cursors.Hand;
+            btnExportExcel.Location = new Point(673, 157);
+            btnExportExcel.Name = "btnExportExcel";
+            btnExportExcel.Size = new Size(118, 29);
+            btnExportExcel.TabIndex = 36;
+            btnExportExcel.Text = "Export Excel";
+            btnExportExcel.UseVisualStyleBackColor = true;
+            btnExportExcel.Click += btnExportExcel_Click;
             // 
             // DTPSearch
             // 
-            this.DTPSearch.Location = new System.Drawing.Point(21, 24);
-            this.DTPSearch.Name = "DTPSearch";
-            this.DTPSearch.Size = new System.Drawing.Size(258, 27);
-            this.DTPSearch.TabIndex = 37;
-            this.DTPSearch.Visible = false;
+            DTPSearch.Location = new Point(21, 24);
+            DTPSearch.Name = "DTPSearch";
+            DTPSearch.Size = new Size(258, 27);
+            DTPSearch.TabIndex = 37;
+            DTPSearch.Visible = false;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(21, 23);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(258, 27);
-            this.txtSearch.TabIndex = 38;
+            txtSearch.Location = new Point(21, 23);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(258, 27);
+            txtSearch.TabIndex = 38;
             // 
             // projectPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.DTPSearch);
-            this.Controls.Add(this.btnExportExcel);
-            this.Controls.Add(this.dgvProject);
-            this.Controls.Add(this.btnDetail);
-            this.Controls.Add(this.btnEndProject);
-            this.Controls.Add(this.btnActiveProject);
-            this.Controls.Add(this.btnFindAll);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.cbSearch);
-            this.Name = "projectPage";
-            this.Size = new System.Drawing.Size(903, 709);
-            this.Load += new System.EventHandler(this.projectPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(txtSearch);
+            Controls.Add(DTPSearch);
+            Controls.Add(btnExportExcel);
+            Controls.Add(dgvProject);
+            Controls.Add(btnDetail);
+            Controls.Add(btnEndProject);
+            Controls.Add(btnActiveProject);
+            Controls.Add(btnFindAll);
+            Controls.Add(btnSearch);
+            Controls.Add(cbSearch);
+            Name = "projectPage";
+            Size = new Size(903, 709);
+            Load += projectPage_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvProject).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

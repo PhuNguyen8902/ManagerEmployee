@@ -46,6 +46,7 @@
             label2 = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             mainPanel = new Panel();
+            notifyBtn = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -68,6 +69,7 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(notifyBtn);
             panel4.Controls.Add(iconButton1);
             panel4.Controls.Add(accountBtn);
             panel4.Controls.Add(panel2);
@@ -84,6 +86,7 @@
             // iconButton1
             // 
             iconButton1.BackColor = Color.Teal;
+            iconButton1.Cursor = Cursors.Hand;
             iconButton1.Dock = DockStyle.Top;
             iconButton1.FlatAppearance.BorderColor = Color.Teal;
             iconButton1.FlatStyle = FlatStyle.Flat;
@@ -106,6 +109,7 @@
             // accountBtn
             // 
             accountBtn.BackColor = Color.Teal;
+            accountBtn.Cursor = Cursors.Hand;
             accountBtn.Dock = DockStyle.Top;
             accountBtn.FlatAppearance.BorderColor = Color.Teal;
             accountBtn.FlatStyle = FlatStyle.Flat;
@@ -137,6 +141,7 @@
             // createAccountBtn
             // 
             createAccountBtn.BackColor = Color.Teal;
+            createAccountBtn.Cursor = Cursors.Hand;
             createAccountBtn.FlatAppearance.BorderColor = Color.Teal;
             createAccountBtn.FlatStyle = FlatStyle.Flat;
             createAccountBtn.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
@@ -158,6 +163,7 @@
             // salaryBtn
             // 
             salaryBtn.BackColor = Color.Teal;
+            salaryBtn.Cursor = Cursors.Hand;
             salaryBtn.Dock = DockStyle.Top;
             salaryBtn.FlatAppearance.BorderColor = Color.Teal;
             salaryBtn.FlatStyle = FlatStyle.Flat;
@@ -180,6 +186,7 @@
             // departmentBtn
             // 
             departmentBtn.BackColor = Color.Teal;
+            departmentBtn.Cursor = Cursors.Hand;
             departmentBtn.Dock = DockStyle.Top;
             departmentBtn.FlatAppearance.BorderColor = Color.Teal;
             departmentBtn.FlatStyle = FlatStyle.Flat;
@@ -202,6 +209,7 @@
             // projectsBtn
             // 
             projectsBtn.BackColor = Color.Teal;
+            projectsBtn.Cursor = Cursors.Hand;
             projectsBtn.Dock = DockStyle.Top;
             projectsBtn.FlatAppearance.BorderColor = Color.Teal;
             projectsBtn.FlatStyle = FlatStyle.Flat;
@@ -224,6 +232,7 @@
             // employeesBtn
             // 
             employeesBtn.BackColor = Color.Teal;
+            employeesBtn.Cursor = Cursors.Hand;
             employeesBtn.Dock = DockStyle.Top;
             employeesBtn.FlatAppearance.BorderColor = Color.Teal;
             employeesBtn.FlatStyle = FlatStyle.Flat;
@@ -256,6 +265,7 @@
             // returnBtn
             // 
             returnBtn.BackColor = Color.Teal;
+            returnBtn.Cursor = Cursors.Hand;
             returnBtn.FlatAppearance.BorderColor = Color.Teal;
             returnBtn.FlatStyle = FlatStyle.Flat;
             returnBtn.ForeColor = SystemColors.ControlLightLight;
@@ -340,6 +350,29 @@
             mainPanel.Size = new Size(903, 710);
             mainPanel.TabIndex = 1;
             // 
+            // notifyBtn
+            // 
+            notifyBtn.BackColor = Color.Teal;
+            notifyBtn.Cursor = Cursors.Hand;
+            notifyBtn.Dock = DockStyle.Top;
+            notifyBtn.FlatAppearance.BorderColor = Color.Teal;
+            notifyBtn.FlatStyle = FlatStyle.Flat;
+            notifyBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            notifyBtn.ForeColor = SystemColors.ControlLightLight;
+            notifyBtn.IconChar = FontAwesome.Sharp.IconChar.Bell;
+            notifyBtn.IconColor = Color.White;
+            notifyBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            notifyBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.Location = new Point(0, 354);
+            notifyBtn.Name = "notifyBtn";
+            notifyBtn.Size = new Size(258, 59);
+            notifyBtn.TabIndex = 11;
+            notifyBtn.Text = "Notify";
+            notifyBtn.TextAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            notifyBtn.UseVisualStyleBackColor = false;
+            notifyBtn.Click += notifyBtn_Click;
+            // 
             // primary
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -379,5 +412,6 @@
         private FontAwesome.Sharp.IconButton createAccountBtn;
         private FontAwesome.Sharp.IconButton accountBtn;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton notifyBtn;
     }
 }

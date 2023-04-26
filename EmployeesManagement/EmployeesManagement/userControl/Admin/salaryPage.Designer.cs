@@ -38,9 +38,11 @@
             btnFindAll = new Button();
             cbSearchLevel = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvSalary).BeginInit();
+            SuspendLayout();
             // 
             // deleteBtn
             // 
+            deleteBtn.Cursor = Cursors.Hand;
             deleteBtn.Location = new Point(787, 4);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(94, 29);
@@ -51,6 +53,7 @@
             // 
             // dgvSalary
             // 
+            dgvSalary.AllowUserToAddRows = false;
             dgvSalary.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvSalary.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSalary.Dock = DockStyle.Bottom;
@@ -64,6 +67,7 @@
             // 
             // addBtn
             // 
+            addBtn.Cursor = Cursors.Hand;
             addBtn.Location = new Point(567, 6);
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(94, 29);
@@ -74,6 +78,7 @@
             // 
             // updateBtn
             // 
+            updateBtn.Cursor = Cursors.Hand;
             updateBtn.Location = new Point(677, 6);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(94, 29);
@@ -94,6 +99,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.Location = new Point(307, 8);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(94, 29);
@@ -111,6 +117,7 @@
             // 
             // btnFindAll
             // 
+            btnFindAll.Cursor = Cursors.Hand;
             btnFindAll.Location = new Point(426, 8);
             btnFindAll.Name = "btnFindAll";
             btnFindAll.Size = new Size(94, 29);

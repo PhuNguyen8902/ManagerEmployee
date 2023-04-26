@@ -76,6 +76,7 @@
             // notifyBtn
             // 
             notifyBtn.BackColor = Color.Teal;
+            notifyBtn.Cursor = Cursors.Hand;
             notifyBtn.Dock = DockStyle.Top;
             notifyBtn.FlatAppearance.BorderColor = Color.Teal;
             notifyBtn.FlatStyle = FlatStyle.Flat;
@@ -98,6 +99,7 @@
             // projectsBtn
             // 
             projectsBtn.BackColor = Color.Teal;
+            projectsBtn.Cursor = Cursors.Hand;
             projectsBtn.Dock = DockStyle.Top;
             projectsBtn.FlatAppearance.BorderColor = Color.Teal;
             projectsBtn.FlatStyle = FlatStyle.Flat;
@@ -120,6 +122,7 @@
             // departmentBtn
             // 
             departmentBtn.BackColor = Color.Teal;
+            departmentBtn.Cursor = Cursors.Hand;
             departmentBtn.Dock = DockStyle.Top;
             departmentBtn.FlatAppearance.BorderColor = Color.Teal;
             departmentBtn.FlatStyle = FlatStyle.Flat;
@@ -142,6 +145,7 @@
             // informationBtn
             // 
             informationBtn.BackColor = Color.Teal;
+            informationBtn.Cursor = Cursors.Hand;
             informationBtn.Dock = DockStyle.Top;
             informationBtn.FlatAppearance.BorderColor = Color.Teal;
             informationBtn.FlatStyle = FlatStyle.Flat;
@@ -173,6 +177,7 @@
             // returnBtn
             // 
             returnBtn.BackColor = Color.Teal;
+            returnBtn.Cursor = Cursors.Hand;
             returnBtn.FlatAppearance.BorderColor = Color.Teal;
             returnBtn.FlatStyle = FlatStyle.Flat;
             returnBtn.ForeColor = SystemColors.ControlLightLight;

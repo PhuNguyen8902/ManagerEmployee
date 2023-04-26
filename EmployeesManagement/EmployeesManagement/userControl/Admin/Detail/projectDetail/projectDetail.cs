@@ -25,7 +25,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
 
         SqlConnection connection = Connection.Connection.GetConnection();
         projectController projectController = new projectController();
-        notifyController notify =new notifyController();
+        notifyController notify = new notifyController();
 
 
 
@@ -62,7 +62,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
             lbDescription.Text += "  " + Description;
             lbStartDate.Text += "  " + StartDate;
             lbEndDate.Text += "  " + EndDate;
-            if(IsActive)
+            if (IsActive)
             {
                 lbCondition.Text += "  " + "end";
                 btnAddEmployee.Visible = false;
@@ -78,7 +78,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
             }
         }
 
-        private  void addEmployee_Click(object sender, EventArgs e)
+        private void addEmployee_Click(object sender, EventArgs e)
         {
             addEmployeeToProjectForm form = new addEmployeeToProjectForm(Id, EndDate, dgvEmployee);
 
@@ -93,11 +93,11 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
                 DataGridViewRow row = dgvEmployee.SelectedRows[0];
                 int employyId = Int32.Parse(row.Cells[0].Value.ToString());
 
-                if(projectController.deleteEmployeeInProject(employyId, Id))
+                if (projectController.deleteEmployeeInProject(employyId, Id))
                 {
                     MessageBox.Show("Delete Success");
                     DateTime now = DateTime.Now;
-                    string message = string.Format("Admin has removed you from the {1} at ({0})", now.ToString(),Name);
+                    string message = string.Format("Admin has removed you from the {1} at ({0})", now.ToString(), Name);
                     notify.addNotify(employyId, message);
                     DataTable dataTable = projectController.getEmployeeWorkInSpecificProject(Id);
                     dgvEmployee.DataSource = dataTable;

@@ -78,6 +78,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearch.Location = new Point(495, 173);
             btnSearch.Name = "btnSearch";
@@ -89,6 +90,7 @@
             // 
             // btnConfirm
             // 
+            btnConfirm.Cursor = Cursors.Hand;
             btnConfirm.Enabled = false;
             btnConfirm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnConfirm.Location = new Point(623, 261);

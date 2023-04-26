@@ -29,13 +29,13 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
 
         public string endDate { get; set; }
 
-        
 
-        
+
+
         public addEmployeeToProjectForm(int projectId, String endDate, DataGridView dgb)
         {
             InitializeComponent();
-            this.projectId= projectId;
+            this.projectId = projectId;
             this.endDate = endDate;
             this.dgvProjectDetail = dgb;
         }
@@ -49,7 +49,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
             dgvAllEmployees.DataSource = dataTable;
 
             connection.Close();
-            
+
         }
 
         private void btnComfirm_Click(object sender, EventArgs e)
@@ -74,7 +74,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
                     Project pro = projectController.getProject(projectId);
                     string proName = pro.Name;
                     DateTime now = DateTime.Now;
-                    string message = string.Format("Admin added you to {1} at ({0})", now.ToString(),proName);
+                    string message = string.Format("Admin added you to {1} at ({0})", now.ToString(), proName);
                     notify.addNotify(employyId, message);
                     return;
                 }

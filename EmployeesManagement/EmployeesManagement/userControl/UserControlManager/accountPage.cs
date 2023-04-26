@@ -68,8 +68,9 @@ namespace EmployeesManagement.userControl.UserControlManager
             btnSearch1.Visible = true;
             btnSearch2.Visible = false;
         }
-        private void reset() { 
-            btnSearch1.Enabled=false;
+        private void reset()
+        {
+            btnSearch1.Enabled = false;
             btnSearch2.Enabled = false;
         }
 

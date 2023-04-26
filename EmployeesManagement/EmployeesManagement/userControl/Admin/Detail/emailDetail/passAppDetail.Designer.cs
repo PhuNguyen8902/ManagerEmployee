@@ -44,6 +44,7 @@
             // 
             // btnConfirm
             // 
+            btnConfirm.Cursor = Cursors.Hand;
             btnConfirm.Location = new Point(367, 107);
             btnConfirm.Name = "btnConfirm";
             btnConfirm.Size = new Size(94, 29);

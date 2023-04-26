@@ -78,7 +78,7 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.employeePage
                 gender = 1;
             }
 
-            if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" &&  cbSalary.SelectedIndex != -1)
+            if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbSalary.SelectedIndex != -1)
             {
                 String phoneNumber = txtPhone.Text.Trim();
                 bool isPhone = utilsController.isPhoneNumber(phoneNumber);
@@ -122,10 +122,10 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.employeePage
             }
         }
 
-      
+
         private void fillToComboBox(int salaryId)
         {
-            
+
             foreach (MyComboBoxItem item in cbSalary.Items)
             {
                 if (int.Parse(item.Tag.ToString()) == salaryId)
@@ -134,7 +134,7 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.employeePage
                     break;
                 }
             }
-            
+
 
         }
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)

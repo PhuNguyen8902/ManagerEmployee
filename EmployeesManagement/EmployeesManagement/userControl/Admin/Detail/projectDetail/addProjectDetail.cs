@@ -27,7 +27,7 @@ namespace EmployeesManagement.Detail
             if (txtName.Text != "" && txtDescription.Text != "")
             {
                 DateTime currentDate = DateTime.Now;
-                if(currentDate > DTPEnd.Value.Date)
+                if (currentDate > DTPEnd.Value.Date)
                 {
                     MessageBox.Show("You can't add project that already end");
                     return;

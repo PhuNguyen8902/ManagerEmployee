@@ -43,9 +43,9 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
             this.name = name;
             this.phone = phone;
             this.gender = gender;
-            this.hometown = homwtown; 
+            this.hometown = homwtown;
             this.departmentId = departmentId;
-            this.salaryId= salaryId;
+            this.salaryId = salaryId;
             this.positionId = positionId;
         }
 
@@ -56,11 +56,11 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
             utilsController.loadSpecificColumnToComboBoxByItsId(cbPosition, "name", "position");
             txtName.Text = name;
             txtPhone.Text = phone;
-            if(gender == 0)
+            if (gender == 0)
             {
                 rbMale.Checked = true;
             }
-            else if(gender == 1)
+            else if (gender == 1)
             {
                 rbFemale.Checked = true;
             }

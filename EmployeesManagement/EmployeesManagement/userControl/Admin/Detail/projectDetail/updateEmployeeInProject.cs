@@ -14,13 +14,13 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
 {
     public partial class updateEmployeeInProject : Form
     {
-        public int employeeId { get; set; } 
+        public int employeeId { get; set; }
         public int projectId { get; set; }
         public string? StartDate { get; set; }
         public string? EndDate { get; set; }
 
         public DataGridView dgvEmployee;
-        
+
         projectController projectController = new projectController();
         notifyController notify = new notifyController();
 
@@ -53,7 +53,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
                 Project pro = projectController.getProject(projectId);
                 string proName = pro.Name;
                 DateTime now = DateTime.Now;
-                string message = string.Format("Admin has changed your {1} time at ({0})", now.ToString(),proName);
+                string message = string.Format("Admin has changed your {1} time at ({0})", now.ToString(), proName);
                 notify.addNotify(employeeId, message);
 
                 DataTable dataTable = projectController.getEmployeeWorkInSpecificProject(projectId);

@@ -54,7 +54,7 @@ namespace EmployeesManagement.userControl.Detail.projectDetail
                     IsActive = false;
                 else
                     IsActive = true;
-                Project project = new Project(Id, txtName.Text, txtDescription.Text, startDate, endDate,IsActive);
+                Project project = new Project(Id, txtName.Text, txtDescription.Text, startDate, endDate, IsActive);
                 if (projectController.updateProject(project))
                 {
                     MessageBox.Show("Update successfully");
@@ -96,7 +96,7 @@ namespace EmployeesManagement.userControl.Detail.projectDetail
             cbActive.Items.Add("End");
             fillTextBox(Name, Description, StartDate, EndDate, IsActive);
         }
-        private void fillTextBox(string name, string description, string startDate,string endDate,bool isActive)
+        private void fillTextBox(string name, string description, string startDate, string endDate, bool isActive)
         {
             txtName.Text = name;
             txtDescription.Text = description;
@@ -106,11 +106,11 @@ namespace EmployeesManagement.userControl.Detail.projectDetail
             DTPEnd.Value = end;
             if (!isActive)
             {
-                cbActive.SelectedIndex = 1; 
+                cbActive.SelectedIndex = 1;
             }
             else
             {
-                cbActive.SelectedIndex = 0; 
+                cbActive.SelectedIndex = 0;
             }
         }
     }

@@ -82,6 +82,7 @@
             // notifyBtn
             // 
             notifyBtn.BackColor = Color.Teal;
+            notifyBtn.Cursor = Cursors.Hand;
             notifyBtn.Dock = DockStyle.Top;
             notifyBtn.FlatAppearance.BorderColor = Color.Teal;
             notifyBtn.FlatStyle = FlatStyle.Flat;
@@ -104,6 +105,7 @@
             // accountBtn
             // 
             accountBtn.BackColor = Color.Teal;
+            accountBtn.Cursor = Cursors.Hand;
             accountBtn.Dock = DockStyle.Top;
             accountBtn.FlatAppearance.BorderColor = Color.Teal;
             accountBtn.FlatStyle = FlatStyle.Flat;
@@ -126,6 +128,7 @@
             // createAccountBtn
             // 
             createAccountBtn.BackColor = Color.Teal;
+            createAccountBtn.Cursor = Cursors.Hand;
             createAccountBtn.FlatAppearance.BorderColor = Color.Teal;
             createAccountBtn.FlatStyle = FlatStyle.Flat;
             createAccountBtn.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
@@ -147,6 +150,7 @@
             // projectsBtn
             // 
             projectsBtn.BackColor = Color.Teal;
+            projectsBtn.Cursor = Cursors.Hand;
             projectsBtn.Dock = DockStyle.Top;
             projectsBtn.FlatAppearance.BorderColor = Color.Teal;
             projectsBtn.FlatStyle = FlatStyle.Flat;
@@ -169,6 +173,7 @@
             // departmentBtn
             // 
             departmentBtn.BackColor = Color.Teal;
+            departmentBtn.Cursor = Cursors.Hand;
             departmentBtn.Dock = DockStyle.Top;
             departmentBtn.FlatAppearance.BorderColor = Color.Teal;
             departmentBtn.FlatStyle = FlatStyle.Flat;
@@ -191,6 +196,7 @@
             // employeesBtn
             // 
             employeesBtn.BackColor = Color.Teal;
+            employeesBtn.Cursor = Cursors.Hand;
             employeesBtn.Dock = DockStyle.Top;
             employeesBtn.FlatAppearance.BorderColor = Color.Teal;
             employeesBtn.FlatStyle = FlatStyle.Flat;
@@ -213,6 +219,7 @@
             // informationBtn
             // 
             informationBtn.BackColor = Color.Teal;
+            informationBtn.Cursor = Cursors.Hand;
             informationBtn.Dock = DockStyle.Top;
             informationBtn.FlatAppearance.BorderColor = Color.Teal;
             informationBtn.FlatStyle = FlatStyle.Flat;
@@ -244,6 +251,7 @@
             // returnBtn
             // 
             returnBtn.BackColor = Color.Teal;
+            returnBtn.Cursor = Cursors.Hand;
             returnBtn.FlatAppearance.BorderColor = Color.Teal;
             returnBtn.FlatStyle = FlatStyle.Flat;
             returnBtn.ForeColor = SystemColors.ControlLightLight;

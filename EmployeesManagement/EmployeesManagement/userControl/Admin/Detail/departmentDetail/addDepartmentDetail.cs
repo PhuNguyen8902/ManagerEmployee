@@ -30,8 +30,9 @@ namespace EmployeesManagement.userControl.Detail.departmentDetail
         {
             if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "")
             {
-                Boolean phone =  utilsController.isPhoneNumber(txtPhone.Text);
-                if (!phone) {
+                Boolean phone = utilsController.isPhoneNumber(txtPhone.Text);
+                if (!phone)
+                {
                     MessageBox.Show("Phone numbers that start with 0 and receive 11 numbers");
                     return;
                 }

@@ -23,14 +23,14 @@ namespace EmployeesManagement.userControl.Detail.salaryDetail
         public int Id { get; set; }
         public int Level { get; set; }
         public int AllowanceSalaryId { get; set; }
-        public updateSalaryDetail(int id,int Level, int AllowanceSalaryId)
+        public updateSalaryDetail(int id, int Level, int AllowanceSalaryId)
         {
             InitializeComponent();
-            this.Id = id;   
+            this.Id = id;
             this.Level = Level;
             this.AllowanceSalaryId = AllowanceSalaryId;
         }
-        
+
         public updateSalaryDetail()
         {
             InitializeComponent();
@@ -57,7 +57,7 @@ namespace EmployeesManagement.userControl.Detail.salaryDetail
                 string idAllowance = allowanceItem.Tag.ToString();
                 int allowanceNum = Int32.Parse(idAllowance);
                 Salary salary = new Salary(Id, levelNum, allowanceNum);
-                if (salaryController.updateSalary(levelNum,allowanceNum,salary))
+                if (salaryController.updateSalary(levelNum, allowanceNum, salary))
                 {
                     MessageBox.Show("Update successfully");
                     FormCollection allOpenedForm = Application.OpenForms;

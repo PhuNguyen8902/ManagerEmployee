@@ -80,6 +80,7 @@
             // 
             // btnComfirm
             // 
+            btnComfirm.Cursor = Cursors.Hand;
             btnComfirm.Location = new Point(142, 396);
             btnComfirm.Name = "btnComfirm";
             btnComfirm.Size = new Size(94, 29);

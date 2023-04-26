@@ -47,6 +47,7 @@
             // 
             // deleteBtn
             // 
+            deleteBtn.Cursor = Cursors.Hand;
             deleteBtn.Location = new Point(787, 4);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(94, 29);
@@ -57,6 +58,7 @@
             // 
             // dgvProject
             // 
+            dgvProject.AllowUserToAddRows = false;
             dgvProject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProject.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProject.Dock = DockStyle.Bottom;
@@ -70,6 +72,7 @@
             // 
             // addBtn
             // 
+            addBtn.Cursor = Cursors.Hand;
             addBtn.Location = new Point(567, 6);
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(94, 29);
@@ -80,6 +83,7 @@
             // 
             // updateBtn
             // 
+            updateBtn.Cursor = Cursors.Hand;
             updateBtn.Location = new Point(677, 6);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(94, 29);
@@ -90,6 +94,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.Location = new Point(298, 6);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(94, 29);
@@ -97,16 +102,6 @@
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
-            // 
-            // btnExportExcel
-            // 
-            btnExportExcel.Location = new Point(680, 125);
-            btnExportExcel.Name = "btnExportExcel";
-            btnExportExcel.Size = new Size(114, 29);
-            btnExportExcel.TabIndex = 26;
-            btnExportExcel.Text = "Export excel";
-            btnExportExcel.UseVisualStyleBackColor = true;
-            btnExportExcel.Click += btnExportExcel_Click;
             // 
             // txtSearch
             // 
@@ -144,6 +139,7 @@
             // 
             // btnFindAll
             // 
+            btnFindAll.Cursor = Cursors.Hand;
             btnFindAll.Location = new Point(415, 7);
             btnFindAll.Name = "btnFindAll";
             btnFindAll.Size = new Size(94, 29);
@@ -154,6 +150,7 @@
             // 
             // btnActiveProject
             // 
+            btnActiveProject.Cursor = Cursors.Hand;
             btnActiveProject.Location = new Point(10, 125);
             btnActiveProject.Name = "btnActiveProject";
             btnActiveProject.Size = new Size(94, 29);
@@ -164,6 +161,7 @@
             // 
             // btnEndProject
             // 
+            btnEndProject.Cursor = Cursors.Hand;
             btnEndProject.Location = new Point(110, 125);
             btnEndProject.Name = "btnEndProject";
             btnEndProject.Size = new Size(94, 29);
@@ -174,6 +172,7 @@
             // 
             // btnDetail
             // 
+            btnDetail.Cursor = Cursors.Hand;
             btnDetail.Location = new Point(800, 125);
             btnDetail.Name = "btnDetail";
             btnDetail.Size = new Size(94, 29);
@@ -181,6 +180,17 @@
             btnDetail.Text = "Detail";
             btnDetail.UseVisualStyleBackColor = true;
             btnDetail.Click += btnDetail_Click;
+            // 
+            // btnExportExcel
+            // 
+            btnExportExcel.Cursor = Cursors.Hand;
+            btnExportExcel.Location = new Point(680, 125);
+            btnExportExcel.Name = "btnExportExcel";
+            btnExportExcel.Size = new Size(114, 29);
+            btnExportExcel.TabIndex = 26;
+            btnExportExcel.Text = "Export excel";
+            btnExportExcel.UseVisualStyleBackColor = true;
+            btnExportExcel.Click += btnExportExcel_Click;
             // 
             // projectsPage
             // 

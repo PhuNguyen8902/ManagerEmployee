@@ -59,7 +59,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.emailDetail
             Boolean rs = false;
             this.deId = deId;
             this.deName = deName;
-        
+
             List<int> empList = new List<int>();
             empList = empController.getEmployeesInDepartment(deId);
             foreach (int emp in empList)
@@ -89,8 +89,8 @@ namespace EmployeesManagement.userControl.Admin.Detail.emailDetail
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-          
-            Account acc = accController.findById("id",accId.ToString());
+
+            Account acc = accController.findById("id", accId.ToString());
             from = acc.Email;
             List<string> toRemove = new List<string>();
             foreach (string str in toList)
@@ -109,7 +109,7 @@ namespace EmployeesManagement.userControl.Admin.Detail.emailDetail
             //{
             //    MessageBox.Show("from ne: "+ from + " list ne: " + str);
             //}
-            sendEmailDetail formEmail = new sendEmailDetail(from,toList,accId);
+            sendEmailDetail formEmail = new sendEmailDetail(from, toList, accId);
             formEmail.ShowDialog();
         }
 

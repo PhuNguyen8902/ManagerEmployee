@@ -84,7 +84,7 @@ namespace EmployeesManagement.userControl
                 bool isBoolActive = true;
                 if (isActive == 1)
                     isBoolActive = false;
-                
+
                 updateProjectDetail formUpdateProject = new updateProjectDetail(id, name, desciption, startDate, endDate, isBoolActive);
                 formUpdateProject.ShowDialog();
             }
@@ -114,7 +114,7 @@ namespace EmployeesManagement.userControl
                         notify.addNotify(empId, message);
                     }
 
-                    
+
                     dgvProject.DataSource = projectController.GetProjectData(isActive);
 
                 }

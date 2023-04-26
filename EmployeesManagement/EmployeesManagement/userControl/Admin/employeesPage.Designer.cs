@@ -66,6 +66,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.Location = new Point(298, 21);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(94, 29);
@@ -76,6 +77,7 @@
             // 
             // updateBtn
             // 
+            updateBtn.Cursor = Cursors.Hand;
             updateBtn.Location = new Point(677, 21);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(94, 29);
@@ -86,6 +88,7 @@
             // 
             // addBtn
             // 
+            addBtn.Cursor = Cursors.Hand;
             addBtn.Location = new Point(567, 21);
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(94, 29);
@@ -96,6 +99,7 @@
             // 
             // btnExportExcel
             // 
+            btnExportExcel.Cursor = Cursors.Hand;
             btnExportExcel.Location = new Point(10, 120);
             btnExportExcel.Name = "btnExportExcel";
             btnExportExcel.Size = new Size(120, 29);
@@ -122,6 +126,7 @@
             // 
             // dgvEmployee
             // 
+            dgvEmployee.AllowUserToAddRows = false;
             dgvEmployee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmployee.Dock = DockStyle.Bottom;
@@ -135,6 +140,7 @@
             // 
             // deleteBtn
             // 
+            deleteBtn.Cursor = Cursors.Hand;
             deleteBtn.Location = new Point(787, 19);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(94, 29);
@@ -175,6 +181,7 @@
             // 
             // btnFindAll
             // 
+            btnFindAll.Cursor = Cursors.Hand;
             btnFindAll.Location = new Point(411, 22);
             btnFindAll.Name = "btnFindAll";
             btnFindAll.Size = new Size(94, 29);
@@ -185,6 +192,7 @@
             // 
             // btnEmail
             // 
+            btnEmail.Cursor = Cursors.Hand;
             btnEmail.Location = new Point(151, 120);
             btnEmail.Name = "btnEmail";
             btnEmail.Size = new Size(120, 29);
@@ -195,6 +203,7 @@
             // 
             // btnDetail
             // 
+            btnDetail.Cursor = Cursors.Hand;
             btnDetail.Location = new Point(800, 120);
             btnDetail.Name = "btnDetail";
             btnDetail.Size = new Size(94, 29);

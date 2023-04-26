@@ -45,7 +45,7 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.employeePage
 
 
 
-            if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbSalary.SelectedIndex != -1 )
+            if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbSalary.SelectedIndex != -1)
             {
                 bool isPhone = utilsController.isPhoneNumber(txtPhone.Text);
 
@@ -105,6 +105,6 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.employeePage
                 e.Handled = true;
         }
 
-        
+
     }
 }
