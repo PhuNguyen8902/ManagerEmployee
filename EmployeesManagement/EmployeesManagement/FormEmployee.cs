@@ -20,6 +20,7 @@ namespace EmployeesManagement
         navigationController navigationControl;
         private int employeeId;
         private string type;
+        private employeeController empController = new employeeController();
         public FormEmployee()
         {
             InitializeComponent();
@@ -70,6 +71,18 @@ namespace EmployeesManagement
         private void notifyBtn_Click(object sender, EventArgs e)
         {
             navigationControl.display(3);
+        }
+
+        private void mainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void FormEmployee_Load(object sender, EventArgs e)
+        {
+            Employee emp = empController.getInforEmployee(employeeId);
+            string name = emp.Name;
+            lbName.Text = name;
         }
     }
 }

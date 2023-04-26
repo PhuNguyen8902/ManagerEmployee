@@ -104,16 +104,6 @@
             btnExportExcel.UseVisualStyleBackColor = true;
             btnExportExcel.Click += btnExportExcel_Click;
             // 
-            // btnDetail
-            // 
-            btnDetail.Location = new Point(800, 120);
-            btnDetail.Name = "btnDetail";
-            btnDetail.Size = new Size(94, 29);
-            btnDetail.TabIndex = 9;
-            btnDetail.Text = "Detail";
-            btnDetail.UseVisualStyleBackColor = true;
-            btnDetail.Click += btnDetail_Click;
-            // 
             // employeeBindingSource1
             // 
             employeeBindingSource1.DataSource = typeof(Models.Employee);
@@ -166,7 +156,7 @@
             // cbSearchGender
             // 
             cbSearchGender.FormattingEnabled = true;
-            cbSearchGender.Location = new Point(22, 20);
+            cbSearchGender.Location = new Point(22, 19);
             cbSearchGender.Name = "cbSearchGender";
             cbSearchGender.Size = new Size(258, 28);
             cbSearchGender.TabIndex = 11;
@@ -202,6 +192,16 @@
             btnEmail.Text = "Send Email";
             btnEmail.UseVisualStyleBackColor = true;
             btnEmail.Click += btnEmail_Click;
+            // 
+            // btnDetail
+            // 
+            btnDetail.Location = new Point(800, 120);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(94, 29);
+            btnDetail.TabIndex = 9;
+            btnDetail.Text = "Detail";
+            btnDetail.UseVisualStyleBackColor = true;
+            btnDetail.Click += btnDetail_Click;
             // 
             // employeesPage
             // 

@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             panel4 = new Panel();
+            notifyBtn = new FontAwesome.Sharp.IconButton();
             accountBtn = new FontAwesome.Sharp.IconButton();
             createAccountBtn = new FontAwesome.Sharp.IconButton();
             projectsBtn = new FontAwesome.Sharp.IconButton();
@@ -39,12 +40,11 @@
             panel5 = new Panel();
             returnBtn = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
-            lbNameManager = new Label();
+            lbName = new Label();
             label1 = new Label();
             label2 = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             mainPanel = new Panel();
-            notifyBtn = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -78,6 +78,28 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(258, 492);
             panel4.TabIndex = 2;
+            // 
+            // notifyBtn
+            // 
+            notifyBtn.BackColor = Color.Teal;
+            notifyBtn.Dock = DockStyle.Top;
+            notifyBtn.FlatAppearance.BorderColor = Color.Teal;
+            notifyBtn.FlatStyle = FlatStyle.Flat;
+            notifyBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            notifyBtn.ForeColor = SystemColors.ControlLightLight;
+            notifyBtn.IconChar = FontAwesome.Sharp.IconChar.Bell;
+            notifyBtn.IconColor = Color.White;
+            notifyBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            notifyBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.Location = new Point(0, 295);
+            notifyBtn.Name = "notifyBtn";
+            notifyBtn.Size = new Size(258, 59);
+            notifyBtn.TabIndex = 10;
+            notifyBtn.Text = "Notify";
+            notifyBtn.TextAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            notifyBtn.UseVisualStyleBackColor = false;
+            notifyBtn.Click += notifyBtn_Click;
             // 
             // accountBtn
             // 
@@ -241,7 +263,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(lbNameManager);
+            panel3.Controls.Add(lbName);
             panel3.Controls.Add(label1);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(iconPictureBox1);
@@ -251,16 +273,16 @@
             panel3.Size = new Size(258, 143);
             panel3.TabIndex = 0;
             // 
-            // lbNameManager
+            // lbName
             // 
-            lbNameManager.AutoSize = true;
-            lbNameManager.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbNameManager.ForeColor = SystemColors.ControlLightLight;
-            lbNameManager.Location = new Point(118, 76);
-            lbNameManager.Name = "lbNameManager";
-            lbNameManager.Size = new Size(64, 28);
-            lbNameManager.TabIndex = 2;
-            lbNameManager.Text = "Name";
+            lbName.AutoSize = true;
+            lbName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbName.ForeColor = SystemColors.ControlLightLight;
+            lbName.Location = new Point(118, 76);
+            lbName.Name = "lbName";
+            lbName.Size = new Size(64, 28);
+            lbName.TabIndex = 2;
+            lbName.Text = "Name";
             // 
             // label1
             // 
@@ -305,28 +327,7 @@
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(903, 710);
             mainPanel.TabIndex = 1;
-            // 
-            // notifyBtn
-            // 
-            notifyBtn.BackColor = Color.Teal;
-            notifyBtn.Dock = DockStyle.Top;
-            notifyBtn.FlatAppearance.BorderColor = Color.Teal;
-            notifyBtn.FlatStyle = FlatStyle.Flat;
-            notifyBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            notifyBtn.ForeColor = SystemColors.ControlLightLight;
-            notifyBtn.IconChar = FontAwesome.Sharp.IconChar.Bell;
-            notifyBtn.IconColor = Color.White;
-            notifyBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            notifyBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            notifyBtn.Location = new Point(0, 295);
-            notifyBtn.Name = "notifyBtn";
-            notifyBtn.Size = new Size(258, 59);
-            notifyBtn.TabIndex = 10;
-            notifyBtn.Text = "Notify";
-            notifyBtn.TextAlign = ContentAlignment.MiddleLeft;
-            notifyBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            notifyBtn.UseVisualStyleBackColor = false;
-            notifyBtn.Click += notifyBtn_Click;
+            mainPanel.Paint += mainPanel_Paint;
             // 
             // FormManager
             // 
@@ -337,6 +338,7 @@
             Controls.Add(panel1);
             Name = "FormManager";
             Text = "Manager";
+            Load += FormManager_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
@@ -353,7 +355,7 @@
         private Panel panel3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Panel mainPanel;
-        private Label lbNameManager;
+        private Label lbName;
         private Label label2;
         private Panel panel5;
         private FontAwesome.Sharp.IconButton returnBtn;

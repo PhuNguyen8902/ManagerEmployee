@@ -53,6 +53,7 @@ namespace EmployeesManagement.userControl.UserControlManager
 
 
             employeeService.CloseConnection();
+            loadCbSearch();
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -189,6 +190,128 @@ namespace EmployeesManagement.userControl.UserControlManager
             int accId = acc.Id;
             manageChooseSend formChoose = new manageChooseSend(accId);
             formChoose.ShowDialog();
+        }
+
+        private void btnFindAll_Click(object sender, EventArgs e)
+        {
+            employeeService.OpenConnection();
+
+            DataTable dataTable = employeeController.GetEmployeeDataByItsManagerId(managerId);
+
+            dgvEmployee.DataSource = dataTable;
+
+
+            employeeService.CloseConnection();
+        }
+
+        private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSearch.SelectedIndex == -1)
+            {
+                btnSearch.Enabled = false;
+            }
+            else
+            {
+                btnSearch.Enabled = true;
+                if (cbSearch.SelectedItem.ToString() == "Employee Gender")
+                {
+                    tbSearch.Visible = false;
+                    cbSearchGender.Visible = true;
+                }
+                else if (cbSearch.SelectedItem.ToString() == "Position")
+                {
+                    tbSearch.Visible = false;
+                    cbSearchGender.Visible = false;
+                }
+                else
+                {
+                    tbSearch.Visible = true;
+                    cbSearchGender.Visible = false;
+                }
+            }
+        }
+        private void loadCbSearch()
+        {
+            cbSearch.Items.Add("Employee Id");
+            cbSearch.Items.Add("Employee Name");
+            cbSearch.Items.Add("Employee Phone");
+            cbSearch.Items.Add("Employee Gender");
+            cbSearch.Items.Add("Employee HomeTown");
+            cbSearch.Items.Add("Salary");
+            cbSearchGender.Items.Add("Male");
+            cbSearchGender.Items.Add("Female");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Employee mana = new Employee();
+            mana = employeeController.getInforEmployee(managerId);
+            int deId = (int)mana.DepartmentId;
+            string selectedValue = cbSearch.SelectedItem.ToString();
+            if (selectedValue == "Employee Id")
+            {
+                int id;
+                if (!int.TryParse(tbSearch.Text, out id))
+                {
+                    MessageBox.Show("Please enter a number for the ID!");
+                }
+                else
+                {
+                    DataTable dataTable = employeeController.findById(id, "e.department_id = " + deId +" and e.id");
+                    dgvEmployee.DataSource = dataTable;
+                }
+            }
+            else if (selectedValue == "Employee Phone")
+            {
+                long phone;
+                if (!long.TryParse(tbSearch.Text, out phone))
+                {
+                    MessageBox.Show("Please enter a number for the Phone!");
+                    return;
+                }
+                else
+                {
+                    string strPhone = phone.ToString();
+                    DataTable dataTable = employeeController.findByCondition(strPhone, "e.department_id = " + deId + " and e.phone");
+                    dgvEmployee.DataSource = dataTable;
+                }
+            }
+            else if (selectedValue == "Employee Name")
+            {
+                string name = tbSearch.Text;
+                DataTable dataTable = employeeController.findByCondition(name, "e.department_id = " + deId + " and e.name");
+                dgvEmployee.DataSource = dataTable;
+            }
+            else if (selectedValue == "Employee HomeTown")
+            {
+                string homeTown = tbSearch.Text;
+                DataTable dataTable = employeeController.findByCondition(homeTown, "e.department_id = " + deId + " and e.home_town");
+                dgvEmployee.DataSource = dataTable;
+            }
+            else if (selectedValue == "Employee Gender")
+            {
+                if (cbSearchGender.SelectedIndex != -1)
+                {
+                    int gender = cbSearchGender.SelectedIndex;
+                    DataTable dataTable = employeeController.findById(gender, "e.department_id = " + deId + " and e.gender");
+                    dgvEmployee.DataSource = dataTable;
+                }
+            }
+            else if (selectedValue == "Salary")
+            {
+                long salary;
+                if (!long.TryParse(tbSearch.Text, out salary))
+                {
+                    MessageBox.Show("Please enter a number for the Salary!");
+                    return;
+                }
+                else
+                {
+                    string strSalary = salary.ToString();
+                    DataTable dataTable = employeeController.findByCondition(strSalary, "e.department_id = " + deId + " and s.net_salary");
+                    dgvEmployee.DataSource = dataTable;
+                }
+            }
         }
     }
 }

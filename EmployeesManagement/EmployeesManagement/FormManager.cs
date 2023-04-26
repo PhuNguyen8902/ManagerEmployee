@@ -87,5 +87,17 @@ namespace EmployeesManagement
             navigationControl.display(5);
 
         }
+
+        private void mainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void FormManager_Load(object sender, EventArgs e)
+        {
+            Employee emp = empController.getInforEmployee(managerId);
+            string name = emp.Name;
+            lbName.Text = name;
+        }
     }
 }
