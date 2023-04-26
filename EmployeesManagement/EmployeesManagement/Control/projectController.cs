@@ -53,16 +53,16 @@ namespace EmployeesManagement.Control
             return projectService.findById(id, str);
         }
 
-        public DataTable findEmployeeProjectByProjectId(int id,int emid) {
-            return projectService.findEmployeeProjectByProjectId(id,emid);
+        public DataTable findEmployeeProjectByProjectId(int id,int emid, int isActive) {
+            return projectService.findEmployeeProjectByProjectId(id,emid, isActive);
         }
 
         public DataTable findByCodition(string address, string str, string codition) { 
             return projectService.findByCodition(address,str, codition);
         }
 
-        public DataTable findEmployeeProjectByCodition(string value, int emid, string codition) { 
-            return projectService.findEmployeeProjectByCodition(value, emid, codition);
+        public DataTable findEmployeeProjectByCodition(string value, int emid, string codition, int isActive) { 
+            return projectService.findEmployeeProjectByCodition(value, emid, codition, isActive);
         }
 
         public Project getProject(int proId) { 

@@ -48,21 +48,9 @@ namespace EmployeesManagement.userControl.UserControlEmployee
 
             connection.Close();
             loadComboBoxSearch();
-            loadComboBoxSearchActive();
             btnSearch.Enabled = false;
 
 
-            if (dgvProject.Columns.Contains("is_active"))
-            {
-                for (int i = 0; i < dgvProject.Rows.Count; i++)
-                {
-                    if (dgvProject.Rows[i].Cells["is_active"].Value != null && dgvProject.Rows[i].Cells["is_active"].Value is bool)
-                    {
-                        bool isActive = (bool)dgvProject.Rows[i].Cells["is_active"].Value;
-                        dgvProject.Rows[i].Cells["is_active"].Value = isActive ? "Active" : "End";
-                    }
-                }
-            }
         }
 
         private void loadComboBoxSearch()
@@ -73,14 +61,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             strList.Add("Project Description");
             strList.Add("Start_date");
             strList.Add("End_date");
-            strList.Add("Active");
             salaryController.loadComboBoxSearch(cbSearch, strList);
-        }
-        private void loadComboBoxSearchActive()
-        {
-            cbSearchActive.Items.Add("Active");
-            cbSearchActive.Items.Add("End");
-            cbSearchActive.SelectedIndex = 0;
         }
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,12 +79,6 @@ namespace EmployeesManagement.userControl.UserControlEmployee
                     txtSearch.Visible = false;
                     cbSearchActive.Visible = false;
                     DTPSearch.Visible = true;
-                }
-                else if (value == "Active")
-                {
-                    txtSearch.Visible = false;
-                    cbSearchActive.Visible = true;
-                    DTPSearch.Visible = false;
                 }
                 else
                 {
@@ -128,44 +103,37 @@ namespace EmployeesManagement.userControl.UserControlEmployee
                 }
                 else
                 {
-                    DataTable dataTable = projectController.findEmployeeProjectByProjectId(projectId, id);
+                    DataTable dataTable = projectController.findEmployeeProjectByProjectId(projectId, id, isActive);
                     dgvProject.DataSource = dataTable;
                 }
             }
             else if (selectedValue == "Project Name")
             {
                 string strName = txtSearch.Text;
-                DataTable dataTable = projectController.findEmployeeProjectByCodition(strName, id, "p.name");
+                DataTable dataTable = projectController.findEmployeeProjectByCodition(strName, id, "p.name", isActive);
                 dgvProject.DataSource = dataTable;
             }
             else if (selectedValue == "Project Description")
             {
                 string strDescription = txtSearch.Text;
-                DataTable dataTable = projectController.findEmployeeProjectByCodition(strDescription, id, "ep.description");
+                DataTable dataTable = projectController.findEmployeeProjectByCodition(strDescription, id, "ep.description", isActive);
                 dgvProject.DataSource = dataTable;
             }
             else if (selectedValue == "Start_date")
             {
                 string strStartDate = DTPSearch.Value.ToString("yyyy-MM-dd");
-                DataTable dataTable = projectController.findEmployeeProjectByCodition(strStartDate, id, "ep.start_date");
+                DataTable dataTable = projectController.findEmployeeProjectByCodition(strStartDate, id, "ep.start_date", isActive);
                 dgvProject.DataSource = dataTable;
             }
             else if (selectedValue == "End_date")
             {
                 string strEndDate = DTPSearch.Value.ToString("yyyy-MM-dd");
-                DataTable dataTable = projectController.findEmployeeProjectByCodition(strEndDate, id, "ep.end_date");
+                DataTable dataTable = projectController.findEmployeeProjectByCodition(strEndDate, id, "ep.end_date", isActive);
                 dgvProject.DataSource = dataTable;
             }
             else
             {
-                string strActive = cbSearchActive.SelectedItem.ToString();
-                string Active = "0";
-                if (strActive == "Active")
-                    Active = "0";
-                else
-                    Active = "1";
-                DataTable dataTable = projectController.findEmployeeProjectByCodition(Active, id, "p.is_active");
-                dgvProject.DataSource = dataTable;
+                
             }
         }
 

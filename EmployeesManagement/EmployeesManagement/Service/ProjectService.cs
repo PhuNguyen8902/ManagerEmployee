@@ -147,14 +147,16 @@ namespace EmployeesManagement.Service
         }
 
         // Tìm kiếm project của employee bằng project id
-        public DataTable findEmployeeProjectByProjectId(int id, int emid)
+        public DataTable findEmployeeProjectByProjectId(int id, int emid, int isActive)
         {
 
             DataTable dataTable = new DataTable();
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT ep.employee_id,p.id,p.name,ep.description,ep.start_date,ep.end_date, CASE WHEN p.is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id=p.id where ep.project_id = {0} and ep.employee_id = {1}", id, emid);
+                string sql = string.Format("SELECT p.id,p.name,ep.description,ep.start_date,ep.end_date " +
+                    "FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id=p.id " +
+                    "where ep.project_id = {0} and ep.employee_id = {1} and p.is_active = {2}", id, emid, isActive);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);
@@ -194,13 +196,15 @@ namespace EmployeesManagement.Service
         }
 
         //Tìm kiếm project của employee bằng codition
-        public DataTable findEmployeeProjectByCodition(string value, int emid, string codition)
+        public DataTable findEmployeeProjectByCodition(string value, int emid, string codition, int isActive)
         {
             DataTable dataTable = new DataTable();
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT ep.employee_id, p.id, p.name, ep.description, ep.start_date, ep.end_date, CASE WHEN p.is_active = 0 THEN 'Active' ELSE 'End' END AS Active FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id = p.id where ep.employee_id = {1} and {2} like '%{0}%';", value, emid, codition);
+                string sql = string.Format("SELECT p.id, p.name, ep.description, ep.start_date, ep.end_date " +
+                    "FROM employeeDB.dbo.project p INNER JOIN employeeDB.dbo.employee_project ep ON ep.project_id = p.id " +
+                    "where ep.employee_id = {1} and {2} like '%{0}%' and p.is_active = {3};", value, emid, codition, isActive);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);
