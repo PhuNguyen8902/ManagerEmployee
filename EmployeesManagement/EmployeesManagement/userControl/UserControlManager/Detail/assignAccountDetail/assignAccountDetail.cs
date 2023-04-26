@@ -39,12 +39,6 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.assignAccoun
         {
             tbSearch.Text = "Please enter Employee Id";
             findAll();
-            dgvAssignAccount.Columns.Add(new DataGridViewButtonColumn()
-            {
-                Name = "AssignButton",
-                Text = "Assign",
-                UseColumnTextForButtonValue = true
-            });
         }
         private void findAll()
         {
@@ -56,6 +50,12 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.assignAccoun
             dgvAssignAccount.DataSource = dataTable;
 
             connection.Close();
+            dgvAssignAccount.Columns.Add(new DataGridViewButtonColumn()
+            {
+                Name = "AssignButton",
+                Text = "Assign",
+                UseColumnTextForButtonValue = true
+            });
         }
 
         private void dgvAssignAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -70,13 +70,7 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.assignAccoun
                     if (rs)
                     {
                         MessageBox.Show("Update Successful");
-                        connection.Open();
-
-                        DataTable dataTable = empController.getEmployeeNeedAssignData();
-
-                        dgvAssignAccount.DataSource = dataTable;
-
-                        connection.Close();
+                       findAll();
                     }
                     else
                     {
@@ -97,6 +91,7 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.assignAccoun
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            dgvAssignAccount.Columns.Clear();
             int id;
             if (!int.TryParse(tbSearch.Text, out id))
             {
@@ -108,6 +103,12 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.assignAccoun
 
                 dgvAssignAccount.DataSource = dataTable;
             }
+            dgvAssignAccount.Columns.Add(new DataGridViewButtonColumn()
+            {
+                Name = "AssignButton",
+                Text = "Assign",
+                UseColumnTextForButtonValue = true
+            });
         }
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
