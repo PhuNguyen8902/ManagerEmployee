@@ -1,4 +1,5 @@
 ﻿using EmployeesManagement.Control;
+using EmployeesManagement.Models;
 using EmployeesManagement.userControl.Admin.Detail.projectDetail;
 using EmployeesManagement.userControl.UserControlManager.Detail.projectPage;
 using System;
@@ -54,10 +55,14 @@ namespace EmployeesManagement.userControl.UserControlManager
             DataTable dataTable = projectController.GetProjectEmployeeData(managerId, isActive);
 
             dgvProject.DataSource = dataTable;
-
             connection.Close();
+            dgvProject.Columns.Add(new DataGridViewButtonColumn()
+            {
+                Name = "NotifyButton",
+                Text = "Notify",
+                UseColumnTextForButtonValue = true
+            });
 
-            connection.Close();
             loadComboBoxSearch();
             btnSearch.Enabled = false;
 
@@ -76,18 +81,26 @@ namespace EmployeesManagement.userControl.UserControlManager
 
         private void btnActiveProject_Click(object sender, EventArgs e)
         {
+            dgvProject.Columns.Clear();
             isActive = 0;
             connection.Open();
 
             DataTable dataTable = projectController.GetProjectEmployeeData(managerId, isActive);
 
             dgvProject.DataSource = dataTable;
+            dgvProject.Columns.Add(new DataGridViewButtonColumn()
+            {
+                Name = "NotifyButton",
+                Text = "Notify",
+                UseColumnTextForButtonValue = true
+            });
 
             connection.Close();
         }
 
         private void btnEndProject_Click(object sender, EventArgs e)
         {
+            dgvProject.Columns.Clear();
             isActive = 1;
             connection.Open();
 
@@ -133,7 +146,7 @@ namespace EmployeesManagement.userControl.UserControlManager
                 {
                     excel.Cells[1, i] = dgvProject.Columns[i - 1].HeaderText;
                 }
-                for (int i = 1; i < dgvProject.Rows.Count ; i++)
+                for (int i = 1; i < dgvProject.Rows.Count; i++)
                 {
                     for (int j = 1; j < dgvProject.Columns.Count + 1; j++)
                     {
@@ -220,6 +233,18 @@ namespace EmployeesManagement.userControl.UserControlManager
             DataTable dataTable = projectController.GetProjectEmployeeData(managerId, isActive);
 
             dgvProject.DataSource = dataTable;
+        }
+
+        private void dgvProject_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProject.Columns[e.ColumnIndex].Name == "NotifyButton")
+            {
+                int proId = (int)dgvProject.Rows[e.RowIndex].Cells["id"].Value;
+                DateTime now = DateTime.Now;
+                string message = string.Format("Employee with Id of {1} wants to change the Project status with Id of {2} to End at ({0})", now.ToString(), managerId, proId);
+                notify.addNotify(1, message);
+                MessageBox.Show("Success");
+            }
         }
     }
 }

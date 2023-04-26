@@ -257,7 +257,7 @@ namespace EmployeesManagement.userControl.UserControlManager
                 }
                 else
                 {
-                    DataTable dataTable = employeeController.findById(id, "e.department_id = " + deId +" and e.id");
+                    DataTable dataTable = employeeController.findById(id, "e.department_id = " + deId + " and e.id");
                     dgvEmployee.DataSource = dataTable;
                 }
             }

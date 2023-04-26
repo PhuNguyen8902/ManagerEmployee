@@ -39,7 +39,7 @@ namespace EmployeesManagement
         private void initializeNavigationController(int display)
         {
             List<UserControl> userControls = new List<UserControl>()
-            { new employeesPage(accId), new projectsPage(), new DepartmentPage(),new salaryPage(),new accountPage(),new chartPage()};
+            { new employeesPage(accId), new projectsPage(), new DepartmentPage(),new salaryPage(),new accountPage(),new chartPage(),new userControl.UserControlEmployee.notifyEmployeePage(1)};
 
             navigationControl = new navigationController(userControls, mainPanel); // create an instance of navigationControl
             navigationControl.display(display);
@@ -91,6 +91,12 @@ namespace EmployeesManagement
         private void iconButton1_Click(object sender, EventArgs e)
         {
             navigationControl.display(5);
+        }
+
+        private void notifyBtn_Click(object sender, EventArgs e)
+        {
+            navigationControl.display(6);
+
         }
     }
 }

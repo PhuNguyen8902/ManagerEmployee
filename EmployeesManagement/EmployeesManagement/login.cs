@@ -54,7 +54,7 @@ namespace EmployeesManagement
                         {
                             MessageBox.Show("Login Successful!");
                             this.Hide();
-                            primary primaryPage = new primary(0,accId,type);
+                            primary primaryPage = new primary(0, accId, type);
                             primaryPage.Show();
                         }
                         else if (type == "Employee" && employeeId != -1)
@@ -102,7 +102,7 @@ namespace EmployeesManagement
 
         private void login_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
         }
     }
 }

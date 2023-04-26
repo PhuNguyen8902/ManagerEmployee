@@ -43,6 +43,7 @@
             // 
             // btnFindAll
             // 
+            btnFindAll.Cursor = Cursors.Hand;
             btnFindAll.Location = new Point(421, 12);
             btnFindAll.Name = "btnFindAll";
             btnFindAll.Size = new Size(94, 29);
@@ -68,6 +69,7 @@
             // 
             // assignBtn
             // 
+            assignBtn.Cursor = Cursors.Hand;
             assignBtn.Location = new Point(31, 116);
             assignBtn.Name = "assignBtn";
             assignBtn.Size = new Size(169, 29);
@@ -78,6 +80,7 @@
             // 
             // removeBtn
             // 
+            removeBtn.Cursor = Cursors.Hand;
             removeBtn.Location = new Point(270, 116);
             removeBtn.Name = "removeBtn";
             removeBtn.Size = new Size(169, 29);
@@ -115,6 +118,7 @@
             // 
             // btnSearch2
             // 
+            btnSearch2.Cursor = Cursors.Hand;
             btnSearch2.Location = new Point(307, 12);
             btnSearch2.Name = "btnSearch2";
             btnSearch2.Size = new Size(94, 29);
@@ -136,6 +140,7 @@
             // 
             // changeEmailBtn
             // 
+            changeEmailBtn.Cursor = Cursors.Hand;
             changeEmailBtn.Location = new Point(720, 116);
             changeEmailBtn.Name = "changeEmailBtn";
             changeEmailBtn.Size = new Size(130, 29);

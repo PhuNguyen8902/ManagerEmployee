@@ -117,7 +117,7 @@ namespace EmployeesManagement.userControl
             else
             {
                 btnSearch.Enabled = true;
-                 string value = cbSearch.SelectedItem.ToString();
+                string value = cbSearch.SelectedItem.ToString();
                 if (value == "level")
                 {
                     tbSearch.Visible = false;

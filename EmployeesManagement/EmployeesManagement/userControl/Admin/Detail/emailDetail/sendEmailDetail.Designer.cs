@@ -97,10 +97,10 @@
             // tbResultFile
             // 
             tbResultFile.Enabled = false;
-            tbResultFile.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tbResultFile.Location = new Point(187, 399);
+            tbResultFile.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            tbResultFile.Location = new Point(177, 404);
             tbResultFile.Name = "tbResultFile";
-            tbResultFile.Size = new Size(367, 34);
+            tbResultFile.Size = new Size(420, 30);
             tbResultFile.TabIndex = 6;
             // 
             // openFileDialog1

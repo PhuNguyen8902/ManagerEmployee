@@ -196,6 +196,10 @@ namespace EmployeesManagement.userControl
                 inforDepartmentDetail infoDeDetail = new inforDepartmentDetail(id);
                 infoDeDetail.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Choose department want to see detail");
+            }
 
         }
     }

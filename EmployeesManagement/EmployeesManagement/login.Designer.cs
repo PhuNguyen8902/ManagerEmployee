@@ -140,6 +140,7 @@
             // button1
             // 
             button1.BackColor = Color.Teal;
+            button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.ControlLightLight;
             button1.Location = new Point(155, 315);

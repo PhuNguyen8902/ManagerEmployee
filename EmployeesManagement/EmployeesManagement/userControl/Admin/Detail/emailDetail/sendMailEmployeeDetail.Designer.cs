@@ -40,6 +40,7 @@
             // 
             // btnFindAll
             // 
+            btnFindAll.Cursor = Cursors.Hand;
             btnFindAll.Location = new Point(411, 12);
             btnFindAll.Name = "btnFindAll";
             btnFindAll.Size = new Size(94, 29);
@@ -85,6 +86,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.Location = new Point(298, 11);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(94, 29);

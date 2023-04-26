@@ -73,6 +73,7 @@
             // 
             // removeBtn
             // 
+            removeBtn.Cursor = Cursors.Hand;
             removeBtn.Location = new Point(270, 110);
             removeBtn.Name = "removeBtn";
             removeBtn.Size = new Size(169, 29);
@@ -83,6 +84,7 @@
             // 
             // assignBtn
             // 
+            assignBtn.Cursor = Cursors.Hand;
             assignBtn.Location = new Point(31, 110);
             assignBtn.Name = "assignBtn";
             assignBtn.Size = new Size(169, 29);
@@ -93,6 +95,7 @@
             // 
             // btnFindAll
             // 
+            btnFindAll.Cursor = Cursors.Hand;
             btnFindAll.Location = new Point(421, 6);
             btnFindAll.Name = "btnFindAll";
             btnFindAll.Size = new Size(94, 29);
@@ -125,6 +128,7 @@
             // 
             // btnSearch1
             // 
+            btnSearch1.Cursor = Cursors.Hand;
             btnSearch1.Location = new Point(307, 7);
             btnSearch1.Name = "btnSearch1";
             btnSearch1.Size = new Size(94, 29);

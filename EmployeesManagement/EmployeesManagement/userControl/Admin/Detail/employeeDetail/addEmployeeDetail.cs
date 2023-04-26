@@ -32,12 +32,12 @@ namespace EmployeesManagement.Detail
         {
             // 0 la male, con 1 la female
             byte gender = 0;
-            if(rbFemale.Checked)
+            if (rbFemale.Checked)
             {
                 gender = 1;
             }
 
-            
+
 
             if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbDepartment.SelectedIndex != -1 && cbSalary.SelectedIndex != -1 && cbPosition.SelectedIndex != -1)
             {
@@ -55,11 +55,11 @@ namespace EmployeesManagement.Detail
 
 
                 Employee emp = new Employee(txtName.Text, txtPhone.Text, gender, txtHometown.Text, departmentId, salaryId, positionId);
-                if (empController.addEmployee(emp) )
+                if (empController.addEmployee(emp))
                 {
                     MessageBox.Show("Thêm thành công");
 
-                    
+
                     // kiem tra xem form primary co dang mo hay khong
                     FormCollection allOpenedForm = Application.OpenForms;
                     foreach (Form form in allOpenedForm)

@@ -44,6 +44,7 @@
             // 
             // btnFindAll
             // 
+            btnFindAll.Cursor = Cursors.Hand;
             btnFindAll.Location = new Point(415, 5);
             btnFindAll.Name = "btnFindAll";
             btnFindAll.Size = new Size(94, 29);
@@ -88,6 +89,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.Location = new Point(298, 4);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(94, 29);
@@ -113,6 +115,7 @@
             // 
             // btnActive
             // 
+            btnActive.Cursor = Cursors.Hand;
             btnActive.Location = new Point(5, 130);
             btnActive.Name = "btnActive";
             btnActive.Size = new Size(94, 29);
@@ -123,6 +126,7 @@
             // 
             // btnEnd
             // 
+            btnEnd.Cursor = Cursors.Hand;
             btnEnd.Location = new Point(100, 130);
             btnEnd.Name = "btnEnd";
             btnEnd.Size = new Size(94, 29);
@@ -133,6 +137,7 @@
             // 
             // btnExportExcel
             // 
+            btnExportExcel.Cursor = Cursors.Hand;
             btnExportExcel.Location = new Point(680, 130);
             btnExportExcel.Name = "btnExportExcel";
             btnExportExcel.Size = new Size(114, 29);
@@ -143,6 +148,7 @@
             // 
             // btnDetail
             // 
+            btnDetail.Cursor = Cursors.Hand;
             btnDetail.Location = new Point(800, 130);
             btnDetail.Name = "btnDetail";
             btnDetail.Size = new Size(94, 29);

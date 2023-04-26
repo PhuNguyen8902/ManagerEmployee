@@ -28,184 +28,184 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.cbSalary = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnComfirm = new System.Windows.Forms.Button();
-            this.rbFemale = new System.Windows.Forms.RadioButton();
-            this.rbMale = new System.Windows.Forms.RadioButton();
-            this.txtHometown = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            panel1 = new Panel();
+            cbSalary = new ComboBox();
+            label7 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            btnComfirm = new Button();
+            rbFemale = new RadioButton();
+            rbMale = new RadioButton();
+            txtHometown = new TextBox();
+            txtPhone = new TextBox();
+            txtName = new TextBox();
+            label1 = new Label();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.cbSalary);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.btnComfirm);
-            this.panel1.Controls.Add(this.rbFemale);
-            this.panel1.Controls.Add(this.rbMale);
-            this.panel1.Controls.Add(this.txtHometown);
-            this.panel1.Controls.Add(this.txtPhone);
-            this.panel1.Controls.Add(this.txtName);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 55);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(406, 375);
-            this.panel1.TabIndex = 4;
+            panel1.Controls.Add(cbSalary);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(btnComfirm);
+            panel1.Controls.Add(rbFemale);
+            panel1.Controls.Add(rbMale);
+            panel1.Controls.Add(txtHometown);
+            panel1.Controls.Add(txtPhone);
+            panel1.Controls.Add(txtName);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 55);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(406, 375);
+            panel1.TabIndex = 4;
             // 
             // cbSalary
             // 
-            this.cbSalary.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSalary.FormattingEnabled = true;
-            this.cbSalary.Location = new System.Drawing.Point(121, 230);
-            this.cbSalary.Name = "cbSalary";
-            this.cbSalary.Size = new System.Drawing.Size(205, 31);
-            this.cbSalary.TabIndex = 14;
+            cbSalary.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cbSalary.FormattingEnabled = true;
+            cbSalary.Location = new Point(121, 230);
+            cbSalary.Name = "cbSalary";
+            cbSalary.Size = new Size(205, 31);
+            cbSalary.TabIndex = 14;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 235);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 20);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Salary:";
+            label7.AutoSize = true;
+            label7.Location = new Point(14, 235);
+            label7.Name = "label7";
+            label7.Size = new Size(52, 20);
+            label7.TabIndex = 12;
+            label7.Text = "Salary:";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 123);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 20);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Gender:";
+            label5.AutoSize = true;
+            label5.Location = new Point(13, 123);
+            label5.Name = "label5";
+            label5.Size = new Size(60, 20);
+            label5.TabIndex = 10;
+            label5.Text = "Gender:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 178);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 20);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Hometown:";
+            label4.AutoSize = true;
+            label4.Location = new Point(13, 178);
+            label4.Name = "label4";
+            label4.Size = new Size(86, 20);
+            label4.TabIndex = 9;
+            label4.Text = "Hometown:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 81);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Phone:";
+            label3.AutoSize = true;
+            label3.Location = new Point(13, 81);
+            label3.Name = "label3";
+            label3.Size = new Size(53, 20);
+            label3.TabIndex = 8;
+            label3.Text = "Phone:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Name:";
+            label2.AutoSize = true;
+            label2.Location = new Point(13, 31);
+            label2.Name = "label2";
+            label2.Size = new Size(52, 20);
+            label2.TabIndex = 7;
+            label2.Text = "Name:";
             // 
             // btnComfirm
             // 
-            this.btnComfirm.Location = new System.Drawing.Point(151, 314);
-            this.btnComfirm.Name = "btnComfirm";
-            this.btnComfirm.Size = new System.Drawing.Size(94, 29);
-            this.btnComfirm.TabIndex = 6;
-            this.btnComfirm.Text = "Comfirm";
-            this.btnComfirm.UseVisualStyleBackColor = true;
-            this.btnComfirm.Click += new System.EventHandler(this.btnComfirm_Click);
+            btnComfirm.Cursor = Cursors.Hand;
+            btnComfirm.Location = new Point(151, 314);
+            btnComfirm.Name = "btnComfirm";
+            btnComfirm.Size = new Size(94, 29);
+            btnComfirm.TabIndex = 6;
+            btnComfirm.Text = "Comfirm";
+            btnComfirm.UseVisualStyleBackColor = true;
+            btnComfirm.Click += btnComfirm_Click;
             // 
             // rbFemale
             // 
-            this.rbFemale.AutoSize = true;
-            this.rbFemale.Location = new System.Drawing.Point(248, 121);
-            this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(78, 24);
-            this.rbFemale.TabIndex = 5;
-            this.rbFemale.Text = "Female";
-            this.rbFemale.UseVisualStyleBackColor = true;
+            rbFemale.AutoSize = true;
+            rbFemale.Location = new Point(248, 121);
+            rbFemale.Name = "rbFemale";
+            rbFemale.Size = new Size(78, 24);
+            rbFemale.TabIndex = 5;
+            rbFemale.Text = "Female";
+            rbFemale.UseVisualStyleBackColor = true;
             // 
             // rbMale
             // 
-            this.rbMale.AutoSize = true;
-            this.rbMale.Checked = true;
-            this.rbMale.Location = new System.Drawing.Point(121, 121);
-            this.rbMale.Name = "rbMale";
-            this.rbMale.Size = new System.Drawing.Size(63, 24);
-            this.rbMale.TabIndex = 4;
-            this.rbMale.TabStop = true;
-            this.rbMale.Text = "Male";
-            this.rbMale.UseVisualStyleBackColor = true;
+            rbMale.AutoSize = true;
+            rbMale.Checked = true;
+            rbMale.Location = new Point(121, 121);
+            rbMale.Name = "rbMale";
+            rbMale.Size = new Size(63, 24);
+            rbMale.TabIndex = 4;
+            rbMale.TabStop = true;
+            rbMale.Text = "Male";
+            rbMale.UseVisualStyleBackColor = true;
             // 
             // txtHometown
             // 
-            this.txtHometown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtHometown.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtHometown.Location = new System.Drawing.Point(121, 168);
-            this.txtHometown.Name = "txtHometown";
-            this.txtHometown.Size = new System.Drawing.Size(205, 34);
-            this.txtHometown.TabIndex = 3;
+            txtHometown.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtHometown.ForeColor = SystemColors.InfoText;
+            txtHometown.Location = new Point(121, 168);
+            txtHometown.Name = "txtHometown";
+            txtHometown.Size = new Size(205, 34);
+            txtHometown.TabIndex = 3;
             // 
             // txtPhone
             // 
-            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPhone.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtPhone.Location = new System.Drawing.Point(121, 71);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(205, 34);
-            this.txtPhone.TabIndex = 2;
-            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
+            txtPhone.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPhone.ForeColor = SystemColors.InfoText;
+            txtPhone.Location = new Point(121, 71);
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(205, 34);
+            txtPhone.TabIndex = 2;
+            txtPhone.TextChanged += txtPhone_TextChanged;
+            txtPhone.KeyPress += txtPhone_KeyPress;
             // 
             // txtName
             // 
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtName.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtName.Location = new System.Drawing.Point(121, 21);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(205, 34);
-            this.txtName.TabIndex = 1;
+            txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.ForeColor = SystemColors.InfoText;
+            txtName.Location = new Point(121, 21);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(205, 34);
+            txtName.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.Teal;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(406, 55);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Add Employee to Department";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.BackColor = Color.Teal;
+            label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(406, 55);
+            label1.TabIndex = 3;
+            label1.Text = "Add Employee to Department";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // addEmployeeByManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 430);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
-            this.Name = "addEmployeeByManager";
-            this.Text = "addEmployeeByManager";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(406, 430);
+            Controls.Add(panel1);
+            Controls.Add(label1);
+            Name = "addEmployeeByManager";
+            Text = "addEmployeeByManager";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

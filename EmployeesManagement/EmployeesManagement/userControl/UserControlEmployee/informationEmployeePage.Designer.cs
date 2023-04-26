@@ -188,6 +188,7 @@
             // btnInforUpdate
             // 
             btnInforUpdate.BackColor = Color.ForestGreen;
+            btnInforUpdate.Cursor = Cursors.Hand;
             btnInforUpdate.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             btnInforUpdate.ForeColor = SystemColors.ButtonHighlight;
             btnInforUpdate.Location = new Point(386, 593);

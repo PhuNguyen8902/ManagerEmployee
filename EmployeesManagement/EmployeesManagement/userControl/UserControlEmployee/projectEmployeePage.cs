@@ -47,6 +47,12 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             dgvProject.DataSource = dataTable;
 
             connection.Close();
+            dgvProject.Columns.Add(new DataGridViewButtonColumn()
+            {
+                Name = "NotifyButton",
+                Text = "Notify",
+                UseColumnTextForButtonValue = true
+            });
             loadComboBoxSearch();
             btnSearch.Enabled = false;
 
@@ -133,7 +139,7 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             }
             else
             {
-                
+
             }
         }
 
@@ -168,14 +174,14 @@ namespace EmployeesManagement.userControl.UserControlEmployee
         private void btnEnd_Click(object sender, EventArgs e)
         {
             dgvProject.Columns.Clear();
-          
+
             isActive = 1;
             connection.Open();
 
             DataTable dataTable = projectController.GetProjectEmployeeData(id, isActive);
 
             dgvProject.DataSource = dataTable;
-          
+
 
             connection.Close();
         }
@@ -233,11 +239,8 @@ namespace EmployeesManagement.userControl.UserControlEmployee
             {
                 int proId = (int)dgvProject.Rows[e.RowIndex].Cells["id"].Value;
                 DateTime now = DateTime.Now;
-                string message = string.Format("Employee with Id of {1} wants to change the Project status with Id of {2} to End at ({0})", now.ToString(),id,proId);
-                Employee emp = empController.getInforEmployee(id);
-                int deId = (int)emp.DepartmentId;
-                Employee mana = empController.getInforManagerOfEmployee(deId);
-                notify.addNotify(mana.Id, message);
+                string message = string.Format("Employee with Id of {1} wants to change the Project status with Id of {2} to End at ({0})", now.ToString(), id, proId);
+                notify.addNotify(1, message);
                 MessageBox.Show("Success");
             }
         }

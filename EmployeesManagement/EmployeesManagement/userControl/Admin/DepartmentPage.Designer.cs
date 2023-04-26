@@ -42,6 +42,7 @@
             // 
             // deleteBtn
             // 
+            deleteBtn.Cursor = Cursors.Hand;
             deleteBtn.Location = new Point(787, 9);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(94, 29);
@@ -52,6 +53,7 @@
             // 
             // dgvDepartment
             // 
+            dgvDepartment.AllowUserToAddRows = false;
             dgvDepartment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDepartment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDepartment.Dock = DockStyle.Bottom;
@@ -65,6 +67,7 @@
             // 
             // addBtn
             // 
+            addBtn.Cursor = Cursors.Hand;
             addBtn.Location = new Point(567, 11);
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(94, 29);
@@ -75,6 +78,7 @@
             // 
             // updateBtn
             // 
+            updateBtn.Cursor = Cursors.Hand;
             updateBtn.Location = new Point(677, 11);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(94, 29);
@@ -85,6 +89,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.Location = new Point(298, 11);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(94, 29);
@@ -112,6 +117,7 @@
             // 
             // btnFindAll
             // 
+            btnFindAll.Cursor = Cursors.Hand;
             btnFindAll.Location = new Point(416, 11);
             btnFindAll.Name = "btnFindAll";
             btnFindAll.Size = new Size(94, 29);
@@ -122,6 +128,7 @@
             // 
             // btnDetail
             // 
+            btnDetail.Cursor = Cursors.Hand;
             btnDetail.Location = new Point(771, 118);
             btnDetail.Name = "btnDetail";
             btnDetail.Size = new Size(94, 29);
