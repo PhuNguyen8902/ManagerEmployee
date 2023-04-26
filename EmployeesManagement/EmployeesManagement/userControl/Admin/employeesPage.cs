@@ -319,7 +319,7 @@ namespace EmployeesManagement.userControl
                 string department = row.Cells[5].Value.ToString();
                 string salary = row.Cells[6].Value.ToString();
                 string position = row.Cells[7].Value.ToString();
-               
+
 
                 employeeDetail formDetail = new employeeDetail(id, name, phone, gender, homeTown, department, salary, position);
                 formDetail.ShowDialog();

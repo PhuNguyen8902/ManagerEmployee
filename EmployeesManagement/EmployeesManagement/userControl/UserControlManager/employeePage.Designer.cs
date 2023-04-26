@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            button1 = new Button();
+            tbSearch = new TextBox();
+            btnSearch = new Button();
             deleteBtn = new Button();
             addBtn = new Button();
             updateBtn = new Button();
@@ -37,24 +37,28 @@
             dgvEmployee = new DataGridView();
             btnDetail = new Button();
             btnEmail = new Button();
+            btnFindAll = new Button();
+            cbSearchGender = new ComboBox();
+            cbSearch = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // tbSearch
             // 
-            textBox1.Location = new Point(21, 19);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(258, 27);
-            textBox1.TabIndex = 1;
+            tbSearch.Location = new Point(21, 19);
+            tbSearch.Name = "tbSearch";
+            tbSearch.Size = new Size(258, 27);
+            tbSearch.TabIndex = 1;
             // 
-            // button1
+            // btnSearch
             // 
-            button1.Location = new Point(297, 19);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 4;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
+            btnSearch.Location = new Point(297, 19);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 29);
+            btnSearch.TabIndex = 4;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // deleteBtn
             // 
@@ -129,10 +133,43 @@
             btnEmail.UseVisualStyleBackColor = true;
             btnEmail.Click += btnEmail_Click;
             // 
+            // btnFindAll
+            // 
+            btnFindAll.Location = new Point(411, 19);
+            btnFindAll.Name = "btnFindAll";
+            btnFindAll.Size = new Size(94, 29);
+            btnFindAll.TabIndex = 33;
+            btnFindAll.Text = "Find All";
+            btnFindAll.UseVisualStyleBackColor = true;
+            btnFindAll.Click += btnFindAll_Click;
+            // 
+            // cbSearchGender
+            // 
+            cbSearchGender.FormattingEnabled = true;
+            cbSearchGender.Location = new Point(21, 17);
+            cbSearchGender.Name = "cbSearchGender";
+            cbSearchGender.Size = new Size(258, 28);
+            cbSearchGender.TabIndex = 31;
+            cbSearchGender.Text = "Select the geder";
+            cbSearchGender.Visible = false;
+            // 
+            // cbSearch
+            // 
+            cbSearch.FormattingEnabled = true;
+            cbSearch.Location = new Point(21, 54);
+            cbSearch.Name = "cbSearch";
+            cbSearch.Size = new Size(258, 28);
+            cbSearch.TabIndex = 30;
+            cbSearch.Text = "Select the item you want to search";
+            cbSearch.SelectedIndexChanged += cbSearch_SelectedIndexChanged;
+            // 
             // employeePage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnFindAll);
+            Controls.Add(cbSearchGender);
+            Controls.Add(cbSearch);
             Controls.Add(btnEmail);
             Controls.Add(btnDetail);
             Controls.Add(btnExportExcel);
@@ -140,8 +177,8 @@
             Controls.Add(deleteBtn);
             Controls.Add(addBtn);
             Controls.Add(updateBtn);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(btnSearch);
+            Controls.Add(tbSearch);
             Name = "employeePage";
             Size = new Size(903, 709);
             Load += employeePage_Load;
@@ -152,8 +189,8 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private Button button1;
+        private TextBox tbSearch;
+        private Button btnSearch;
         private Button deleteBtn;
         private Button addBtn;
         private Button updateBtn;
@@ -161,5 +198,8 @@
         private DataGridView dgvEmployee;
         private Button btnDetail;
         private Button btnEmail;
+        private Button btnFindAll;
+        private ComboBox cbSearchGender;
+        private ComboBox cbSearch;
     }
 }

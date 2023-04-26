@@ -37,7 +37,7 @@
             panel5 = new Panel();
             returnBtn = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
-            label3 = new Label();
+            lbName = new Label();
             label1 = new Label();
             label2 = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
@@ -192,7 +192,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(label3);
+            panel3.Controls.Add(lbName);
             panel3.Controls.Add(label1);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(iconPictureBox1);
@@ -202,16 +202,16 @@
             panel3.Size = new Size(258, 143);
             panel3.TabIndex = 0;
             // 
-            // label3
+            // lbName
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(118, 76);
-            label3.Name = "label3";
-            label3.Size = new Size(64, 28);
-            label3.TabIndex = 2;
-            label3.Text = "Name";
+            lbName.AutoSize = true;
+            lbName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbName.ForeColor = SystemColors.ControlLightLight;
+            lbName.Location = new Point(118, 76);
+            lbName.Name = "lbName";
+            lbName.Size = new Size(64, 28);
+            lbName.TabIndex = 2;
+            lbName.Text = "Name";
             // 
             // label1
             // 
@@ -256,6 +256,7 @@
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(903, 710);
             mainPanel.TabIndex = 1;
+            mainPanel.Paint += mainPanel_Paint;
             // 
             // FormEmployee
             // 
@@ -266,6 +267,7 @@
             Controls.Add(panel1);
             Name = "FormEmployee";
             Text = "Employee";
+            Load += FormEmployee_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
@@ -283,7 +285,7 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Panel mainPanel;
         private FontAwesome.Sharp.IconButton informationBtn;
-        private Label label3;
+        private Label lbName;
         private Label label2;
         private Panel panel4;
         private FontAwesome.Sharp.IconButton departmentBtn;
