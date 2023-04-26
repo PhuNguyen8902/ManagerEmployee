@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbSearchActive = new System.Windows.Forms.ComboBox();
             this.cbSearch = new System.Windows.Forms.ComboBox();
             this.btnFindAll = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -37,16 +36,10 @@
             this.btnActiveProject = new System.Windows.Forms.Button();
             this.dgvProject = new System.Windows.Forms.DataGridView();
             this.btnExportExcel = new System.Windows.Forms.Button();
+            this.DTPSearch = new System.Windows.Forms.DateTimePicker();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cbSearchActive
-            // 
-            this.cbSearchActive.FormattingEnabled = true;
-            this.cbSearchActive.Location = new System.Drawing.Point(21, 22);
-            this.cbSearchActive.Name = "cbSearchActive";
-            this.cbSearchActive.Size = new System.Drawing.Size(258, 28);
-            this.cbSearchActive.TabIndex = 26;
             // 
             // cbSearch
             // 
@@ -56,6 +49,7 @@
             this.cbSearch.Size = new System.Drawing.Size(253, 28);
             this.cbSearch.TabIndex = 25;
             this.cbSearch.Text = "Chọn mục muốn tìm kiếm";
+            this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged_1);
             // 
             // btnFindAll
             // 
@@ -65,6 +59,7 @@
             this.btnFindAll.TabIndex = 31;
             this.btnFindAll.Text = "Find All";
             this.btnFindAll.UseVisualStyleBackColor = true;
+            this.btnFindAll.Click += new System.EventHandler(this.btnFindAll_Click);
             // 
             // btnSearch
             // 
@@ -74,6 +69,7 @@
             this.btnSearch.TabIndex = 27;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnDetail
             // 
@@ -128,10 +124,27 @@
             this.btnExportExcel.UseVisualStyleBackColor = true;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
+            // DTPSearch
+            // 
+            this.DTPSearch.Location = new System.Drawing.Point(21, 24);
+            this.DTPSearch.Name = "DTPSearch";
+            this.DTPSearch.Size = new System.Drawing.Size(258, 27);
+            this.DTPSearch.TabIndex = 37;
+            this.DTPSearch.Visible = false;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(21, 23);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(258, 27);
+            this.txtSearch.TabIndex = 38;
+            // 
             // projectPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.DTPSearch);
             this.Controls.Add(this.btnExportExcel);
             this.Controls.Add(this.dgvProject);
             this.Controls.Add(this.btnDetail);
@@ -139,19 +152,17 @@
             this.Controls.Add(this.btnActiveProject);
             this.Controls.Add(this.btnFindAll);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.cbSearchActive);
             this.Controls.Add(this.cbSearch);
             this.Name = "projectPage";
             this.Size = new System.Drawing.Size(903, 709);
             this.Load += new System.EventHandler(this.projectPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private ComboBox cbSearchActive;
         private ComboBox cbSearch;
         private Button btnFindAll;
         private Button btnSearch;
@@ -160,5 +171,7 @@
         private Button btnActiveProject;
         private DataGridView dgvProject;
         private Button btnExportExcel;
+        private DateTimePicker DTPSearch;
+        private TextBox txtSearch;
     }
 }

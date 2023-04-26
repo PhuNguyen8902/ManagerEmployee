@@ -74,7 +74,6 @@ namespace EmployeesManagement.userControl
             cbSearchPosition.Items.Add("Employee");
             cbSearchPosition.Items.Add("Admin");
             cbSearchPosition.Items.Add("Manage");
-
         }
 
         private void addBtn_Click(object sender, EventArgs e)

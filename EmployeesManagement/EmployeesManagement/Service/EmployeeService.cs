@@ -177,6 +177,12 @@ namespace EmployeesManagement.Service
                 connection.Close();
 
                 connection.Open();
+                sql = string.Format("delete from employeeDB.dbo.notify where employee_id = {0}", employeeId);
+                SqlCommand cmd4 = new SqlCommand(sql, connection);
+                cmd4.ExecuteReader();
+                connection.Close();
+
+                connection.Open();
                 sql = string.Format("DELETE FROM employeeDB.dbo.employee WHERE id = {0};", employeeId);
                 SqlCommand cmd2 = new SqlCommand(sql, connection);
                 if (cmd2.ExecuteNonQuery() > 0)

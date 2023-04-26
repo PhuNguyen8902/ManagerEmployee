@@ -113,7 +113,10 @@ namespace EmployeesManagement.userControl
                         string message = string.Format("Admin has delete the Project you are working with ({0})", now.ToString());
                         notify.addNotify(empId, message);
                     }
+
+                    
                     dgvProject.DataSource = projectController.GetProjectData(isActive);
+
                 }
                 else
                 {

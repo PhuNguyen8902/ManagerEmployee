@@ -62,6 +62,55 @@ namespace EmployeesManagement.Utils
             return true;
         }
 
-      
+        public int numberOfEmployees()
+        {
+            int sumEmployees = 0;
+            connection.Open();
+
+            string sql = "select id from employeeDB.dbo.employee";
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                sumEmployees++;
+            }
+            connection.Close();
+
+            return sumEmployees;
+        }
+        
+        public int numberOfProjects()
+        {
+            int sumProjects = 0;
+            connection.Open();
+
+            string sql = "select id from employeeDB.dbo.project";
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                sumProjects++;
+            }
+            connection.Close();
+
+            return sumProjects;
+        }
+
+        public int numberOfDepartments()
+        {
+            int sumDepartment = 0;
+            connection.Open();
+
+            string sql = "select id from employeeDB.dbo.department";
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                sumDepartment++;
+            }
+            connection.Close();
+
+            return sumDepartment;
+        }
     }
 }

@@ -24,5 +24,17 @@ namespace EmployeesManagement.Utils
             return utilsService.isPhoneNumber(phone);
         }
        
+        public int numberOfEmployees()
+        {
+            return utilsService.numberOfEmployees();
+        }
+        public int numberOfProjects()
+        {
+            return utilsService.numberOfProjects();
+        }
+        public int numberOfDepartment()
+        {
+            return utilsService.numberOfDepartments();
+        }
     }
 }

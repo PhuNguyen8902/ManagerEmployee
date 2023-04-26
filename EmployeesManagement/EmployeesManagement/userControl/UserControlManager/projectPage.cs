@@ -36,6 +36,7 @@ namespace EmployeesManagement.userControl.UserControlManager
         }
         public projectPage(int managerId, string type)
         {
+
             InitializeComponent();
             projectController = new projectController();
             salaryController = new salaryController();
@@ -55,6 +56,22 @@ namespace EmployeesManagement.userControl.UserControlManager
             dgvProject.DataSource = dataTable;
 
             connection.Close();
+
+            connection.Close();
+            loadComboBoxSearch();
+            btnSearch.Enabled = false;
+
+        }
+        private void loadComboBoxSearch()
+        {
+            List<String> strList = new List<String>();
+            strList.Add("Project Id");
+            strList.Add("Project Name");
+            strList.Add("Project Description");
+            strList.Add("Start_date");
+            strList.Add("End_date");
+            //strList.Add("is_active");
+            salaryController.loadComboBoxSearch(cbSearch, strList);
         }
 
         private void btnActiveProject_Click(object sender, EventArgs e)
@@ -126,6 +143,83 @@ namespace EmployeesManagement.userControl.UserControlManager
                 excel.Columns.AutoFit();
                 excel.Visible = true;
             }
+        }
+
+        private void cbSearch_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cbSearch.SelectedIndex == -1)
+            {
+                btnSearch.Enabled = false;
+            }
+            else
+            {
+                btnSearch.Enabled = true;
+                string value = cbSearch.SelectedItem.ToString();
+                if (value == "start_date" || value == "end_date")
+                {
+                    txtSearch.Visible = false;
+                    DTPSearch.Visible = true;
+                }
+                {
+                    txtSearch.Visible = true;
+                    DTPSearch.Visible = false;
+                }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dgvProject.Columns.Clear();
+
+            string selectedValue = cbSearch.SelectedItem.ToString();
+            if (selectedValue == "Project Id")
+            {
+                int projectId;
+                if (!int.TryParse(txtSearch.Text, out projectId))
+                {
+                    MessageBox.Show("Please enter a number for the ID!");
+                }
+                else
+                {
+                    DataTable dataTable = projectController.findEmployeeProjectByProjectId(projectId, managerId, isActive);
+                    dgvProject.DataSource = dataTable;
+                }
+            }
+            else if (selectedValue == "Project Name")
+            {
+                string strName = txtSearch.Text;
+                DataTable dataTable = projectController.findEmployeeProjectByCodition(strName, managerId, "p.name", isActive);
+                dgvProject.DataSource = dataTable;
+            }
+            else if (selectedValue == "Project Description")
+            {
+                string strDescription = txtSearch.Text;
+                DataTable dataTable = projectController.findEmployeeProjectByCodition(strDescription, managerId, "ep.description", isActive);
+                dgvProject.DataSource = dataTable;
+            }
+            else if (selectedValue == "Start_date")
+            {
+                string strStartDate = DTPSearch.Value.ToString("yyyy-MM-dd");
+                DataTable dataTable = projectController.findEmployeeProjectByCodition(strStartDate, managerId, "ep.start_date", isActive);
+                dgvProject.DataSource = dataTable;
+            }
+            else if (selectedValue == "End_date")
+            {
+                string strEndDate = DTPSearch.Value.ToString("yyyy-MM-dd");
+                DataTable dataTable = projectController.findEmployeeProjectByCodition(strEndDate, managerId, "ep.end_date", isActive);
+                dgvProject.DataSource = dataTable;
+            }
+            else
+            {
+                MessageBox.Show("ERR...");
+            }
+        }
+
+        private void btnFindAll_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = projectController.GetProjectEmployeeData(managerId, isActive);
+
+            dgvProject.DataSource = dataTable;
         }
     }
 }
