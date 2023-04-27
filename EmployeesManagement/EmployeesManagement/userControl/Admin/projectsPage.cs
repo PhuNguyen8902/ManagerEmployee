@@ -112,8 +112,19 @@ namespace EmployeesManagement.userControl
                         DateTime now = DateTime.Now;
                         string message = string.Format("Admin has delete the Project you are working with ({0})", now.ToString());
                         notify.addNotify(empId, message);
-                    }
 
+                    }
+                    FormCollection allOpenedForm = Application.OpenForms;
+                    foreach (Form form in allOpenedForm)
+                    {
+                        if (form.Name == "primary")
+                        {
+                            form.Close();
+                            primary primaryPage = new primary(1);
+                            primaryPage.Show();
+                            return;
+                        }
+                    }
 
                     dgvProject.DataSource = projectController.GetProjectData(isActive);
 
@@ -293,7 +304,7 @@ namespace EmployeesManagement.userControl
                 {
                     excel.Cells[1, i] = dgvProject.Columns[i - 1].HeaderText;
                 }
-                for (int i = 1; i < dgvProject.Rows.Count; i++)
+                for (int i = 1; i < dgvProject.Rows.Count + 1; i++)
                 {
                     for (int j = 1; j < dgvProject.Columns.Count + 1; j++)
                     {

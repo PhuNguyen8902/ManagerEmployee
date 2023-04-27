@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeesManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -111,6 +112,81 @@ namespace EmployeesManagement.Utils
             connection.Close();
 
             return sumDepartment;
+        }
+
+        public List<int> numberOfYear()
+        {
+            List<int> listYear = new List<int>();
+            List<int> ModifyListYear = new List<int>();
+
+            try
+            {
+                connection.Open();
+                string sql = string.Format("select end_date from employeeDB.dbo.project where is_active = 1");
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    string stringYear = reader["end_date"].ToString();
+                    string subStringYear = "";
+                    if(stringYear.Substring(3, 1) == "/")
+                    {
+                        subStringYear = stringYear.Substring(4 ,4);
+                    }
+                    else if(stringYear.Substring(4, 1) == "/")
+                    {
+                        subStringYear = stringYear.Substring(5, 4);
+                    }
+                    else if(stringYear.Substring(5, 1) == "/")
+                    {
+                        subStringYear = stringYear.Substring(6, 4);
+                    }
+
+                    int year = int.Parse(subStringYear);
+
+                    listYear.Add(year);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            listYear = listYear.Distinct().ToList();
+
+            listYear.Sort();
+
+            return listYear;
+        }
+
+        public int numberOfPorjectOfYear(int year)
+        {
+            int sumProjectOfYear = 0;
+            try
+            {
+                connection.Open();
+                string sql = string.Format("select id from employeeDB.dbo.project " +
+                    "where is_active = 1 and YEAR(end_date) = {0}", year);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    sumProjectOfYear++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return sumProjectOfYear;
         }
     }
 }

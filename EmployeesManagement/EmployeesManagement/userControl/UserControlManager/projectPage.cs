@@ -146,7 +146,7 @@ namespace EmployeesManagement.userControl.UserControlManager
                 {
                     excel.Cells[1, i] = dgvProject.Columns[i - 1].HeaderText;
                 }
-                for (int i = 1; i < dgvProject.Rows.Count; i++)
+                for (int i = 1; i < dgvProject.Rows.Count + 1; i++)
                 {
                     for (int j = 1; j < dgvProject.Columns.Count + 1; j++)
                     {
