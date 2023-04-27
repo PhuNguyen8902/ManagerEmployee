@@ -25,6 +25,10 @@ namespace EmployeesManagement.Control
         {
             return empService.addEmployee(employee);
         }
+        public int getPositionIdByItsName(string positionName)
+        {
+            return empService.getPositionIdByItsName(positionName);
+        }
         public bool deleteEmployee(int empId)
         {
             return empService.deleteEmployee(empId);
@@ -44,6 +48,10 @@ namespace EmployeesManagement.Control
         public int getIdByPositionName(String name)
         {
             return empService.getIdByPositionName(name);
+        }
+        public string getPositionNameByItsId(int positionId)
+        {
+            return empService.getPositionNameByItsId(positionId);
         }
 
         public Employee getInforEmployee(int id)

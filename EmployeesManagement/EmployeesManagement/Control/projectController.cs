@@ -49,16 +49,16 @@ namespace EmployeesManagement.Control
         {
             return projectService.updateEmployeeInProject(ep);
         }
-        public DataTable findById(int id, string str) { 
-            return projectService.findById(id, str);
+        public DataTable findById(int id, string str, int isActive) { 
+            return projectService.findById(id, str, isActive);
         }
 
         public DataTable findEmployeeProjectByProjectId(int id,int emid, int isActive) {
             return projectService.findEmployeeProjectByProjectId(id,emid, isActive);
         }
 
-        public DataTable findByCodition(string address, string str, string codition) { 
-            return projectService.findByCodition(address,str, codition);
+        public DataTable findByCodition(string address, string str, string codition, int isActive) { 
+            return projectService.findByCodition(address,str, codition, isActive);
         }
 
         public DataTable findEmployeeProjectByCodition(string value, int emid, string codition, int isActive) { 

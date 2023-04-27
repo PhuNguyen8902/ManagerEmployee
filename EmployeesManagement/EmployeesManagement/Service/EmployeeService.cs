@@ -30,7 +30,54 @@ namespace EmployeesManagement.Service
             adapter.Fill(table);
             return table;
         }
-
+        public int getPositionIdByItsName(string positionName)
+        {
+            int positionId = 0;
+            try
+            {
+                connection.Open();
+                string sql = string.Format("select id from employeeDB.dbo.position where name = '{0}' ", positionName);
+                SqlCommand command = new SqlCommand(sql, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if(reader.Read())
+                {
+                    positionId = int.Parse(reader["id"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return positionId;
+        }
+        public string getPositionNameByItsId(int positionId)
+        {
+            string positionName = "";
+            try
+            {
+                connection.Open();
+                string sql = string.Format("select name from employeeDB.dbo.position where id = {0} ", positionId);
+                SqlCommand command = new SqlCommand(sql, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    positionName = reader["name"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return positionName;
+        }
         public DataTable getProjectDataByEmployeeId(int employeeId, bool isParticipateNow)
         {
             DateTime nowFirst = DateTime.Now;

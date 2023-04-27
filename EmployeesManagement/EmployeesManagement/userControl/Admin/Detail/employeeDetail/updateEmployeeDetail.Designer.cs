@@ -46,6 +46,7 @@
             txtHometown = new TextBox();
             txtPhone = new TextBox();
             txtName = new TextBox();
+            txtPosition = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -80,6 +81,7 @@
             panel1.Controls.Add(txtHometown);
             panel1.Controls.Add(txtPhone);
             panel1.Controls.Add(txtName);
+            panel1.Controls.Add(txtPosition);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 55);
             panel1.Name = "panel1";
@@ -94,6 +96,15 @@
             cbPosition.Name = "cbPosition";
             cbPosition.Size = new Size(205, 31);
             cbPosition.TabIndex = 20;
+            // 
+            // txtPosition
+            // 
+            txtPosition.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPosition.Location = new Point(121, 326);
+            txtPosition.Name = "txtPosition";
+            txtPosition.Size = new Size(205, 31);
+            txtPosition.TabIndex = 20;
+            txtPosition.Visible = false;
             // 
             // cbSalary
             // 
@@ -270,5 +281,6 @@
         private ComboBox cbDepartment;
         private ComboBox cbSalary;
         private ComboBox cbPosition;
+        private TextBox txtPosition;
     }
 }
