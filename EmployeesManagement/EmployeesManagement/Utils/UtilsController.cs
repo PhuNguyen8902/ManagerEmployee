@@ -36,5 +36,13 @@ namespace EmployeesManagement.Utils
         {
             return utilsService.numberOfDepartments();
         }
+        public List<int> numberOfYear()
+        {
+            return utilsService.numberOfYear();
+        }
+        public int numberOfPorjectOfYear(int year)
+        {
+            return utilsService.numberOfPorjectOfYear(year);
+        }
     }
 }

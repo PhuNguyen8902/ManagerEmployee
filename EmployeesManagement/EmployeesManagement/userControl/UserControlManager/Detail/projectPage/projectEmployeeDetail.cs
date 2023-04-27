@@ -48,7 +48,7 @@ namespace EmployeesManagement.userControl.UserControlManager.Detail.projectPage
                 {
                     excel.Cells[1, i] = dgvEmployee.Columns[i - 1].HeaderText;
                 }
-                for (int i = 1; i < dgvEmployee.Rows.Count; i++)
+                for (int i = 1; i < dgvEmployee.Rows.Count + 1; i++)
                 {
                     for (int j = 1; j < dgvEmployee.Columns.Count + 1; j++)
                     {

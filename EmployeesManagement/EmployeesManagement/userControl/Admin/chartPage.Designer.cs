@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.paintChart = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbDepartments = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbEmployees = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.paintChart.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
@@ -48,13 +50,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // paintChart
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 176);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(903, 533);
-            this.panel1.TabIndex = 0;
+            this.paintChart.Controls.Add(this.label1);
+            this.paintChart.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.paintChart.Location = new System.Drawing.Point(0, 185);
+            this.paintChart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.paintChart.Name = "paintChart";
+            this.paintChart.Size = new System.Drawing.Size(903, 524);
+            this.paintChart.TabIndex = 0;
+            this.paintChart.Paint += new System.Windows.Forms.PaintEventHandler(this.paintChart_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(747, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Finished Projects";
             // 
             // panel2
             // 
@@ -64,6 +79,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(903, 179);
             this.panel2.TabIndex = 1;
@@ -75,6 +91,7 @@
             this.panel4.Controls.Add(this.lbDepartments);
             this.panel4.Controls.Add(this.iconPictureBox2);
             this.panel4.Location = new System.Drawing.Point(649, 22);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(209, 137);
             this.panel4.TabIndex = 2;
@@ -99,6 +116,7 @@
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.IconSize = 84;
             this.iconPictureBox2.Location = new System.Drawing.Point(3, 26);
+            this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(87, 84);
             this.iconPictureBox2.TabIndex = 0;
@@ -110,7 +128,8 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.lbProjects);
             this.panel5.Controls.Add(this.iconPictureBox3);
-            this.panel5.Location = new System.Drawing.Point(348, 22);
+            this.panel5.Location = new System.Drawing.Point(347, 22);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(209, 137);
             this.panel5.TabIndex = 2;
@@ -135,6 +154,7 @@
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox3.IconSize = 84;
             this.iconPictureBox3.Location = new System.Drawing.Point(3, 26);
+            this.iconPictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconPictureBox3.Name = "iconPictureBox3";
             this.iconPictureBox3.Size = new System.Drawing.Size(87, 84);
             this.iconPictureBox3.TabIndex = 0;
@@ -147,6 +167,7 @@
             this.panel3.Controls.Add(this.lbEmployees);
             this.panel3.Controls.Add(this.iconPictureBox1);
             this.panel3.Location = new System.Drawing.Point(37, 22);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(209, 137);
             this.panel3.TabIndex = 0;
@@ -171,6 +192,7 @@
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox1.IconSize = 84;
             this.iconPictureBox1.Location = new System.Drawing.Point(3, 26);
+            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(87, 84);
             this.iconPictureBox1.TabIndex = 0;
@@ -181,10 +203,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.paintChart);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "chartPage";
             this.Size = new System.Drawing.Size(903, 709);
             this.Load += new System.EventHandler(this.chartPage_Load);
+            this.paintChart.ResumeLayout(false);
+            this.paintChart.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -201,7 +226,7 @@
 
         #endregion
 
-        private Panel panel1;
+        private Panel paintChart;
         private Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Panel panel3;
@@ -212,5 +237,6 @@
         private Panel panel5;
         private Label lbProjects;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
+        private Label label1;
     }
 }

@@ -105,7 +105,13 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("DELETE FROM employeeDB.dbo.project WHERE id = {0};", id);
+                string sql = string.Format("DELETE FROM employeeDB.dbo.employee_project WHERE project_id = {0};", id);
+                SqlCommand cmd1 = new SqlCommand(sql, connection);
+                cmd1.ExecuteReader();
+                connection.Close();
+
+                connection.Open();
+                sql = string.Format("DELETE FROM employeeDB.dbo.project WHERE id = {0};", id);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
@@ -179,7 +185,7 @@ namespace EmployeesManagement.Service
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT id, name, description, start_date, end_date, IIF(is_active=1, 'End', 'Active') AS Active FROM {1} WHERE {2} like '%{0}%';", address, str, codition);
+                string sql = string.Format("SELECT id, name, description, start_date, end_date FROM {1} WHERE {2} like '%{0}%';", address, str, codition);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);
