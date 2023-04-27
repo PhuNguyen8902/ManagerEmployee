@@ -41,6 +41,17 @@ namespace EmployeesManagement.userControl.Admin.Detail.projectDetail
 
         private void btnComfirm_Click(object sender, EventArgs e)
         {
+            if (DTPStart.Value.Date >= DTPEnd.Value.Date)
+            {
+                MessageBox.Show("Start date can't higher or equal end date");
+                return;
+            }
+            if (DTPEnd.Value.Date > DateTime.Parse(EndDate))
+            {
+                MessageBox.Show("End date of employte can't higher than end date of project");
+                return;
+            }
+
             DTPStart.CustomFormat = "yyyy-MM-dd";
             DTPEnd.CustomFormat = "yyyy-MM-dd";
             string startDate = DTPStart.Value.ToString("yyyy-MM-dd");

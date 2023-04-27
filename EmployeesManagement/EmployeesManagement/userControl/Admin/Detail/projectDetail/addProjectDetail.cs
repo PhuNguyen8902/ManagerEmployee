@@ -32,6 +32,12 @@ namespace EmployeesManagement.Detail
                     MessageBox.Show("You can't add project that already end");
                     return;
                 }
+                if(DTPStart.Value.Date >= DTPEnd.Value.Date)
+                {
+                    MessageBox.Show("Start date can't higher or equal end date");
+                    return;
+                }
+
                 DTPStart.CustomFormat = "yyyy-MM-dd";
                 DTPEnd.CustomFormat = "yyyy-MM-dd";
                 string startDate = DTPStart.Value.ToString("yyyy-MM-dd");
