@@ -1,1 +1,4 @@
-EmployeesManagement/.vs
+EmployeesManagement/.vs/
+
+*/.vs/
+.vs
