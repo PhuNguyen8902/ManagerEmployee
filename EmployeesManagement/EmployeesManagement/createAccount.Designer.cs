@@ -35,10 +35,10 @@
             label1 = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panel2 = new Panel();
-            backBtn2 = new Button();
             createAccountBtn2 = new Button();
             backBtn = new Button();
             panel6 = new Panel();
+            backBtn2 = new Button();
             cbType = new ComboBox();
             iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
             panel5 = new Panel();
@@ -161,21 +161,6 @@
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
             // 
-            // backBtn2
-            // 
-            backBtn2.BackColor = Color.Teal;
-            backBtn2.Cursor = Cursors.Hand;
-            backBtn2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            backBtn2.ForeColor = SystemColors.ControlLightLight;
-            backBtn2.Location = new Point(375, 391);
-            backBtn2.Name = "backBtn2";
-            backBtn2.Size = new Size(71, 47);
-            backBtn2.TabIndex = 9;
-            backBtn2.Text = "Back";
-            backBtn2.UseVisualStyleBackColor = false;
-            backBtn2.Visible = false;
-            backBtn2.Click += backBtn2_Click;
-            // 
             // createAccountBtn2
             // 
             createAccountBtn2.BackColor = Color.Teal;
@@ -214,6 +199,21 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(386, 43);
             panel6.TabIndex = 5;
+            // 
+            // backBtn2
+            // 
+            backBtn2.BackColor = Color.Teal;
+            backBtn2.Cursor = Cursors.Hand;
+            backBtn2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            backBtn2.ForeColor = SystemColors.ControlLightLight;
+            backBtn2.Location = new Point(375, 391);
+            backBtn2.Name = "backBtn2";
+            backBtn2.Size = new Size(71, 47);
+            backBtn2.TabIndex = 9;
+            backBtn2.Text = "Back";
+            backBtn2.UseVisualStyleBackColor = false;
+            backBtn2.Visible = false;
+            backBtn2.Click += backBtn2_Click;
             // 
             // cbType
             // 
@@ -414,6 +414,7 @@
             Controls.Add(panel1);
             Name = "createAccount";
             Text = "Create Account";
+            FormClosing += createAccount_FormClosing;
             Load += login_Load;
             KeyDown += login_KeyDown;
             panel1.ResumeLayout(false);

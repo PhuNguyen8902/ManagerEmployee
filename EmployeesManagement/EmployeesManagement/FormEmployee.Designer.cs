@@ -272,6 +272,7 @@
             Controls.Add(panel1);
             Name = "FormEmployee";
             Text = "Employee";
+            FormClosing += FormEmployee_FormClosing;
             Load += FormEmployee_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);

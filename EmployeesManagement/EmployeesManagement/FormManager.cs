@@ -22,6 +22,8 @@ namespace EmployeesManagement
         private int managerId;
         private string type;
         private string name;
+        Boolean off = true;
+
         public FormManager()
         {
             InitializeComponent();
@@ -63,6 +65,7 @@ namespace EmployeesManagement
         }
         private void returnBtn_Click_1(object sender, EventArgs e)
         {
+            off = false;
             login loginPage = new login();
             loginPage.Show();
             this.Close();
@@ -72,6 +75,7 @@ namespace EmployeesManagement
         {
             //Employee manager = empController.getInforEmployee(managerId);
             //int deId = (int)manager.DepartmentId;
+            off = false;
             createAccount createAccountPage = new createAccount(managerId);
             createAccountPage.Show();
             this.Close();
@@ -98,6 +102,14 @@ namespace EmployeesManagement
             Employee emp = empController.getInforEmployee(managerId);
             string name = emp.Name;
             lbName.Text = name;
+        }
+
+        private void FormManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if (off)
+            //{
+            //    Environment.Exit(0);
+            //}
         }
     }
 }
