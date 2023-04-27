@@ -346,6 +346,7 @@
             Controls.Add(panel1);
             Name = "FormManager";
             Text = "Manager";
+            FormClosing += FormManager_FormClosing;
             Load += FormManager_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);

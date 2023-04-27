@@ -18,6 +18,7 @@ namespace EmployeesManagement
     {
         private int accId;
         private string type;
+        Boolean off = true;
         navigationController navigationControl;
         public primary()
         {
@@ -56,6 +57,7 @@ namespace EmployeesManagement
         }
         private void returnBtn_Click(object sender, EventArgs e)
         {
+            off = false;
             login loginPage = new login();
             loginPage.Show();
             this.Close();
@@ -78,6 +80,7 @@ namespace EmployeesManagement
 
         private void createAccountBtn_Click(object sender, EventArgs e)
         {
+            off = false;
             createAccount createAccountPage = new createAccount();
             createAccountPage.Show();
             this.Close();
@@ -97,6 +100,14 @@ namespace EmployeesManagement
         {
             navigationControl.display(6);
 
+        }
+
+        private void primary_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if (off)
+            //{
+            //    Environment.Exit(0);
+            //}
         }
     }
 }

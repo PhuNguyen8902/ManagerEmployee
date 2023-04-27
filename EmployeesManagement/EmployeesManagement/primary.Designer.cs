@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             panel4 = new Panel();
+            notifyBtn = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             accountBtn = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
@@ -46,7 +47,6 @@
             label2 = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             mainPanel = new Panel();
-            notifyBtn = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -82,6 +82,29 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(258, 492);
             panel4.TabIndex = 2;
+            // 
+            // notifyBtn
+            // 
+            notifyBtn.BackColor = Color.Teal;
+            notifyBtn.Cursor = Cursors.Hand;
+            notifyBtn.Dock = DockStyle.Top;
+            notifyBtn.FlatAppearance.BorderColor = Color.Teal;
+            notifyBtn.FlatStyle = FlatStyle.Flat;
+            notifyBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            notifyBtn.ForeColor = SystemColors.ControlLightLight;
+            notifyBtn.IconChar = FontAwesome.Sharp.IconChar.Bell;
+            notifyBtn.IconColor = Color.White;
+            notifyBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            notifyBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.Location = new Point(0, 354);
+            notifyBtn.Name = "notifyBtn";
+            notifyBtn.Size = new Size(258, 59);
+            notifyBtn.TabIndex = 11;
+            notifyBtn.Text = "Notify";
+            notifyBtn.TextAlign = ContentAlignment.MiddleLeft;
+            notifyBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            notifyBtn.UseVisualStyleBackColor = false;
+            notifyBtn.Click += notifyBtn_Click;
             // 
             // iconButton1
             // 
@@ -350,29 +373,6 @@
             mainPanel.Size = new Size(903, 710);
             mainPanel.TabIndex = 1;
             // 
-            // notifyBtn
-            // 
-            notifyBtn.BackColor = Color.Teal;
-            notifyBtn.Cursor = Cursors.Hand;
-            notifyBtn.Dock = DockStyle.Top;
-            notifyBtn.FlatAppearance.BorderColor = Color.Teal;
-            notifyBtn.FlatStyle = FlatStyle.Flat;
-            notifyBtn.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            notifyBtn.ForeColor = SystemColors.ControlLightLight;
-            notifyBtn.IconChar = FontAwesome.Sharp.IconChar.Bell;
-            notifyBtn.IconColor = Color.White;
-            notifyBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            notifyBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            notifyBtn.Location = new Point(0, 354);
-            notifyBtn.Name = "notifyBtn";
-            notifyBtn.Size = new Size(258, 59);
-            notifyBtn.TabIndex = 11;
-            notifyBtn.Text = "Notify";
-            notifyBtn.TextAlign = ContentAlignment.MiddleLeft;
-            notifyBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            notifyBtn.UseVisualStyleBackColor = false;
-            notifyBtn.Click += notifyBtn_Click;
-            // 
             // primary
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -382,6 +382,7 @@
             Controls.Add(panel1);
             Name = "primary";
             Text = "primary";
+            FormClosing += primary_FormClosing;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel2.ResumeLayout(false);

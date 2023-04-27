@@ -17,6 +17,7 @@ namespace EmployeesManagement
     public partial class createAccount : Form
     {
         int manageId = -1;
+        Boolean off = true;
         private accountController accController;
         SqlConnection connection = Connection.Connection.GetConnection();
         public createAccount()
@@ -64,6 +65,7 @@ namespace EmployeesManagement
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            off = false;
             primary primary = new primary();
             primary.Show();
             this.Close();
@@ -114,7 +116,8 @@ namespace EmployeesManagement
             Boolean rsCreateAccount = accController.createAccount(account);
             if (rsCreateAccount)
             {
-                if (cbType.SelectedIndex == 0) {
+                if (cbType.SelectedIndex == 0)
+                {
                     passAppDetail formPassApp = new passAppDetail(account.Email);
                     formPassApp.ShowDialog();
                 }
@@ -256,9 +259,18 @@ namespace EmployeesManagement
 
         private void backBtn2_Click(object sender, EventArgs e)
         {
+            off = false;
             FormManager manage = new FormManager(0, manageId, "Manage");
             manage.Show();
             this.Close();
+        }
+
+        private void createAccount_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if (off)
+            //{
+            //    Environment.Exit(0);
+            //}
         }
     }
 }

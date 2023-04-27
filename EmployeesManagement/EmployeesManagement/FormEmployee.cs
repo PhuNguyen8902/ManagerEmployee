@@ -20,6 +20,7 @@ namespace EmployeesManagement
         navigationController navigationControl;
         private int employeeId;
         private string type;
+        Boolean off = true;
         private employeeController empController = new employeeController();
         public FormEmployee()
         {
@@ -58,6 +59,7 @@ namespace EmployeesManagement
         }
         private void returnBtn_Click(object sender, EventArgs e)
         {
+            off = false;
             login loginPage = new login();
             loginPage.Show();
             this.Close();
@@ -83,6 +85,15 @@ namespace EmployeesManagement
             Employee emp = empController.getInforEmployee(employeeId);
             string name = emp.Name;
             lbName.Text = name;
+        }
+
+        private void FormEmployee_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if (off)
+            //{
+            //    Environment.Exit(0);
+            //}
+
         }
     }
 }

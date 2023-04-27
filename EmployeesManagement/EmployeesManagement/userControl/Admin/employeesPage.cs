@@ -72,7 +72,6 @@ namespace EmployeesManagement.userControl
             cbSearchGender.Items.Add("Male");
             cbSearchGender.Items.Add("Female");
             cbSearchPosition.Items.Add("Employee");
-            cbSearchPosition.Items.Add("Admin");
             cbSearchPosition.Items.Add("Manage");
         }
 
