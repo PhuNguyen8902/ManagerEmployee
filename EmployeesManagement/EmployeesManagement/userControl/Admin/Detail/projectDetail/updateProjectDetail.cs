@@ -45,6 +45,11 @@ namespace EmployeesManagement.userControl.Detail.projectDetail
         {
             if (txtName.Text != "" && txtDescription.Text != "")
             {
+                if (DTPStart.Value.Date >= DTPEnd.Value.Date)
+                {
+                    MessageBox.Show("Start date can't higher or equal end date");
+                    return;
+                }
                 DTPStart.CustomFormat = "yyyy-MM-dd";
                 DTPEnd.CustomFormat = "yyyy-MM-dd";
                 string startDate = DTPStart.Value.ToString("yyyy-MM-dd");
@@ -54,6 +59,7 @@ namespace EmployeesManagement.userControl.Detail.projectDetail
                     IsActive = false;
                 else
                     IsActive = true;
+
                 Project project = new Project(Id, txtName.Text, txtDescription.Text, startDate, endDate, IsActive);
                 if (projectController.updateProject(project))
                 {
