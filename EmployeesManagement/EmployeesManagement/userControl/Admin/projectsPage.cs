@@ -203,47 +203,37 @@ namespace EmployeesManagement.userControl
                 }
                 else
                 {
-                    DataTable dataTable = projectController.findById(id, str);
+                    DataTable dataTable = projectController.findById(id, str, isActive);
                     dgvProject.DataSource = dataTable;
                 }
             }
             else if (selectedValue == "name")
             {
                 string strName = txtSearch.Text;
-                DataTable dataTable = projectController.findByCodition(strName, str, selectedValue);
+                DataTable dataTable = projectController.findByCodition(strName, str, selectedValue, isActive);
                 dgvProject.DataSource = dataTable;
             }
             else if (selectedValue == "description")
             {
                 string strDescription = txtSearch.Text;
-                DataTable dataTable = projectController.findByCodition(strDescription, str, selectedValue);
+                DataTable dataTable = projectController.findByCodition(strDescription, str, selectedValue, isActive);
                 dgvProject.DataSource = dataTable;
             }
             else if (selectedValue == "start_date")
             {
                 string strStartDate = DTPSearch.Value.ToString("yyyy-MM-dd");
-                DataTable dataTable = projectController.findByCodition(strStartDate, str, selectedValue);
+                DataTable dataTable = projectController.findByCodition(strStartDate, str, selectedValue, isActive);
                 dgvProject.DataSource = dataTable;
             }
             else if (selectedValue == "end_date")
             {
                 string strEndDate = DTPSearch.Value.ToString("yyyy-MM-dd");
-                DataTable dataTable = projectController.findByCodition(strEndDate, str, selectedValue);
+                DataTable dataTable = projectController.findByCodition(strEndDate, str, selectedValue, isActive);
                 dgvProject.DataSource = dataTable;
             }
             else
             {
-                if (cbSearchActive.SelectedIndex != -1)
-                {
-                    string strActive = cbSearchActive.SelectedItem.ToString();
-                    string Active = "0";
-                    if (strActive == "Active")
-                        Active = "0";
-                    else
-                        Active = "1";
-                    DataTable dataTable = projectController.findByCodition(Active, str, selectedValue);
-                    dgvProject.DataSource = dataTable;
-                }
+                
             }
 
         }

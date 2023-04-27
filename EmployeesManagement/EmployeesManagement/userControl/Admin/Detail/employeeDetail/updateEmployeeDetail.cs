@@ -53,7 +53,9 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
         {
             utilsController.loadSpecificColumnToComboBoxByItsId(cbDepartment, "name", "department");
             utilsController.loadSpecificColumnToComboBoxByItsId(cbSalary, "net_salary", "salary");
-            utilsController.loadSpecificColumnToComboBoxByItsId(cbPosition, "name", "position");
+            cbPosition.Items.Add("Employee");
+            cbPosition.Items.Add("Manage");
+
             txtName.Text = name;
             txtPhone.Text = phone;
             if (gender == 0)
@@ -69,7 +71,17 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
                 MessageBox.Show("ERROR");
             }
             txtHometown.Text = hometown;
-            fillToComboBox(departmentId, salaryId, positionId);
+
+            cbPosition.SelectedItem = updateEmployee.getPositionNameByItsId(positionId);
+            if(cbPosition.SelectedItem == null)
+            {
+                cbPosition.Visible = false;
+                txtPosition.Visible = true;
+                txtPosition.Enabled = false;
+                txtPosition.Text = "Admin";
+            }
+
+            fillToComboBox(departmentId, salaryId);
         }
 
         private void btnComfirm_Click(object sender, EventArgs e)
@@ -79,7 +91,7 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
             {
                 gender = 1;
             }
-            if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbDepartment.SelectedIndex != -1 && cbSalary.SelectedIndex != -1 && cbPosition.SelectedIndex != -1)
+            if (txtName.Text != "" && txtPhone.Text != "" && txtHometown.Text != "" && cbDepartment.SelectedIndex != -1 && cbSalary.SelectedIndex != -1)
             {
                 String phoneNumber = txtPhone.Text.Trim();
                 bool isPhone = utilsController.isPhoneNumber(phoneNumber);
@@ -91,7 +103,16 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
 
                 int departmentId = utilsController.getIdFromValueOfComboBox(cbDepartment);
                 int salaryId = utilsController.getIdFromValueOfComboBox(cbSalary);
-                int positionId = utilsController.getIdFromValueOfComboBox(cbPosition);
+                int positionId = 0;
+                if (cbPosition.SelectedItem == null)
+                {
+                    positionId = updateEmployee.getPositionIdByItsName(txtPosition.Text);
+                }
+                else
+                {
+                    positionId = updateEmployee.getPositionIdByItsName(cbPosition.Text);
+                }
+
 
 
                 Employee emp = new Employee(id, txtName.Text, phoneNumber, gender, txtHometown.Text, departmentId, salaryId, positionId);
@@ -124,7 +145,7 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
                 MessageBox.Show("Xin hãy nhập đầy đủ");
             }
         }
-        private void fillToComboBox(int departmentId, int salaryId, int positionId)
+        private void fillToComboBox(int departmentId, int salaryId)
         {
             foreach (MyComboBoxItem item in cbDepartment.Items)
             {
@@ -139,14 +160,6 @@ namespace EmployeesManagement.userControl.Detail.employeeDetail
                 if (int.Parse(item.Tag.ToString()) == salaryId)
                 {
                     cbSalary.SelectedItem = item;
-                    break;
-                }
-            }
-            foreach (MyComboBoxItem item in cbPosition.Items)
-            {
-                if (int.Parse(item.Tag.ToString()) == positionId)
-                {
-                    cbPosition.SelectedItem = item;
                     break;
                 }
             }

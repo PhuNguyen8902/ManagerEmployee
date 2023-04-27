@@ -130,13 +130,13 @@ namespace EmployeesManagement.Service
 
 
         // Tìm kiếm bằng id
-        public DataTable findById(int id, string str)
+        public DataTable findById(int id, string str, int isActive)
         {
             DataTable dataTable = new DataTable();
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT id, name, description, start_date, end_date, IIF(is_active=1, 'End', 'Active') AS Active FROM {1} WHERE id = {0};", id, str);
+                string sql = string.Format("SELECT id, name, description, start_date, end_date FROM {1} WHERE id = {0} and is_active = {2};", id, str, isActive);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);
@@ -179,13 +179,14 @@ namespace EmployeesManagement.Service
         }
 
         //Tìm kiếm bằng codition
-        public DataTable findByCodition(string address, string str, string codition)
+        public DataTable findByCodition(string address, string str, string codition, int isActive)
         {
             DataTable dataTable = new DataTable();
             try
             {
                 connection.Open();
-                string sql = string.Format("SELECT id, name, description, start_date, end_date FROM {1} WHERE {2} like '%{0}%';", address, str, codition);
+                string sql = string.Format("SELECT id, name, description, start_date, end_date FROM {1} " +
+                    "WHERE {2} like '%{0}%' and is_active = {3};", address, str, codition, isActive);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataTable);

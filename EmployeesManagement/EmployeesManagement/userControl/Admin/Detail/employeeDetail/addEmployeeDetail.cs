@@ -25,7 +25,9 @@ namespace EmployeesManagement.Detail
             InitializeComponent();
             utilsController.loadSpecificColumnToComboBoxByItsId(cbDepartment, "name", "department");
             utilsController.loadSpecificColumnToComboBoxByItsId(cbSalary, "net_salary", "salary");
-            utilsController.loadSpecificColumnToComboBoxByItsId(cbPosition, "name", "position");
+            cbPosition.Items.Add("Employee");
+            cbPosition.Items.Add("Manage");
+
         }
 
         private void btnComfirm_Click(object sender, EventArgs e)
@@ -51,7 +53,9 @@ namespace EmployeesManagement.Detail
 
                 int departmentId = utilsController.getIdFromValueOfComboBox(cbDepartment);
                 int salaryId = utilsController.getIdFromValueOfComboBox(cbSalary);
-                int positionId = utilsController.getIdFromValueOfComboBox(cbPosition);
+                int positionId = empController.getPositionIdByItsName(cbPosition.Text);
+
+                Console.WriteLine(positionId);
 
 
                 Employee emp = new Employee(txtName.Text, txtPhone.Text, gender, txtHometown.Text, departmentId, salaryId, positionId);
