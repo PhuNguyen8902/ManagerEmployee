@@ -52,6 +52,10 @@ namespace EmployeesManagement.userControl.Admin.Detail.emailDetail
                 while (!rs)
                 {
                     PassApp passApp = accController.getPassApp(accId);
+                    if (passApp == null) {
+                        MessageBox.Show("This account does not have permission to send emails");
+                        return;
+                    }
                     string pass = passApp.Value;
                     if (!accController.sendEmails(from, mailList, pass, strBody, strSubject))
                     {
